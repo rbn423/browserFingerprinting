@@ -26,6 +26,7 @@
 
 	<p id="navegador"></p>
 	<script>
+		//hay que mirar que este código tenga licencia libre, sino hay que hacerlo de otra forma
 	window.onload=function() {
 		var x = function() {
 			var ua= navigator.userAgent, tem, 
