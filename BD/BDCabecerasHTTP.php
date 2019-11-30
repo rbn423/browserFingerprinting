@@ -10,19 +10,23 @@ class BDCabecerasHTTP {
 		$i = 0;
 		$query = "INSERT INTO http (";
 		foreach($headers as $header => $value) {
-			if ($i > 0 && $i < count($headers))
-				$query .= ", ";
-			$campo = str_replace("-","", $header);
-			$query .= "$campo";
-			$i++;
+			if($header != "Cache-Control" && $header != "Host" && $header != "Cookie" && $header != "Referer") {
+				if ($i > 0 && $i < count($headers))
+					$query .= ", ";
+				$campo = str_replace("-", "", $header);
+				$query .= "$campo";
+				$i++;
+			}
 		}
 		$query .= ") VALUES (";
 		$i = 0;
 		foreach($headers as $header => $value) {
-			if ($i > 0 && $i < count($headers))
-				$query .= ", ";
-			$query .= "'$value'";
-			$i++;
+			if($header != "Cache-Control" && $header != "Host" && $header != "Cookie" && $header != "Referer") {
+				if ($i > 0 && $i < count($headers))
+					$query .= ", ";
+				$query .= "'$value'";
+				$i++;
+			}
 		}
 		$query .= ")";
 		$conn->query($query);
@@ -35,11 +39,13 @@ class BDCabecerasHTTP {
 		$i = 0;
 		$query = "SELECT count(*) FROM `http` WHERE ";
 		foreach($headers as $header => $value) {
-			if ($i > 0 && $i < count($headers))
-				$query .= " and ";
-			$campo = str_replace("-","", $header);
-			$query .= "$campo = '$value'";
-			$i++;
+			if($header != "Cache-Control" && $header != "Host" && $header != "Cookie" && $header != "Referer") {
+				if ($i > 0 && $i < count($headers))
+					$query .= " and ";
+				$campo = str_replace("-", "", $header);
+				$query .= "$campo = '$value'";
+				$i++;
+			}
 		}
 		$resultado = $conn->query($query);
 		$resultado = $resultado->fetch_all();
@@ -54,6 +60,7 @@ class BDCabecerasHTTP {
 		$resultado = $conn->query($query);
 		$resultado = $resultado->fetch_all();
 		return $resultado[0][0];
+
 	}
 }
 
