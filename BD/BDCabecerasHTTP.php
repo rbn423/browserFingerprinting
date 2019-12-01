@@ -118,7 +118,6 @@ class BDCabecerasHTTP {
 		$i = 0;
 		$query .= self::selector($headers,"insertValue");
 		$query .= ")";
-		echo $query;
 		$conn->query($query);
 	}
 

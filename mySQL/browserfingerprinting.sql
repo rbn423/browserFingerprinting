@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-11-2019 a las 22:28:58
+-- Tiempo de generación: 02-12-2019 a las 00:27:07
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -29,6 +29,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `http` (
+  `ID` int(11) NOT NULL,
+  `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Accept` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `AcceptLanguage` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `UpgradeInsecureRequests` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
@@ -40,6 +42,26 @@ CREATE TABLE `http` (
   `SecFetchSite` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `DNT` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `http`
+--
+ALTER TABLE `http`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `http`
+--
+ALTER TABLE `http`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
