@@ -12,7 +12,31 @@ function navegador() {
     }
     M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
     if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
-    return M.join(' ');
+    return M;
+}
+
+function bateria() {
+    let batteryIsCharging = false;
+    let batteryChargingTime;
+    let batteryDischargingTime;
+    let batteryLevel;
+    let salida = "";
+    var re = /(chrome|opera|webview android|samsung)/i;
+    if (re.test(navegador())) {
+        navigator.getBattery().then(function (battery) {
+            batteryIsCharging = battery.charging;
+            batteryChargingTime = battery.chargingTime;
+            batteryDischargingTime = battery.dischargingTime;
+            batteryLevel = battery.level;
+        });
+    }
+    else
+        return "- Bateria = No se puede comprobar la bateria en este navegador<br/>";
+    salida += "- La bateria se esta cargando = " + batteryIsCharging + "<br/>";
+    salida += "- Tiempo de carga de la bateria = " + batteryChargingTime + "<br/>";
+    salida += "- Tiempo de descarga de la bateria = " + batteryDischargingTime + "<br/>";
+    salida += "- Nivel de bateria = " + batteryLevel + "<br/>";
+    return salida;
 }
 
 function plataforma() {
@@ -57,5 +81,6 @@ function resultadoNavigator() {
     salida += "- Lenguaje del navegador = " + language() + "<br/>" ;
     salida += "- Navegador en linea = " + onLine() + "<br/>" ;
     salida += "- Nombre en codigo de la app = " + appName() + "<br/>" ;
+    salida +=  bateria();
     return salida;
 }
