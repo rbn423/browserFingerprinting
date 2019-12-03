@@ -1,0 +1,33 @@
+Campos http
+___________________________________________________________
+
+cache-control->lo usa el servidor para decirle al navegador que objetos cachear, durante cuanto tiempo, etc..
+Accept->Informa al servidor sobre los diferentes tipos de datos que pueden enviarse de vuelta. Es de tipo MIME.
+Accept-languaje->Informa al servidor sobre el lenguaje que espera recibir de vuelta.
+Upgrade-insecure-request->Preferencia del cliente de una respuesta encriptada y autenticada.
+User-agent->Tipo de aplicacion, SO, proveedor de software o version de software agente que realiza la peticion.
+Accept-encoding->Algoritmo de codificacion o compresion aceptado.
+Host->Dominio de servidor.
+connection->Controla si la conexion de red sigue activa despues de que la transaccion haya finalizado.
+sec-fetch-mode->
+sec-fetch-user->
+sec-fetch-site->
+cookie->cookies enviadas previamente al servidor.
+dnt->indica las preferencias de seguimiento del usuario.
+
+campos javascript
+_____________________________________________________________
+
+navigator.userAgent->De aqui se puede sacar el nombre del navegador y la versión que utiliza.
+navigator.platform->Plataforma para la que el navegador está compilado. En algún caso puede no ser fiable.
+navigator.cookieEnabled->Cookies activadas.
+navigator.languaje->Idioma de la interfaz del navegador.
+navigator.onLine->Indica si el navegador está trabajando en linea.
+navigator.appName->Nombre oficial del navegador
+Date().getTimeZoneOffset->Diferencia entre la UTC y la hora local en minutos.
+screen.width->Anchura total de la pantalla.
+screen.Height->Altura total de la pantalla.
+screen.availWidth->Anchura total de la pantalla a excepción de la barra de tareas.
+screen.availHeight->Altura total de la pantalla menos la barra de tareas.
+screen.colorDepth->profundidad de bits de la paleta de colores disponible.
+screen.pixelDepth->resolucion de color en bits por pixel de la pantalla.
