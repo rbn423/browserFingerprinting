@@ -1,2 +1,7 @@
 Aquí documentamos las caractéristicas que vayamos añadiendo al proyecto.
 
+-fecha.js
+-navigator.js
+-pugins.js
+-screen.js
+-window.js

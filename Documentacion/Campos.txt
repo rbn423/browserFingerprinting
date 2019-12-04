@@ -31,3 +31,9 @@ screen.availWidth->Anchura total de la pantalla a excepción de la barra de tare
 screen.availHeight->Altura total de la pantalla menos la barra de tareas.
 screen.colorDepth->profundidad de bits de la paleta de colores disponible.
 screen.pixelDepth->resolucion de color en bits por pixel de la pantalla.
+window.navigationBar->Objeto que muestra si la barra de navegacion esta visible o no
+window.devicePixelRatio->relacion entre los pixels del dispositivo actual y uno independiente
+window.menuBar->Muestra si la barra de menu esta visible
+window.personalBar -> Muestra si la barra personal esta visible.
+window.statusBar->Muestra si la barra de estado es visible.
+window.toolBar->Muestra si la barra de herramientas está visible
