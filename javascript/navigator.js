@@ -74,8 +74,8 @@ function appName() {
 
 function resultadoNavigator() {
     var salida = "";
-    salida += "-Navegador y version = " + navegador() + "<br/>";
-    salida += "-Plataforma = " + plataforma() + "<br/>";
+    salida += "- Navegador y version = " + navegador() + "<br/>";
+    salida += "- Plataforma = " + plataforma() + "<br/>";
     salida += "- userAgent javascript = " + userAgent() + "<br/>";
     salida += "- cookies habilitadas = " + cookieEnabled() + "<br/>" ;
     salida += "- Lenguaje del navegador = " + language() + "<br/>" ;

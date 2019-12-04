@@ -16,6 +16,7 @@
     <script type="text/javascript" src="javascript/screen.js"></script>
     <script type="text/javascript" src="javascript/fecha.js"></script>
     <script type="text/javascript" src="javascript/plugins.js"></script>
+    <script type="text/javascript" src="javascript/window.js"></script>
 </head>
 <body>
 	<?php
@@ -38,6 +39,7 @@
 		//salida += "- Geolocalizacion = " + navigator.geolocation + "<br/>" ; Este objeto devuelve valores raros aun no se utilizarlo
 		salida += resultadoFecha();
         salida += resultadoScreen();
+        salida += resultadoWindow();
 		document.getElementById("pruebas").innerHTML = salida;
     </script>
 
