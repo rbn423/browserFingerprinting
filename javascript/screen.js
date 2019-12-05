@@ -1,34 +1,34 @@
 function width() {
-    return screen.width;
+    return new Array("screenWidth", screen.width);
 }
 
 function height() {
-    return screen.height;
+    return new Array("screenHeight",screen.height);
 }
 
 function availWidth() {
-    return screen.availWidth
+    return new Array("screenAvailWidth", screen.availWidth);
 }
 
 function availHeight() {
-    return screen.availHeight;
+    return new Array("screenAvailHeight",screen.availHeight);
 }
 
 function colorDepth() {
-    return screen.colorDepth;
+    return new Array("screenColorDepth",screen.colorDepth);
 }
 
 function pixelDepth() {
-    return screen.pixelDepth;
+    return new Array("screenPixelDepth",screen.pixelDepth);
 }
 
-function resultadoScreen(){
-    var salida = "";
-    salida += "- Anchura de la pantalla = " + width() + "<br/>" ;
-    salida += "- Altura de la pantalla = " + height() + "<br/>" ;
-    salida += "- Anchura de la pantalla eficaz = " + availWidth() + "<br/>" ;
-    salida += "- Altura de la pantalla eficaz = " + availHeight() + "<br/>" ;
-    salida += "- Profundidad de color = " + colorDepth() + "<br/>" ;
-    salida += "- Profundidad de pixels = " + pixelDepth() + "<br/>" ;
+function arrayScreen(){
+    var salida = new Array();
+    salida.push(width());
+    salida.push(height());
+    salida.push(availWidth());
+    salida.push(availHeight()) ;
+    salida.push(colorDepth());
+    salida.push(pixelDepth());
     return salida;
 }

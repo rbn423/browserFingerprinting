@@ -34,12 +34,20 @@
 	<p id="pruebas"/>
 	<script>
 		var salida = "";
-		var fecha = new Date();
-		salida += resultadoNavigator();
-		//salida += "- Geolocalizacion = " + navigator.geolocation + "<br/>" ; Este objeto devuelve valores raros aun no se utilizarlo
-		salida += resultadoFecha();
-        salida += resultadoScreen();
-        salida += resultadoWindow();
+		var elementosJS = new Array();
+		var navegador = arrayNavigator();
+		var fecha = arrayFecha();
+		var pantalla = arrayScreen();
+		var ventana = arrayWindow();
+		for (var i = 0; i < navegador.length; i++)
+            elementosJS.push(navegador[i]);
+        elementosJS.push(fecha);
+		for (var i = 0; i < pantalla.length ; i++)
+		    elementosJS.push(pantalla[i]);
+        for (var i = 0 ; i < ventana.length ; i++)
+            elementosJS.push(ventana[i]);
+        for (var i = 0; i < elementosJS.length; i++)
+            salida += "- " + elementosJS[i][0] + " = " + elementosJS[i][1] + "<br>";
 		document.getElementById("pruebas").innerHTML = salida;
     </script>
 
