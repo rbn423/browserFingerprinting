@@ -14,8 +14,9 @@ function nombreNavegador() {
     M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
     if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
     return M;}
-    array[0] = "navegador";
-    array[1] = salida();
+    array[0] = "Navegador y versión"
+    array[1] = "navegador";
+    array[2] = salida();
     return array;
 }
 
@@ -46,27 +47,27 @@ function bateria() {
 */
 
 function plataforma() {
-    return new Array("plataforma", navigator.platform);
+    return new Array("Plataforma","plataforma", navigator.platform);
 }
 
 function userAgent() {
-    return new Array("userAgent", navigator.userAgent);
+    return new Array("User-Agent en javascript","userAgent", navigator.userAgent);
 }
 
 function cookieEnabled() {
-    return new Array("cookieEnabled", navigator.cookieEnabled);
+    return new Array("Cookies habilitadas","cookieEnabled", navigator.cookieEnabled);
 }
 
 function language() {
-    return new Array("language", navigator.language);
+    return new Array("Lenguaje","language", navigator.language);
 }
 
 function onLine() {
-    return new Array("onLine", navigator.onLine);
+    return new Array("Navegador en linea","onLine", navigator.onLine);
 }
 
 function appName() {
-    return new Array("appName", navigator.appName);
+    return new Array("AppName","appName", navigator.appName);
 }
 
 function arrayNavigator(){

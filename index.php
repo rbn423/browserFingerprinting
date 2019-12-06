@@ -47,7 +47,7 @@
         for (var i = 0 ; i < ventana.length ; i++)
             elementosJS.push(ventana[i]);
         for (var i = 0; i < elementosJS.length; i++)
-            salida += "- " + elementosJS[i][0] + " = " + elementosJS[i][1] + "<br>";
+            salida += "- " + elementosJS[i][0] + " = " + elementosJS[i][2] + "<br>";
 		document.getElementById("pruebas").innerHTML = salida;
     </script>
 

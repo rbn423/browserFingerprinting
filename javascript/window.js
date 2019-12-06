@@ -1,25 +1,25 @@
 function locationBar(){
-    return new Array("locationBar", window.locationbar.visible);
+    return new Array("Barra de localizacion visible","locationBar", window.locationbar.visible);
 }
 
 function pixelRatio(){
-    return new Array("pixelRatio", window.devicePixelRatio);
+    return new Array("Ratio de pixels","pixelRatio", window.devicePixelRatio);
 }
 
 function menuBar() {
-    return new Array("menuBar", window.menubar.visible);
+    return new Array("Barra de menú visible","menuBar", window.menubar.visible);
 }
 
 function personalBar() {
-    return new Array("personalBar", window.personalbar.visible);
+    return new Array("Barra personal visible","personalBar", window.personalbar.visible);
 }
 
 function statusBar() {
-    return new Array("statusBar", window.statusbar.visible);
+    return new Array("Barra de estado visible","statusBar", window.statusbar.visible);
 }
 
 function toolBar() {
-    return new Array("toolBar", window.toolbar.visible);
+    return new Array("Barra de herramientas visible","toolBar", window.toolbar.visible);
 }
 
 function arrayWindow() {
