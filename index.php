@@ -17,6 +17,9 @@
     <script type="text/javascript" src="javascript/fecha.js"></script>
     <script type="text/javascript" src="javascript/plugins.js"></script>
     <script type="text/javascript" src="javascript/window.js"></script>
+	<script type="text/javascript" src="javascript/fuentes.js"></script>
+	<script type="text/javascript" src="javascript/fontdetect.js"></script>	
+	<script type="text/javascript" src="javascript/canvas.js"></script>
 </head>
 <body>
 	<?php
@@ -60,7 +63,13 @@
     <div id="fuentes"></div>
     <script type="text/javascript">
         //Hay que implementarlo en fuentes.js
+		var font = fingerprint_fonts();
+		document.getElementById("fuentes").innerHTML=font;
     </script>
 
+	<canvas id="canvas"></canvas>
+	<script type="text/javascript">
+		canvasfingerprint();
+	</script>
 </body>
 </html>
