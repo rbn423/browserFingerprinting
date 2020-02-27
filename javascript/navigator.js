@@ -51,7 +51,7 @@ function plataforma() {
 }
 
 function userAgent() {
-    return new Array("User-Agent en javascript","userAgent", navigator.userAgent);
+    return new Array("User-Agent en javascript","userAgentJS", navigator.userAgent);
 }
 
 function cookieEnabled() {

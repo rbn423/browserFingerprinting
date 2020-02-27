@@ -119,6 +119,9 @@ class BDCabecerasHTTP {
 		$query .= self::selector($headers,"insertValue");
 		$query .= ")";
 		$conn->query($query);
+		$resultado = $conn->query("SELECT @@identity as id");
+		$resultado = $resultado->fetch_all();
+		return $resultado[0][0];
 	}
 
 	public static function numeroCabecerasIguales($headers){

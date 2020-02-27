@@ -4,7 +4,7 @@
 
 	$headers = apache_request_headers();
 	
-	BDCabecerasHTTP::insertarCabecera($headers);
+	$id = BDCabecerasHTTP::insertarCabecera($headers);
 	$iguales = BDCabecerasHTTP::numeroCabecerasIguales($headers);
 	$totales = BDCabecerasHTTP::cabecerasTotales();
 ?>
@@ -20,6 +20,7 @@
 	<script type="text/javascript" src="javascript/fuentes.js"></script>
 	<script type="text/javascript" src="javascript/fontdetect.js"></script>	
 	<script type="text/javascript" src="javascript/canvas.js"></script>
+    <script type="text/javascript" src="javascript/asincrono.js"></script>
 </head>
 <body>
 	<?php
@@ -67,9 +68,11 @@
 		document.getElementById("fuentes").innerHTML=font;
     </script>
 
-	<canvas id="canvas"></canvas>
-	<script type="text/javascript">
-		canvasfingerprint();
-	</script>
+
+    <div id="prueba2"></div>
+    <script>
+        var id = '<?php echo $id; ?>';
+        asincronia(elementosJS,id);
+    </script>
 </body>
 </html>
