@@ -4,7 +4,7 @@
 
 	$headers = apache_request_headers();
 	
-	BDCabecerasHTTP::insertarCabecera($headers);
+	$id = BDCabecerasHTTP::insertarCabecera($headers);
 	$iguales = BDCabecerasHTTP::numeroCabecerasIguales($headers);
 	$totales = BDCabecerasHTTP::cabecerasTotales();
 ?>
@@ -17,6 +17,10 @@
     <script type="text/javascript" src="javascript/fecha.js"></script>
     <script type="text/javascript" src="javascript/plugins.js"></script>
     <script type="text/javascript" src="javascript/window.js"></script>
+	<script type="text/javascript" src="javascript/fuentes.js"></script>
+	<script type="text/javascript" src="javascript/fontdetect.js"></script>	
+	<script type="text/javascript" src="javascript/canvas.js"></script>
+    <script type="text/javascript" src="javascript/asincrono.js"></script>
 </head>
 <body>
 	<?php
@@ -34,12 +38,20 @@
 	<p id="pruebas"/>
 	<script>
 		var salida = "";
-		var fecha = new Date();
-		salida += resultadoNavigator();
-		//salida += "- Geolocalizacion = " + navigator.geolocation + "<br/>" ; Este objeto devuelve valores raros aun no se utilizarlo
-		salida += resultadoFecha();
-        salida += resultadoScreen();
-        salida += resultadoWindow();
+		var elementosJS = new Array();
+		var navegador = arrayNavigator();
+		var fecha = arrayFecha();
+		var pantalla = arrayScreen();
+		var ventana = arrayWindow();
+		for (var i = 0; i < navegador.length; i++)
+            elementosJS.push(navegador[i]);
+        elementosJS.push(fecha);
+		for (var i = 0; i < pantalla.length ; i++)
+		    elementosJS.push(pantalla[i]);
+        for (var i = 0 ; i < ventana.length ; i++)
+            elementosJS.push(ventana[i]);
+        for (var i = 0; i < elementosJS.length; i++)
+            salida += "- " + elementosJS[i][0] + " = " + elementosJS[i][2] + "<br>";
 		document.getElementById("pruebas").innerHTML = salida;
     </script>
 
@@ -52,7 +64,15 @@
     <div id="fuentes"></div>
     <script type="text/javascript">
         //Hay que implementarlo en fuentes.js
+		var font = fingerprint_fonts();
+		document.getElementById("fuentes").innerHTML=font;
     </script>
 
+
+    <div id="prueba2"></div>
+    <script>
+        var id = '<?php echo $id; ?>';
+        asincronia(elementosJS,id);
+    </script>
 </body>
 </html>
