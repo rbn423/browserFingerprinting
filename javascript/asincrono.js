@@ -18,7 +18,7 @@ function asincronia(elementosJS,id) {
         }
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("prueba2").innerHTML = this.responseText;
+                document.getElementById("resultadoJS").innerHTML = this.responseText;
             }
         };
         xmlhttp.open("POST","BD/cargaJS.php",true);
