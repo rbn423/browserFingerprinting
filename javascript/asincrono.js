@@ -43,3 +43,24 @@ function asincroniaFuentes(listaFuentes,id) {
         xmlhttp.send(formData);
     }
 }
+
+function asincroniaPlugins(listaPlugins,id) {
+    if (listaPlugins != null){
+        var formData = new FormData();
+        formData.append("ID",id);
+        for (var i = 0; i < listaPlugins.length; i++){
+            var nombreClave = "plugin"+i;
+            formData.append(nombreClave, listaPlugins[i]);
+        }
+
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.open("POST","BD/cargaPlugins.php",true);
+        xmlhttp.send(formData);
+    }
+}

@@ -42,6 +42,7 @@
 
 	<p id="JS"></p>
 	<script>
+        var id = '<?php echo $id; ?>';
 		var salida = "<table border='visible'> <tr> <th>Elemento</th><th>Valor</th> </tr>";//el visible va por css
 		var elementosJS = new Array();
 		var navegador = arrayNavigator();
@@ -63,7 +64,9 @@
 
     <div id="plugins"></div>
     <script>
-        var txt = resultadoPluggins();
+        var pluginsInstalados = plugins();
+        var txt = resultadoPlugins(pluginsInstalados);
+        asincroniaPlugins(pluginsInstalados,id);
         document.getElementById("plugins").innerHTML=txt;
     </script>
 
@@ -71,22 +74,25 @@
     <script type="text/javascript">
         //Hay que implementarlo en fuentes.js
 		var font = fingerprint_fonts();
-		var salida = "Lista de fuentes : ";
+		var salida = "<table border='visible'>" +
+            "<tr><th colspan='2'>Fuentes</th></tr>" + //el colspand de la tabla va por css
+            "<tr><td>Lista de fuentes</td><td>";
 		for (var i = 0; i < font.length; i++) {
             salida += font[i];
             if (i < font.length-1)
                 salida += ", ";
 		}
+		salida += "</td></tr>" +
+            "<tr><td>Número de fuentes detectadas</td><td align='center'>" + font.length + "</td></tr>" + //el aling center por css
+            "</table>";
 		document.getElementById("fuentes").innerHTML=salida;
 		//insercion de las fuentes en la base de datos
-        var id = '<?php echo $id; ?>';
 		asincroniaFuentes(font,id);
     </script>
 
 
     <div id="resultadoJS"></div>
     <script>
-        var id = '<?php echo $id; ?>';
         asincroniaJS(elementosJS,id);
     </script>
 </body>
