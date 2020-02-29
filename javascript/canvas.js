@@ -1,4 +1,4 @@
-//Todo este codigo está quitado del index.php, habria que refactorizarlo
+/*Todo este codigo está quitado del index.php, habria que refactorizarlo
 <div id="canvas"></div>
     <script type="text/javascript">
     /*try {
@@ -24,5 +24,7 @@
             salida2 += "Not supported";
         }
 
-        document.getElementById("canvas").innerHTML = salida2;*/
+        document.getElementById("canvas").innerHTML = salida2;
     </script>
+
+*/
