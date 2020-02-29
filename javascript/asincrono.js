@@ -1,8 +1,5 @@
-function asincronia(elementosJS,id) {
-    if (elementosJS == null) {
-        document.getElementById("prueba2").innerHTML = "nada";
-        return;
-    } else {
+function asincroniaJS(elementosJS,id) {
+    if (elementosJS != null){
         var formData = new FormData();
         formData.append("ID",id);
         for (var i = 1; i < elementosJS.length; i++){
@@ -18,10 +15,31 @@ function asincronia(elementosJS,id) {
         }
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("prueba2").innerHTML = this.responseText;
+                document.getElementById("resultadoJS").innerHTML = this.responseText;
             }
         };
         xmlhttp.open("POST","BD/cargaJS.php",true);
+        xmlhttp.send(formData);
+    }
+}
+
+function asincroniaFuentes(listaFuentes,id) {
+    if (listaFuentes != null){
+        var formData = new FormData();
+        formData.append("ID",id);
+        for (var i = 1; i < listaFuentes.length; i++){
+            var nombreClave = "fuente"+i;
+            formData.append(nombreClave, listaFuentes[i]);
+        }
+
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.open("POST","BD/cargaFuentes.php",true);
         xmlhttp.send(formData);
     }
 }

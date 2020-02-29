@@ -18,26 +18,31 @@
     <script type="text/javascript" src="javascript/plugins.js"></script>
     <script type="text/javascript" src="javascript/window.js"></script>
 	<script type="text/javascript" src="javascript/fuentes.js"></script>
-	<script type="text/javascript" src="javascript/fontdetect.js"></script>	
-	<script type="text/javascript" src="javascript/canvas.js"></script>
+	<script type="text/javascript" src="javascript/fontdetect.js"></script>
     <script type="text/javascript" src="javascript/asincrono.js"></script>
 </head>
 <body>
 	<?php
 		echo "<h2>Elementos de http</h2>";
-
+        echo "<table border='visible'>";//el visible va por css
+        echo "<tr>";
+          echo "<th>Elemento</th><th>Valor</th>";
+        echo "</tr>";
 		foreach ($headers as $header => $value) {
-			echo "$header: $value <br />\n";
+		    echo "<tr>";
+            echo "<td>".$header."</td><td align='center'>".$value."</td>";//el align debe ir por css
+			echo "</tr>";
 		}
+		echo "</table>";
 		echo "<p>En total existen ".($iguales-1)." cabeceras HTTP como la tuya en nuestra base de datos.</p>";
 		echo "<p>Eres un <strong>".(100-(($iguales-1)*100/$totales))."%</strong> único.</p>";
 	?>
 
 	<h2>Elementos JavaScript</h2>
 
-	<p id="pruebas"/>
+	<p id="JS"></p>
 	<script>
-		var salida = "";
+		var salida = "<table border='visible'> <tr> <th>Elemento</th><th>Valor</th> </tr>";//el visible va por css
 		var elementosJS = new Array();
 		var navegador = arrayNavigator();
 		var fecha = arrayFecha();
@@ -51,8 +56,9 @@
         for (var i = 0 ; i < ventana.length ; i++)
             elementosJS.push(ventana[i]);
         for (var i = 0; i < elementosJS.length; i++)
-            salida += "- " + elementosJS[i][0] + " = " + elementosJS[i][2] + "<br>";
-		document.getElementById("pruebas").innerHTML = salida;
+            salida += "<tr><td>" + elementosJS[i][0] + "</td><td align='center'>" + elementosJS[i][2] + "</td></tr>";//aqui hay aling->css
+        salida += "</table>";
+		document.getElementById("JS").innerHTML = salida;
     </script>
 
     <div id="plugins"></div>
@@ -65,14 +71,23 @@
     <script type="text/javascript">
         //Hay que implementarlo en fuentes.js
 		var font = fingerprint_fonts();
-		document.getElementById("fuentes").innerHTML=font;
+		var salida = "Lista de fuentes : ";
+		for (var i = 0; i < font.length; i++) {
+            salida += font[i];
+            if (i < font.length-1)
+                salida += ", ";
+		}
+		document.getElementById("fuentes").innerHTML=salida;
+		//insercion de las fuentes en la base de datos
+        var id = '<?php echo $id; ?>';
+		asincroniaFuentes(font,id);
     </script>
 
 
-    <div id="prueba2"></div>
+    <div id="resultadoJS"></div>
     <script>
         var id = '<?php echo $id; ?>';
-        asincronia(elementosJS,id);
+        asincroniaJS(elementosJS,id);
     </script>
 </body>
 </html>
