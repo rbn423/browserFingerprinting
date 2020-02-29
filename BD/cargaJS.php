@@ -8,7 +8,7 @@ $conn = $app->conexionBd();
 
 //insertamos en la base de datos los elementos JS
 $query = "UPDATE `http` SET " ;
-echo count($_POST);
+echo count($_POST);//borrar mas adelante, de momento nos interesa saber si aparece algun elemento mas en el array
 foreach($_POST as $nombre_campo => $valor){
     if ($nombre_campo != "ID") {
         $query .= "`" . $nombre_campo;

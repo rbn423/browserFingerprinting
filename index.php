@@ -18,8 +18,7 @@
     <script type="text/javascript" src="javascript/plugins.js"></script>
     <script type="text/javascript" src="javascript/window.js"></script>
 	<script type="text/javascript" src="javascript/fuentes.js"></script>
-	<script type="text/javascript" src="javascript/fontdetect.js"></script>	
-	<script type="text/javascript" src="javascript/canvas.js"></script>
+	<script type="text/javascript" src="javascript/fontdetect.js"></script>
     <script type="text/javascript" src="javascript/asincrono.js"></script>
 </head>
 <body>
@@ -41,7 +40,7 @@
 
 	<h2>Elementos JavaScript</h2>
 
-	<p id="JS"/>
+	<p id="JS"></p>
 	<script>
 		var salida = "<table border='visible'> <tr> <th>Elemento</th><th>Valor</th> </tr>";//el visible va por css
 		var elementosJS = new Array();
@@ -72,14 +71,23 @@
     <script type="text/javascript">
         //Hay que implementarlo en fuentes.js
 		var font = fingerprint_fonts();
-		document.getElementById("fuentes").innerHTML=font;
+		var salida = "Lista de fuentes : ";
+		for (var i = 0; i < font.length; i++) {
+            salida += font[i];
+            if (i < font.length-1)
+                salida += ", ";
+		}
+		document.getElementById("fuentes").innerHTML=salida;
+		//insercion de las fuentes en la base de datos
+        var id = '<?php echo $id; ?>';
+		asincroniaFuentes(font,id);
     </script>
 
 
     <div id="resultadoJS"></div>
     <script>
         var id = '<?php echo $id; ?>';
-        asincronia(elementosJS,id);
+        asincroniaJS(elementosJS,id);
     </script>
 </body>
 </html>
