@@ -82,10 +82,10 @@
 		asincroniaFuentes(font,id);
     </script>
 
-
     <div id="resultadoJS"></div>
     <script>
         asincroniaJS(elementosJS,id);
     </script>
+
 </body>
 </html>

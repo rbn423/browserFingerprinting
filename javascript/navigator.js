@@ -20,31 +20,15 @@ function nombreNavegador() {
     return array;
 }
 
-/*Hay que comprobar que es util y funciona bien
 function bateria() {
-    let batteryIsCharging = false;
-    let batteryChargingTime;
-    let batteryDischargingTime;
-    let batteryLevel;
-    let salida = "";
-    var re = /(chrome|opera|webview android|samsung)/i;
-    if (re.test(nombreNavegador())) {
-        navigator.getBattery().then(function (battery) {
-            batteryIsCharging = battery.charging;
-            batteryChargingTime = battery.chargingTime;
-            batteryDischargingTime = battery.dischargingTime;
-            batteryLevel = battery.level;
-        });
-    }
+    var salida;
+    //comprueba que se puede ejecutar la funcion getBattery
+    if(typeof navigator.getBattery === 'function')
+        salida = true ;
     else
-        return "- Bateria = No se puede comprobar la bateria en este navegador<br/>";
-    salida += "- La bateria se esta cargando = " + batteryIsCharging + "<br/>";
-    salida += "- Tiempo de carga de la bateria = " + batteryChargingTime + "<br/>";
-    salida += "- Tiempo de descarga de la bateria = " + batteryDischargingTime + "<br/>";
-    salida += "- Nivel de bateria = " + batteryLevel + "<br/>";
-    return salida;
+        salida = false;
+    return new Array("Se puede obtener información de la bateria","bateria",salida);
 }
-*/
 
 function plataforma() {
     return new Array("Plataforma","plataforma", navigator.platform);
@@ -79,5 +63,6 @@ function arrayNavigator(){
     salida.push(language());
     salida.push(onLine());
     salida.push(appName());
+    salida.push(bateria());
     return salida;
 }
