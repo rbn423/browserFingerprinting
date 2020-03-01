@@ -29,9 +29,11 @@
           echo "<th>Elemento</th><th>Valor</th>";
         echo "</tr>";
 		foreach ($headers as $header => $value) {
-		    echo "<tr>";
-            echo "<td>".$header."</td><td align='center'>".$value."</td>";//el align debe ir por css
-			echo "</tr>";
+		    if($header != "Cache-Control" && $header != "Host" && $header != "Cookie" && $header != "Referer"){
+                echo "<tr>";
+                echo "<td>".$header."</td><td align='center'>".$value."</td>";//el align debe ir por css
+                echo "</tr>";
+			}
 		}
 		echo "</table>";
 		echo "<p>En total existen ".($iguales-1)." cabeceras HTTP como la tuya en nuestra base de datos.</p>";
