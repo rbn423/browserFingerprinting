@@ -74,17 +74,7 @@
     <script type="text/javascript">
         //Hay que implementarlo en fuentes.js
 		var font = fingerprint_fonts();
-		var salida = "<table border='visible'>" +
-            "<tr><th colspan='2'>Fuentes</th></tr>" + //el colspand de la tabla va por css
-            "<tr><td>Lista de fuentes</td><td>";
-		for (var i = 0; i < font.length; i++) {
-            salida += font[i];
-            if (i < font.length-1)
-                salida += ", ";
-		}
-		salida += "</td></tr>" +
-            "<tr><td>Número de fuentes detectadas</td><td align='center'>" + font.length + "</td></tr>" + //el aling center por css
-            "</table>";
+        var salida = resultadoFuentes(font);
 		document.getElementById("fuentes").innerHTML=salida;
 		//insercion de las fuentes en la base de datos
 		asincroniaFuentes(font,id);
