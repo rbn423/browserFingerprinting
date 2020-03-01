@@ -130,6 +130,8 @@ class BDCabecerasHTTP {
 
 		$i = 0;
 		$query = "SELECT count(*) FROM `atributos` WHERE ";
+		$query .= self::selector($headers,"select");
+		/*
 		foreach($headers as $header => $value) {
 			if($header != "Cache-Control" && $header != "Host" && $header != "Cookie" && $header != "Referer" && $header != "Sec-Fetch-Dest") {
 				if ($i > 0 && $i < count($headers))
@@ -139,6 +141,7 @@ class BDCabecerasHTTP {
 				$i++;
 			}
 		}
+		*/
 		$resultado = $conn->query($query);
 		$resultado = $resultado->fetch_all();
 		return $resultado[0][0];
