@@ -2,6 +2,6 @@ Aquí documentamos las caractéristicas que vayamos añadiendo al proyecto.
 
 -fecha.js
 -navigator.js
--pugins.js
+-pugins.js -> Muestra solo los mas comunes instalados en el navegador, ya que estos impidien la visibilidad de los demás para que no se les pueda hacer browserfingerprinting
 -screen.js
 -window.js
