@@ -7,7 +7,7 @@ $app = Aplicacion::getSingleton();
 $conn = $app->conexionBd();
 
 //insertamos en la base de datos los elementos JS
-$query = "UPDATE `http` SET " ;
+$query = "UPDATE `atributos` SET " ;
 echo "Elemento obtenidos mediante JS: ".count($_POST);//borrar mas adelante, de momento nos interesa saber si aparece algun elemento mas en el array
 foreach($_POST as $nombre_campo => $valor){
     if ($nombre_campo != "ID") {
@@ -25,11 +25,11 @@ $query .= " WHERE `ID` = '".$id."'";
 $conn->query($query);
 
 //obtenemos los elementos totales de http
-$query = "SELECT count(*) FROM `http`";
+$query = "SELECT count(*) FROM `atributos`";
 $totales = $conn->query($query)->fetch_all()[0][0];
 
 //obtenemos el numero de elementos de la tabla que tienen los mismos valores JS
-$query = "SELECT count(*) FROM `http` WHERE ";
+$query = "SELECT count(*) FROM `atributos` WHERE ";
 $count = 1;
 foreach($_POST as $nombre_campo => $valor){
     if ($nombre_campo != "ID") {
