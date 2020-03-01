@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-03-2020 a las 00:40:35
+-- Tiempo de generación: 01-03-2020 a las 17:18:00
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -25,21 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `fuentes`
+-- Estructura de tabla para la tabla `atributos`
 --
 
-CREATE TABLE `fuentes` (
-  `id` int(11) NOT NULL,
-  `nombreFuente` varchar(200) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `http`
---
-
-CREATE TABLE `http` (
+CREATE TABLE `atributos` (
   `ID` int(11) NOT NULL,
   `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `Accept` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
@@ -70,7 +59,19 @@ CREATE TABLE `http` (
   `menuBar` tinyint(1) DEFAULT NULL,
   `personalBar` tinyint(1) DEFAULT NULL,
   `statusBar` tinyint(1) DEFAULT NULL,
-  `toolBar` tinyint(1) DEFAULT NULL
+  `toolBar` tinyint(1) DEFAULT NULL,
+  `bateria` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `fuentes`
+--
+
+CREATE TABLE `fuentes` (
+  `id` int(11) NOT NULL,
+  `nombreFuente` varchar(200) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -89,16 +90,16 @@ CREATE TABLE `plugins` (
 --
 
 --
+-- Indices de la tabla `atributos`
+--
+ALTER TABLE `atributos`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indices de la tabla `fuentes`
 --
 ALTER TABLE `fuentes`
   ADD PRIMARY KEY (`id`,`nombreFuente`);
-
---
--- Indices de la tabla `http`
---
-ALTER TABLE `http`
-  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indices de la tabla `plugins`
@@ -111,9 +112,9 @@ ALTER TABLE `plugins`
 --
 
 --
--- AUTO_INCREMENT de la tabla `http`
+-- AUTO_INCREMENT de la tabla `atributos`
 --
-ALTER TABLE `http`
+ALTER TABLE `atributos`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
