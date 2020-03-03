@@ -12,5 +12,6 @@ foreach ($_POST as $nombre_plugin => $plugin){
         $conn->query($query);
     }
 }
+//inserta la columna flash
 $query = "UPDATE `atributos` SET `flash` = '".$_POST["flash"]."' where `id` = ".$id;
 ?>
