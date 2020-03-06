@@ -1,34 +1,34 @@
 function locationBar(){
-    return window.locationbar.visible;
+    return new Array("Barra de localizacion visible","locationBar", window.locationbar.visible);
 }
 
 function pixelRatio(){
-    return window.devicePixelRatio;
+    return new Array("Ratio de pixels","pixelRatio", window.devicePixelRatio);
 }
 
 function menuBar() {
-    return  window.menubar.visible;
+    return new Array("Barra de menú visible","menuBar", window.menubar.visible);
 }
 
 function personalBar() {
-    return window.personalbar.visible;
+    return new Array("Barra personal visible","personalBar", window.personalbar.visible);
 }
 
 function statusBar() {
-    return window.statusbar.visible;
+    return new Array("Barra de estado visible","statusBar", window.statusbar.visible);
 }
 
 function toolBar() {
-    return window.toolbar.visible;
+    return new Array("Barra de herramientas visible","toolBar", window.toolbar.visible);
 }
 
-function resultadoWindow() {
-    var salida = "";
-    salida += "- Barra de localizacion visible = " + locationBar() + "<br/>";
-    salida += "- Ratio de pixels del dispositivo = " + pixelRatio() +"<br/>";
-    salida += "- Barra de menu visible = " + menuBar() + "<br/>";
-    salida += "- Barra personal visible = " + personalBar() + "<br/>";
-    salida += "- Barra de estado visible = " + statusBar() + "<br/>";
-    salida += "- Barra de herramientas visible = " + toolBar() + "<br/>";
+function arrayWindow() {
+    var salida = new Array();
+    salida.push(locationBar());
+    salida.push(pixelRatio());
+    salida.push(menuBar());
+    salida.push(personalBar());
+    salida.push(statusBar());
+    salida.push(toolBar());
     return salida;
 }

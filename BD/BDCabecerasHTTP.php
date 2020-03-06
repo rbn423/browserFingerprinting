@@ -112,13 +112,16 @@ class BDCabecerasHTTP {
 		$conn = $app->conexionBd();
 		$campo = NULL;
 		$i = 0;
-		$query = "INSERT INTO http (";
+		$query = "INSERT INTO atributos (";
 		$query .= self::selector($headers,"insertCabecera");
 		$query .= ") VALUES (";
 		$i = 0;
 		$query .= self::selector($headers,"insertValue");
 		$query .= ")";
 		$conn->query($query);
+		$resultado = $conn->query("SELECT @@identity as id");
+		$resultado = $resultado->fetch_all();
+		return $resultado[0][0];
 	}
 
 	public static function numeroCabecerasIguales($headers){
@@ -126,9 +129,11 @@ class BDCabecerasHTTP {
 		$conn = $app->conexionBd();
 
 		$i = 0;
-		$query = "SELECT count(*) FROM `http` WHERE ";
+		$query = "SELECT count(*) FROM `atributos` WHERE ";
+		$query .= self::selector($headers,"select");
+		/*
 		foreach($headers as $header => $value) {
-			if($header != "Cache-Control" && $header != "Host" && $header != "Cookie" && $header != "Referer") {
+			if($header != "Cache-Control" && $header != "Host" && $header != "Cookie" && $header != "Referer" && $header != "Sec-Fetch-Dest") {
 				if ($i > 0 && $i < count($headers))
 					$query .= " and ";
 				$campo = str_replace("-", "", $header);
@@ -136,6 +141,7 @@ class BDCabecerasHTTP {
 				$i++;
 			}
 		}
+		*/
 		$resultado = $conn->query($query);
 		$resultado = $resultado->fetch_all();
 		return $resultado[0][0];
@@ -145,7 +151,7 @@ class BDCabecerasHTTP {
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
 
-		$query = "SELECT count(*) FROM `http`";
+		$query = "SELECT count(*) FROM `atributos`";
 		$resultado = $conn->query($query);
 		$resultado = $resultado->fetch_all();
 		return $resultado[0][0];

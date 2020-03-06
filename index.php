@@ -4,7 +4,7 @@
 
 	$headers = apache_request_headers();
 	
-	BDCabecerasHTTP::insertarCabecera($headers);
+	$id = BDCabecerasHTTP::insertarCabecera($headers);
 	$iguales = BDCabecerasHTTP::numeroCabecerasIguales($headers);
 	$totales = BDCabecerasHTTP::cabecerasTotales();
 ?>
@@ -17,41 +17,80 @@
     <script type="text/javascript" src="javascript/fecha.js"></script>
     <script type="text/javascript" src="javascript/plugins.js"></script>
     <script type="text/javascript" src="javascript/window.js"></script>
+	<script type="text/javascript" src="javascript/fuentes.js"></script>
+	<script type="text/javascript" src="javascript/fontdetect.js"></script>
+    <script type="text/javascript" src="javascript/asincrono.js"></script>
+    <script type="text/javascript" src="javascript/canvas.js"></script>
 </head>
 <body>
 	<?php
 		echo "<h2>Elementos de http</h2>";
-
+        echo "<table border='visible'>";//el visible va por css
+        echo "<tr>";
+          echo "<th>Elemento</th><th>Valor</th>";
+        echo "</tr>";
 		foreach ($headers as $header => $value) {
-			echo "$header: $value <br />\n";
+		    if($header != "Cache-Control" && $header != "Host" && $header != "Cookie" && $header != "Referer"){
+                echo "<tr>";
+                echo "<td>".$header."</td><td align='center'>".$value."</td>";//el align debe ir por css
+                echo "</tr>";
+			}
 		}
+		echo "</table>";
 		echo "<p>En total existen ".($iguales-1)." cabeceras HTTP como la tuya en nuestra base de datos.</p>";
 		echo "<p>Eres un <strong>".(100-(($iguales-1)*100/$totales))."%</strong> único.</p>";
 	?>
 
 	<h2>Elementos JavaScript</h2>
 
-	<p id="pruebas"/>
+	<div id="JS"></div>
 	<script>
-		var salida = "";
-		var fecha = new Date();
-		salida += resultadoNavigator();
-		//salida += "- Geolocalizacion = " + navigator.geolocation + "<br/>" ; Este objeto devuelve valores raros aun no se utilizarlo
-		salida += resultadoFecha();
-        salida += resultadoScreen();
-        salida += resultadoWindow();
-		document.getElementById("pruebas").innerHTML = salida;
+        var id = '<?php echo $id; ?>';
+		var salida = "<table border='visible'> <tr> <th>Elemento</th><th>Valor</th> </tr>";//el visible va por css
+		var elementosJS = new Array();
+		var navegador = arrayNavigator();
+		var fecha = arrayFecha();
+		var pantalla = arrayScreen();
+		var ventana = arrayWindow();
+		for (var i = 0; i < navegador.length; i++)
+            elementosJS.push(navegador[i]);
+        elementosJS.push(fecha);
+		for (var i = 0; i < pantalla.length ; i++)
+		    elementosJS.push(pantalla[i]);
+        for (var i = 0 ; i < ventana.length ; i++)
+            elementosJS.push(ventana[i]);
+        for (var i = 0; i < elementosJS.length; i++)
+            salida += "<tr><td>" + elementosJS[i][0] + "</td><td align='center'>" + elementosJS[i][2] + "</td></tr>";//aqui hay aling->css
+        salida += "<tr><td>Canvas</td><td align='center'>" + //aqui hay que meter css al aling
+            "<canvas id='canvas' width='250' height='100'></canvas>" + //aqui hay css para el tamaño del canvas
+            "</td></tr>";
+        salida += "</table>";
+		document.getElementById("JS").innerHTML = salida;
+		var canvas = pintar(); //pintamos después de que exista el elemento canvas en el navegador
+		elementosJS.push(canvas);//Una vez pintado hemos obtenido el valor del canvas y lo añadimos al array
     </script>
 
     <div id="plugins"></div>
     <script>
-        var txt = resultadoPluggins();
+        var pluginsInstalados = arrayPlugins();
+        var txt = resultadoPlugins(pluginsInstalados);
+        asincroniaPlugins(pluginsInstalados,id);
         document.getElementById("plugins").innerHTML=txt;
     </script>
 
     <div id="fuentes"></div>
     <script type="text/javascript">
         //Hay que implementarlo en fuentes.js
+		var font = fingerprint_fonts();
+        var salida = resultadoFuentes(font);
+		document.getElementById("fuentes").innerHTML=salida;
+		//insercion de las fuentes en la base de datos
+		asincroniaFuentes(font,id);
+    </script>
+
+    <div id="resultadoJS"></div>
+    <script>
+        asincroniaJS(elementosJS,id);
     </script>
 
 </body>
