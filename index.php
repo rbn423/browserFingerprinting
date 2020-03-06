@@ -62,7 +62,7 @@
         for (var i = 0; i < elementosJS.length; i++)
             salida += "<tr><td>" + elementosJS[i][0] + "</td><td align='center'>" + elementosJS[i][2] + "</td></tr>";//aqui hay aling->css
         salida += "<tr><td>Canvas</td><td align='center'>" + //aqui hay que meter css al aling
-            "<canvas id='canvas' width='100' height='100'></canvas>" + //aqui hay css para el tamaño del canvas
+            "<canvas id='canvas' width='250' height='100'></canvas>" + //aqui hay css para el tamaño del canvas
             "</td></tr>";
         salida += "</table>";
 		document.getElementById("JS").innerHTML = salida;
