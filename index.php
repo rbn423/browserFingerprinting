@@ -20,6 +20,7 @@
 	<script type="text/javascript" src="javascript/fuentes.js"></script>
 	<script type="text/javascript" src="javascript/fontdetect.js"></script>
     <script type="text/javascript" src="javascript/asincrono.js"></script>
+    <script type="text/javascript" src="javascript/canvas.js"></script>
 </head>
 <body>
 	<?php
@@ -42,7 +43,7 @@
 
 	<h2>Elementos JavaScript</h2>
 
-	<p id="JS"></p>
+	<div id="JS"></div>
 	<script>
         var id = '<?php echo $id; ?>';
 		var salida = "<table border='visible'> <tr> <th>Elemento</th><th>Valor</th> </tr>";//el visible va por css
@@ -60,8 +61,13 @@
             elementosJS.push(ventana[i]);
         for (var i = 0; i < elementosJS.length; i++)
             salida += "<tr><td>" + elementosJS[i][0] + "</td><td align='center'>" + elementosJS[i][2] + "</td></tr>";//aqui hay aling->css
+        salida += "<tr><td>Canvas</td><td>" +
+            "<canvas id='canvas' width='100' height='100'></canvas>" + //aqui hay css para el tamaño del canvas
+            "</td></tr>";
         salida += "</table>";
 		document.getElementById("JS").innerHTML = salida;
+		var canvas = pintar(); //pintamos después de que exista el elemento canvas en el navegador
+		elementosJS.push(canvas);//Una vez pintado hemos obtenido el valor del canvas y lo añadimos al array
     </script>
 
     <div id="plugins"></div>

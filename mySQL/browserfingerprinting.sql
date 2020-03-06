@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-03-2020 a las 17:18:00
+-- Tiempo de generación: 06-03-2020 a las 19:09:21
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -60,7 +60,9 @@ CREATE TABLE `atributos` (
   `personalBar` tinyint(1) DEFAULT NULL,
   `statusBar` tinyint(1) DEFAULT NULL,
   `toolBar` tinyint(1) DEFAULT NULL,
-  `bateria` tinyint(1) DEFAULT NULL
+  `bateria` tinyint(1) DEFAULT NULL,
+  `flash` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `canvas` varchar(32) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
