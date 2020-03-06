@@ -48,11 +48,11 @@ function asincroniaPlugins(listaPlugins,id) {
     if (listaPlugins != null){
         var formData = new FormData();
         formData.append("ID",id);
-        for (var i = 0; i < listaPlugins.length; i++){
+        for (var i = 0; i < listaPlugins[0].length; i++){
             var nombreClave = "plugin"+i;
-            formData.append(nombreClave, listaPlugins[i]);
+            formData.append(nombreClave, listaPlugins[0][i]);
         }
-
+        formData.append("flash", listaPlugins[1][2]);
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();

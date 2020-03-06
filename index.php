@@ -66,7 +66,7 @@
 
     <div id="plugins"></div>
     <script>
-        var pluginsInstalados = plugins();
+        var pluginsInstalados = arrayPlugins();
         var txt = resultadoPlugins(pluginsInstalados);
         asincroniaPlugins(pluginsInstalados,id);
         document.getElementById("plugins").innerHTML=txt;
