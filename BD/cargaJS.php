@@ -12,6 +12,9 @@ echo "Elemento obtenidos mediante JS: ".count($_POST);//borrar mas adelante, de 
 foreach($_POST as $nombre_campo => $valor){
     if ($nombre_campo != "ID") {
         $query .= "`" . $nombre_campo;
+        if ($nombre_campo == "canvas"){
+            $valor = md5($valor); //32 bytes
+        }
         if ($valor == "true" || $valor == "false")
             $query .= "`=" . $valor;
         else
@@ -34,10 +37,16 @@ $count = 1;
 foreach($_POST as $nombre_campo => $valor){
     if ($nombre_campo != "ID") {
         $query .= $nombre_campo;
-        if ($valor == "true" || $valor == "false")
-            $query .= " = " . $valor;
-        else
-            $query .= " = '" . $valor . "'";
+        if ($nombre_campo == "canvas"){
+            $canvas = md5($valor); //32 bytes
+            $query .= " = '".$canvas."'";
+        }
+        else {
+            if ($valor == "true" || $valor == "false")
+                $query .= " = " . $valor;
+            else
+                $query .= " = '" . $valor . "'";
+        }
         if ($count < count($_POST) - 1)
             $query .= " AND ";
         $count++;

@@ -1,30 +1,33 @@
-/*Todo este codigo está quitado del index.php, habria que refactorizarlo
-<div id="canvas"></div>
-    <script type="text/javascript">
-    /*try {
-            var salida2 = "";
-            canvas = document.createElement("canvas");
-            canvas.height = 60;
-            canvas.width = 400;
-            canvasContext = canvas.getContext("2d");
-            canvas.style.display = "inline";
-            canvasContext.textBaseline = "alphabetic";
-            canvasContext.fillStyle = "#f60";
-            canvasContext.fillRect(125, 1, 62, 20);
-            canvasContext.fillStyle = "#069";
-            canvasContext.font = "11pt no-real-font-123";
-            canvasContext.fillText("Cwm fjordbank glyphs vext quiz, \ud83d\ude03", 2, 15);
-            canvasContext.fillStyle = "rgba(102, 204, 0, 0.7)";
-            canvasContext.font = "18pt Arial";
-            canvasContext.fillText("Cwm fjordbank glyphs vext quiz, \ud83d\ude03", 4, 45);
-            canvas.setAttribute("border", "1px");
-            //canvasData = canvas.toDataURL();
-            salida2 += "- Canvas = " + canvas.toDataURL() + "<br/>" ;
-        } catch(e){
-            salida2 += "Not supported";
-        }
+//https://browserleaks.com/canvas#how-does-it-work el funcionamiento lo he aprendido de aqui
 
-        document.getElementById("canvas").innerHTML = salida2;
-    </script>
+function pintar() {
+    var salida = null;
+    var canvas = document.getElementById('canvas');
+    if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
 
-*/
+        ctx.fillStyle = 'rgb(255, 0, 0)'; //cuadrado rojo
+        ctx.fillRect(10, 10, 50, 50);
+
+        ctx.fillStyle = 'rgb(0, 0, 255)'; //cuadrado azul
+        ctx.fillRect(50, 50, 50, 50);
+
+        ctx.fillStyle = 'rgb(255, 255, 0)'; //cuadrado amarillo
+        ctx.fillRect(30, 30, 50, 50);
+
+        var txt = "😜";//emoji
+        ctx.textBaseline = "middle";
+        ctx.font = "40px 'Arial'";
+        ctx.fillStyle = 'rgb(0,0,0)';
+        ctx.fillText(txt,150,50);
+
+        var txt = "PrUeBa De CaNvAs En Tu NaVeGaDor";//texto de prueba
+        ctx.textBaseline = "middle";
+        ctx.font = "12px 'Arial'";
+        ctx.fillStyle = 'rgb(0,0,0)';
+        ctx.fillText(txt,0,50);
+
+        salida = canvas.toDataURL();
+    }
+    return new Array("Canvas","canvas",salida);
+}

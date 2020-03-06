@@ -16,6 +16,14 @@
  *          then that font is 100% not available in the system
  * Version: 0.3 (24 Mar 2012)
  *          Replaced sans with serif in the list of baseFonts
+ *
+ *          Terminos de la licencia apache
+ *          La licencia Apache solo exige que se mantenga un aviso que informe a los receptores que en la distribución se ha usado código con la licencia Apache. Así, en contraste a las licencias copyleft, quienes reciben versiones modificadas de código con licencia Apache no reciben necesariamente las mismas libertades. O, si se considera la situación desde el punto de vista de los licenciatarios de código con licencia Apache, reciben la libertad de usar el código de la forma que prefieran, incluyendo su uso en productos de código cerrado.10​
+ Se deben añadir dos archivos en el directorio principal de los paquetes de software redistribuidos:
+ LICENSE
+ Una copia de la licencia.
+ NOTICE
+ Un documento de texto, que incluye los "avisos" obligatorios del software presente en la distribución y una copia legible de estas notificaciones debe ser distribuidas como parte de los trabajos derivados, dentro de la forma de código fuente o documentación, o dentro de una pantalla generada por las obras derivadas (donde aparecen normalmente este tipo de notificaciones a terceros).
  */
 
 /**
