@@ -1,3 +1,5 @@
+//https://browserleaks.com/canvas#how-does-it-work el funcionamiento lo he aprendido de aqui
+
 function pintar() {
     var salida = null;
     var canvas = document.getElementById('canvas');

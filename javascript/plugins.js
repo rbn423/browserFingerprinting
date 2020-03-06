@@ -10,9 +10,9 @@ function plugins() {
 
 function getFlashVersion(){
     var resultado = null;
-    var flash = navigator.mimeTypes.namedItem('Flash');
-    if (typeof flash == 'object' && flash != null) {
-            resultado = flash.version;
+    for(var i = 0 ; i < navigator.mimeTypes.length; i++) {
+        if (navigator.mimeTypes[i].enabledPlugin.name == "Shockwave Flash")
+            resultado = navigator.mimeTypes[i].enabledPlugin.version;
     }
     return new Array("Versión de flash instalada", "flash", resultado);
 }
