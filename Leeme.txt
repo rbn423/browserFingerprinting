@@ -5,3 +5,10 @@ Aquí documentamos las caractéristicas que vayamos añadiendo al proyecto.
 -pugins.js -> Muestra solo los mas comunes instalados en el navegador, ya que estos impidien la visibilidad de los demás para que no se les pueda hacer browserfingerprinting
 -screen.js
 -window.js
+-video.js -> se encarga de sacar los formatos de video soportados.
+    -de aqui he sacado como encontrarlos -> https://www.returngis.net/2013/11/como-comprobar-si-un-navegador-soporta-un-formato-especifico-para-html-5-audiovideo/
+    -de aqui he sacado varios de los formatos y codecs -> https://developer.mozilla.org/es/docs/Web/HTML/Formatos_admitidos_de_audio_y_video_en_html5
+    -otros de los formatos de amiunique
+-audio.js -> igual que video pero para los formatos de audio
+    -los formatos los he sacado de amiunique y de https://developer.mozilla.org/es/docs/Web/HTML/Formatos_admitidos_de_audio_y_video_en_html5
+-canvas.js -> //https://browserleaks.com/canvas#how-does-it-work de aqui he sacado el funcionamiento y de w3schools como pintar cosas en canvas
