@@ -21,6 +21,8 @@
 	<script type="text/javascript" src="javascript/fontdetect.js"></script>
     <script type="text/javascript" src="javascript/asincrono.js"></script>
     <script type="text/javascript" src="javascript/canvas.js"></script>
+    <script type="text/javascript" src="javascript/video.js"></script>
+    <script type="text/javascript" src="javascript/audio.js"></script>
 </head>
 <body>
 	<?php
@@ -68,6 +70,28 @@
 		document.getElementById("JS").innerHTML = salida;
 		var canvas = pintar(); //pintamos después de que exista el elemento canvas en el navegador
 		elementosJS.push(canvas);//Una vez pintado hemos obtenido el valor del canvas y lo añadimos al array
+    </script>
+
+    <video id="movie" hidden="true">
+        //el hidden va por css
+    </video>
+    <div id="video"></div>
+    <script>
+        var formatos = formatosSoportadosVideo();
+        var salida = resultadoVideo(formatos);
+        asincroniaVideo(formatos,id);
+        document.getElementById("video").innerHTML = salida;
+    </script>
+
+    <audio id="sound" hidden="true">
+        //el hidden por css
+    </audio>
+    <div id="audio"></div>
+    <script>
+        var formatos = formatosSoportadosAudio();
+        var salida = resultadoAudio(formatos);
+        asincroniaAudio(formatos,id);
+        document.getElementById("audio").innerHTML = salida;
     </script>
 
     <div id="plugins"></div>
