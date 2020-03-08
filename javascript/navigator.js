@@ -30,6 +30,20 @@ function bateria() {
     return new Array("Se puede obtener información de la bateria","bateria",salida);
 }
 
+// function permiso(){
+   // var result = navigator.permissions.query({name:'geolocation'});
+		
+		// return result;
+     
+// }
+// async function permiso2(){
+	// const result = await permiso();
+
+	// return new Array("geo","geo", result.state);
+// }
+	
+
+
 function plataforma() {
     return new Array("Plataforma","plataforma", navigator.platform);
 }
@@ -53,7 +67,25 @@ function onLine() {
 function appName() {
     return new Array("AppName","appName", navigator.appName);
 }
-
+// function NavigatorPrueba(){
+	// var res;
+	// res = arrayNavigator();
+	// return res;
+// }
+// async function arrayNavigator(){
+    // var salida = new Array();
+	// var permiso = await permiso2();
+    // salida.push(nombreNavegador());
+    // salida.push(plataforma());
+    // salida.push(userAgent());
+    // salida.push(cookieEnabled());
+    // salida.push(language());
+    // salida.push(onLine());
+    // salida.push(appName());
+	// salida.push(permiso);
+	// salida.push(bateria());
+    // return salida;
+// }
 function arrayNavigator(){
     var salida = new Array();
     salida.push(nombreNavegador());
