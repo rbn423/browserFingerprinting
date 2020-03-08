@@ -17,14 +17,20 @@ function formatosSoportadosVideo() {
     //o "" si no lo soporta
     var videosSoportados = new Array();
     for (var tipo in tipos)
-            videosSoportados.push(tipos[tipo] + " : " + objVideo.canPlayType(tipos[tipo]));
-    return videosSoportados;
+            videosSoportados.push(new Array(tipos[tipo], objVideo.canPlayType(tipos[tipo])));
+    return videosSoportados; //devolvemos array con el formato y el resultado de si se puede utilizar
 }
 
 function resultadoVideo(listaVideo){
-    var salida = "<table border='visible'><th>Formatos de video soportados</th>"; //el borde va por css
-    for (var i in listaVideo)
-        salida += "<tr><td>"+listaVideo[i]+"</td></tr>";
+    var valor;
+    var salida = "<table border='visible'><th colspan='2'>Formatos de video soportados</th>"; //el borde va por css y el colspan
+    for (var i in listaVideo) {
+        if (listaVideo[i][1] == "")
+            valor = "No soportado";
+        else
+            valor = listaVideo[i][1];
+        salida += "<tr><td>" + listaVideo[i][0] + "</td><td>" + valor + "</td></tr>";
+    }
     salida += "</table>";
     return salida;
 }
