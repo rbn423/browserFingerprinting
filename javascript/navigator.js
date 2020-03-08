@@ -42,7 +42,25 @@ function bateria() {
 	// return new Array("geo","geo", result.state);
 // }
 	
+function doNotTrack() {
+    return new Array("Do-not-track Javascript","DNTJS",navigator.doNotTrack);
+}
 
+function puntosTactiles() {
+    return new Array("Número máximo de puntos táctiles soportados","touchpoints",navigator.maxTouchPoints);
+}
+
+function producto() {
+    return new Array("Motor del navegador","product",navigator.product);
+}
+
+function sistemaOperativo() {
+    return new Array("Sistema operativo", "os", navigator.oscpu); //solo funciona en firefox
+}
+
+function vendedor() {
+    return new Array("Vendedor", "vendor", navigator.vendor);
+}
 
 function plataforma() {
     return new Array("Plataforma","plataforma", navigator.platform);
@@ -96,5 +114,10 @@ function arrayNavigator(){
     salida.push(onLine());
     salida.push(appName());
     salida.push(bateria());
+    salida.push(doNotTrack());
+    salida.push(puntosTactiles());
+    salida.push(producto());
+    salida.push(sistemaOperativo());
+    salida.push(vendedor());
     return salida;
 }
