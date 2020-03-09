@@ -52,7 +52,10 @@ function asincroniaPlugins(listaPlugins,id) {
             var nombreClave = "plugin"+i;
             formData.append(nombreClave, listaPlugins[0][i]);
         }
-        formData.append("flash", listaPlugins[1][2]);
+        if (listaPlugins[1][2] != null)
+            formData.append("flash", "Shockwave Flash");
+        if (listaPlugins[2][2])
+            formData.append("adblock", "Ad_Block");
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
