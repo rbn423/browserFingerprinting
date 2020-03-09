@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-03-2020 a las 23:12:46
+-- Tiempo de generación: 09-03-2020 a las 13:01:25
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -73,12 +73,23 @@ CREATE TABLE `atributos` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `dispositivos`
+--
+
+CREATE TABLE `dispositivos` (
+  `id` int(11) NOT NULL,
+  `tipo` varchar(200) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `formatosaudio`
 --
 
 CREATE TABLE `formatosaudio` (
-  `id` int(11) DEFAULT NULL,
-  `formato` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `formato` varchar(200) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -88,8 +99,8 @@ CREATE TABLE `formatosaudio` (
 --
 
 CREATE TABLE `formatosvideo` (
-  `id` int(11) DEFAULT NULL,
-  `formato` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `formato` varchar(200) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -123,6 +134,24 @@ CREATE TABLE `plugins` (
 --
 ALTER TABLE `atributos`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Indices de la tabla `dispositivos`
+--
+ALTER TABLE `dispositivos`
+  ADD PRIMARY KEY (`id`,`tipo`);
+
+--
+-- Indices de la tabla `formatosaudio`
+--
+ALTER TABLE `formatosaudio`
+  ADD PRIMARY KEY (`id`,`formato`);
+
+--
+-- Indices de la tabla `formatosvideo`
+--
+ALTER TABLE `formatosvideo`
+  ADD PRIMARY KEY (`id`,`formato`);
 
 --
 -- Indices de la tabla `fuentes`

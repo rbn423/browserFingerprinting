@@ -104,3 +104,23 @@ function asincroniaAudio(formatos,id) {
         xmlhttp.send(formData);
     }
 }
+
+function asincroniaDispositivos(dispositivos,id) {
+    if (dispositivos != null){
+        var formData = new FormData();
+        formData.append("ID",id);
+        for (var i in dispositivos){
+            var dispositivo = "dispositivo"+i;
+            formData.append(dispositivo, dispositivos[i][0]);
+        }
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.open("POST","BD/cargaDispositivos.php",true);
+        xmlhttp.send(formData);
+    }
+}

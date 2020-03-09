@@ -54,6 +54,23 @@ function producto() {
     return new Array("Motor del navegador","product",navigator.product);
 }
 
+function dispositivos(){
+    var salida = new Array();
+    //esta parte se ejecuta de forma asíncrona si se puede ejecutar el método
+    if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
+        navigator.mediaDevices.enumerateDevices().then(function (devices) {
+                devices.forEach(function (device) {
+                    salida.push(new Array(device.kind, device.deviceId));//el device ID varia en cada lanzamiento
+                });
+                arrayDispositivos(salida);
+                asincroniaDispositivos(salida,id);
+            })
+    }//a lo mejor habria que capturar si ocurre un error en la asincronia
+    //sino se ejecuta directamente para un array vacio.
+    else
+        arrayDispositivos(salida);
+}
+
 function sistemaOperativo() {
     return new Array("Sistema operativo", "os", navigator.oscpu); //solo funciona en firefox
 }
@@ -120,4 +137,11 @@ function arrayNavigator(){
     salida.push(sistemaOperativo());
     salida.push(vendedor());
     return salida;
+}
+
+function arrayDispositivos(listaDispositivos) {
+    var salida ="<table border='visible'><th colspan='3'>Lista de dispositivos del equipo</th>"; //css por aqui
+    for (var i in listaDispositivos)
+        salida += "<tr><td>"+listaDispositivos[i][0]+"</td><td>"+listaDispositivos[i][1]+"</td></tr>";
+    document.getElementById("dispositivos").innerHTML = salida;
 }
