@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-03-2020 a las 13:01:25
+-- Tiempo de generación: 09-03-2020 a las 18:06:35
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -78,7 +78,8 @@ CREATE TABLE `atributos` (
 
 CREATE TABLE `dispositivos` (
   `id` int(11) NOT NULL,
-  `tipo` varchar(200) COLLATE utf8_spanish_ci NOT NULL
+  `tipo` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `idDisp` varchar(200) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -139,7 +140,7 @@ ALTER TABLE `atributos`
 -- Indices de la tabla `dispositivos`
 --
 ALTER TABLE `dispositivos`
-  ADD PRIMARY KEY (`id`,`tipo`);
+  ADD PRIMARY KEY (`id`,`tipo`,`idDisp`);
 
 --
 -- Indices de la tabla `formatosaudio`

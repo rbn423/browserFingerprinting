@@ -60,7 +60,7 @@ function dispositivos(){
     if (navigator.mediaDevices && navigator.mediaDevices.enumerateDevices) {
         navigator.mediaDevices.enumerateDevices().then(function (devices) {
                 devices.forEach(function (device) {
-                    salida.push(new Array(device.kind, device.deviceId));//el device ID varia en cada lanzamiento
+                    salida.push(new Array(device.kind, device.deviceId));//el device ID varia en cada lanzamiento para edge
                 });
                 arrayDispositivos(salida);
                 asincroniaDispositivos(salida,id);
