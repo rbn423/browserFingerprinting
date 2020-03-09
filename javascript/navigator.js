@@ -30,6 +30,10 @@ function bateria() {
     return new Array("Se puede obtener información de la bateria","bateria",salida);
 }
 
+function concurrenciaHardware() {
+    return new Array("Concurrencia hardware", "hardwareConcurrency", navigator.hardwareConcurrency);
+}
+
 // function permiso(){
    // var result = navigator.permissions.query({name:'geolocation'});
 		
@@ -102,6 +106,7 @@ function onLine() {
 function appName() {
     return new Array("AppName","appName", navigator.appName);
 }
+
 // function NavigatorPrueba(){
 	// var res;
 	// res = arrayNavigator();
@@ -136,6 +141,7 @@ function arrayNavigator(){
     salida.push(producto());
     salida.push(sistemaOperativo());
     salida.push(vendedor());
+    salida.push(concurrenciaHardware());
     return salida;
 }
 
