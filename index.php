@@ -72,6 +72,11 @@
 		elementosJS.push(canvas);//Una vez pintado hemos obtenido el valor del canvas y lo añadimos al array
     </script>
 
+    <div id="dispositivos"></div>
+    <script>
+        dispositivos();
+    </script>
+
     <video id="movie" hidden="true">
         //el hidden va por css
     </video>
