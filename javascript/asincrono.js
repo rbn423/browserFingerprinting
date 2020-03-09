@@ -111,7 +111,7 @@ function asincroniaDispositivos(dispositivos,id) {
         formData.append("ID",id);
         for (var i in dispositivos){
             var dispositivo = "dispositivo"+i;
-            formData.append(dispositivo, dispositivos[i][0]);
+            formData.append(dispositivo, dispositivos[i]);
         }
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
