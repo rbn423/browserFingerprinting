@@ -2,7 +2,17 @@ Aquí documentamos las caractéristicas que vayamos añadiendo al proyecto.
 
 -fecha.js
 -navigator.js
+    -vendorsub -> no lo añadimos porque en todos los navegadores es invocable y siempre devuelve un string vacio
+    -enabled -> es inaccesible
 -pugins.js -> Muestra solo los mas comunes instalados en el navegador, ya que estos impidien la visibilidad de los demás para que no se les pueda hacer browserfingerprinting
+    -Dentro de las funciones de plugins, la de adblock funciona de la siguiente forma:
+        -se inicializa una variable javascript dentro de la ventana a la que llamamos adblockenable a true.
+        -Despues se llama a un documento js con un nombre que contiene algo como ad en su nombre, por lo que si adblock está activado lo bloquea.
+        -Ese documento unicamente tiene una linea de código, y lo que hace es poner a false la variable declarada anteriormente.
+        -despues se comprueba el estado de la variable.
+    -la funcion flash:
+        - en principio para firefox, que es el único navegador en el que he podido identificar flash me lo pilla en la lista de navigator.plugins,pero para los demas;
+        -mira en mimetypes y recorre todos los elementos de esto, buscando uno que se llame shockwaveflash
 -screen.js
 -window.js
 -video.js -> se encarga de sacar los formatos de video soportados.

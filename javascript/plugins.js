@@ -8,6 +8,15 @@ function plugins() {
     return resultado;
 }
 
+function adblock() {
+    var salida;
+    if (window.adblockEnabled)
+        salida = new Array("AdBlock activado", "adblock", true);
+    else
+        salida = new Array("AdBlock activado", "adblock", false);
+    return salida;
+}
+
 function getFlashVersion(){
     var resultado = null;
     for(var i = 0 ; i < navigator.mimeTypes.length; i++) {
@@ -21,6 +30,7 @@ function arrayPlugins(){
     var salida = new Array();
     salida.push(plugins());
     salida.push(getFlashVersion());
+    salida.push(adblock());
     return salida;
 }
 
@@ -37,6 +47,7 @@ function resultadoPlugins(listaPlugins) {
     salida += "</td></tr>" +
         "<tr><td>Plugins totales instalados</td><td align='center'>" + listaPlugins[0].length + "</td></tr>" +
         "<tr><td>"+listaPlugins[1][0]+"</td><td>"+valorFlash+"</td></tr>" +
+        "<tr><td>"+listaPlugins[2][0]+"</td><td>"+listaPlugins[2][2]+"</td></tr>" +
         "</table>";
     return salida;
 }

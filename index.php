@@ -99,6 +99,8 @@
         document.getElementById("audio").innerHTML = salida;
     </script>
 
+    <script>window.adblockEnabled = true</script><!--ponemos el atributo a true -->
+    <script type="text/javascript" src="javascript/ad_banner.js"></script><!--si se consigue cargar este js entonces no hay adblock y el atributo se pone a false -->
     <div id="plugins"></div>
     <script>
         var pluginsInstalados = arrayPlugins();
