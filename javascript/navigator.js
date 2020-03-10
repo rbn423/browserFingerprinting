@@ -34,18 +34,21 @@ function concurrenciaHardware() {
     return new Array("Concurrencia hardware", "hardwareConcurrency", navigator.hardwareConcurrency);
 }
 
-// function permiso(){
-   // var result = navigator.permissions.query({name:'geolocation'});
-		
-		// return result;
-     
-// }
-// async function permiso2(){
-	// const result = await permiso();
+function lenguajes() {
+    var lenguajes = navigator.languages;
+    var salida = "";
+    for (var i in lenguajes) {
+        salida += lenguajes[i];
+        if (i < lenguajes.length - 1)
+            salida += " // " ;
+    }
+    return new Array("Lenguajes soportados", "lenguajes", salida);
+}
 
-	// return new Array("geo","geo", result.state);
-// }
-	
+function buildId() {
+    return new Array("Build ID de navigator", "buildId", navigator.buildID);
+}
+
 function doNotTrack() {
     return new Array("Do-not-track Javascript","DNTJS",navigator.doNotTrack);
 }
@@ -107,6 +110,22 @@ function appName() {
     return new Array("AppName","appName", navigator.appName);
 }
 
+function productSub() {
+    return new Array("Product sub", "productSub", navigator.productSub);
+}
+
+// function permiso(){
+// var result = navigator.permissions.query({name:'geolocation'});
+
+// return result;
+
+// }
+// async function permiso2(){
+// const result = await permiso();
+
+// return new Array("geo","geo", result.state);
+// }
+
 // function NavigatorPrueba(){
 	// var res;
 	// res = arrayNavigator();
@@ -142,6 +161,9 @@ function arrayNavigator(){
     salida.push(sistemaOperativo());
     salida.push(vendedor());
     salida.push(concurrenciaHardware());
+    salida.push(lenguajes());
+    salida.push(buildId());
+    salida.push(productSub());
     return salida;
 }
 

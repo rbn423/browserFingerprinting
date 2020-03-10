@@ -2,6 +2,8 @@ Aquí documentamos las caractéristicas que vayamos añadiendo al proyecto.
 
 -fecha.js
 -navigator.js
+    -vendorsub -> no lo añadimos porque en todos los navegadores es invocable y siempre devuelve un string vacio
+    -enabled -> es inaccesible
 -pugins.js -> Muestra solo los mas comunes instalados en el navegador, ya que estos impidien la visibilidad de los demás para que no se les pueda hacer browserfingerprinting
     -Dentro de las funciones de plugins, la de adblock funciona de la siguiente forma:
         -se inicializa una variable javascript dentro de la ventana a la que llamamos adblockenable a true.
