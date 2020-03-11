@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-03-2020 a las 13:32:56
+-- Tiempo de generación: 11-03-2020 a las 12:52:03
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -60,6 +60,8 @@ CREATE TABLE `atributos` (
   `personalBar` tinyint(1) DEFAULT NULL,
   `statusBar` tinyint(1) DEFAULT NULL,
   `toolBar` tinyint(1) DEFAULT NULL,
+  `localStorage` tinyint(1) DEFAULT NULL,
+  `sessionStorage` tinyint(1) DEFAULT NULL,
   `bateria` tinyint(1) DEFAULT NULL,
   `DNTJS` tinyint(1) DEFAULT NULL,
   `touchpoints` int(11) DEFAULT NULL,
@@ -70,6 +72,7 @@ CREATE TABLE `atributos` (
   `hardwareConcurrency` int(11) DEFAULT NULL,
   `lenguajes` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `buildId` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `devMemory` float DEFAULT NULL,
   `flash` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `canvas` varchar(32) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;

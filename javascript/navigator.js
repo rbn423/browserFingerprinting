@@ -114,6 +114,10 @@ function productSub() {
     return new Array("Product sub", "productSub", navigator.productSub);
 }
 
+function memoriaDispositivo(){
+    return new Array("Memoria del dipositivo (GB)", "devMemory", navigator.deviceMemory);
+}
+
 // function permiso(){
 // var result = navigator.permissions.query({name:'geolocation'});
 
@@ -152,18 +156,19 @@ function arrayNavigator(){
     salida.push(userAgent());
     salida.push(cookieEnabled());
     salida.push(language());
+    salida.push(lenguajes());
     salida.push(onLine());
     salida.push(appName());
     salida.push(bateria());
     salida.push(doNotTrack());
     salida.push(puntosTactiles());
     salida.push(producto());
+    salida.push(productSub());
     salida.push(sistemaOperativo());
     salida.push(vendedor());
     salida.push(concurrenciaHardware());
-    salida.push(lenguajes());
     salida.push(buildId());
-    salida.push(productSub());
+    salida.push(memoriaDispositivo());
     return salida;
 }
 

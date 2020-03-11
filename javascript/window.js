@@ -22,6 +22,20 @@ function toolBar() {
     return new Array("Barra de herramientas visible","toolBar", window.toolbar.visible);
 }
 
+function almacenamientoLocal(){
+    var salida = false;
+    if (window.localStorage)
+        salida = true;
+    return new Array("Almacenamiento local disponible", "localStorage", salida);
+}
+
+function almacenamientoSesion() {
+    var salida = false;
+    if (window.sessionStorage)
+        salida = true;
+    return new Array("Almacenamiento de la sesion disponible", "sessionStorage", salida);
+}
+
 function arrayWindow() {
     var salida = new Array();
     salida.push(locationBar());
@@ -30,5 +44,7 @@ function arrayWindow() {
     salida.push(personalBar());
     salida.push(statusBar());
     salida.push(toolBar());
+    salida.push(almacenamientoLocal());
+    salida.push(almacenamientoSesion());
     return salida;
 }
