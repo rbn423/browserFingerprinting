@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-03-2020 a las 12:52:03
+-- Tiempo de generación: 11-03-2020 a las 13:19:29
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -62,6 +62,8 @@ CREATE TABLE `atributos` (
   `toolBar` tinyint(1) DEFAULT NULL,
   `localStorage` tinyint(1) DEFAULT NULL,
   `sessionStorage` tinyint(1) DEFAULT NULL,
+  `windowResults` tinyint(1) DEFAULT NULL,
+  `indexDB` tinyint(1) DEFAULT NULL,
   `bateria` tinyint(1) DEFAULT NULL,
   `DNTJS` tinyint(1) DEFAULT NULL,
   `touchpoints` int(11) DEFAULT NULL,
