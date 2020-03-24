@@ -73,8 +73,7 @@ function asincroniaVideo(formatos,id) {
         var formData = new FormData();
         formData.append("ID",id);
         for (var i in formatos){
-            var nombreClave = "formato"+i;
-            formData.append(nombreClave, formatos[i][0]+" : "+formatos[i][1]);
+            formData.append(formatos[i][0].replace('"', ""), formatos[i][1]);//quitamos comillas para evitar conflicto en bd
         }
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -93,8 +92,7 @@ function asincroniaAudio(formatos,id) {
         var formData = new FormData();
         formData.append("ID",id);
         for (var i in formatos){
-            var nombreClave = "formato"+i;
-            formData.append(nombreClave, formatos[i][0]+" : "+formatos[i][1]);
+            formData.append(formatos[i][0].replace('"', ""), formatos[i][1]); //quitamos las comillas para que no haya conflicto en bd
         }
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
