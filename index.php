@@ -25,6 +25,7 @@
     <script type="text/javascript" src="javascript/audio.js"></script>
 </head>
 <body>
+	<a href="diagramas.html">Diagramas</a>
 	<?php
 		echo "<h2>Elementos de http</h2>";
         echo "<table border='visible'>";//el visible va por css
