@@ -2,7 +2,7 @@ function asincroniaJS(elementosJS,id) {
     if (elementosJS != null){
         var formData = new FormData();
         formData.append("ID",id);
-        for (var i = 1; i < elementosJS.length; i++){
+        for (var i = 0; i < elementosJS.length; i++){
             formData.append(elementosJS[i][1], elementosJS[i][2]);
         }
 
