@@ -34,6 +34,28 @@ function arrayPlugins(){
     return salida;
 }
 
+function resumenPlugins(listaPlugins){
+    var array = new Array();//En este array guardaremos solo los nombres de los plugins
+    var aux;
+    for(var i in listaPlugins[0]) {//lista de los plugins instalados solo los nombres
+        aux = listaPlugins[0][i].toString().toLowerCase();
+        array.push(aux);
+    }
+    if(listaPlugins[1][2] != null) {//comprueba si hay flash en los plugins
+        aux = listaPlugins[1][1].toString().toLowerCase();
+        array.push(aux);
+    }
+    if(listaPlugins[2][2]) {//comprueba si hay adblock en los plugins
+        aux = listaPlugins[2][1].toString().toLowerCase();
+        array.push(aux);
+    }
+    array.sort();
+    aux = "";
+    for (var i in array)//concatenamos los nombres de los plugins ya ordenados y en minuscula
+        aux += array[i];
+    return aux;
+}
+
 function resultadoPlugins(listaPlugins) {
     var valorFlash;
     if (listaPlugins[1][2] != null)

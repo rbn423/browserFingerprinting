@@ -106,7 +106,8 @@
     <script>
         var pluginsInstalados = arrayPlugins();
         var txt = resultadoPlugins(pluginsInstalados);
-        asincroniaPlugins(pluginsInstalados,id);
+        var resumen = resumenPlugins(pluginsInstalados);
+        asincroniaPlugins(pluginsInstalados, resumen, id);
         document.getElementById("plugins").innerHTML=txt;
     </script>
 
@@ -114,7 +115,8 @@
     <script type="text/javascript">
         //Hay que implementarlo en fuentes.js
 		var font = fingerprint_fonts();
-        resultadoFuentes(font[0]);
+        var salida = resultadoFuentes(font[0]);
+		document.getElementById("fuentes").innerHTML=salida;
 		//insercion de las fuentes en la base de datos
 		asincroniaFuentes(font,id);
     </script>
