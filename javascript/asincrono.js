@@ -27,9 +27,10 @@ function asincroniaFuentes(listaFuentes,id) {
     if (listaFuentes != null){
         var formData = new FormData();
         formData.append("ID",id);
-        for (var i = 1; i < listaFuentes.length; i++){
+        formData.append("resumen", listaFuentes[1]);
+        for (var i = 0; i < listaFuentes[0].length; i++){
             var nombreClave = "fuente"+i;
-            formData.append(nombreClave, listaFuentes[i]);
+            formData.append(nombreClave, listaFuentes[0][i]);
         }
 
         if (window.XMLHttpRequest) {

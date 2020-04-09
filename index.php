@@ -114,8 +114,7 @@
     <script type="text/javascript">
         //Hay que implementarlo en fuentes.js
 		var font = fingerprint_fonts();
-        var salida = resultadoFuentes(font);
-		document.getElementById("fuentes").innerHTML=salida;
+        resultadoFuentes(font[0]);
 		//insercion de las fuentes en la base de datos
 		asincroniaFuentes(font,id);
     </script>

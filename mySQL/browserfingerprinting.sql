@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-04-2020 a las 21:25:21
+-- Tiempo de generación: 09-04-2020 a las 11:38:23
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -78,7 +78,8 @@ CREATE TABLE `atributos` (
   `buildId` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
   `devMemory` float DEFAULT NULL,
   `flash` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `canvas` varchar(32) COLLATE utf8_spanish_ci DEFAULT NULL
+  `canvas` varchar(32) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `resumenFuentes` varchar(1500) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
