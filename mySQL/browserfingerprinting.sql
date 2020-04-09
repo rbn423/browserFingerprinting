@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-03-2020 a las 13:32:56
+-- Tiempo de generación: 09-04-2020 a las 11:38:23
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -43,6 +43,8 @@ CREATE TABLE `atributos` (
   `DNT` tinyint(1) DEFAULT NULL,
   `plataforma` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `userAgentJS` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `navegador` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `version` int(11) DEFAULT NULL,
   `cookieEnabled` tinyint(1) DEFAULT NULL,
   `language` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `onLine` tinyint(1) DEFAULT NULL,
@@ -60,6 +62,10 @@ CREATE TABLE `atributos` (
   `personalBar` tinyint(1) DEFAULT NULL,
   `statusBar` tinyint(1) DEFAULT NULL,
   `toolBar` tinyint(1) DEFAULT NULL,
+  `localStorage` tinyint(1) DEFAULT NULL,
+  `sessionStorage` tinyint(1) DEFAULT NULL,
+  `windowResults` tinyint(1) DEFAULT NULL,
+  `indexDB` tinyint(1) DEFAULT NULL,
   `bateria` tinyint(1) DEFAULT NULL,
   `DNTJS` tinyint(1) DEFAULT NULL,
   `touchpoints` int(11) DEFAULT NULL,
@@ -70,8 +76,10 @@ CREATE TABLE `atributos` (
   `hardwareConcurrency` int(11) DEFAULT NULL,
   `lenguajes` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
   `buildId` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `devMemory` float DEFAULT NULL,
   `flash` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `canvas` varchar(32) COLLATE utf8_spanish_ci DEFAULT NULL
+  `canvas` varchar(32) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `resumenFuentes` varchar(1500) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -94,7 +102,8 @@ CREATE TABLE `dispositivos` (
 
 CREATE TABLE `formatosaudio` (
   `id` int(11) NOT NULL,
-  `formato` varchar(200) COLLATE utf8_spanish_ci NOT NULL
+  `formato` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `resultado` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -105,7 +114,8 @@ CREATE TABLE `formatosaudio` (
 
 CREATE TABLE `formatosvideo` (
   `id` int(11) NOT NULL,
-  `formato` varchar(200) COLLATE utf8_spanish_ci NOT NULL
+  `formato` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `resultado` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------

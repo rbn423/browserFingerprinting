@@ -25,6 +25,7 @@
     <script type="text/javascript" src="javascript/audio.js"></script>
 </head>
 <body>
+	<a href="diagramas.html">Diagramas</a>
 	<?php
 		echo "<h2>Elementos de http</h2>";
         echo "<table border='visible'>";//el visible va por css
@@ -113,8 +114,7 @@
     <script type="text/javascript">
         //Hay que implementarlo en fuentes.js
 		var font = fingerprint_fonts();
-        var salida = resultadoFuentes(font);
-		document.getElementById("fuentes").innerHTML=salida;
+        resultadoFuentes(font[0]);
 		//insercion de las fuentes en la base de datos
 		asincroniaFuentes(font,id);
     </script>

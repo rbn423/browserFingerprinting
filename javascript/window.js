@@ -22,6 +22,34 @@ function toolBar() {
     return new Array("Barra de herramientas visible","toolBar", window.toolbar.visible);
 }
 
+function almacenamientoLocal(){
+    var salida = false;
+    if (window.localStorage)
+        salida = true;
+    return new Array("Almacenamiento local disponible", "localStorage", salida);
+}
+
+function almacenamientoSesion() {
+    var salida = false;
+    if (window.sessionStorage)
+        salida = true;
+    return new Array("Almacenamiento de la sesion disponible", "sessionStorage", salida);
+}
+
+function baseDatosIndexada() {
+    var salida = false;
+    if (window.indexedDB)
+        salida = true;
+    return new Array("Se puede usar base de datos indexada", "indexDB", salida);
+}
+
+function resultsState() {
+    var salida = false;
+    if (window.results)
+        salida = true;
+    return new Array("Objeto results de window disponible", "windowResults", salida) ;
+}
+
 function arrayWindow() {
     var salida = new Array();
     salida.push(locationBar());
@@ -30,5 +58,9 @@ function arrayWindow() {
     salida.push(personalBar());
     salida.push(statusBar());
     salida.push(toolBar());
+    salida.push(almacenamientoLocal());
+    salida.push(almacenamientoSesion());
+    salida.push(baseDatosIndexada());
+    salida.push(resultsState());
     return salida;
 }

@@ -2,7 +2,7 @@ function asincroniaJS(elementosJS,id) {
     if (elementosJS != null){
         var formData = new FormData();
         formData.append("ID",id);
-        for (var i = 1; i < elementosJS.length; i++){
+        for (var i = 0; i < elementosJS.length; i++){
             formData.append(elementosJS[i][1], elementosJS[i][2]);
         }
 
@@ -27,9 +27,10 @@ function asincroniaFuentes(listaFuentes,id) {
     if (listaFuentes != null){
         var formData = new FormData();
         formData.append("ID",id);
-        for (var i = 1; i < listaFuentes.length; i++){
+        formData.append("resumen", listaFuentes[1]);
+        for (var i = 0; i < listaFuentes[0].length; i++){
             var nombreClave = "fuente"+i;
-            formData.append(nombreClave, listaFuentes[i]);
+            formData.append(nombreClave, listaFuentes[0][i]);
         }
 
         if (window.XMLHttpRequest) {
@@ -73,8 +74,7 @@ function asincroniaVideo(formatos,id) {
         var formData = new FormData();
         formData.append("ID",id);
         for (var i in formatos){
-            var nombreClave = "formato"+i;
-            formData.append(nombreClave, formatos[i][0]+" : "+formatos[i][1]);
+            formData.append(formatos[i][0].replace('"', ""), formatos[i][1]);//quitamos comillas para evitar conflicto en bd
         }
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -93,8 +93,7 @@ function asincroniaAudio(formatos,id) {
         var formData = new FormData();
         formData.append("ID",id);
         for (var i in formatos){
-            var nombreClave = "formato"+i;
-            formData.append(nombreClave, formatos[i][0]+" : "+formatos[i][1]);
+            formData.append(formatos[i][0].replace('"', ""), formatos[i][1]); //quitamos las comillas para que no haya conflicto en bd
         }
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
