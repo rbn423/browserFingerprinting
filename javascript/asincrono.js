@@ -75,7 +75,7 @@ function asincroniaVideo(formatos,id) {
         var formData = new FormData();
         formData.append("ID",id);
         for (var i in formatos){
-            formData.append(formatos[i][0].replace('"', ""), formatos[i][1]);//quitamos comillas para evitar conflicto en bd
+            formData.append(formatos[i][1], formatos[i][2]);
         }
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari

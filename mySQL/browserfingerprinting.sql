@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-04-2020 a las 10:27:16
+-- Tiempo de generación: 10-04-2020 a las 10:48:10
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -127,8 +127,15 @@ CREATE TABLE `formatosaudio` (
 
 CREATE TABLE `formatosvideo` (
   `id` int(11) NOT NULL,
-  `formato` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
-  `resultado` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL
+  `ogg-theora` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `ogg-vorbis` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `ogg-opus` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `mp4-avc1` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `mp4-mp4a` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `mp4-flac` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `webm-vp8` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `webm-vp9` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `webm-vorbis` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -179,7 +186,7 @@ ALTER TABLE `formatosaudio`
 -- Indices de la tabla `formatosvideo`
 --
 ALTER TABLE `formatosvideo`
-  ADD PRIMARY KEY (`id`,`formato`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `fuentes`

@@ -20,7 +20,7 @@ function formatosSoportadosAudio() {
 
     var audiosSoportados = new Array();
     for (var i in tipos)
-        audiosSoportados.push(new Array(tipos[i][0], tipos[i][1], objAudio.canPlayType(tipos[i]))); //nombre, nombrebd y resultado
+        audiosSoportados.push(new Array(tipos[i][0], tipos[i][1], objAudio.canPlayType(tipos[i][0]))); //nombre, nombrebd y resultado
     return audiosSoportados;//devolvemos array con el formato y el resultado de si se puede utilizar
 }
 

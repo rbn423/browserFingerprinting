@@ -15,5 +15,4 @@ foreach ($_POST as $formato => $resultado){
     }
 }
 $query = "INSERT INTO `formatosaudio`(`id`".$columnas.") VALUES (".$id.$valores.")";
-echo $query;
 $conn->query($query);
