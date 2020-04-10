@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-04-2020 a las 16:58:39
+-- Tiempo de generación: 10-04-2020 a las 10:27:16
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -103,8 +103,20 @@ CREATE TABLE `dispositivos` (
 
 CREATE TABLE `formatosaudio` (
   `id` int(11) NOT NULL,
-  `formato` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
-  `resultado` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL
+  `ogg-vorbis` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `ogg-opus` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `3gpp` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `mp4-mp4a` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `mp4-mp3` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `mp4-ac3` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `mp4-ec3` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `acc` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `pcm` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `mpeg` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `flac` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `wave` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `webm-vorbis` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `mp3-mp3` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -161,7 +173,7 @@ ALTER TABLE `dispositivos`
 -- Indices de la tabla `formatosaudio`
 --
 ALTER TABLE `formatosaudio`
-  ADD PRIMARY KEY (`id`,`formato`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `formatosvideo`
