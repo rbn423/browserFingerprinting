@@ -29,5 +29,5 @@ function resultadoFuentes(listaFuentes){
 	resultado += "</td></tr>" +
 	"<tr><td>Número de fuentes detectadas</td><td align='center'>" + listaFuentes.length + "</td></tr>" + //el aling center por css
 	"</table>";
-	document.getElementById("fuentes").innerHTML = resultado;
+	return resultado;
 }

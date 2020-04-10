@@ -45,10 +45,11 @@ function asincroniaFuentes(listaFuentes,id) {
     }
 }
 
-function asincroniaPlugins(listaPlugins,id) {
+function asincroniaPlugins(listaPlugins, resumen, id) {
     if (listaPlugins != null){
         var formData = new FormData();
         formData.append("ID",id);
+        formData.append("resumen", resumen);
         for (var i = 0; i < listaPlugins[0].length; i++){
             var nombreClave = "plugin"+i;
             formData.append(nombreClave, listaPlugins[0][i]);
@@ -74,7 +75,7 @@ function asincroniaVideo(formatos,id) {
         var formData = new FormData();
         formData.append("ID",id);
         for (var i in formatos){
-            formData.append(formatos[i][0].replace('"', ""), formatos[i][1]);//quitamos comillas para evitar conflicto en bd
+            formData.append(formatos[i][1], formatos[i][2]);
         }
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
@@ -93,7 +94,7 @@ function asincroniaAudio(formatos,id) {
         var formData = new FormData();
         formData.append("ID",id);
         for (var i in formatos){
-            formData.append(formatos[i][0].replace('"', ""), formatos[i][1]); //quitamos las comillas para que no haya conflicto en bd
+            formData.append(formatos[i][1], formatos[i][2]);
         }
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
