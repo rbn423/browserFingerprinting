@@ -18,16 +18,15 @@ function fingerprint_fonts() {
 }
 
 function resultadoFuentes(listaFuentes){
-	var resultado = "<table border='visible'>" +
-		"<tr><th colspan='2'>Fuentes</th></tr>" + //el colspand de la tabla va por css
+	var resultado = "<table>" +
+		"<tr><th colspan='2'>Fuentes</th></tr>" + 
 		"<tr><td>Lista de fuentes</td><td>";
 	for (var i = 0; i < listaFuentes.length; i++) {
 		resultado += listaFuentes[i];
 		if (i < listaFuentes.length-1)
 			resultado += ", ";
 	}
-	resultado += "</td></tr>" +
-	"<tr><td>Número de fuentes detectadas</td><td align='center'>" + listaFuentes.length + "</td></tr>" + //el aling center por css
-	"</table>";
+	resultado += "</td></tr>" + "</table>" + "<p>" + "Número de fuentes detectadas: "+ listaFuentes.length + "</p>";
+	
 	return resultado;
 }
