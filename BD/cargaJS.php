@@ -11,7 +11,7 @@ $query = "UPDATE `atributos` SET " ;
 echo "Elemento obtenidos mediante JS: ".count($_POST);//borrar mas adelante, de momento nos interesa saber si aparece algun elemento mas en el array
 foreach($_POST as $nombre_campo => $valor){
     if ($nombre_campo != "ID") {
-        $query .= "` = " . $nombre_campo;
+        $query .= "`" . $nombre_campo;
         if ($nombre_campo == "canvas"){
             $valor = md5($valor); //32 bytes
         }
