@@ -4,19 +4,13 @@
 	<script type="text/javascript" src="javascript/datosDiagrama.js"></script>
 
 	<script type="text/javascript">
-
-		var nombre = "Navegador";
-	  	cargaDiagrama(nombre);
-	  
-	  // Morris.js descartado porque no funciona en ningun sitio
-	  //easyPieChart descartada por no poder fusionar datos ne ella
-	  // jqPlot no he sido capaz de ejecutarla
+	  	cargaDiagrama("navegador");
 	 </script>
 <body>
 	<h1>Diagramas</h1>
 	<select name="select" onchange="cargaDiagrama(this.value);">
-		<option value="Navegador" selected>Navegador</option>
-	  	<option value="Accept-Encoding">Accept-Encoding</option>
+		<option value="navegador" selected>Navegador</option>
+	  	<option value="AcceptEncoding">Accept-Encoding</option>
 	</select>
     <table class="columns">
       <tr>
