@@ -1,5 +1,4 @@
 function cargaDiagrama(elemento) {
-	var nombres = cargarNombres(elemento);
 	
 	// Load Charts and the corechart and barchart packages.
 	google.charts.load('current', {'packages':['corechart']});
@@ -12,12 +11,7 @@ function cargaDiagrama(elemento) {
 		// code for IE6, IE5
 		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
 	}
-	
-	if (elemento == "Navegador")
-		xmlhttp.open("GET","BD/cargaDiagramaNavegador.php",true);
-	else if (elemento == "Accept-Encoding")
-		xmlhttp.open("GET","BD/cargaDiagramaAcceptEncoding.php",true);
-
+	xmlhttp.open("GET","BD/cargaDiagrama.php?elemento="+elemento,true);
 	xmlhttp.responseType = 'json';
 	xmlhttp.send();
 	
@@ -28,16 +22,16 @@ function cargaDiagrama(elemento) {
 	};	
 	
 	function drawChart() {
-		var data = new google.visualization.DataTable();
+		var data = new google.visualization.DataTable();		
 		var num = xmlhttp.response;
 		data.addColumn('string', 'Topping');
 		data.addColumn('number', 'Slices');
-		for (var i=0; i<nombres.length; i++){
-			data.addRows([[nombres[i], num[i]]]);
-		}		
+		for (var clave in num){
+		  data.addRows([[clave, parseInt(num[clave],10)]]);
+		}	
 		
 		//Piechart
-		var piechart_options = {title:'Pie Chart: ' + elemento,
+		var piechart_options = {title: elemento,
 					   width:500,
 					   height:400};
 		var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
@@ -51,13 +45,4 @@ function cargaDiagrama(elemento) {
 		var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
 		barchart.draw(data, barchart_options);*/
 	}
-}
-
-function cargarNombres(elemento) {
-	var nombres;
-	if (elemento == "Navegador")
-		nombres = ['Edge','Chrome','Firefox','Opera'];
-	else if (elemento == "Accept-Encoding")
-		nombres = ['gzip, deflate, br','gzip, deflate'];
-	return nombres;
 }
