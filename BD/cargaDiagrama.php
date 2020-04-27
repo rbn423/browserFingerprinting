@@ -1,26 +1,22 @@
 <?php
 require_once(dirname(__DIR__)."/comun/config.php");
+$elemento = $_GET["elemento"];
 
 $app = Aplicacion::getSingleton();
 $conn = $app->conexionBd();
 
-$query = "SELECT * FROM `atributos` WHERE `UserAgent` LIKE '%Edge%'";
+$query = "SELECT DISTINCT ".$elemento." FROM `atributos` ";
 $result = $conn->query($query);
-$numedge = $result->num_rows;
 
-$query = "SELECT * FROM `atributos` WHERE `UserAgent` NOT LIKE'%Edge%' AND `UserAgent` NOT LIKE'%OPR%' AND `UserAgent` LIKE '%Chrome%'";
-$result = $conn->query($query);
-$numchrome = $result->num_rows;
+$arrayDatos = array();
 
-$query = "SELECT * FROM `atributos` WHERE `UserAgent` LIKE '%Firefox%'";
-$result = $conn->query($query);
-$numfirefox = $result->num_rows;
+while ($fila = $result->fetch_assoc()) {
+    $query = "SELECT COUNT(*) FROM `atributos` WHERE `".$elemento."` LIKE '".$fila[$elemento]."'";
+	$dato = $conn->query($query);
+	$dato = $dato->fetch_assoc();
+	$arrayDatos += [$fila[$elemento] => $dato['COUNT(*)']];
+}
 
-$query = "SELECT * FROM `atributos` WHERE `UserAgent` LIKE '%OPR%'";
-$result = $conn->query($query);
-$numopera = $result->num_rows;
+echo json_encode($arrayDatos);
 
-$arrayNavigators = array($numedge,$numchrome,$numfirefox,$numopera);
-
-echo json_encode($arrayNavigators);
 ?>
