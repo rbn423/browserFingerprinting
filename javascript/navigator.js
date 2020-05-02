@@ -14,9 +14,13 @@ function nombreNavegadorYVersion() {
     M= M[2]? [M[1] + " " + M[2]]: [navigator.appName, navigator.appVersion, '-?'];
     if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
     return M;};
-    var navegador = salida().toString();
-    var version = navegador.split(" ").pop();
-    navegador = navegador.split(" ").slice(0,-1).join(" ");
+    if (navigator.brave && navigator.brave.isBrave() || false) //https://www.ctrl.blog/entry/brave-user-agent-detection.html
+        var navegador = "Brave";
+    else {
+        navegador = salida().toString();
+        var version = navegador.split(" ").pop();
+        navegador = navegador.split(" ").slice(0, -1).join(" ");
+    }
     array.push(new Array("Navegador", "navegador", navegador));
     array.push(new Array("Versión", "version", version));
     return array;
