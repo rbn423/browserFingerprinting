@@ -15,11 +15,16 @@ function asincroniaJS(elementosJS,id) {
         }
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("resultadoJS").innerHTML = this.responseText;
+                var resultado = xmlhttp.response;
+                for (var clave in resultado){
+                    if (document.getElementById(clave))
+                        document.getElementById(String(clave)).innerHTML = resultado[clave];
+                }
             }
         };
         xmlhttp.open("POST","BD/cargaJS.php",true);
         xmlhttp.send(formData);
+        xmlhttp.responseType="json";
     }
 }
 
