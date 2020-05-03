@@ -23,7 +23,7 @@ function formatosSoportadosVideo() {
 
 function resultadoVideo(listaVideo){
     var valor;
-    var salida = "<table><tr><th colspan='3'>Formatos de video soportados</th></tr><th>Formatos</th><th>Unicidad</th><th>Valor</th>"; //el borde va por css y el colspan
+    var salida = "<table><tr><th colspan='3'>Formatos de video soportados</th></tr><th>Formatos</th><th>Similaridad</th><th>Valor</th>"; //el borde va por css y el colspan
     for (var i in listaVideo) {
         if (listaVideo[i][2] == "")
             valor = "No soportado";

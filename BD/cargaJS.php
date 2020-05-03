@@ -86,7 +86,7 @@ foreach ($resultadoAtributos as $nombre=>$valor){
     }
     $query .= " AND ";
 
-    //Sacar la unicidad por cada elemento
+    //Sacar la similaridad por cada elemento
     $single_ratio = $conn->query($query_ratio);
     $single_ratio = $single_ratio->fetch_all();
 
@@ -119,7 +119,7 @@ foreach ($resultadoAudio as $nombre=>$valor){
     }
     $query .= " AND ";
 
-    //Sacar la unicidad por cada elemento
+    //Sacar la similaridad por cada elemento
     //$single_ratio = $conn->query($query_ratio);
     //$single_ratio = $single_ratio->fetch_all();
 
@@ -155,7 +155,7 @@ foreach ($resultadoVideo as $nombre=>$valor){
         $query .= " AND ";
     $count++;
 
-    //Sacar la unicidad por cada elemento
+    //Sacar la similaridad por cada elemento
     //$single_ratio = $conn->query($query_ratio);
     //$single_ratio = $single_ratio->fetch_all();
 
@@ -173,7 +173,7 @@ $resultado = $conn->query($query);
 $resultado = $resultado->fetch_all();
 
 //Añadimos la unicidad total al JSON
-$arrayRatio += ["resultadoJS" => "Hay ".($resultado[0][0]-1)." browserFingerPrint como el tuyo en nuestra base de datos"];
+$arrayRatio += ["resultadoJS" => "Hay ".($resultado[0][0]-1)." browserFingerPrint como el tuyo en nuestra base de datos."];
 
 //Devolvemos el JSON tanto con el similarity ratio individual como con la unicidad total en la ultima clave del JSON.
 echo json_encode($arrayRatio);
