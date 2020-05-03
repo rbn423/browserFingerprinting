@@ -2,7 +2,7 @@
 
 function pintar() {
     var salida = null;
-    var canvas = document.getElementById('canvas');
+    var canvas = document.getElementById('canvas_result');
     if (canvas.getContext) {
         var ctx = canvas.getContext('2d');
 
