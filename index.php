@@ -3,10 +3,11 @@
 	require_once("BD/BDCabecerasHTTP.php");
 
 	$headers = apache_request_headers();
-	
+
 	$id = BDCabecerasHTTP::insertarCabecera($headers);
 	$iguales = BDCabecerasHTTP::numeroCabecerasIguales($headers);
 	$totales = BDCabecerasHTTP::cabecerasTotales();
+
 ?>
 
 <!DOCTYPE html>
@@ -33,12 +34,12 @@
 				<?php
 					echo "<table>";
 					echo "<tr>";
-					  echo "<th>Elemento</th><th>Unicidad</th><th>Valor</th>";
+					  echo "<th>Elemento</th><th>Similaridad</th><th>Valor</th>";
 					echo "</tr>";
 					foreach ($headers as $header => $value) {
 						if($header != "Cache-Control" && $header != "Host" && $header != "Cookie" && $header != "Referer"){
 							echo "<tr>";
-							echo "<td>".$header."</td><td>Incluir unicidad</td><td>".$value."</td>";
+							echo "<td>".$header."</td><td id='".str_replace('-', '', $header)."'>No consideramos la similaridad aquí</td><td>".$value."</td>";
 							echo "</tr>";
 						}
 					}
@@ -51,7 +52,7 @@
 			<div id="JS">
 				<script>
 					var id = '<?php echo $id; ?>';
-					var salida = "<table> <tr> <th>Elemento</th><th>Unicidad</th><th>Valor</th> </tr>";//el visible va por css
+					var salida = "<table> <tr> <th>Elemento</th><th>Similaridad</th><th>Valor</th> </tr>";//el visible va por css
 					var elementosJS = new Array();
 					var navegador = arrayNavigator();
 					var fecha = arrayFecha();
@@ -65,14 +66,9 @@
 					for (var i = 0 ; i < ventana.length ; i++)
 						elementosJS.push(ventana[i]);
 					for (var i = 0; i < elementosJS.length; i++)
-						//salida += "<tr><td>" + elementosJS[i][0] + "</td><td id="+elementosJS[i][1]+"></td><td>" + elementosJS[i][2] + "</td></tr>";
-					//salida += "<tr><td>Canvas</td><td id="+elementosJS[i][1]+"></td><td>" +
-						//"<canvas id='canvas'></canvas>" +
-						//"</td></tr>";
-					//salida += "</table>";
                         salida += "<tr><td>" + elementosJS[i][0] + "</td><td id='" + elementosJS[i][1]+ "'></td><td>" + elementosJS[i][2] + "</td></tr>";
                     salida += "<tr><td>Canvas</td><td id=canvas></td><td>" +
-                        "<canvas id='canvas'></canvas>" +
+                        "<canvas id='canvas_result'></canvas>" +
                         "</td></tr>";
                     salida += "</table>";
 
