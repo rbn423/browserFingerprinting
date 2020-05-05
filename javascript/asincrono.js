@@ -15,7 +15,7 @@ function asincroniaJS(elementosJS,id) {
         }
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                var resultado = xmlhttp.response;
+                var resultado = this.response;
                 for (var clave in resultado){
                     if (document.getElementById(clave))
                         document.getElementById(String(clave)).innerHTML = resultado[clave];
@@ -70,8 +70,18 @@ function asincroniaPlugins(listaPlugins, resumen, id) {
             // code for IE6, IE5
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var resultado = this.response;
+                for (var clave in resultado){
+                    if (document.getElementById(clave))
+                        document.getElementById(String(clave)).innerHTML = resultado[clave];
+                }
+            }
+        };
         xmlhttp.open("POST","BD/cargaPlugins.php",true);
         xmlhttp.send(formData);
+        xmlhttp.responseType="json";
     }
 }
 
