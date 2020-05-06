@@ -29,7 +29,7 @@ function resultadoVideo(listaVideo){
             valor = "No soportado";
         else
             valor = listaVideo[i][2];
-        salida += "<tr><td>" + listaVideo[i][0] + "</td><td id='video-" + listaVideo[i][1]+ "'></td><td>" + valor + "</td></tr>";
+        salida += "<tr><td>" + listaVideo[i][0] + "</td><td id='video-" + listaVideo[i][1]+ "'><img id='cargando' src='img/animated.png'></td><td>" + valor + "</td></tr>";
     }
     salida += "</table>";
     return salida;

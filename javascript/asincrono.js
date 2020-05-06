@@ -16,11 +16,12 @@ function asincroniaJS(elementosJS,id) {
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var resultado = this.response;
-                for (var clave in resultado){
+                for (var clave in resultado) {
                     if (document.getElementById(clave))
                         document.getElementById(String(clave)).innerHTML = resultado[clave];
                 }
             }
+            document.getElementById("cargando").style.display='none'; //ocultamos la imagen de loading
         };
         xmlhttp.open("POST","BD/cargaJS.php",true);
         xmlhttp.send(formData);

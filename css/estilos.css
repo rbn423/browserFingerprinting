@@ -43,9 +43,12 @@ tr:nth-child(even) {
 }
 
 #audio {
-	colspan=2;
+	colspan : 2;
 }
 
-
-
+#cargando{
+	height: auto;
+	width: 10%;
+	margin-left: auto;
+}
 

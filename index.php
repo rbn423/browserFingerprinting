@@ -39,7 +39,7 @@
 					foreach ($headers as $header => $value) {
 						if($header != "Cache-Control" && $header != "Host" && $header != "Cookie" && $header != "Referer"){
 							echo "<tr>";
-							echo "<td>".$header."</td><td id='".str_replace('-', '', $header)."'>No consideramos la similaridad aquí</td><td>".$value."</td>";
+							echo "<td>".$header."</td><td id='".str_replace('-', '', $header)."'><img id='cargando' src='img/animated.png'></td><td>".$value."</td>";
 							echo "</tr>";
 						}
 					}
@@ -66,8 +66,8 @@
 					for (var i = 0 ; i < ventana.length ; i++)
 						elementosJS.push(ventana[i]);
 					for (var i = 0; i < elementosJS.length; i++)
-                        salida += "<tr><td>" + elementosJS[i][0] + "</td><td id='" + elementosJS[i][1]+ "'></td><td>" + elementosJS[i][2] + "</td></tr>";
-                    salida += "<tr><td>Canvas</td><td id=canvas></td><td>" +
+                        salida += "<tr><td>" + elementosJS[i][0] + "</td><td id='" + elementosJS[i][1]+ "'><img id='cargando' src='img/animated.png'></td><td>" + elementosJS[i][2] + "</td></tr>";
+                    salida += "<tr><td>Canvas</td><td id=canvas><img id='cargando' src='img/animated.png'></td><td>" +
                         "<canvas id='canvas_result'></canvas>" +
                         "</td></tr>";
                     salida += "</table>";

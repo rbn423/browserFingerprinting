@@ -8,7 +8,7 @@ function nombreNavegadorYVersion() {
         return 'IE '+(tem[1] || '');
     }
     if(M[1]=== 'Chrome'){
-        tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
+        tem= ua.match(/\b(OPR|Edg)\/(\d+)/);
         if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
     }
     M= M[2]? [M[1] + " " + M[2]]: [navigator.appName, navigator.appVersion, '-?'];

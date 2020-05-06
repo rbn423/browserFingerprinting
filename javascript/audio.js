@@ -32,7 +32,7 @@ function resultadoAudio(listaAudio) {
             valor = "No soportado";
         else
             valor = listaAudio[i][2];
-        salida += "<tr><td>" + listaAudio[i][0] + "</td><td id='audio-" + listaAudio[i][1]+ "'></td><td>" + valor + "</td></tr>";
+        salida += "<tr><td>" + listaAudio[i][0] + "</td><td id='audio-" + listaAudio[i][1]+ "'><img id='cargando' src='img/animated.png'></td><td>" + valor + "</td></tr>";
     }
     salida += "</table>";
     return salida;
