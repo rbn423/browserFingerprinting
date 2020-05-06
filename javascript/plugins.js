@@ -62,14 +62,14 @@ function resultadoPlugins(listaPlugins) {
         valorFlash = listaPlugins[1][2];
     else
         valorFlash = "Flash no disponible";
-    var salida = "<table><tr><th colspan='2'>Plugins</th></tr>" + //aqui hay que meter css a la tabla
-        "<tr><td>Plugins disponibles</td><td>";
+    var salida = "<table><tr><th colspan='3'>Plugins</th></tr><th>Formatos</th><th>Similaridad</th><th>Valor</th>" + //aqui hay que meter css a la tabla
+        "<tr><td>Plugins disponibles</td><td id='resumenPlugins'></td><td>"; //id='ratioPlugin'
     for(var i = 0 ; i < listaPlugins[0].length ; i++)
         salida += "<p>" + listaPlugins[0][i] + "</p>";//no se si esta bien una p en una tabla
     salida += "</td></tr>" +
-        "<tr><td>Plugins totales instalados</td><td>" + listaPlugins[0].length + "</td></tr>" +
-        "<tr><td>"+listaPlugins[1][0]+"</td><td>"+valorFlash+"</td></tr>" +
-        "<tr><td>"+listaPlugins[2][0]+"</td><td>"+listaPlugins[2][2]+"</td></tr>" +
+        "<tr><td>Plugins totales instalados</td><td>¿Queremos sacar esto?</td><td>" + listaPlugins[0].length + "</td></tr>" +
+        "<tr><td>"+listaPlugins[1][0]+"</td><td>No lo guardamos en la DB</td><td>"+valorFlash+"</td></tr>" +
+        "<tr><td>"+listaPlugins[2][0]+"</td><td>Tampoco lo guardamos</td><td>"+listaPlugins[2][2]+"</td></tr>" +
         "</table>";
     return salida;
 }

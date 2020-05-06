@@ -19,8 +19,8 @@ function fingerprint_fonts() {
 
 function resultadoFuentes(listaFuentes){
 	var resultado = "<table>" +
-		"<tr><th colspan='2'>Fuentes</th></tr>" + 
-		"<tr><td>Lista de fuentes</td><td>";
+		"<tr><th colspan='3'>Fuentes</th></tr>" +
+		"<tr><td>Lista de fuentes</td><td id='resumenFuentes'></td><td>";
 	for (var i = 0; i < listaFuentes.length; i++) {
 		resultado += listaFuentes[i];
 		if (i < listaFuentes.length-1)

@@ -8,7 +8,7 @@ $conn = $app->conexionBd();
 
 //insertamos en la base de datos los elementos JS
 $query = "UPDATE `atributos` SET " ;
-echo "Elemento obtenidos mediante JS: ".count($_POST);//borrar mas adelante, de momento nos interesa saber si aparece algun elemento mas en el array
+//echo "Elemento obtenidos mediante JS: ".count($_POST);//borrar mas adelante, de momento nos interesa saber si aparece algun elemento mas en el array
 foreach($_POST as $nombre_campo => $valor){
     if ($nombre_campo != "ID") {
         $query .= "`" . $nombre_campo;
@@ -55,35 +55,126 @@ $resultadoVideo = $resultado->fetch_assoc();
 //QUERY DE BUSQUE DE TODOS LOS ELEMENTOS QUE COINCIDAN CON LOS DEL NAVEGADOR ACTUAL
 $query = "SELECT count(*) FROM ((SELECT * FROM atributos)a JOIN (SELECT * FROM formatosaudio)b USING (id)) JOIN 
     (SELECT * FROM formatosvideo)c USING (id) WHERE ";
+
+
+//Conseguir el número total de registros en la tabla, lo usaremos luego para calcular el porcentaje de similaridad para cada atributo.
+$query_total = "SELECT count(*) FROM atributos";
+$total_reg = $conn->query($query_total);
+$total_reg = $total_reg->fetch_all();
+
+//Lo usaremos para devolver el JSON
+$arrayRatio = array();
+
 //ATRIBUTOS
 foreach ($resultadoAtributos as $nombre=>$valor){
-    if (is_null($valor))
+
+    $query_ratio = "SELECT count(*) FROM `atributos` WHERE ";
+
+    //Linea comentada para hacer el porcentaje en SQL
+    //$query_ratio = "SELECT ROUND ( (SELECT 100 * count(*) FROM `atributos` WHERE ";
+
+    if (is_null($valor)){
         $query .= "a.`".$nombre."` is null";
-    else
-        $query .= "a.`".$nombre."` = '".$valor."'";
+        $query_ratio .= "`".$nombre."` is null";
+    }
+    else {
+        $query .= "a.`" . $nombre . "` = '" . $valor . "'";
+        $query_ratio .= "`".$nombre . "` = '" . $valor . "'";
+
+        //La linea comentada es para sacar el ratio desde SQL
+        //$query_ratio .= "`".$nombre . "` = '" . $valor . "'".") / (SELECT count(*) FROM `atributos` WHERE `" .$nombre ."` IS NOT NULL), 2)";
+    }
     $query .= " AND ";
+
+    //Sacar la similaridad por cada elemento
+    $single_ratio = $conn->query($query_ratio);
+    $single_ratio = $single_ratio->fetch_all();
+
+
+    $ratio =  $single_ratio[0][0] * 100 / $total_reg[0][0];
+    $ratio = round($ratio, 2);
+    $arrayRatio += [$nombre => $ratio."%"];
+
+    //Para hacer el porcentaje mediante SQL
+    //$arrayRatio += [$nombre => $single_ratio[0][0]];
 }
 //AUDIO
 foreach ($resultadoAudio as $nombre=>$valor){
-    if (is_null($valor))
+
+    $query_ratio = "SELECT count(*) FROM `atributos` WHERE ";
+
+    //Linea comentada para hacer el porcentaje en SQL
+    //$query_ratio = "SELECT ROUND ( (SELECT 100 * count(*) FROM `atributos` WHERE ";
+
+    if (is_null($valor)){
         $query .= "b.`".$nombre."` is null";
-    else
+        $query_ratio .= "`".$nombre."` is null";
+    }
+    else{
         $query .= "b.`".$nombre."` = '".$valor."'";
+        $query_ratio .= "`".$nombre . "` = '" . $valor . "'";
+
+        //La linea comentada es para sacar el ratio desde SQL
+        //$query_ratio .= "`".$nombre . "` = '" . $valor . "'".") / (SELECT count(*) FROM `atributos` WHERE `" .$nombre ."` IS NOT NULL), 2)";
+    }
     $query .= " AND ";
+
+    //Sacar la similaridad por cada elemento
+    //$single_ratio = $conn->query($query_ratio);
+    //$single_ratio = $single_ratio->fetch_all();
+
+
+    //$ratio =  $single_ratio[0][0] * 100 / $total_reg[0][0];
+    //$ratio = round($ratio, 2);
+    $arrayRatio += ["audio-".$nombre => $ratio."%"];
+
+    //Para hacer el porcentaje mediante SQL
+    //$arrayRatio += ["audio-".$nombre => $single_ratio[0][0]];
 }
 //VIDEO
 $count=0;
 foreach ($resultadoVideo as $nombre=>$valor){
-    if (is_null($valor))
-        $query .= "c.`".$nombre."` is null";
-    else
+
+    $query_ratio = "SELECT count(*) FROM `atributos` WHERE ";
+
+    //Linea comentada para hacer el porcentaje en SQL
+    //$query_ratio = "SELECT ROUND ( (SELECT 100 * count(*) FROM `atributos` WHERE ";
+
+    if (is_null($valor)) {
+        $query .= "c.`" . $nombre . "` is null";
+        $query_ratio .= "`" . $nombre . "` is null";
+    }
+    else{
         $query .= "c.`".$nombre."` = '".$valor."'";
+        $query_ratio .= "`".$nombre . "` = '" . $valor . "'";
+
+        //La linea comentada es para sacar el ratio desde SQL
+        //$query_ratio .= "`".$nombre . "` = '" . $valor . "'".") / (SELECT count(*) FROM `atributos` WHERE `" .$nombre ."` IS NOT NULL), 2)";
+    }
     if ($count < count($resultadoVideo) - 1)
         $query .= " AND ";
     $count++;
+
+    //Sacar la similaridad por cada elemento
+    //$single_ratio = $conn->query($query_ratio);
+    //$single_ratio = $single_ratio->fetch_all();
+
+    //$ratio =  $single_ratio[0][0] * 100 / $total_reg[0][0];
+    //$ratio = round($ratio, 2);
+    $arrayRatio += ["video-".$nombre => $ratio."%"];
+
+    //Para hacer el porcentaje mediante SQL
+    //$arrayRatio += ["video-".$nombre => $single_ratio[0][0]];
+
 }
 
+// Conseguimos la unicidad total
 $resultado = $conn->query($query);
 $resultado = $resultado->fetch_all();
-echo "<p>Existen ".($resultado[0][0]-1)." browserFingerPrint como el tuyo en nuestra base de datos</p>";
+
+//Añadimos la unicidad total al JSON
+$arrayRatio += ["resultadoJS" => "Hay ".($resultado[0][0]-1)." browserFingerPrint como el tuyo en nuestra base de datos."];
+
+//Devolvemos el JSON tanto con el similarity ratio individual como con la unicidad total en la ultima clave del JSON.
+echo json_encode($arrayRatio);
 ?>

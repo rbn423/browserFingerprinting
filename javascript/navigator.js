@@ -150,7 +150,7 @@ function arrayNavigator(){
 }
 
 function arrayDispositivos(listaDispositivos) {
-    var salida ="<table><th colspan='2'>Lista de dispositivos del equipo</th>"; 
+    var salida ="<table><tr><th colspan='2'>Lista de dispositivos del equipo</th></tr><th>Dispositivo</th><th>Valor</th>";
     for (var i in listaDispositivos)
         salida += "<tr><td>"+listaDispositivos[i][0]+"</td><td>"+listaDispositivos[i][1]+"</td></tr>";
     document.getElementById("dispositivos").innerHTML = salida;
