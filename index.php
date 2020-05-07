@@ -28,7 +28,7 @@
 	</head>
 	<body>
 		<div id="container">
-			<a href="diagramas.html">Diagramas</a>
+			<a href="diagramas.php">Diagramas</a>
 			<h2>Atributos de la cabecera HTTP</h2>
 			<div id="cabecera">
 				<?php

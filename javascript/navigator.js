@@ -8,7 +8,7 @@ function nombreNavegadorYVersion() {
         return 'IE '+(tem[1] || '');
     }
     if(M[1]=== 'Chrome'){
-        tem= ua.match(/\b(OPR|Edg)\/(\d+)/);
+        tem= ua.match(/\b(OPR|Edg|Edge)\/(\d+)/);
         if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
     }
     M= M[2]? [M[1] + " " + M[2]]: [navigator.appName, navigator.appVersion, '-?'];
@@ -20,6 +20,8 @@ function nombreNavegadorYVersion() {
         navegador = salida().toString();
         var version = navegador.split(" ").pop();
         navegador = navegador.split(" ").slice(0, -1).join(" ");
+        if (navegador == "Edg")
+            navegador = "Edge-Chromium";
     }
     array.push(new Array("Navegador", "navegador", navegador));
     array.push(new Array("Versión", "version", version));

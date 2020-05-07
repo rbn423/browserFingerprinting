@@ -27,7 +27,10 @@ function cargaDiagrama(elemento) {
 		data.addColumn('string', 'Topping');
 		data.addColumn('number', 'Slices');
 		for (var clave in num){
-		  data.addRows([[clave, parseInt(num[clave],10)]]);
+			if (clave == null || clave == '')
+				data.addRows([["Null", parseInt(num[clave],10)]]);
+			else
+				data.addRows([[clave, parseInt(num[clave],10)]]);
 		}	
 		
 		//Piechart
