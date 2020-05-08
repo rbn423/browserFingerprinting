@@ -173,7 +173,8 @@ $resultado = $conn->query($query);
 $resultado = $resultado->fetch_all();
 
 //Añadimos la unicidad total al JSON
-$arrayRatio += ["resultadoJS" => "Hay ".($resultado[0][0]-1)." browserFingerPrint como el tuyo en nuestra base de datos."];
+$porcentajeUnicidad = round((($total_reg[0][0]-$resultado[0][0]+1)/$total_reg[0][0])*100,2);
+$arrayRatio += ["resultadoJS" => "Hay ".($resultado[0][0]-1)." browserFingerPrint como el tuyo de ".$total_reg[0][0]." en nuestra base de datos. (".$porcentajeUnicidad."% único)"];
 
 //Devolvemos el JSON tanto con el similarity ratio individual como con la unicidad total en la ultima clave del JSON.
 echo json_encode($arrayRatio);

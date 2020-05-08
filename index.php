@@ -28,7 +28,8 @@
 	</head>
 	<body>
 		<div id="container">
-			<a href="diagramas.php">Diagramas</a>
+			<div id="linkDiagramas"><a href="diagramas.php">Diagramas</a></div>
+            <div id="resultadoJS"></div>
 			<h2>Atributos de la cabecera HTTP</h2>
 			<div id="cabecera">
 				<?php
@@ -44,8 +45,6 @@
 						}
 					}
 					echo "</table>";
-					echo "<p>En total existen <strong>".($iguales-1)." </strong> cabeceras HTTP como la tuya en nuestra base de datos.</p>";
-					echo "<p>Eres un <strong>".(100-(($iguales-1)*100/$totales))."%</strong> único.</p>";
 				?>
 			</div>
 			<h2>Atributos JavaScript</h2>
@@ -87,9 +86,8 @@
 				</video>
 				<div id="video">
 					<script>
-						var formatos = formatosSoportadosVideo();
-						var salida = resultadoVideo(formatos);
-						asincroniaVideo(formatos,id);
+						var formatosVideo = formatosSoportadosVideo();
+						var salida = resultadoVideo(formatosVideo);
 						document.getElementById("video").innerHTML = salida;
 					</script>
 				</div>
@@ -98,9 +96,8 @@
 					</audio>
 				<div id="audio">
 					<script>
-						var formatos = formatosSoportadosAudio();
-						var salida = resultadoAudio(formatos);
-						asincroniaAudio(formatos,id);
+						var formatosAudio = formatosSoportadosAudio();
+						var salida = resultadoAudio(formatosAudio);
 						document.getElementById("audio").innerHTML = salida;
 					</script>
 				</div>
@@ -111,7 +108,6 @@
 						var pluginsInstalados = arrayPlugins();
 						var txt = resultadoPlugins(pluginsInstalados);
 						var resumen = resumenPlugins(pluginsInstalados);
-						asincroniaPlugins(pluginsInstalados, resumen, id);
 						document.getElementById("plugins").innerHTML=txt;
 					</script>
 				</div>
@@ -121,15 +117,15 @@
 						var font = fingerprint_fonts();
 						var salida = resultadoFuentes(font[0]);
 						document.getElementById("fuentes").innerHTML=salida;
-						//insercion de las fuentes en la base de datos
-						asincroniaFuentes(font,id);
 					</script>
 				</div>
-				<div id="resultadoJS"></div>
-					<script>
-						asincroniaJS(elementosJS,id);
-					</script>
-				</div>
+                <script>
+                    asincroniaVideo(formatosVideo,id);
+                    asincroniaAudio(formatosAudio,id);
+                    asincroniaPlugins(pluginsInstalados, resumen, id);
+                    asincroniaFuentes(font,id);
+                    asincroniaJS(elementosJS,id);
+                </script>
 			</div>
 		</div>
 	</body>

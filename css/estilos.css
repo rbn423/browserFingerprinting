@@ -52,3 +52,24 @@ tr:nth-child(even) {
 	margin-left: auto;
 }
 
+#linkDiagramas{
+	font-family: verdana, arial, sans-serif;
+	font-size: 10pt;
+	font-weight: bold;
+	padding: 4px;
+	background-color: #00C4B8;
+	color: white;
+	border-radius: 10px;
+	text-decoration: none;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	width: 7%;
+	text-align: center;
+}
+
+#linkDiagramas:hover {
+	border-bottom: 1px solid #cccccc;
+	border-top: 2px solid #666666;
+	border-right: 1px solid #cccccc;
+	border-left: 2px solid #666666;
+}
