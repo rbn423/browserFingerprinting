@@ -21,8 +21,11 @@
 	<script type="text/javascript" src="javascript/fontdetect.js"></script>
     <script type="text/javascript" src="javascript/asincrono.js"></script>
     <script type="text/javascript" src="javascript/canvas.js"></script>
+    <script type="text/javascript" src="javascript/video.js"></script>
+    <script type="text/javascript" src="javascript/audio.js"></script>
 </head>
 <body>
+	<a href="diagramas.html">Diagramas</a>
 	<?php
 		echo "<h2>Elementos de http</h2>";
         echo "<table border='visible'>";//el visible va por css
@@ -70,11 +73,41 @@
 		elementosJS.push(canvas);//Una vez pintado hemos obtenido el valor del canvas y lo añadimos al array
     </script>
 
+    <div id="dispositivos"></div>
+    <script>
+        dispositivos();
+    </script>
+
+    <video id="movie" hidden="true">
+        //el hidden va por css
+    </video>
+    <div id="video"></div>
+    <script>
+        var formatos = formatosSoportadosVideo();
+        var salida = resultadoVideo(formatos);
+        asincroniaVideo(formatos,id);
+        document.getElementById("video").innerHTML = salida;
+    </script>
+
+    <audio id="sound" hidden="true">
+        //el hidden por css
+    </audio>
+    <div id="audio"></div>
+    <script>
+        var formatos = formatosSoportadosAudio();
+        var salida = resultadoAudio(formatos);
+        asincroniaAudio(formatos,id);
+        document.getElementById("audio").innerHTML = salida;
+    </script>
+
+    <script>window.adblockEnabled = true</script><!--ponemos el atributo a true -->
+    <script type="text/javascript" src="javascript/ad_banner.js"></script><!--si se consigue cargar este js entonces no hay adblock y el atributo se pone a false -->
     <div id="plugins"></div>
     <script>
         var pluginsInstalados = arrayPlugins();
         var txt = resultadoPlugins(pluginsInstalados);
-        asincroniaPlugins(pluginsInstalados,id);
+        var resumen = resumenPlugins(pluginsInstalados);
+        asincroniaPlugins(pluginsInstalados, resumen, id);
         document.getElementById("plugins").innerHTML=txt;
     </script>
 
@@ -82,7 +115,7 @@
     <script type="text/javascript">
         //Hay que implementarlo en fuentes.js
 		var font = fingerprint_fonts();
-        var salida = resultadoFuentes(font);
+        var salida = resultadoFuentes(font[0]);
 		document.getElementById("fuentes").innerHTML=salida;
 		//insercion de las fuentes en la base de datos
 		asincroniaFuentes(font,id);

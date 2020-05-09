@@ -8,6 +8,15 @@ function plugins() {
     return resultado;
 }
 
+function adblock() {
+    var salida;
+    if (window.adblockEnabled)
+        salida = new Array("AdBlock activado", "adblock", true);
+    else
+        salida = new Array("AdBlock activado", "adblock", false);
+    return salida;
+}
+
 function getFlashVersion(){
     var resultado = null;
     for(var i = 0 ; i < navigator.mimeTypes.length; i++) {
@@ -21,7 +30,30 @@ function arrayPlugins(){
     var salida = new Array();
     salida.push(plugins());
     salida.push(getFlashVersion());
+    salida.push(adblock());
     return salida;
+}
+
+function resumenPlugins(listaPlugins){
+    var array = new Array();//En este array guardaremos solo los nombres de los plugins
+    var aux;
+    for(var i in listaPlugins[0]) {//lista de los plugins instalados solo los nombres
+        aux = listaPlugins[0][i].toString().toLowerCase();
+        array.push(aux);
+    }
+    if(listaPlugins[1][2] != null) {//comprueba si hay flash en los plugins
+        aux = listaPlugins[1][1].toString().toLowerCase();
+        array.push(aux);
+    }
+    if(listaPlugins[2][2]) {//comprueba si hay adblock en los plugins
+        aux = listaPlugins[2][1].toString().toLowerCase();
+        array.push(aux);
+    }
+    array.sort();
+    aux = "";
+    for (var i in array)//concatenamos los nombres de los plugins ya ordenados y en minuscula
+        aux += array[i];
+    return aux;
 }
 
 function resultadoPlugins(listaPlugins) {
@@ -37,6 +69,7 @@ function resultadoPlugins(listaPlugins) {
     salida += "</td></tr>" +
         "<tr><td>Plugins totales instalados</td><td align='center'>" + listaPlugins[0].length + "</td></tr>" +
         "<tr><td>"+listaPlugins[1][0]+"</td><td>"+valorFlash+"</td></tr>" +
+        "<tr><td>"+listaPlugins[2][0]+"</td><td>"+listaPlugins[2][2]+"</td></tr>" +
         "</table>";
     return salida;
 }
