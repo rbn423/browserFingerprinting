@@ -1,6 +1,7 @@
 <html>
 <head>
     <title>Diagramas</title>
+    <meta charset="utf-8">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="javascript/datosDiagrama.js"></script>
     <script type="text/javascript">
