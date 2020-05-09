@@ -13,6 +13,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
+        <title><?php echo $title; ?></title>
+
 		<script type="text/javascript" src="javascript/navigator.js"></script>
 		<script type="text/javascript" src="javascript/screen.js"></script>
 		<script type="text/javascript" src="javascript/fecha.js"></script>

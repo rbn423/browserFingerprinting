@@ -6,6 +6,9 @@
 	setLocale(LC_ALL, 'es_ES.UTF.8');
 	date_default_timezone_set('Europe/Madrid');
 
+    $title = "Browser Fingerprinting";
+    $sub_title = "Comprueba tu huella digital en la red";
+
 	if(!isset($_SESSION)) 
     { 
 	/**
