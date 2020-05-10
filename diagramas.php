@@ -7,6 +7,7 @@
     <script type="text/javascript">
         cargaDiagrama("navegador");
     </script>
+</head>
 <body>
 <p><a href="index.php">BrowserFingerPrint</a></p>
 <h1>Diagramas</h1>
