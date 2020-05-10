@@ -2,7 +2,6 @@
 <html>
 <head>
     <title><?php echo $title; ?></title>
-    <meta charset="utf-8">
 
     <script type="text/javascript" src="javascript/navigator.js"></script>
     <script type="text/javascript" src="javascript/screen.js"></script>

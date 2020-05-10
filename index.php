@@ -103,11 +103,7 @@
 					</script>
 				</div>
                 <script>
-                    asincroniaVideo(formatosVideo,id);
-                    asincroniaAudio(formatosAudio,id);
-                    asincroniaPlugins(pluginsInstalados, resumen, id);
-                    asincroniaFuentes(font,id);
-                    asincroniaJS(elementosJS,id);
+                    gestionarAsincronia();
                 </script>
 			</div>
 		</div>

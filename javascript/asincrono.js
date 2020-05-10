@@ -1,3 +1,23 @@
+function gestionarAsincronia() {
+    //cargamos las fuentes en la base de datos, y cuando recibimos una respuesta positiva cargamos lo siguiente, así hasta el cargaJS
+    asincroniaFuentes(font,id).onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200) {
+            asincroniaAudio(formatosAudio, id).onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    asincroniaPlugins(pluginsInstalados, resumen, id).onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            asincroniaVideo(formatosVideo,id).onreadystatechange = function () {
+                                if (this.readyState == 4 && this.status == 200)
+                                    asincroniaJS(elementosJS,id); //este debe ser el ultimo metodo en lanzarse, y solo se lanza cuando han terminado todos
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 function asincroniaJS(elementosJS,id) {
     if (elementosJS != null){
         var formData = new FormData();
@@ -30,6 +50,7 @@ function asincroniaJS(elementosJS,id) {
 }
 
 function asincroniaFuentes(listaFuentes,id) {
+    var xmlhttp = null;
     if (listaFuentes != null){
         var formData = new FormData();
         formData.append("ID",id);
@@ -49,9 +70,11 @@ function asincroniaFuentes(listaFuentes,id) {
         xmlhttp.open("POST","BD/cargaFuentes.php",true);
         xmlhttp.send(formData);
     }
+    return xmlhttp;
 }
 
 function asincroniaPlugins(listaPlugins, resumen, id) {
+    var xmlhttp = null;
     if (listaPlugins != null){
         var formData = new FormData();
         formData.append("ID",id);
@@ -71,22 +94,24 @@ function asincroniaPlugins(listaPlugins, resumen, id) {
             // code for IE6, IE5
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
+        xmlhttp.onreadystatechange = function(){
+            if (this.readyState == 4 && this.status == 200){
                 var resultado = this.response;
-                for (var clave in resultado){
+                for (var clave in resultado) {
                     if (document.getElementById(clave))
                         document.getElementById(String(clave)).innerHTML = resultado[clave];
                 }
             }
-        };
+        }
         xmlhttp.open("POST","BD/cargaPlugins.php",true);
         xmlhttp.send(formData);
         xmlhttp.responseType="json";
     }
+    return xmlhttp;
 }
 
 function asincroniaVideo(formatos,id) {
+    var xmlhttp = null;
     if (formatos != null){
         var formData = new FormData();
         formData.append("ID",id);
@@ -103,9 +128,11 @@ function asincroniaVideo(formatos,id) {
         xmlhttp.open("POST","BD/cargaFormatosVideo.php",true);
         xmlhttp.send(formData);
     }
+    return xmlhttp;
 }
 
 function asincroniaAudio(formatos,id) {
+    var xmlhttp = null;
     if (formatos != null){
         var formData = new FormData();
         formData.append("ID",id);
@@ -122,6 +149,7 @@ function asincroniaAudio(formatos,id) {
         xmlhttp.open("POST","BD/cargaFormatosAudio.php",true);
         xmlhttp.send(formData);
     }
+    return xmlhttp;
 }
 
 function asincroniaDispositivos(dispositivos,id) {
