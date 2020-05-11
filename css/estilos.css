@@ -8,7 +8,6 @@ body{
     display: inline-block;
     position: relative;
     width: 90%;
-	align: center;
 	font-size: 15px;
 	border-collapse: separate;
 }
@@ -16,16 +15,15 @@ table {
 	table-layout: fixed;
     border-collapse: separate;
 	width: 100%;
-	align: center;
-
 }
+
 td {
 	width: 100%;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	align:center;
 	word-wrap: break-word;
 }
+
 h2 {
 	font-style: oblique;
 }
@@ -35,16 +33,12 @@ h2 {
 }
 
 th {
-	align:center;
 	background-color: #00C4B8;
 	color: white;
 }
+
 tr:nth-child(even) {
 	background-color: #f2f2f2;
-}
-
-#audio {
-	colspan : 2;
 }
 
 .cargando{
