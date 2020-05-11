@@ -101,7 +101,7 @@ foreach ($resultadoAtributos as $nombre=>$valor){
 //AUDIO
 foreach ($resultadoAudio as $nombre=>$valor){
 
-    $query_ratio = "SELECT count(*) FROM `atributos` WHERE ";
+    $query_ratio = "SELECT count(*) FROM `formatosaudio` WHERE ";
 
     //Linea comentada para hacer el porcentaje en SQL
     //$query_ratio = "SELECT ROUND ( (SELECT 100 * count(*) FROM `atributos` WHERE ";
@@ -120,12 +120,11 @@ foreach ($resultadoAudio as $nombre=>$valor){
     $query .= " AND ";
 
     //Sacar la similaridad por cada elemento
-    //$single_ratio = $conn->query($query_ratio);
-    //$single_ratio = $single_ratio->fetch_all();
+    $single_ratio = $conn->query($query_ratio);
+    $single_ratio = $single_ratio->fetch_all();
 
-
-    //$ratio =  $single_ratio[0][0] * 100 / $total_reg[0][0];
-    //$ratio = round($ratio, 2);
+    $ratio =  $single_ratio[0][0] * 100 / $total_reg[0][0];
+    $ratio = round($ratio, 2);
     $arrayRatio += ["audio-".$nombre => $ratio."%"];
 
     //Para hacer el porcentaje mediante SQL
@@ -135,7 +134,7 @@ foreach ($resultadoAudio as $nombre=>$valor){
 $count=0;
 foreach ($resultadoVideo as $nombre=>$valor){
 
-    $query_ratio = "SELECT count(*) FROM `atributos` WHERE ";
+    $query_ratio = "SELECT count(*) FROM `formatosvideo` WHERE ";
 
     //Linea comentada para hacer el porcentaje en SQL
     //$query_ratio = "SELECT ROUND ( (SELECT 100 * count(*) FROM `atributos` WHERE ";
@@ -156,11 +155,11 @@ foreach ($resultadoVideo as $nombre=>$valor){
     $count++;
 
     //Sacar la similaridad por cada elemento
-    //$single_ratio = $conn->query($query_ratio);
-    //$single_ratio = $single_ratio->fetch_all();
+    $single_ratio = $conn->query($query_ratio);
+    $single_ratio = $single_ratio->fetch_all();
 
-    //$ratio =  $single_ratio[0][0] * 100 / $total_reg[0][0];
-    //$ratio = round($ratio, 2);
+    $ratio =  $single_ratio[0][0] * 100 / $total_reg[0][0];
+    $ratio = round($ratio, 2);
     $arrayRatio += ["video-".$nombre => $ratio."%"];
 
     //Para hacer el porcentaje mediante SQL
