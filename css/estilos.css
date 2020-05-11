@@ -47,7 +47,7 @@ tr:nth-child(even) {
 	colspan : 2;
 }
 
-#cargando{
+.cargando{
 	height: auto;
 	width: 10%;
 	margin-left: auto;

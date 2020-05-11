@@ -21,10 +21,14 @@
 					  echo "<th>Elemento</th><th>Similaridad</th><th>Valor</th>";
 					echo "</tr>";
 					foreach ($headers as $header => $value) {
+					    //pintamos cada una de las filas de las cabeceras http
 						if($header != "Cache-Control" && $header != "Host" && $header != "Cookie" && $header != "Referer"){
-							echo "<tr>";
-							echo "<td>".$header."</td><td id='".str_replace('-', '', $header)."'><img id='cargando' src='img/animated.png'></td><td>".$value."</td>";
-							echo "</tr>";
+						    $fila = "<tr>";
+							$fila .= "<td>".$header."</td>"; //nombre de la cabecera
+                            $fila .= "<td id='".str_replace('-', '', $header)."'><img class='cargando' src='img/animated.png'></td>";//porcentaje de similaridad de la cabecera y mientras espera el porcentaje un gif de cargando
+                            $fila .= "<td>".$value."</td>"; //resultado de la cabecera
+							$fila .= "</tr>";
+							echo $fila;
 						}
 					}
 					echo "</table>";
@@ -33,9 +37,9 @@
 			<h2>Atributos JavaScript</h2>
 			<div id="JS">
 				<script>
-					var id = '<?php echo $id; ?>';
-					var salida = "<table> <tr> <th>Elemento</th><th>Similaridad</th><th>Valor</th> </tr>";//el visible va por css
-					var elementosJS = new Array();
+					var id = '<?php echo $id; ?>';//guardamos el id del usuario actual para las siguientes consultas asíncronas
+					var salida = "<table> <tr> <th>Elemento</th><th>Similaridad</th><th>Valor</th> </tr>"; //vamos construyendo la tabla en esta variable para pintarla al final
+					var elementosJS = new Array(); //Se van añadiendo a este array todos los elementos obtenidos mediante JS
 					var navegador = arrayNavigator();
 					var fecha = arrayFecha();
 					var pantalla = arrayScreen();
@@ -48,8 +52,8 @@
 					for (var i = 0 ; i < ventana.length ; i++)
 						elementosJS.push(ventana[i]);
 					for (var i = 0; i < elementosJS.length; i++)
-                        salida += "<tr><td>" + elementosJS[i][0] + "</td><td id='" + elementosJS[i][1]+ "'><img id='cargando' src='img/animated.png'></td><td>" + elementosJS[i][2] + "</td></tr>";
-                    salida += "<tr><td>Canvas</td><td id=canvas><img id='cargando' src='img/animated.png'></td><td>" +
+                        salida += "<tr><td>" + elementosJS[i][0] + "</td><td id='" + elementosJS[i][1]+ "'><img class='cargando' src='img/animated.png'></td><td>" + elementosJS[i][2] + "</td></tr>";
+                    salida += "<tr><td>Canvas</td><td id=canvas><img class='cargando' src='img/animated.png'></td><td>" +
                         "<canvas id='canvas_result'></canvas>" +
                         "</td></tr>";
                     salida += "</table>";
@@ -64,9 +68,7 @@
 						dispositivos();
 					</script>
 				</div>
-				<video id="movie" hidden="true">
-					//el hidden va por css
-				</video>
+				<video id="movie" hidden="true"></video>
 				<div id="video">
 					<script>
 						var formatosVideo = formatosSoportadosVideo();
@@ -74,9 +76,7 @@
 						document.getElementById("video").innerHTML = salida;
 					</script>
 				</div>
-					<audio id="sound" hidden="true">
-						//el hidden por css
-					</audio>
+					<audio id="sound" hidden="true"></audio>
 				<div id="audio">
 					<script>
 						var formatosAudio = formatosSoportadosAudio();
@@ -96,14 +96,13 @@
 				</div>
 				<div id="fuentes">
 					<script type="text/javascript">
-						//Hay que implementarlo en fuentes.js
 						var font = fingerprint_fonts();
 						var salida = resultadoFuentes(font[0]);
 						document.getElementById("fuentes").innerHTML=salida;
 					</script>
 				</div>
                 <script>
-                    gestionarAsincronia();
+                    gestionarAsincronia(id);
                 </script>
 			</div>
 		</div>

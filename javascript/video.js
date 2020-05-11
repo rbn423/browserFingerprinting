@@ -1,3 +1,6 @@
+/*
+comprueba para cada formato de nuestra lista si está soportado en el navegador. Tres posibles respuestas de este(maybe, probably, "")
+ */
 function formatosSoportadosVideo() {
     var objVideo = document.getElementById("movie");
 
@@ -21,6 +24,10 @@ function formatosSoportadosVideo() {
     return videosSoportados; //devolvemos array con el formato y el resultado de si se puede utilizar
 }
 
+/*
+listaVideo es una lista con los pares formato y resultado de la comprobacion de reproducción de formato
+Pinta la tabla html con los resultados de los formatos de video soportados
+ */
 function resultadoVideo(listaVideo){
     var valor;
     var salida = "<table><tr><th colspan='3'>Formatos de video soportados</th></tr><th>Formatos</th><th>Similaridad</th><th>Valor</th>"; //el borde va por css y el colspan
@@ -29,7 +36,7 @@ function resultadoVideo(listaVideo){
             valor = "No soportado";
         else
             valor = listaVideo[i][2];
-        salida += "<tr><td>" + listaVideo[i][0] + "</td><td id='video-" + listaVideo[i][1]+ "'><img id='cargando' src='img/animated.png'></td><td>" + valor + "</td></tr>";
+        salida += "<tr><td>" + listaVideo[i][0] + "</td><td id='video-" + listaVideo[i][1]+ "'><img class='cargando' src='img/animated.png'></td><td>" + valor + "</td></tr>";
     }
     salida += "</table>";
     return salida;
