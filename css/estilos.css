@@ -54,23 +54,21 @@ tr:nth-child(even) {
 }
 
 #linkDiagramas{
-	font-family: verdana, arial, sans-serif;
-	font-size: 10pt;
-	font-weight: bold;
-	padding: 4px;
-	background-color: #00C4B8;
-	color: white;
-	border-radius: 10px;
+	background-color: white;
+	border: solid #00C4B8;
+	color: #00C4B8;
+	text-align: center;
 	text-decoration: none;
+	display: inline-block;
+	font-size: inherit;
 	margin-top: 2%;
 	margin-bottom: 2%;
-	width: 7%;
-	text-align: center;
+	padding: 1% 1%;
+	border-radius: 25%;
+	transition-duration: 0.4s;
 }
 
 #linkDiagramas:hover {
-	border-bottom: 1px solid #cccccc;
-	border-top: 2px solid #666666;
-	border-right: 1px solid #cccccc;
-	border-left: 2px solid #666666;
+	background-color: #00C4B8; /* Green */
+	color: white;
 }

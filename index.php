@@ -11,7 +11,7 @@
     require "header.php";
 ?>
 		<div id="container">
-			<div id="linkDiagramas"><a href="diagramas.php">Diagramas</a></div>
+            <form action='diagramas.php'><button id="linkDiagramas">Diagramas</button></form>
             <div id="resultadoJS"></div>
 			<h2>Atributos de la cabecera HTTP</h2>
 			<div id="cabecera">
