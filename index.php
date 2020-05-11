@@ -1,6 +1,7 @@
 <?php
 	require_once("comun/config.php");
 	require_once("BD/BDCabecerasHTTP.php");
+	require_once("comun/DescElemento.php");
 
 	$headers = apache_request_headers();
 
@@ -28,9 +29,12 @@
 					foreach ($headers as $header => $value) {
 					    //pintamos cada una de las filas de las cabeceras http
 						if($header != "Cache-Control" && $header != "Host" && $header != "Cookie" && $header != "Referer"){
+						    $clave = str_replace('-', '', $header);
 						    $fila = "<tr>";
-							$fila .= "<td>".$header."</td>"; //nombre de la cabecera
-                            $fila .= "<td id='".str_replace('-', '', $header)."'><img class='cargando' src='img/animated.png'></td>";//porcentaje de similaridad de la cabecera y mientras espera el porcentaje un gif de cargando
+							$fila .= "<td><div class='nombreElemento'>".$header."</div>" ;//nombre de la cabecera
+							$fila .= "<div class='tooltip'>info";
+							$fila .= "<span class='tooltiptext'>".DescElemento::getDescripcion($clave)."</span></div></td>"; //icono de info desplegable
+                            $fila .= "<td id='".$clave."'><img class='cargando' src='img/animated.png'></td>";//porcentaje de similaridad de la cabecera y mientras espera el porcentaje un gif de cargando
                             $fila .= "<td>".$value."</td>"; //resultado de la cabecera
 							$fila .= "</tr>";
 							echo $fila;

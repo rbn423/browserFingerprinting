@@ -23,3 +23,7 @@ Aquí documentamos las caractéristicas que vayamos añadiendo al proyecto.
 -audio.js -> igual que video pero para los formatos de audio
     -los formatos los he sacado de amiunique y de https://developer.mozilla.org/es/docs/Web/HTML/Formatos_admitidos_de_audio_y_video_en_html5
 -canvas.js -> //https://browserleaks.com/canvas#how-does-it-work de aqui he sacado el funcionamiento y de w3schools como pintar cosas en canvas
+
+-la paleta de colores empleada en el el diseño del proyecto la he sacado aleatoriamente de https://coolors.co/
+
+-Para el icono de info he utilizado el codigo de https://www.w3schools.com/howto/howto_css_tooltip.asp

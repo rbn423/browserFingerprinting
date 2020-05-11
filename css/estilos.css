@@ -79,3 +79,58 @@ tr:nth-child(odd){
 #tablaResultadoJS th{
 	font-size: larger;
 }
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+	float: right;
+	padding-right: 1%;
+	color: black;
+	font-weight: bold;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 120px;
+	background-color: #555;
+	color: #fff;
+	text-align: center;
+	border-radius: 6px;
+	padding: 5px 0;
+	position: absolute;
+	z-index: 1;
+	bottom: 125%;
+	left: 50%;
+	margin-left: -60px;
+	opacity: 0;
+	transition: opacity 0.3s;
+	font-weight: normal;
+}
+
+.tooltip .tooltiptext::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: #555 transparent transparent transparent;
+	font-weight: normal;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+	opacity: 1;
+}
+
+.iconoInfo{
+	height: auto;
+	display: inline-block;
+	width: 5%;
+}
+
+.nombreElemento{
+	float: left;
+	display: inline-block;
+}
