@@ -27,13 +27,12 @@ Pinta la tabla html de las fuentes
 function resultadoFuentes(listaFuentes){
 	var resultado = "<table>" +
 		"<tr><th colspan='3'>Fuentes</th></tr>" + //el colspan va por css
-		"<tr><td>Lista de fuentes</td><td id='resumenFuentes'><img class='cargando' src='img/animated.png'></td><td>";
+		"<tr><td>Lista de fuentes ("+listaFuentes.length+" detectadas)</td><td id='resumenFuentes'><img class='cargando' src='img/animated.png'></td><td>";
 	for (var i = 0; i < listaFuentes.length; i++) {
 		resultado += listaFuentes[i];
 		if (i < listaFuentes.length-1)
 			resultado += ", ";
 	}
-	resultado += "</td></tr>" + "</table>" + "<p>" + "Número de fuentes detectadas: "+ listaFuentes.length + "</p>";
 	
 	return resultado;
 }

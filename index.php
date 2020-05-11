@@ -12,7 +12,12 @@
 ?>
 		<div id="container">
             <form action='diagramas.php'><button id="linkDiagramas">Diagramas</button></form>
-            <div id="resultadoJS"></div>
+            <div>
+                <table id="tablaResultadoJS">
+                    <tr><th>Resultado</th></tr>
+                    <tr><td><p id="resultadoJS"><img src="img/animated.png" class="cargando"></p></td></tr>
+                </table>
+            </div>
 			<h2>Atributos de la cabecera HTTP</h2>
 			<div id="cabecera">
 				<?php

@@ -1,7 +1,7 @@
 body{
 	font-family: Arial, Helvetica, sans-serif;
 	margin-left: 10%;
-	background: white;
+	background: #F4F4F9;
 }
 
 #container {
@@ -15,6 +15,7 @@ table {
 	table-layout: fixed;
     border-collapse: separate;
 	width: 100%;
+	margin-bottom: 2%;
 }
 
 td {
@@ -33,12 +34,16 @@ h2 {
 }
 
 th {
-	background-color: #00C4B8;
+	background-color: #2F4550;
 	color: white;
 }
 
 tr:nth-child(even) {
-	background-color: #f2f2f2;
+	background-color: #B8DBD9;
+}
+
+tr:nth-child(odd){
+	background-color: #849ca9;
 }
 
 .cargando{
@@ -49,8 +54,8 @@ tr:nth-child(even) {
 
 #linkDiagramas{
 	background-color: white;
-	border: solid #00C4B8;
-	color: #00C4B8;
+	border: solid #2F4550;
+	color: #2F4550;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
@@ -63,6 +68,14 @@ tr:nth-child(even) {
 }
 
 #linkDiagramas:hover {
-	background-color: #00C4B8; /* Green */
+	background-color: #2F4550; /* Green */
 	color: white;
+}
+
+#tablaResultadoJS td{
+	text-align: center;
+}
+
+#tablaResultadoJS th{
+	font-size: larger;
 }
