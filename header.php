@@ -14,6 +14,7 @@
     <script type="text/javascript" src="javascript/canvas.js"></script>
     <script type="text/javascript" src="javascript/video.js"></script>
     <script type="text/javascript" src="javascript/audio.js"></script>
+    <script type="text/javascript" src="javascript/descElementoJS.js"></script>
     <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>

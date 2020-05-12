@@ -1,7 +1,7 @@
 body{
 	font-family: Arial, Helvetica, sans-serif;
 	margin-left: 10%;
-	background: #F4F4F9;
+	background: #efeff4;
 }
 
 #container {
@@ -23,6 +23,8 @@ td {
 	padding-top: 5px;
 	padding-bottom: 5px;
 	word-wrap: break-word;
+	padding-left: 1%;
+	padding-right: 1%;
 }
 
 h2 {
@@ -53,7 +55,7 @@ tr:nth-child(odd){
 }
 
 #linkDiagramas{
-	background-color: white;
+	background-color: #efeff4;
 	border: solid #2F4550;
 	color: #2F4550;
 	text-align: center;
@@ -69,7 +71,7 @@ tr:nth-child(odd){
 
 #linkDiagramas:hover {
 	background-color: #2F4550; /* Green */
-	color: white;
+	color: #efeff4;
 }
 
 #tablaResultadoJS td{
@@ -91,7 +93,7 @@ tr:nth-child(odd){
 
 .tooltip .tooltiptext {
 	visibility: hidden;
-	width: 120px;
+	width: 160px;
 	background-color: #555;
 	color: #fff;
 	text-align: center;
@@ -101,7 +103,7 @@ tr:nth-child(odd){
 	z-index: 1;
 	bottom: 125%;
 	left: 50%;
-	margin-left: -60px;
+	margin-left: -80px;
 	opacity: 0;
 	transition: opacity 0.3s;
 	font-weight: normal;

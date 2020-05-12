@@ -1,7 +1,7 @@
 <?php
 	require_once("comun/config.php");
 	require_once("BD/BDCabecerasHTTP.php");
-	require_once("comun/DescElemento.php");
+	require_once("comun/DescElementoHTTP.php");
 
 	$headers = apache_request_headers();
 
@@ -32,8 +32,8 @@
 						    $clave = str_replace('-', '', $header);
 						    $fila = "<tr>";
 							$fila .= "<td><div class='nombreElemento'>".$header."</div>" ;//nombre de la cabecera
-							$fila .= "<div class='tooltip'>info";
-							$fila .= "<span class='tooltiptext'>".DescElemento::getDescripcion($clave)."</span></div></td>"; //icono de info desplegable
+							$fila .= "<div class='tooltip'>info";//icono de info desplegable
+							$fila .= "<span class='tooltiptext'>".DescElementoHTTP::getDescripcionHTTP($clave)."</span></div></td>";//desplegable con la información
                             $fila .= "<td id='".$clave."'><img class='cargando' src='img/animated.png'></td>";//porcentaje de similaridad de la cabecera y mientras espera el porcentaje un gif de cargando
                             $fila .= "<td>".$value."</td>"; //resultado de la cabecera
 							$fila .= "</tr>";
@@ -60,11 +60,25 @@
 						elementosJS.push(pantalla[i]);
 					for (var i = 0 ; i < ventana.length ; i++)
 						elementosJS.push(ventana[i]);
-					for (var i = 0; i < elementosJS.length; i++)
-                        salida += "<tr><td>" + elementosJS[i][0] + "</td><td id='" + elementosJS[i][1]+ "'><img class='cargando' src='img/animated.png'></td><td>" + elementosJS[i][2] + "</td></tr>";
-                    salida += "<tr><td>Canvas</td><td id=canvas><img class='cargando' src='img/animated.png'></td><td>" +
+					for (var i = 0; i < elementosJS.length; i++) {
+                        salida += "<tr>" +
+                            "<td><div class='nombreElemento'>" + elementosJS[i][0] + "</div>" +//nombre del elemento
+                            "<div class='tooltip'>info" + //palabra info que mostrará desplegable con la información al poner el puntero encima
+                            "<span class='tooltiptext'>"+getDescripcionJS(elementosJS[i][1])+"</span></div>" + //información del elemento
+                            "</td>" +
+                            "<td id='" + elementosJS[i][1] + "'><img class='cargando' src='img/animated.png'></td>" +//ratio del elemento en la base de datos y mientras espera al ratio muestra una imagen de cargando
+                            "<td>" + elementosJS[i][2] + "</td></tr>";//resultado del elemento en el navegador
+                    }
+					salida += "<tr>" +
+                        "<td><div class='nombreElemento'>Canvas</div>" +
+                        "<div class='tooltip'>info" +
+                        "<span class='tooltiptext'>"+getDescripcionJS("canvas")+"</span></div>" +
+                        "</td>" +
+                        "<td id=canvas><img class='cargando' src='img/animated.png'></td>" +
+                        "<td>" +
                         "<canvas id='canvas_result'></canvas>" +
-                        "</td></tr>";
+                        "</td>" +
+                        "</tr>";
                     salida += "</table>";
 
 					document.getElementById("JS").innerHTML = salida;
