@@ -39,7 +39,12 @@ function resultadoAudio(listaAudio) {
             valor = "No soportado";
         else
             valor = listaAudio[i][2];
-        salida += "<tr><td>" + listaAudio[i][0] + "</td><td id='audio-" + listaAudio[i][1]+ "'><img class='cargando' src='img/animated.png'></td><td>" + valor + "</td></tr>";
+        salida += "<tr><td><div class='nombreElemento'>" + listaAudio[i][0] + "</div>" +//nombre del elemento
+            "<div class='tooltip'>info" + //palabra info que mostrará desplegable con la información al poner el puntero encima
+            "<span class='tooltiptext'>"+getDescripcionJS('audio')+"</span></div>" +
+            "</td>" +
+            "<td id='audio-" + listaAudio[i][1]+ "'><img class='cargando' src='img/animated.png'></td>" +
+            "<td>" + valor + "</td></tr>";
     }
     salida += "</table>";
     return salida;

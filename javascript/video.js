@@ -36,7 +36,12 @@ function resultadoVideo(listaVideo){
             valor = "No soportado";
         else
             valor = listaVideo[i][2];
-        salida += "<tr><td>" + listaVideo[i][0] + "</td><td id='video-" + listaVideo[i][1]+ "'><img class='cargando' src='img/animated.png'></td><td>" + valor + "</td></tr>";
+        salida += "<tr><td><div class='nombreElemento'>" + listaVideo[i][0] + "</div>" + //nombre del elemento
+            "<div class='tooltip'>info" + //palabra info que mostrará desplegable con la información al poner el puntero encima
+            "<span class='tooltiptext'>"+getDescripcionJS('video')+"</span></div>" +
+            "</td>" +
+            "<td id='video-" + listaVideo[i][1]+ "'><img class='cargando' src='img/animated.png'></td>" +
+            "<td>" + valor + "</td></tr>";
     }
     salida += "</table>";
     return salida;

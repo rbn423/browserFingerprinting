@@ -27,7 +27,12 @@ Pinta la tabla html de las fuentes
 function resultadoFuentes(listaFuentes){
 	var resultado = "<table>" +
 		"<tr><th colspan='3'>Fuentes</th></tr>" + //el colspan va por css
-		"<tr><td>Lista de fuentes ("+listaFuentes.length+" detectadas)</td><td id='resumenFuentes'><img class='cargando' src='img/animated.png'></td><td>";
+		"<tr><td><div class='nombreElemento'>Lista de fuentes ("+listaFuentes.length+" detectadas)</div>" +
+		"<div class='tooltip'>info" + //palabra info que mostrará desplegable con la información al poner el puntero encima
+		"<span class='tooltiptext'>"+getDescripcionJS('fuentes')+"</span></div>" +
+		"</td>" +
+		"<td id='resumenFuentes'><img class='cargando' src='img/animated.png'></td>" +
+		"<td>";
 	for (var i = 0; i < listaFuentes.length; i++) {
 		resultado += listaFuentes[i];
 		if (i < listaFuentes.length-1)

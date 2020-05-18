@@ -35,7 +35,10 @@ var descripcionesJS = {
     "sessionStorage" : "Indica si se almacena la información de la sesión. La información almacenada en sessionStorage es eliminada al finalizar la sesion de la página",
     "indexDB" : "Es una manera de almacenar datos dentro del navegador del usuario. Debido a que permite la creación de aplicaciones con habilidades de consulta enriquecidas, con independencia de la disponibilidad de la red",
     "windowResults" : "Indica si está disponible el objeto results de window para este navegador",
-    "canvas" : "Pintamos un objeto canvas que será diferente dependiendo del equipo y navegador"
+    "canvas" : "Pintamos un objeto canvas que será diferente dependiendo del equipo y navegador",
+    "video" : "Comprobamos la disponibilidad del codec para el formato de video. Puede ser Probably, Maybe o vacía",
+    "audio" : "Comprobamos la disponibilidad del codec para el formato de audio. Puede ser Probably, Maybe o vacía",
+    "fuentes" : "Comprobamos que fuentes instaladas en el navegador coinciden con una lista de fuentes declarada por nosotros"
 };
 
 /*
