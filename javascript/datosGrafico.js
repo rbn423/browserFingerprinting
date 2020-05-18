@@ -3,18 +3,8 @@ function cargaGrafico(elemento) {
 	// Load Charts and the corechart and barchart packages.
 	google.charts.load('current', {'packages':['corechart']});
 	// Draw the pie chart and bar chart when Charts is loaded.	
-	
-	if (window.XMLHttpRequest) {
-		// code for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp = new XMLHttpRequest();
-	} else {
-		// code for IE6, IE5
-		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	xmlhttp.open("GET","BD/cargaGrafico.php?elemento="+elemento,true);
-	xmlhttp.responseType = 'json';
-	xmlhttp.send();
-	
+
+	xmlhttp = asincroniaGraficos(elemento);
 	xmlhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
 		  google.charts.setOnLoadCallback(drawChart);

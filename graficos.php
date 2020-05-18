@@ -9,6 +9,7 @@
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="javascript/datosGrafico.js"></script>
+    <script type="text/javascript" src="javascript/asincrono.js"></script>
     <script type="text/javascript">
         cargaGrafico("navegador");
     </script>
