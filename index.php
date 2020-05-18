@@ -12,7 +12,7 @@
     require "header.php";
 ?>
 		<div id="container">
-            <form action='diagramas.php'><button id="linkDiagramas">Diagramas</button></form>
+            <form action='graficos.php'><button id="linkGraficos">Gráficos</button></form>
             <div>
                 <table id="tablaResultadoJS">
                     <tr><th>Resultado</th></tr>

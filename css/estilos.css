@@ -4,17 +4,17 @@ body{
 	background: #efeff4;
 }
 
-#headerDiagramas{
+#headerGraficos{
 	background-color: #2F4550;
 	height: 50px;
 	text-align: center;
 }
 
-#headerDiagramas h2{
+#headerGraficos h2{
 	padding-top: 1%;
 }
 
-#contenidoDiagramas{
+#contenidoGraficos{
 	background-color: #B8DBD9;
 }
 
@@ -26,7 +26,7 @@ body{
 	border-collapse: separate;
 }
 
-#selectorDiagrama {
+#selectorGrafico {
 	margin-top: 1%;
 	margin-left: 1%;
 	font-size: 16px;
@@ -89,7 +89,7 @@ tr:nth-child(odd){
 	margin-left: auto;
 }
 
-#linkDiagramas{
+#linkGraficos{
 	background-color: #efeff4;
 	border: solid #2F4550;
 	color: #2F4550;
@@ -104,7 +104,7 @@ tr:nth-child(odd){
 	transition-duration: 0.4s;
 }
 
-#linkDiagramas:hover {
+#linkGraficos:hover {
 	background-color: #2F4550; /* Green */
 	color: #efeff4;
 }
