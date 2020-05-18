@@ -17,10 +17,17 @@ function cargaGrafico(elemento) {
 		data.addColumn('string', 'Topping');
 		data.addColumn('number', 'Slices');
 		for (var clave in num){
+			var leyenda = clave;
+			if (elemento != "pixelRatio"){
+				if(clave == "1")
+					leyenda = "True";
+				else if (clave == "0")
+					leyenda = "False";
+			}
 			if (clave == null || clave == '')
 				data.addRows([["Null", parseInt(num[clave],10)]]);
 			else
-				data.addRows([[clave, parseInt(num[clave],10)]]);
+				data.addRows([[leyenda, parseInt(num[clave],10)]]);
 		}	
 		
 		//Piechart
