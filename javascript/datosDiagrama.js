@@ -35,8 +35,9 @@ function cargaDiagrama(elemento) {
 		
 		//Piechart
 		var piechart_options = {title: elemento,
-					   width:500,
-					   height:400};
+			width:800,
+			height:500,
+			backgroundColor: 'transparent'}; //color de fondo
 		var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
 		piechart.draw(data, piechart_options);		
 		

@@ -88,7 +88,7 @@
 
 				<div id="dispositivos">
 					<script>
-						dispositivos();
+						//dispositivos();
 					</script>
 				</div>
 				<video id="movie" hidden="true"></video>
