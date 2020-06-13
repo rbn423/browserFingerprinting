@@ -1,0 +1,77 @@
+\chapter{Fuentes de información}
+\noindent
+Dividimos las fuentes de información en dos grupos en base al método que hemos empleado para su obtención. El primer grupo será el de los datos obtenidos a partir de la cabecera HTTP y el segundo grupo será el de los datos extraídos de elementos o funciones JavaScript.
+\section{Datos de la cabecera HTTP}
+Los elementos de la cabecera HTTP que hemos decidido utilizar han sido:
+\begin{itemize}
+    \item \textbf{Accept}: Informa al servidor sobre los diferentes tipos de datos que el cliente puede procesar mediante una estructura MIME (Multipurpose Internet Mail Extensions).
+    \item \textbf{Accept-Language}: anuncia que idiomas puede entender el cliente y que variante de región prefiere de este.Explicación de MIME aqui o en un tipo de apéndice ??
+    \item \textbf{Upgrade-Insecure-Requests}: envía una señal al servidor en la que se indica que el cliente tiene preferencia por una respuesta encriptada y autenticada, y que puede manejar la directiva CSP upgrade-insecure-request.
+    \item \textbf{User-Agent}: es una cadena característica que identifica el protocolo de red mediante el cual se pueden obtener los datos del tipo de aplicación utilizada, el sistema operativo, el proveedor del software o la versión utilizada.
+    \item \textbf{Accept-Encoding}: anuncia la codificación del contenido que el cliente puede entender. Puede estar formado por un valor o por varios y estos valores son gzip, compress, deflate, br, identity y *. Explico que son los valores o no???
+    \item \textbf{Connection}: comprueba si la conexión a la red permanece abierta o no al finalizar la transacción actual. Los valores que puede tomar son keep-alive si se mantiene la conexión o close si la conexión está cerrada.
+    \item \textbf{Sec-Fetch-Mode}: es una cabecera de metadatos que indica el modo de la respuesta. Los valores que puede contener son cros, navigate, nested-navigate, no-cors, same-origin y websocket.
+    \item \textbf{Sec-Fetch-User}: es una cabecera de metadatos que indica si la solicitud de navegación fue realizada por una activación de usuario. Los valores posibles para este campo son ?0 si fue activada por un usuario o ?1 si no lo fue.
+    \item \textbf{Sec-Fetch-Site}: es una cabecera de metadatos que indica la relación entre el origen de la consulta y el origen de la respuesta. Los valores que puede tomar son none, cross-site, same-origin y same-site.
+    \item \textbf{DNT}: indica la preferencia de seguimiento del usuario, le indica si prefiere la privacidad al contenido personalizado. Sus posibles valores son 1 si el usuario permite ser reconocido, 0 si el usuario no lo permite o null si el usuario no lo especifica.
+\end{itemize}
+Estos son los elementos que hemos decidido utilizar para nuestro estudio pero vamos a mencionar también los elementos que extraemos de la cabecera y que hemos descartado porque no tenían relevancia en nuestro trabajo, estos elementos son:
+\begin{itemize}
+    \item \textbf{Host}: indica el dominio al que se está realizando la petición. Decidimos descartar este elemento porque el dominio al que se va a realizar la petición es el nuestro y por tanto todas las peticiones van a contener el mismo valor por lo que no decreta ningún criterio de unicidad del usuario.
+    \item \textbf{Cookie}: es un elemento que se utiliza generalmente para identificar a un servidor que varias peticiones vienen del mismo origen. Concluimos no utilizar este dato porque rompe con el objetivo del trabajo que es identificar a los usuarios mediante su huella digital y las cookies son un elemento elemento identificativo durante la (Ayuda en que pongo porfavorrr jaja
+    Añadir mas elementos si me he dejado alguno yo los defino después
+\end{itemize}
+
+\section{Datos de elementos o funciones JavaScript}
+Los elementos extraídos de JavaScript son:
+\begin{itemize}
+    \item \textbf{Navegador}: indica la plataforma web mediante la cual se está realizando la navegación y se obtiene a partir del tratamiento del User-Agent.
+    \item \textbf{Versión}: indica la versión del software web con el que se está realizando la navegación y también se obtiene a partir del tratamiento de User-Agent.
+    \item \textbf{Plataforma}: indica para qué plataforma está compilado el navegador. Se obtiene mediante el atributo platform del objeto navigator propio de JavaScript.
+    \item \textbf{User-Agent}: representa el mismo objeto que en la cabecera HTTP pero en este caso está obtenido mediante el objeto navigator.userAgent.
+    \item \textbf{Cookies habilitadas}: este elemento indica si el navegador tiene las cookies habilitadas por defecto. Se consigue mediante el atributo cookieEnabled perteneciente al objeto navigator.
+    \item \textbf{Lenguaje}: muestra la versión del lenguaje del navegador. Se obtiene a través del objeto navigator.language. 
+    \item \textbf{Lenguajes soportados}: indica los lenguajes que es capaz de soportar el navegador por orden de preferencia. Se obtienen tratando el atributo language del objeto navigator. 
+    \item \textbf{Navegador en línea}: indica si la máquina del usuario se encuentra conectada a la red o no. Puede devolver los valores true si se encuentra conectada o false en caso de que no lo esté, y se obtiene a través del objeto navigator.onLine.
+    \item \textbf{AppName}: muestra el nombre del navegador, por lo general el nombre de todos los navegadores modernos en “Netscape”. Se obtiene con el objeto navigator.appName.
+    \item \textbf{Se puede obtener información de la batería}: indica si es posible obtener información de la batería. Se consigue a partir del tratamiento del objeto navigator.getBattery. 
+    \item \textbf{Do-not-track JavaScript}: comprueba cuáles son los ajustes del do-not-track del usuario. Se almacena en el objeto navigator.doNotTrack. 
+    \item \textbf{Número máximo de puntos táctiles soportados}: representa el número máximo de zonas sobre las se puede contactar de forma simultánea. Está contenido en el objeto navigator.maxTouchPoints. 
+    \item \textbf{Motor del navegador}: indica el motor de navegación y generalmente tiene el valor “Gecko”. Se obtiene a través del objeto navigator.product. 
+    \item \textbf{ProductSub}: contiene el número de compilación del navegador actual. Se consigue a través del objeto navigator.productSub. 
+    \item \textbf{Sistema Operativo}: muestra el Sistema Operativo sobre el que se está ejecutando el navegador. Se obtiene con el objeto navigator.oscpu.
+    \item Vendedor: indica el proveedor del navegador y puede ser Google Inc., Apple Computer, Inc. o ninguno en el caso de Firefox. Su obtención se realiza con el objeto navigator.vendor.
+    \item \textbf{Concurrencia hardware}: es el número de procesadores disponibles que se pueden utilizar para ejecutar subprocesos en la máquina del usuario. Está contenido en el objeto navigator.hardwareConcurrency.
+    \item \textbf{Build Id}: retorna el valor de identificación de compilación del navegador, en los navegadores modernos devuelven una marca de tiempo para asegurar la privacidad. Se obtiene con el objeto navigator.buildID.
+    \item \textbf{Memoria del dispositivo}: devuelve el tamaño aproximado de de la memoria en Gigabytes. Se obtiene del objeto navigator.deviceMemory. 
+Todos estos pertenecen al objeto navigate igual quedaría mejor explicar eso aqui debajo o mejor que cada elemento diga de que atributo de navigate pertenece. 
+    \item \textbf{Diferencia entre la UTC y la hora local en minutos}: diferencia en minutos de la configuración horaria de la zona en la que se encuentra el usuario y la hora media de Greenwich(GMT). Se obtiene a través de una función propia de del tipo Date de JavaScript llamada getTimezoneOffset().
+    \item \textbf{Ancho de la pantalla}: ancho total de la pantalla del usuario en píxeles. Se obtiene con el objeto screen.width.
+    \item \textbf{Altura de la pantalla}: alto total de la pantalla del usuario en píxeles. Es devuelto por el objeto screen.height.
+    \item \textbf{Ancho de pantalla disponible}: ancho de la pantalla del usuario en píxeles sin contar con los elementos de la interfaz como la barra de tareas. Se obtiene a través del objeto screen.availWidth.
+    \item \textbf{Altura de pantalla disponible}: alto de la pantalla del usuario en píxeles sin tener en cuenta los elementos de la interfaz como pueden ser la barra de tareas.
+    \item \textbf{Profundidad del color de la pantalla}: devuelve la profundidad del color de la pantalla del usuario. Se obtiene con el objeto screen.colorDepth.
+    \item \textbf{Profundidad del color en pixel de la pantalla}: muestra la profundidad de color de la pantalla del usuario en píxeles. Se consigue a través del objeto screen.pixelDepth. 
+    \item \textbf{Barra de localización visible}: indica si la barra de localización se encuentra visible o no representado con un booleano que indica true si es visible o false en caso de que no lo sea. Se obtiene mediante el objeto window.locationbar.visible.
+    \item \textbf{Ratio de píxel}: relación que existe entre la altura de un pixel físico de la pantalla que está utilizando el usuario y la altura de un pixel de un dispositivo independiente (dips). Se encuentra con el objeto window.devicePixelRatio.
+    \item \textbf{Barra de menú visible}: muestra si la barra de menú de la ventana es visible mediante un booleano que indica true si está visible o falso en caso de que no lo esté. Está contenido en la función window.menubar.visible.
+    \item \textbf{Barra personal visible}: indica si la barra personal de la ventana del usuario es visible o no con un booleano. Se obtiene con el objeto window.personalbar.visible.
+    \item \textbf{Barra de estado visible}: muestra si la barra de estado del usuario es visible o no con un booleano. Se consigue con el objeto window.statusbar.visible.
+    \item \textbf{Barra de herramientas visible}: muestra si la barra de herramientas está visible en la ventan del usuario o no con un booleano. Este valor se obtiene mediante el objeto window.toolbar.visible.
+    \item \textbf{Almacenamiento local del dispositivo}: indica si los datos de las diferentes sesiones de navegación se almacenan de forma persistente en el equipo del usuario. Se obtiene tratando el objeto window.localStorage.
+    \item \textbf{Almacenamiento de la sesión disponible}: representa si se almacena la información de la sesión, esta información es eliminado cuando se cierra la sesión de navegación. Se consigue tras tratar el objeto window.sessionStorage.
+    \item \textbf{Se puede usar base de datos indexadas}: muestra si es posible almacenar datos en el navegador del usuario lo que permite a los usuarios seguir navegando sin tener conexión. Se obtiene a través de tratar el objeto window.indexedDB.
+    \item \textbf{Objeto results de windows disponible}:
+    \item \textbf{Canvas}:
+    \item \textbf{Formatos de video soportados}:                                             video/ogg;codecs=”theora”, video/ogg;codecs=”vorbis”, video/ogg; codecs="opus", video/mp4; codecs="avc1.4D401E", ideo/mp4; codecs="mp4a.40.2", video/mp4; codecs="flac", video/webm; codecs="vp8.0", video/webm; codecs="vp9" y  video/webm; codecs="vorbis". 
+    \item \textbf{Formatos de audio soportados}:audio/ogg; codecs="vorbis", audio/ogg; codecs="opus", audio/3gpp, audio/mp4; codecs="mp4a.40.5", audio/mp4; codecs="mp3", audio/mp4; codecs="ac-3", audio/mp4; codecs="ec-3", audio/aac, audio/pcm, audio/mpeg, audio/flac, audio/wave, audio/webm; codecs="vorbis" y audio/mp3; codecs="mp3".
+    \item \textbf{Plugins}: (REVISAR ESTO CON LOS CHAVALES HABRÁ QUE QUITAR COSAS)
+    \item \textbf{Lista de fuentes detectadas}: 
+\end{itemize}
+En cuanto a los elementos JavaScript que hemos descartado no es el mismo caso que con los de la cabecera, ya que en ella recibimos ciertos elementos y descartamos algunos por que no nos eran útiles si no que en este caso hemos descubierto ciertos elementos que nos podían parecer útiles para nuestro estudio a priori pero que más adelante hemos descartado por diversas razones que explicaremos ahora. Estos elementos descartados de código JavaScript son:
+\begin{itemize}
+    \item \textbf{Bateria}:
+    \item \textbf{Geolocalización}:
+    \item \textbf{Historial de la sesión}:
+    Añadirme los elementos que falten aquí
+\end{itemize}
