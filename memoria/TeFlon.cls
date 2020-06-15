@@ -290,6 +290,7 @@
 \newcommand{\parameter}[1]{$\langle\mbox{#1}\rangle$}
 \usepackage{enumitem}
 \setlength{\parindent}{12pt}
+\setlength{\parskip}{3mm}
 \renewcommand{\theenumi}{\alph{enumi})}
 
 \newcommand{\teflon}{\LARGE${\displaystyle \mathbf {T\!^{{}_{\scriptstyle E}}\!\!\!\!\;\;F\!_{\displaystyle L}\!O\!^{{}_{\scriptstyle N}}}}$}
