@@ -514,7 +514,7 @@ title={#2},fonttitle=\bfseries,#1}
     \begin{minipage}{10cm}
     \begin{center}
     \tutor\\
-      \textbf{\ntrabajo}\\
+      \textbf{Huella digital de navegadores}\\
       \vspace{2mm}
     \end{center}
     \vspace{4mm}
