@@ -83,8 +83,7 @@ Estos son los elementos que hemos decidido utilizar para nuestro estudio pero va
 \end{itemize}
 En cuanto a los elementos JavaScript que hemos descartado no es el mismo caso que con los de la cabecera, ya que en ella recibimos ciertos elementos y descartamos algunos por que no nos eran útiles si no que en este caso hemos descubierto ciertos elementos que nos podían parecer útiles para nuestro estudio a priori pero que más adelante hemos descartado por diversas razones que explicaremos ahora. Estos elementos descartados de código JavaScript son:
 \begin{itemize}
-    \item \textbf{Bateria}:
-    \item \textbf{Geolocalización}:
-    \item \textbf{Historial de la sesión}:
-    Añadirme los elementos que falten aquí
+    \item \textbf{Bateria}: en cuanto a elementos más concretos sobre la batería como pueden ser la carga total del equipo o si el equipo se encuentra cargando en estos momentos podrían ser datos útiles pero tras hacer pruebas con ellos decidimos descartarlos porque los datos que recibimos de estos parámetros eran siempre los mismos para todos los usuarios y por tanto solo empañaron la huella que buscamos del usuario.
+    \item \textbf{Geolocalización}: sobre este elemento pensamos que podría sernos de bastante utilidad conocer qué localización tenía el usuario a la hora de conectarse a nuestra web para generar su huella digital pero descubrimos que para poder acceder a ella el usuario debería darnos un permiso concreto por lo que nos parecía que perdía bastante importancia puesto que la huella que pretendemos sacar es solo con la conexión al servidor sin más acciones del usuario que solo conectarse.
+    \item \textbf{Historial de la sesión}: en cuanto a este elemento lo utilizamos porque pensamos que podría concretar más la huella porque si sabíamos que paginas suele visitar normalmente el usuario es mucho más probable que sepamos qué usuario está al otro lado de la pantalla pero tras investigar con él descubrimos que solo nos proporcionaba el número de webs visitadas antes que la nuestra por lo que ese número podría ser cualquiera para el mismo usuario y lo único que conseguimos con él fue que el ratio de similaridad de dos huellas iguales se hiciese un poco más diferente cuando en realidad son del mismo equipo.
 \end{itemize}
