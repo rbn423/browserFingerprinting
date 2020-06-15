@@ -1,2 +1,89 @@
-\chapter{Preliminares}
-\noindent
+\chapter{Fuentes de información}
+Dividimos las fuentes de información en dos grupos en base al método que hemos empleado para su obtención. El primer grupo será el de los datos obtenidos a partir de la cabecera HTTP y el segundo grupo será el de los datos extraídos de elementos o funciones JavaScript.
+\section{Datos de la cabecera HTTP}
+\noindent Los elementos de la cabecera HTTP que hemos decidido utilizar han sido:
+\begin{itemize}
+    \item \textbf{Accept}: Informa al servidor sobre los diferentes tipos de datos que el cliente puede procesar mediante una estructura MIME (\textit{Multipurpose Internet Mail Extensions}). Las estructuras MIME están compuestas de uno o varios elementos con la siguiente estructura \textit{tipo/subtipo}.
+    \item \textbf{Accept-Language}: anuncia que idiomas puede entender el cliente y que variante de región prefiere de este.
+    \item \textbf{Upgrade-Insecure-Requests}: envía una señal al servidor en la que se indica que el cliente tiene preferencia por una respuesta cifrada y autenticada, y que puede manejar la directiva CSP upgrade-insecure-request.
+    \item \textbf{User-Agent}: es una cadena característica que identifica el protocolo de red mediante el cual se pueden obtener los datos del tipo de aplicación utilizada, el sistema operativo, el proveedor del software o la versión utilizada.
+    \item \textbf{Accept-Encoding}: anuncia la codificación del contenido que el cliente puede entender. Puede estar formado por un valor o por varios y estos valores son \textit{gzip}, \textit{compress}, \textit{deflate}, \textit{br}, \textit{identity} y \textit{*}.
+    \item \textbf{Connection}: comprueba si la conexión a la red permanece abierta o no al finalizar la transacción actual. Los valores que puede tomar son \textit{keep-alive} si se mantiene la conexión o \textit{close} si la conexión está cerrada.
+    \item \textbf{Sec-Fetch-Mode}: es una cabecera de metadatos que indica el modo de la respuesta. Los valores que puede contener son \textit{cros}, \textit{navigate}, \textit{nested-navigate}, \textit{no-cors}, \textit{same-origin} y \textit{websocket}.
+    \item \textbf{Sec-Fetch-User}: es una cabecera de metadatos que indica si la solicitud de navegación fue realizada por una activación de usuario. Los valores posibles para este campo son \textit{?0} si fue activada por un usuario o \textit{?1} si no lo fue.
+    \item \textbf{Sec-Fetch-Site}: es una cabecera de metadatos que indica la relación entre el origen de la consulta y el origen de la respuesta. Los valores que puede tomar son \textit{none}, \textit{cross-site}, \textit{same-origin} y \textit{same-site}.
+    \item \textbf{DNT}: indica la preferencia de seguimiento del usuario, le indica si prefiere la privacidad al contenido personalizado. Sus posibles valores son \textit{1} si el usuario permite ser reconocido, \textit{0} si el usuario no lo permite o \textit{null} si el usuario no lo especifica.
+\end{itemize}
+Estos son los elementos que hemos decidido utilizar para nuestro estudio pero vamos a mencionar también los elementos que extraemos de la cabecera y que hemos descartado porque no tenían relevancia en nuestro trabajo, estos elementos son:
+\begin{itemize}
+    \item \textbf{Host}: indica el dominio al que se está realizando la petición. Decidimos descartar este elemento porque el dominio al que se va a realizar la petición es el nuestro y por tanto todas las peticiones van a contener el mismo valor por lo que no decreta ningún criterio de unicidad del usuario.
+    \item \textbf{Cookie}: es un elemento que se utiliza generalmente para identificar a un servidor que varias peticiones vienen del mismo origen. Concluimos no utilizar este dato porque rompe con el objetivo del trabajo que es identificar a los usuarios mediante su huella digital y las \textit{cookies} son un elemento identificativo durante la sesión por lo que al final acabaría ensuciando los datos que queremos almacenar del usuario.
+\end{itemize}
+
+\section{Datos de elementos o funciones JavaScript}
+ Hemos realizado una subdivisión dentro de los elementos extraídos de JavaScript según el objeto o la función que hemos utilizado para obtenerlo.\par
+\noindent Los elementos que se obtienen a partir del tratamiento del \textit{User-Agent} son:
+\begin{itemize}
+    \item \textbf{Navegador}: indica la plataforma web mediante la cual se está realizando la navegación.
+    \item \textbf{Versión}: indica la versión del software web con el que se está realizando la navegación.
+\end{itemize}
+\noindent Los elementos que se extraen de los atributos del objeto \textit{navigator} son:
+\begin{itemize}
+    \item \textbf{Plataforma}: indica para qué plataforma está compilado el navegador. Se obtiene mediante el atributo platform.
+    \item \textbf{User-Agent}: representa el mismo objeto que en la cabecera HTTP pero en este caso está obtenido mediante el atributo \textit{userAgent}.
+    \item \textbf{Cookies habilitadas}: este elemento indica si el navegador tiene las \textit{cookies} habilitadas por defecto. Se consigue mediante el atributo \textit{cookieEnabled}.
+    \item \textbf{Lenguaje}: muestra la versión del lenguaje del navegador. Se obtiene a través del atributo \textit{language}. 
+    \item \textbf{Lenguajes soportados}: indica los lenguajes que es capaz de soportar el navegador por orden de preferencia. Se obtienen tratando el atributo \textit{language}. 
+    \item \textbf{Navegador en línea}: indica si la máquina del usuario se encuentra conectada a la red o no. Puede devolver los valores \textit{true} si se encuentra conectada o \textit{false} en caso de que no lo esté, y se obtiene a través del atributo \textit{onLine}.
+    \item \textbf{AppName}: muestra el nombre del navegador, por lo general el nombre de todos los navegadores modernos en \textit{Netscape}. Se obtiene con el atributo \textit{appName}.
+    \item \textbf{Se puede obtener información de la batería}: indica si es posible obtener información de la batería. Se consigue a partir del tratamiento del atributo \textit{getBattery}. 
+    \item \textbf{Do-not-track JavaScript}: comprueba cuáles son los ajustes del do-not-track del usuario. Se almacena en el atributo \textit{doNotTrack}. 
+    \item \textbf{Número máximo de puntos táctiles soportados}: representa el número máximo de zonas sobre las se puede contactar de forma simultánea. Está contenido en el atributo \textit{maxTouchPoints}. 
+    \item \textbf{Motor del navegador}: indica el motor de navegación y generalmente tiene el valor \textit{Gecko}. Se obtiene a través del atributo \textit{product}. 
+    \item \textbf{ProductSub}: contiene el número de compilación del navegador actual. Se consigue a través del atributo \textit{productSub}. 
+    \item \textbf{Sistema Operativo}: muestra el Sistema Operativo sobre el que se está ejecutando el navegador. Se obtiene con el atributo \textit{oscpu}.
+    \item \textbf{Vendedor}: indica el proveedor del navegador y puede ser \textit{Google Inc.}, \textit{Apple Computer, Inc.} o ninguno en el caso de Firefox. Su obtención se realiza con el atributo \textit{vendor}.
+    \item \textbf{Concurrencia hardware}: es el número de procesadores disponibles que se pueden utilizar para ejecutar subprocesos en la máquina del usuario. Está contenido en el atributo \textit{hardwareConcurrency}.
+    \item \textbf{Build Id}: retorna el valor de identificación de compilación del navegador, en los navegadores modernos devuelven una marca de tiempo para asegurar la privacidad. Se obtiene con el atributo \textit{buildID}.
+    \item \textbf{Memoria del dispositivo}: devuelve el tamaño aproximado de de la memoria en Gigabytes. Se obtiene del atributo \textit{deviceMemory}.
+     \item \textbf{Plugins disponibles}: listado de \textit{plugins} disponibles por el navegador que utiliza el usuario. Se obtiene con el tratamiento del atributo \textit{plugins}.
+\end{itemize}
+\noindent El elemento que se obtiene a partir de la función \textit{getTimezoneOffset()} del objeto \textit{Date} propio de JavaScript es:
+\begin{itemize} 
+    \item \textbf{Diferencia entre la UTC y la hora local en minutos}: diferencia en minutos de la configuración horaria de la zona en la que se encuentra el usuario y la hora media de Greenwich(GMT).
+\end{itemize}
+\noindent  Los elementos que se obtienen a partir del objeto \textit{screen} son:
+\begin{itemize} 
+    \item \textbf{Ancho de la pantalla}: ancho total de la pantalla del usuario en píxeles. Se obtiene con el atributo \textit{width}.
+    \item \textbf{Altura de la pantalla}: alto total de la pantalla del usuario en píxeles. Es devuelto por el atributo \textit{height}.
+    \item \textbf{Ancho de pantalla disponible}: ancho de la pantalla del usuario en píxeles sin contar con los elementos de la interfaz como la barra de tareas. Se obtiene a través del atributo \textit{availWidth}.
+    \item \textbf{Altura de pantalla disponible}: alto de la pantalla del usuario en píxeles sin tener en cuenta los elementos de la interfaz como pueden ser la barra de tareas. Se obtiene con el atributo \textit{availHeight}.
+    \item \textbf{Profundidad del color de la pantalla}: devuelve la profundidad del color de la pantalla del usuario. Se obtiene con el atributo \textit{colorDepth}.
+    \item \textbf{Profundidad del color en píxeles de la pantalla}: muestra la profundidad de color de la pantalla del usuario en píxeles. Se consigue a través del atributo \textit{pixelDepth}.
+\end{itemize}
+\noindent  Los elementos que se puede acceder a partir del objeto \textit{window} son:
+\begin{itemize} 
+    \item \textbf{Barra de localización visible}: indica si la barra de localización se encuentra visible o no representado con un booleano que indica \textit{true} si es visible o \textit{false} en caso de que no lo sea. Se obtiene mediante el atributo \textit{locationbar.visible}.
+    \item \textbf{Ratio de píxel}: relación que existe entre la altura de un pixel físico de la pantalla que está utilizando el usuario y la altura de un pixel de un dispositivo independiente (dips). Se encuentra con el atributo \textit{devicePixelRatio}.
+    \item \textbf{Barra de menú visible}: muestra si la barra de menú de la ventana es visible mediante un booleano que indica \textit{true} si está visible o falso en caso de que no lo esté. Está contenido en el atributo \textit{menubar.visible}.
+    \item \textbf{Barra personal visible}: indica si la barra personal de la ventana del usuario es visible o no con un booleano. Se obtiene con el atributo \textit{personalbar.visible}.
+    \item \textbf{Barra de estado visible}: muestra si la barra de estado del usuario es visible o no con un booleano. Se consigue con el atributo \textit{statusbar.visible}.
+    \item \textbf{Barra de herramientas visible}: muestra si la barra de herramientas está visible en la ventan del usuario o no con un booleano. Este valor se obtiene mediante el atributo \textit{toolbar.visible}.
+    \item \textbf{Almacenamiento local del dispositivo}: indica si los datos de las diferentes sesiones de navegación se almacenan de forma persistente en el equipo del usuario. Se obtiene tratando el atributo \textit{localStorage}.
+    \item \textbf{Almacenamiento de la sesión disponible}: representa si se almacena la información de la sesión, esta información es eliminado cuando se cierra la sesión de navegación. Se consigue tras tratar el atributo \textit{sessionStorage}.
+    \item \textbf{Se puede usar base de datos indexadas}: muestra si es posible almacenar datos en el navegador del usuario lo que permite a los usuarios seguir navegando sin tener conexión. Se obtiene a través de tratar el atributo \textit{indexedDB}.
+    \item \textbf{Objeto results de windows disponible}: este elemento indica si el objeto \textit{result} de \textit{windows} está disponible. Se consigue mediante el tratamiento del atributo \textit{results}.
+\end{itemize}
+\noindent  Los siguientes elementos son extraídos de diversas funciones que realizan pruebas sobre el equipo del usuario:
+\begin{itemize} 
+    \item \textbf{Canvas}: definimos un dibujo en una región \textit{canvas} que se representará de forma diferente dependiendo del equipo y del navegador que lo reproduzca y de esta representación obtenemos un resumen que definirá el \textit{canvas} del usuario. Ofrecemos diferentes elementos a pintar, 3 cuadrados de color rojo, azul y amarillo, un emoticono de una cara sonriente y la frase "PrUeBa De CaNvAs En Tu NaVeGaDor". Este elementos lo obtenemos con una función creada por nosotros a la que hemos llamado \textit{pintar()}.
+    \item \textbf{Formatos de vídeo soportados}: en una región de vídeo realizamos pruebas para ver si es posible reproducir diversos formatos de vídeo. Para obtener esta información utilizamos una función a la que llamamos \textit{formatosSoportadosVideo()}. La prueba para cada formato puede retornar \textit{probably}, \textit{maybe}, o vacío. Los formatos de vídeo que hemos utilizado para hacer pruebas han sido los siguientes: \textit{video/ogg;codecs=”theora”}, \textit{video/ogg;codecs=”vorbis”}, \textit{video/ogg; codecs="opus"}, \textit{video/mp4; codecs="avc1.4D401E"}, \textit{ideo/mp4; codecs="mp4a.40.2"}, \textit{video/mp4; codecs="flac"}, \textit{video/webm; codecs="vp8.0"}, \textit{video/webm; codecs="vp9"} y \textit{video/webm; codecs="vorbis"}. 
+    \item \textbf{Formatos de audio soportados}:sobre una zona de audio probamos si es posible reproducir diversos formatos en la máquina del usuario. Para ello utilizamos una función a la que hemos puesto el nombre de \textit{formatosSoportadosAudio()}. Para cada formato puede devolver \textit{probably}, \textit{maybe}, o vacío. Los formatos de audio que utilizamos para realizar las pruebas son: \textit{audio/ogg; codecs="vorbis"}, \textit{audio/ogg; codecs="opus"}, \textit{audio/3gpp, audio/mp4; codecs="mp4a.40.5"}, \textit{audio/mp4; codecs="mp3"}, \textit{audio/mp4; codecs="ac-3"}, \textit{audio/mp4; codecs="ec-3"}, \textit{audio/aac}, \textit{audio/pcm}, \textit{audio/mpeg}, \textit{audio/flac}, \textit{audio/wave}, \textit{audio/webm; codecs="vorbis"} y \textit{audio/mp3; codecs="mp3"}.
+    \item \textbf{Lista de fuentes detectadas}: este elemento se consigue a partir de la función \textit{fingerprintfonts()} que realiza pruebas para ver si el navegador que esta usando el usuario es capaz de soportar diversas fuentes. Se hace una comprobación con un listado de más de 500 fuentes.
+\end{itemize}
+En cuanto a los elementos JavaScript que hemos descartado no es el mismo caso que con los de la cabecera, ya que en ella recibimos ciertos elementos y descartamos algunos por que no nos eran útiles si no que en este caso hemos descubierto ciertos elementos que nos podían parecer útiles para nuestro estudio a priori pero que más adelante hemos descartado por diversas razones que explicaremos ahora. Estos elementos descartados de código JavaScript son:
+\begin{itemize}
+    \item \textbf{Batería}: en cuanto a elementos más concretos sobre la batería como pueden ser la carga total del equipo o si el equipo se encuentra cargando en estos momentos podrían ser datos útiles pero tras hacer pruebas con ellos decidimos descartarlos porque los datos que recibimos de estos parámetros eran siempre los mismos para todos los usuarios y por tanto solo empañaron la huella que buscamos del usuario.
+    \item \textbf{Geolocalización}: pensamos que podría ser de bastante utilidad conocer qué localización tenía el usuario a la hora de conectarse a nuestra web para generar su huella digital pero descubrimos que para poder acceder a ella el usuario debería darnos un permiso concreto por lo que nos parecía que perdía bastante importancia puesto que la huella que pretendemos sacar es solo con la conexión al servidor sin más acciones del usuario que solo conectarse.
+    \item \textbf{Historial de la sesión}: en cuanto a este elemento lo utilizamos porque pensamos que podría concretar más la huella porque si sabíamos que paginas suele visitar normalmente el usuario es mucho más probable que sepamos qué usuario está al otro lado de la pantalla pero tras investigar con él descubrimos que solo nos proporcionaba el número de páginas visitadas antes que la nuestra por lo que ese número podría ser cualquiera para el mismo usuario y lo único que conseguimos con él fue que el ratio de similaridad de dos huellas iguales se hiciese un poco más diferente cuando en realidad son del mismo equipo.
+\end{itemize}
