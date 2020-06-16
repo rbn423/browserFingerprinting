@@ -210,8 +210,6 @@ La solución fue analizar los elementos mas comunes a todos los navegadores y co
 En nuestra base de datos existen dos tablas que corresponden a atributos multivaluados de la tabla \textit{resultados}. Estas tablas son \textit{fuentes} y \textit{plugins}. En estas tablas se almacenan en cada fila un nombre de fuente o plugin y el ID del resultado al que pertenecen. El problema surgió a la hora de comprobar la unicidad de la huella del usuario, ya que se complicaba la consulta a realizar por la cantidad de filas de la tabla. La solución que encontramos fue añadir un resumen de estos elementos en la tabla resultados. Para ello, además de insertar todos los elementos de fuentes y plugins en sus respectivas tablas, concatenamos estos elementos ordenados y los resumimos. De esta forma se simplificaba mucho el cálculo de la unicidad de la huella del usuario.
 \subsection{Futuras mejoras}
 Durante el trabajo hemos dejado funcionalidades o mejoras que se podrían realizar en el futuro para mejorar el desempeño de la aplicación.
-\subsection{Futuras mejoras}
-Durante el trabajo hemos dejado funcionalidades o mejoras que se podrían realizar en el futuro para mejorar el desempeño de la aplicación.
 \subsubsection{Asincronía}
 En nuestra aplicación hemos utilizado el objeto <<XMLHTTPRequest>> de JavaScript para la conexión asíncrona con el servidor. Se trata de un objeto que empieza a estar obsoleto y que ha sido reemplazado por <<Fetch>>, que permite acceder y manipular partes del canal HTTP de manera mas sencilla y cómoda.\par 
 Además se puede buscar una mejor solución al problema de la asincronía mencionado anteriormente.
