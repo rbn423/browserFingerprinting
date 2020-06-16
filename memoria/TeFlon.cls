@@ -30,7 +30,8 @@
 \ifthenelse{\equal{#1}{si}}{
 \setmainfont{Times New Roman}}{}
   }
-\usepackage[spanish]{babel}
+%\usepackage[spanish]{babel}
+\usepackage[spanish,es-tabla]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[margin=1in]{geometry}
 \usepackage{lipsum}
@@ -73,7 +74,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %CAMBIAR X1 Z1 Y A1 para el documento de TFG
-\lhead[\grado]{\ntrabajo}
+\lhead[\grado]{\ntrabajo} %\lhead{\ntrabajo} Si solo quisieramos el titulo y el capitulo
 \rhead[\facultad]{UCM}
 \renewcommand{\headrulewidth}{0.5pt}
 %\lfoot[\npersona]{}
@@ -498,7 +499,7 @@ title={#2},fonttitle=\bfseries,#1}
     \rule[0.5ex]{\linewidth}{2pt}\\
     [2mm]
     {\textbf{\LARGE{\ntrabajo}} }\\[3mm] %Titulo del TFG
-    
+    {\textbf{\large{Huella digital de navegadores}} }\\[3mm] %Titulo del TFG
     \rule[0.5ex]{\linewidth}{1pt}\vspace*{-\baselineskip}\vspace{3.2pt}
     \rule[0.5ex]{\linewidth}{2pt}\\
     \vspace{6.5mm}
@@ -513,8 +514,8 @@ title={#2},fonttitle=\bfseries,#1}
     \vspace{9mm}
     \begin{minipage}{10cm}
     \begin{center}
+    Tutores\\
     \tutor\\
-      \textbf{Huella digital de navegadores}\\
       \vspace{2mm}
     \end{center}
     \vspace{4mm}
