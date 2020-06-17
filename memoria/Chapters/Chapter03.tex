@@ -1,2 +1,220 @@
 \chapter{Preliminares}
-\noindent
+\section{Estado del Arte}
+\subsection{Introducción}
+Cuando navegamos por internet, es posible identificar características que nos permitan reconocer si un determinado usuario ha visitado nuestro sitio. El método más común para decretarlo es mediante el uso de \textit{cookies}. Este dato nos permite establecer una sesión con el visitante de la página y poder guardar así un estado de la conexión. Además, este identificador de sesión nos permite almacenar las configuraciones personalizadas para esa sesión específica. De esta forma controlamos en todo momento el rastro de nuestros usuarios. Ese trozo de información, llamado \textit{HTTP cookie} (https://tools.ietf.org/html/rfc6265), se genera en el servidor y se intercambia al establecer la conexión. Esto es, la \textit{cookie} se almacena también en el navegador del cliente. \par
+
+A pesar de ello, esta técnica no es suficiente. El usuario puede borrar las \textit{cookies} de su navegador web. En este caso el servidor no le podrá recordar, puesto que la sesión previamente establecida no se puede recuperar y habría que establecer una nueva. Por consiguiente, necesitamos otro enfoque distinto para poder identificar a nuestro usuario con una característica menos volátil. \par
+
+Otro de los parámetros que históricamente se ha empleado para identificar a los internautas en la red ha sido la dirección IP pública origen. Se trata de un identificador utilizado en el protocolo de red TCP/IP, concretamente en la capa de red. Nos permite determinar el origen de las comunicaciones, ya que esta dirección es única. Por tanto, sería razonable obtener este atributo para poder identificar al usuario que está navegando en nuestra página. \par
+
+Esto tampoco es tan sencillo. Hoy en día la mayoría de las direcciones IP suelen ser dinámicas y son asignadas por nuestro \textit{ISP} o Proveedor de Servicios de Internet. Esto quiere decir que cada cierto intervalo de tiempo, el \textit{ISP} va a ir asignando una dirección IP pública a nuestra interfaz de red. En consecuencia, tampoco nos va a ser posible utilizarlo como atributo identificativo, pues para un mismo usuario este valor va a ir variando a lo largo del tiempo. \par
+
+Además de la asignación dinámica de direcciones IP, otro problema asociado a considerar la dirección IP como atributo identificativo es la utilización de técnicas de CG-NAT por los algunos \textit{ISP}. Como resultado, distintos dispositivos fuera de nuestra red doméstica podrían compartir la misma dirección IP pública, ya que el \textit{ISP} estaría conectando muchos dispositivos de su red como si de una red interna se tratase. De esta forma nosotros no seríamos capaces de identificar nuestro dispositivo objetivo. \par
+
+Por último, también podríamos considerar posibles intrusiones en una red interna. La dirección IP que resolveríamos pertenecería a un tercer usuario víctima que puede no tener nada que ver con el auténtico dispositivo visitante.  \par
+
+Tanto las direcciones IP públicas como el seguimiento a través de \textit{cookies} fueron consideradas las huellas digitales más fiables durante varios años. Sin embargo, existen otros enfoques que nos permiten llegar a mejores conclusiones a partir de otras técnicas. La alternativa más conocida a las expuestas anteriormente es \textit{browser fingerprinting} o huella digital del navegador web. \par
+
+El método de \textit{browser fingerprinting} (https://arxiv.org/pdf/1905.09581.pdf) consiste en recopilar información del navegador web en función de las características y configuraciones de éste. Esta nueva óptica de identificar al usuario a través de las diversas tecnologías incluidas en los navegadores sin \textit{cookies}, o \textit{cookieless} (https://sites.cs.ucsb.edu/~chris/research/doc/oakland13_cookieless.pdf) nos permite afinar más y ser más minuciosos en nuestro objetivo de identificar a los usuarios y monitorizar la actividad que estos realizan en una determinada página web. \par 
+
+Para discutir la efectividad del browser fingerprinting, recomendamos el estudio de los siguientes papers(https://panopticlick.eff.org/static/browser-uniqueness.pdf , https://hovav.net/ucsd/dist/jspriv.pdf), https://hal.inria.fr/hal-01718234v2/document). \par 
+
+En las conclusiones encontramos una paradoja: si bien los primeros estudios aseguraban que la efectividad de este método estaba por encima del 80\% de precisión en cuanto a huellas digitales únicas(https://panopticlick.eff.org/static/browser-uniqueness.pdf , https://hovav.net/ucsd/dist/jspriv.pdf), estudios posteriores no han podido reproducir estos mismos resultados, obteniendo sólo un 33.6\%.(https://hal.inria.fr/hal-01718234v2/document) \par
+
+La explicación a este fenómeno proviene de la relación entre el desarrollo de técnicas efectivas de recopilación de huella digital en navegadores web con el desarrollo de las técnicas de mitigación de las mismas. \par 
+
+Cuantas más técnicas diferentes de \textit{browser fingerprinting} se emplean, más probable es obtener una huella identificativa de las características del navegador web. Hoy en día, el uso de ciertas técnicas aisladas no resulta del todo identificativo. Entonces no es necesario hallar un atributo único, sino que es suficiente con encontrar una combinación de atributos que resulte única para poder identificar a un usuario. \par
+
+\subsection{Impacto: peligros y casos de uso}
+
+En este capítulo analizaremos las implicaciones que tiene el uso de la identificación de la huella digital en navegadores. Expondremos los casos de usos más frecuentes y los peligros que puede suponer el uso de este recurso. Asimismo, comentaremos algunas posibles implicaciones legales. \par
+
+Al tratarse de un sistema tan efectivo, cabe preguntarse si puede ocasionar a su vez algunos peligros. \par
+
+Sin lugar a duda, el principal inconveniente que nos viene a la cabeza es el riesgo que supone para la privacidad. Este método se puede realizar de forma transparente al usuario sin que ni siquiera se dé cuenta ni haga falta pedirle ningún tipo de permiso.
+(https://blog.torproject.org/browser-fingerprinting-introduction-and-challenges-ahead) \par 
+
+La parte legal supone también otro desafío. \par
+
+En Europa, existe el Reglamento General de Protección de Datos (GDPR) que restringe la recopilación de datos personales a no ser que se haga de conformidad a las seis formas legítimas para el tratamiento de datos personales. Estas seis formas son las siguientes: \par
+
+\begin{enumerate}
+\item Bajo el consentimiento inequívoco del individuo.
+\item Por interés vital del individuo.
+\item Por interés público.
+\item Necesidad contractual.
+\item En cumplimiento de obligaciones legales.
+\item Por interés legítimo del responsable del tratamiento de datos.
+\end{enumerate}
+
+La GDPR evita mencionar tecnologías específicas para poder estar al día del desarrollo tecnológico más allá de las huellas digitales y las \textit{cookies} (https://www.eff.org/es/deeplinks/2018/06/gdpr-and-browser-fingerprinting-how-it-changes-game-sneakiest-web-trackers). \par 
+
+No obstante, en el reglamento de la GDPR aparecen una serie de considerandos no vinculantes que mencionan el hecho de que las \textit{cookies} y otras huellas digitales pueden ser utilizadas para tanto perfilar a personas físicas como para perfilarlas. Esto se menciona concretamente en el considerando número 30 (https://eur-lex.europa.eu/legal-content/ES/TXT/HTML/?uri=CELEX:32016R0679&from=ES) \par 
+
+Por tanto, en la práctica, con informar al usuario del empleo de este método, sería suficiente para cumplir con la GDPR. (https://blokt.com/guides/browser-fingerprinting) Sin embargo, aquellos sitios sin acuerdos con Europa podrán seguir recopilando los datos de huellas digitales sin tener en cuenta esta ley. \par
+
+Por supuesto, el agente detrás del empleo este procedimiento va a contar con sus propias motivaciones. De todas maneras, los casos de uso principales suelen ser los siguientes: \par
+
+\begin{itemize}
+	\item Realizar un perfil específico de clientes para adaptarse a sus necesidades. Una de las formas es rastrear de qué página viene el usuario y establecer si ese usuario ya ha visitado nuestro sitio anteriormente. En este caso no estamos necesariamente interesados en averiguar la identidad del usuario en sí, tal solo en realizar un perfil. Es el sistema más utilizado por los \textit{data brokers} (https://blog.mozilla.org/internetcitizen/2018/07/26/this-is-your-digital-fingerprint/). Este es el caso de uso fundamental de la mayoría servicios de publicidad de terceros.
+	
+	\item Entender la actividad del usuario a través de patrones de comportamiento. Analizando cómo es el flujo de interacción del usuario con nuestra página, podemos llegar a conclusiones muy valiosas. La tecnología de JavaScript es la más utilizada en este aspecto, ya que nos permite analizar la atención del usuario sobre la página (saber si la pestaña se encuentra activa, cuál es la posición del ratón, comprobar si nuestras sugerencias son de verdad atractivos e interesantes para el usuario). Se utiliza mucho en tiendas online y redes sociales como estrategia de mercadotecnia.
+	
+	\item Como consecuencia de los dos casos de uso, la huella digital del navegador puede determinar patrones de comportamiento. De esta forma es posible también precisar si la actividad web está siendo llevada a cabo por un \textit{bot}(https://www.esat.kuleuven.be/cosic/publications/article-2334.pdf).
+\end{itemize}
+
+\section{Técnicas de \textit{fingerprinting}}
+
+Podemos clasificar las distintas técnicas de detección de huellas digitales en navegadores web en dos grupos distintos:
+
+\begin{itemize}
+	\item \textit{Fingerprinting} pasivo: Se limita a explorar el contenido de la petición web sin ejecutar código de forma activa en el navegador del cliente. En este grupo incluiremos la recolección de campos de la cabecera HTTP. En el capítulo de fuentes de información explicaremos detalladamente cada uno de los elementos que conforman dicha cabecera.
+	
+	\item \textit{Fingerprinting} activo:  Se realiza ejecutando código, normalmente JavaScript en el navegador web del cliente que está realizando la petición web. Entre todas las opciones posibles, el sistema operativo, la configuración del idioma, la resolución de pantalla, la detección de \textit{plugins} y el lienzo suelen ser los atributos elegidos para realizar el método activo de identificación de huella digital. En el capítulo de fuentes de información también explicaremos detalladamente cada uno de los elementos JavaScript que hemos obtenido para poder perfilar los navegadores web en nuestro proyecto.
+	
+\end{itemize}
+
+También podríamos clasificar los distintos sistemas de \textit{browser fingerprinting} teniendo en cuenta el tipo de información a obtener. \par 
+
+Por una parte, podríamos obtener información del \textit{hardware} de la máquina directamente a través de la API de JavaScript. Algunos de estos atributos son: La memoria RAM, el tipo de procesador de la máquina, el nombre de la tarjeta gráfica, el número de núcleos de la CPU o el estado de la batería. \par
+
+Por otra parte, podemos obtener información del sistema operativo, configuraciones del navegados o fuentes y \textit{códecs} de audio y vídeo instalados, entre otros. Todos estos elementos se obtienen del \textit{software} del sistema del cliente. \par 
+
+Entre todo este conjunto de técnicas, las más usadas son: \par 
+
+\begin{itemize}
+	\item Recopilar el \textit{User-Agent} del dispositivo: Esto se puede realizar tanto de forma activa como de forma pasiva. En general, en este atributo se anuncia el nombre del navegador web que se está utilizando. Una vez lo conozcamos, sabemos las tecnologías soportadas y podemos profundizar más en nuestra detección de la huella digital.
+	
+	\item Obtener el lienzo o \textit{Canvas}: La propiedad que tiene el lienzo es que una misma imagen o un mismo texto puede representarse de forma diferente en distintos clientes. Esto depende del número de píxeles del dispositivo, del motor del navegador web, de los formatos de compresión, del sistema operativo y de la unidad de procesamiento gráfico (GPU) que se utilice, principalmente. Se considera esta técnica como una de las más efectivas. (https://securehomes.esat.kuleuven.be/~gacar/persistent/the_web_never_forgets.pdf). Si bien no garantiza la determinar a un usuario, combinado con otros campos casi puede garantizar la identificación inequívoca del mismo.
+	
+\end{itemize}
+
+Por último, queremos mencionar cuales son los últimos métodos de detección de huella digital en los navegadores que han llamado la atención tanto en estudios académicos como para la industria. Las ideas más disruptivas son: \par
+
+\begin{itemize}
+	\item WebGL API: Es una API de JavaScript diseñada para renderizar gráficos 3D. Además, los componentes de WebGL pueden combinarse con otros elementos HTML, como el lienzo. (https://hovav.net/ucsd/dist/canvas.pdf). Al igual que ocurre con el lienzo, la granularidad de la huella digital dependerá estrechamente del \textit{hardware} del dispositivo, concretamente con la GPU.
+	
+	\item Web Audio API: Esta API está pensada para dar soporte a aplicaciones más avanzadas capaces de sintetizar audio, como controladores de sonido MIDI, y para mejorar la experiencia de usuario al jugar a videojuegos web. (https://www.w3.org/TR/webaudio-usecases/). La idea que hay detrás obtener una huella digital a través de este sistema es que las señales de audio son procesadas de formas distintas en cada navegador del cliente según el hardware y software del que disponga. Por eso, en una determinada máquina, los parámetros serán siempre los mismos.
+	
+	\item Utilización de los niveles de batería: HTML5 implementa la API \textit{Battery Status} que permite extraer valores de carga y descarga de la batería. Si esto es utilizado por un \textit{script} de terceros, pueden vincular esos niveles de batería con las visitas a determinadas web en un intervalo de tiempo. De esta forma se podría obtener la traza de navegación de un usuario. ( https://eprint.iacr.org/2015/616.pdf)
+	
+\end{itemize}
+
+\section{Técnicas de evasión}
+<<Las opciones actuales de los usuarios para mitigar estas amenazas son limitadas, en parte debido a la dificultad de distinguir las rastreando desde el comportamiento benigno>> (https://securehomes.esat.kuleuven.be/~gacar/persistent/the_web_never_forgets.pdf) \par 
+
+La mitigación más sencilla para aumentar la seguridad y privacidad de nuestro navegador es por supuesto eliminar funcionalidades. No obstante, elevar nuestro nivel de protección sin degradar la experiencia del usuario siempre es un desafío. \par 
+
+Como resultado, no existe una solución simple, sino que tan solo se pueden implementar medidas de mitigación. (https://www.w3.org/TR/fingerprinting-guidance/
+) \par 
+
+\begin{itemize}
+	\item Modificar de los ajustes del navegador. Cada navegador cuenta con unas opciones configurables. En la mayoría de ellos podemos habilitar funciones de anti-seguimiento. \par
+	
+	Es posible acceder a las configuraciones avanzadas de nuestros navegadores y deshabilitar funcionalidades y configuraciones que puedan dar demasiados detalles de nuestra huella digital. En Firefox bastaría con ingresar en el recurso \textit{about:config}. Google Chrome cuenta con otra opción equivalente, \textit{chrome://flags/} \par
+	
+	Otra opción es utilizar navegadores que ya vengan con configuraciones por defecto para evadir varias técnicas de detección de huella digital, como Tor Browser.
+	
+	\item Utilizar complementos y extensiones para el navegador que modifiquen el comportamiento del navegador( https://pixelprivacy.com/resources/browser-fingerprinting/ ). Existe una gran diversidad de complementos que realizan esta labor. Algunos de los más conocidos son \textit{NoScript} y \textit{uMatrix}.
+	Permiten una configuración flexible por lo que es posible bloquear sólo el código JavaScript y los elementos de Flash que deseemos, sin tener que prescindir de la funcionalidad completa. Es una solución de compromiso que busca el equilibro entre privacidad y funcionalidad. \par
+	
+	Además del bloqueo de elementos Flash y JavaScript, existen más complementos que modifican las cabeceras HTTP y que alteran algunas APIs de JavaScript para evitar el \textit{fingerprinting}. De esta forma podemos falsear los datos que se van a recopilar sobre nosotros. Como resultado, tanto los métodos activos como pasivos serían mucho menos eficaces.
+	
+	
+	\item Utilizar máquinas virtuales: Es posible virtualizar distintos sistemas operativos con sus respectivos navegadores. De esta forma mantener por separado nuestros distintos intereses, como puedan ser trabajo, ocio, educación, etc. Y utilizar así cada perfil para un fin específico. Por supuesto, siempre podemos borrar la máquina virtual y crear otra nueva. (https://restoreprivacy.com/browser-fingerprinting/)
+	
+\end{itemize}
+
+Todas estas medidas de mitigación son tan solo esfuerzos técnicos. Cambios en las tecnologías provocarían que las medidas que hoy son eficaces para evitar la huella digital mañana estén desfasadas y resulten inútiles. Por esta razón, sin una regulación efectiva en el campo del derecho, estos trucos y ajustes están destinados a fracasar a largo plazo.  \par 
+
+\section{Tecnologías empleadas}
+En construcción \par
+
+Existe una gran variedad de tecnologías (https://developer.mozilla.org/es/docs/Web) relacionadas con la navegación web. Podemos clasificar las tecnologías web por distintas categorías 
+Tecnologías básicas: 
+-	HTML
+-	CSS
+-	HTTP
+Lenguajes de escritura:
+-	JavaScript y AJAX
+-	Web APIs
+Tecnologías multipropósito:
+-	PHP
+-	JSON??
+-	XAMPP
+-		Apache
+-		MaríaDB
+-		Phpmyadmin
+Otras herramientas empleadas: 
+-	Git / Github: Control de versiones, trabajo colaborativo en desarrollo de software. Licencia de estudiante, útil para repositorios privados.
+-	Phpstorm: IDE de Jetbrains muy práctico para trabajar en PHP y JS. Licencia de estudiante
+-	Latex / Overleaf: Lenguaje de marcado para la memoria.
+
+\subsection{Tecnologías consideradas y finalmente descartadas}
+Igualmente en construccion. \par
+
+Antes de elegir estuvimos probando con diversas tecnologías que finalmente fuimos descartando hasta quedarnos con las que hemos mencionado en el apartado anterior. Realizamos aquí un pequeño resumen
+Servidor:
++django: (explicar unas pocas líneas que es)
+varios integrantes del grupo no habíamos programado en Python, acostumbrarse al lenguaje, al empezar a trabajar encontrábamos un poco engorroso el patrón MVC al que te obliga a trabajar, cuando estamos probando queríamos ver cosas funcionando rápido para elegir cogerlo o no.
++ nodejs: código js, nos parecía sencillo pero apache nos daba todo ya muy hecho. Controlabamos de php y no tanto de js al principio del proyecto.
++ nginx: estabamos más familiarizados con apache.
+frameworks de desarrollo (Angular, Vuejs y React, Bootstrap, Webpack): no queríamos que nos dieran todo hecho, mejor hacerlo nosotros?? No sé muy bien que poner aquí la verdad.
+backend:
++Mongo: Nos planteamos la posibilidad de utilizar una base de datos nosql como mongo. Para añadir atributos a medida que nos los íbamos encontrando. Mejor una SQL normal, que nos era suficiente, mejor para hacer los joins??
+
+\section{Herramientas similares}
+
+Existen diversas herramientas similares a la que hemos desarrollado en nuestro proyecto, ya que todas realizan métodos de \textit{browser fingerprinting}. Sin embargo, las técnicas realizadas y los objetivos de cada plataforma son muy dispares. Hemos reunido en esta lista ejemplos de utilidades web que realizan \textit{browser fingerprinting}. Aclaramos aquí que existen varias herramientas a disposición del público. No obstante, estas son las que consideramos más representativas. \par
+
+\subsubsection{AmIUnique}
+
+AmIUnique (https://amiunique.org/) es una plataforma que recopila información de los diversos navegadores que visitan la web. De esta forma, son capaces de proveer estadísticas de uso. 
+Entre sus objetivos encontramos:
+\begin{itemize}
+	\item Indicar si nuestra huella digital es única y si podemos llegar a ser rastreables.
+	\item Mostrar el contenido de los parámetros más utilizados en \textit{browser fingerprinting}. Para cada parámetro, nos indica el porcentaje de registros similares encontrados en su base de datos.
+	\item Estadísticas de uso globales: La herramienta nos muestra gráficos y porcentajes de los navegadores y sistemas operativos.
+	\item Estadísticas de uso para ayudar a los desarrolladores para ayudarles ofrecer una experiencia optimizada para cada plataforma.
+\end{itemize}
+
+Los desarrolladores de esta plataforma también han diseñado una extensión de navegador para alertarnos de cuando nuestra huella digital ha cambiado. \par 
+
+\subsubsection{Panopticlick}
+
+Se trata de un proyecto de investigación de la \textit{Electronic Frontier Foundation} (EFF). Está desarrollado a partir la biblioteca \textit{Fingerprint2} (https://github.com/Valve/fingerprintjs2) e incorpora partes de \textit{BrowserSpy.dk} (http://browserspy.dk/) para la detección de fuentes. \par 
+
+El objetivo es concienciar a los usuarios de que son susceptibles a ser perfilados a través de su navegación. Para proteger nuestra privacidad, \textit{Panopticlick} (https://panopticlick.eff.org/)recomienda la instalación de una extensión para el navegador, llamada \textit{Privacy Badger}, la cual ha sido también desarrollada por la EFF. Está disponible para Google Chrome, Mozilla Firefox y Opera Browser. \par 
+
+\subsubsection{BrowserSpy.dk}
+
+Encontramos aquí otra página diferente que nos permite averiguar la información que el navegador revela sobre nuestro dispositivo. \par 
+
+Cuenta con un panel a la izquierda donde se hallan los distintos elementos que \textit{BrowserSpy} (https://browserspy.dk/) es capaz de obtener de nosotros. Pinchando sobre cada uno de ellos obtenemos el valor que se utiliza para rastrear nuestra huella digital. \par 
+
+\subsubsection{BrowserLeaks}
+
+\textit{BrowserLeaks}(https://browserleaks.com/) es un portal web muy similar al anterior. En su página principal nos explica detalladamente cuales son los atributos que utiliza para obtener la huella digital del navegador web. \par 
+
+Esta herramienta también tiene su menú a la izquierda con las distintas opciones que podemos escoger. Al pinchar sobre cada una de ellas obtenemos el dato usado para perfilarnos. \par 
+
+\subsubsection{Audio Context Fingerprint TestPage}
+
+Este proyecto forma parte del \textit{Princeton Web Transparency and Accountability Project}, de la Universidad de Princeton(https://audiofingerprint.openwpm.com/). \par 
+
+Al contrario que las plataformas anteriores, las cuales realizaban una comprobación más o menos completa de casi todas las habilidades conocidas de \textit{browser fingerprinting}, esta se focaliza tan solo es dos aspectos concretos. \par 
+
+El objetivo es obtener la huella digital del navegador web analizando los valores de audio y detección de fuentes. \par 
+
+En cuanto al audio, analiza las propiedades \textit{AudioContext}, \textit{DynamicsCompressor} y \textit{OscillatorNode}. \par 
+
+También es posible obtener información de las distintas fuentes instaladas en el cliente, información del lienzo y detección de las fuentes de \textit{Flash}. \par 
+
+\subsubsection{DeviceInfo}
+
+\textit{Device Info} (www.deviceinfo.me) es una utilidad que nos permite comprobar la privacidad de nuestros ajustes en el navegador. \par
+
+El diseño de la página es muy austero; pero, a pesar de ello, cumple perfectamente con su cometido. Posiblemente sea la página más completa de todas en cuanto a la diversidad de técnicas que realiza para obtener la información del usuario. \par
+
+Por contrapartida, no proporciona consejos para aumentar la privacidad de nuestro navegador web. Asimismo, tampoco nos devuelve los datos en un contexto en relación con otros usuarios. \par
+
