@@ -78,7 +78,7 @@ Estos son los elementos que hemos decidido utilizar para nuestro estudio pero va
 \begin{itemize} 
     \item \textbf{Canvas}: definimos un dibujo en una región canvas que se representará de forma diferente dependiendo del equipo y del navegador que lo reproduzca y de esta representación obtenemos un resumen. Este resumen consiste en obtener un hash del tipo \textit{MD5} que utilizamos para definir el elemento canvas y así establecer relaciones entre la forma de representar de cada usuario. Ofrecemos diferentes elementos a pintar, tres cuadrados de color rojo, azul y amarillo, un emoticono de una carita sonriente y la siguiente frase "PrUeBa De CaNvAs En Tu NaVeGaDor". Este elementos lo obtenemos con una función creada por nosotros a la que hemos llamado \textit{pintar()}.
     \item \textbf{Formatos de video soportados}: en una región de video realizamos pruebas para ver si es posible reproducir diversos formatos de video. Para obtener esta información urilizamos una función a la que llamamos \textit{formatosSoportadosVideo()}. La prueba para cada formato puede retornarnos uno de estos valores \textit{probably}, \textit{maybe}, o vacío. Los formatos de video que hemos utilizado para hacer pruebas han sido los siguientes:
-    \begin{table}[htbp]
+    \begin{table}[H]
         \begin{center}
             \begin{tabular}{ r | l }
             \textbf{Formato} & \textbf{Codecs} \\ \hline
@@ -95,7 +95,7 @@ Estos son los elementos que hemos decidido utilizar para nuestro estudio pero va
         \end{center}
     \end{table}
     \item \textbf{Formatos de audio soportados}: sobre una zona de audio probamos si es posible reproducir diversos formatos en la máquina del usuario. Para ello utilizamos una función a la que hemos puesto el nombre de \textit{formatosSoportadosAudio()}. Para cada formato puede devolvernos los valores \textit{probably}, \textit{maybe}, o vacío. Los fomatos de audio que utilizamos para realizar las pruebas son:
-    \begin{table}[htbp]
+    \begin{table}[H]
         \begin{center}
             \begin{tabular}{ r | l }
             \textbf{Formato} & \textbf{Codecs} \\ \hline
