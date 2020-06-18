@@ -112,7 +112,7 @@ class BDCabecerasHTTP {
 		$conn = $app->conexionBd();
 		$campo = NULL;
 		$i = 0;
-		$query = "INSERT INTO resultados (";
+		$query = "INSERT INTO Conexiones (";
 		$query .= self::selector($headers,"insertCabecera");
 		$query .= ") VALUES (";
 		$i = 0;
@@ -126,7 +126,7 @@ class BDCabecerasHTTP {
 	public static function numeroCabecerasIguales($headers){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
-		$query = "SELECT count(*) FROM `resultados` WHERE ";
+		$query = "SELECT count(*) FROM `Conexiones` WHERE ";
 		$query .= self::selector($headers,"select");
 		$resultado = $conn->query($query);
 		$resultado = $resultado->fetch_all();
@@ -137,7 +137,7 @@ class BDCabecerasHTTP {
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
 
-		$query = "SELECT count(*) FROM `resultados`";
+		$query = "SELECT count(*) FROM `Conexiones`";
 		$resultado = $conn->query($query);
 		$resultado = $resultado->fetch_all();
 		return $resultado[0][0];

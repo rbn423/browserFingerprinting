@@ -7,7 +7,7 @@ $app = Aplicacion::getSingleton();
 $conn = $app->conexionBd();
 
 //insertamos en la base de datos los elementos JS
-$query = "UPDATE `resultados` SET " ;
+$query = "UPDATE `Conexiones` SET " ;
 //echo "Elemento obtenidos mediante JS: ".count($_POST);//borrar mas adelante, de momento nos interesa saber si aparece algun elemento mas en el array
 foreach($_POST as $nombre_campo => $valor){
     if ($nombre_campo != "ID") {
@@ -29,16 +29,16 @@ $conn->query($query);
 
 //Estas querys hay que cambiarla en el caso de que añadamos algún campo a la tabla o lo eliminemos, ya que son muy especificas
 //se obtienen con el generador automatico de MySql y le eliminamos la fecha y el id que es lo unico que no queremos
-//QUERY DE resultados
+//QUERY DE Conexiones
 $query = "SELECT `Accept`, `AcceptLanguage`, `UpgradeInsecureRequests`, `UserAgent`, `AcceptEncoding`, `Connection`, 
     `SecFetchMode`, `SecFetchUser`, `SecFetchSite`, `DNT`, `plataforma`, `userAgentJS`, `navegador`, `version`, 
     `cookieEnabled`, `language`, `onLine`, `appName`, `zonaHoraria`, `screenWidth`, `screenHeight`, `screenAvailWidth`, 
     `screenAvailHeight`, `screenColorDepth`, `screenPixelDepth`, `locationBar`, `pixelRatio`, `menuBar`, `personalBar`, 
     `statusBar`, `toolBar`, `localStorage`, `sessionStorage`, `windowResults`, `indexDB`, `bateria`, `DNTJS`, 
     `touchpoints`, `product`, `productSub`, `os`, `vendor`, `hardwareConcurrency`, `lenguajes`, `buildId`, `devMemory`, 
-    `flash`, `canvas`, `resumenFuentes`, `resumenPlugins` FROM `resultados` WHERE id = ". $id;
+    `flash`, `canvas`, `resumenFuentes`, `resumenPlugins` FROM `Conexiones` WHERE id = ". $id;
 $resultado = $conn->query($query);
-$resultadoResultados = $resultado->fetch_assoc();
+$resultadoConexiones = $resultado->fetch_assoc();
 
 //QUERY DE LOS FORMATOS DE AUDIO
 $query = "SELECT `ogg-vorbis`, `ogg-opus`, `3gpp`, `mp4-mp4a`, `mp4-mp3`, `mp4-ac3`, `mp4-ec3`, `acc`, `pcm`, 
@@ -53,25 +53,25 @@ $resultado = $conn->query($query);
 $resultadoVideo = $resultado->fetch_assoc();
 
 //QUERY DE BUSQUE DE TODOS LOS ELEMENTOS QUE COINCIDAN CON LOS DEL NAVEGADOR ACTUAL
-$query = "SELECT count(*) FROM ((SELECT * FROM resultados)a JOIN (SELECT * FROM formatosaudio)b USING (id)) JOIN 
+$query = "SELECT count(*) FROM ((SELECT * FROM Conexiones)a JOIN (SELECT * FROM formatosaudio)b USING (id)) JOIN 
     (SELECT * FROM formatosvideo)c USING (id) WHERE ";
 
 
 //Conseguir el número total de registros en la tabla, lo usaremos luego para calcular el porcentaje de similaridad para cada atributo.
-$query_total = "SELECT count(*) FROM resultados";
+$query_total = "SELECT count(*) FROM Conexiones";
 $total_reg = $conn->query($query_total);
 $total_reg = $total_reg->fetch_all();
 
 //Lo usaremos para devolver el JSON
 $arrayRatio = array();
 
-//resultados
-foreach ($resultadoResultados as $nombre=>$valor){
+//Conexiones
+foreach ($resultadoConexiones as $nombre=>$valor){
 
-    $query_ratio = "SELECT count(*) FROM `resultados` WHERE ";
+    $query_ratio = "SELECT count(*) FROM `Conexiones` WHERE ";
 
     //Linea comentada para hacer el porcentaje en SQL
-    //$query_ratio = "SELECT ROUND ( (SELECT 100 * count(*) FROM `resultados` WHERE ";
+    //$query_ratio = "SELECT ROUND ( (SELECT 100 * count(*) FROM `Conexiones` WHERE ";
 
     if (is_null($valor)){
         $query .= "a.`".$nombre."` is null";
@@ -82,7 +82,7 @@ foreach ($resultadoResultados as $nombre=>$valor){
         $query_ratio .= "`".$nombre . "` = '" . $valor . "'";
 
         //La linea comentada es para sacar el ratio desde SQL
-        //$query_ratio .= "`".$nombre . "` = '" . $valor . "'".") / (SELECT count(*) FROM `resultados` WHERE `" .$nombre ."` IS NOT NULL), 2)";
+        //$query_ratio .= "`".$nombre . "` = '" . $valor . "'".") / (SELECT count(*) FROM `Conexiones` WHERE `" .$nombre ."` IS NOT NULL), 2)";
     }
     $query .= " AND ";
 
@@ -104,7 +104,7 @@ foreach ($resultadoAudio as $nombre=>$valor){
     $query_ratio = "SELECT count(*) FROM `formatosaudio` WHERE ";
 
     //Linea comentada para hacer el porcentaje en SQL
-    //$query_ratio = "SELECT ROUND ( (SELECT 100 * count(*) FROM `resultados` WHERE ";
+    //$query_ratio = "SELECT ROUND ( (SELECT 100 * count(*) FROM `Conexiones` WHERE ";
 
     if (is_null($valor)){
         $query .= "b.`".$nombre."` is null";
@@ -115,7 +115,7 @@ foreach ($resultadoAudio as $nombre=>$valor){
         $query_ratio .= "`".$nombre . "` = '" . $valor . "'";
 
         //La linea comentada es para sacar el ratio desde SQL
-        //$query_ratio .= "`".$nombre . "` = '" . $valor . "'".") / (SELECT count(*) FROM `resultados` WHERE `" .$nombre ."` IS NOT NULL), 2)";
+        //$query_ratio .= "`".$nombre . "` = '" . $valor . "'".") / (SELECT count(*) FROM `Conexiones` WHERE `" .$nombre ."` IS NOT NULL), 2)";
     }
     $query .= " AND ";
 
@@ -137,7 +137,7 @@ foreach ($resultadoVideo as $nombre=>$valor){
     $query_ratio = "SELECT count(*) FROM `formatosvideo` WHERE ";
 
     //Linea comentada para hacer el porcentaje en SQL
-    //$query_ratio = "SELECT ROUND ( (SELECT 100 * count(*) FROM `resultados` WHERE ";
+    //$query_ratio = "SELECT ROUND ( (SELECT 100 * count(*) FROM `Conexiones` WHERE ";
 
     if (is_null($valor)) {
         $query .= "c.`" . $nombre . "` is null";
@@ -148,7 +148,7 @@ foreach ($resultadoVideo as $nombre=>$valor){
         $query_ratio .= "`".$nombre . "` = '" . $valor . "'";
 
         //La linea comentada es para sacar el ratio desde SQL
-        //$query_ratio .= "`".$nombre . "` = '" . $valor . "'".") / (SELECT count(*) FROM `resultados` WHERE `" .$nombre ."` IS NOT NULL), 2)";
+        //$query_ratio .= "`".$nombre . "` = '" . $valor . "'".") / (SELECT count(*) FROM `Conexiones` WHERE `" .$nombre ."` IS NOT NULL), 2)";
     }
     if ($count < count($resultadoVideo) - 1)
         $query .= " AND ";

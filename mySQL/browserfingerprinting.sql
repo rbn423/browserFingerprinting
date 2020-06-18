@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-05-2020 a las 18:40:37
+-- Tiempo de generación: 18-06-2020 a las 13:03:30
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -21,6 +21,67 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `browserfingerprinting`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `conexiones`
+--
+
+CREATE TABLE `conexiones` (
+  `ID` int(11) NOT NULL,
+  `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Accept` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `AcceptLanguage` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `UpgradeInsecureRequests` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `UserAgent` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `AcceptEncoding` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `Connection` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `SecFetchMode` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `SecFetchUser` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `SecFetchSite` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `DNT` tinyint(1) DEFAULT NULL,
+  `plataforma` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `userAgentJS` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `navegador` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `version` int(11) DEFAULT NULL,
+  `cookieEnabled` tinyint(1) DEFAULT NULL,
+  `language` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `onLine` tinyint(1) DEFAULT NULL,
+  `appName` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `zonaHoraria` int(11) DEFAULT NULL,
+  `screenWidth` int(11) DEFAULT NULL,
+  `screenHeight` int(11) DEFAULT NULL,
+  `screenAvailWidth` int(11) DEFAULT NULL,
+  `screenAvailHeight` int(11) DEFAULT NULL,
+  `screenColorDepth` int(11) DEFAULT NULL,
+  `screenPixelDepth` int(11) DEFAULT NULL,
+  `locationBar` tinyint(1) DEFAULT NULL,
+  `pixelRatio` double DEFAULT NULL,
+  `menuBar` tinyint(1) DEFAULT NULL,
+  `personalBar` tinyint(1) DEFAULT NULL,
+  `statusBar` tinyint(1) DEFAULT NULL,
+  `toolBar` tinyint(1) DEFAULT NULL,
+  `localStorage` tinyint(1) DEFAULT NULL,
+  `sessionStorage` tinyint(1) DEFAULT NULL,
+  `windowResults` tinyint(1) DEFAULT NULL,
+  `indexDB` tinyint(1) DEFAULT NULL,
+  `bateria` tinyint(1) DEFAULT NULL,
+  `DNTJS` tinyint(1) DEFAULT NULL,
+  `touchpoints` int(11) DEFAULT NULL,
+  `product` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `productSub` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `os` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
+  `vendor` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `hardwareConcurrency` int(11) DEFAULT NULL,
+  `lenguajes` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `buildId` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `devMemory` float DEFAULT NULL,
+  `flash` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `canvas` varchar(32) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `resumenFuentes` varchar(32) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `resumenPlugins` varchar(32) COLLATE utf8_spanish_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -99,70 +160,15 @@ CREATE TABLE `plugins` (
   `nombrePlugin` varchar(200) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `resultados`
---
-
-CREATE TABLE `resultados` (
-  `ID` int(11) NOT NULL,
-  `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `Accept` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `AcceptLanguage` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `UpgradeInsecureRequests` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `UserAgent` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `AcceptEncoding` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `Connection` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `SecFetchMode` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `SecFetchUser` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `SecFetchSite` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `DNT` tinyint(1) DEFAULT NULL,
-  `plataforma` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `userAgentJS` varchar(500) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `navegador` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `version` int(11) DEFAULT NULL,
-  `cookieEnabled` tinyint(1) DEFAULT NULL,
-  `language` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `onLine` tinyint(1) DEFAULT NULL,
-  `appName` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `zonaHoraria` int(11) DEFAULT NULL,
-  `screenWidth` int(11) DEFAULT NULL,
-  `screenHeight` int(11) DEFAULT NULL,
-  `screenAvailWidth` int(11) DEFAULT NULL,
-  `screenAvailHeight` int(11) DEFAULT NULL,
-  `screenColorDepth` int(11) DEFAULT NULL,
-  `screenPixelDepth` int(11) DEFAULT NULL,
-  `locationBar` tinyint(1) DEFAULT NULL,
-  `pixelRatio` double DEFAULT NULL,
-  `menuBar` tinyint(1) DEFAULT NULL,
-  `personalBar` tinyint(1) DEFAULT NULL,
-  `statusBar` tinyint(1) DEFAULT NULL,
-  `toolBar` tinyint(1) DEFAULT NULL,
-  `localStorage` tinyint(1) DEFAULT NULL,
-  `sessionStorage` tinyint(1) DEFAULT NULL,
-  `windowResults` tinyint(1) DEFAULT NULL,
-  `indexDB` tinyint(1) DEFAULT NULL,
-  `bateria` tinyint(1) DEFAULT NULL,
-  `DNTJS` tinyint(1) DEFAULT NULL,
-  `touchpoints` int(11) DEFAULT NULL,
-  `product` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `productSub` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `os` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
-  `vendor` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `hardwareConcurrency` int(11) DEFAULT NULL,
-  `lenguajes` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `buildId` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `devMemory` float DEFAULT NULL,
-  `flash` varchar(200) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `canvas` varchar(32) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `resumenFuentes` varchar(32) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `resumenPlugins` varchar(32) COLLATE utf8_spanish_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `conexiones`
+--
+ALTER TABLE `conexiones`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indices de la tabla `dispositivos`
@@ -195,19 +201,13 @@ ALTER TABLE `plugins`
   ADD PRIMARY KEY (`id`,`nombrePlugin`);
 
 --
--- Indices de la tabla `resultados`
---
-ALTER TABLE `resultados`
-  ADD PRIMARY KEY (`ID`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `resultados`
+-- AUTO_INCREMENT de la tabla `conexiones`
 --
-ALTER TABLE `resultados`
+ALTER TABLE `conexiones`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 

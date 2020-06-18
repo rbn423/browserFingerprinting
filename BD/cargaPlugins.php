@@ -17,19 +17,19 @@ foreach ($_POST as $nombre_plugin => $plugin){
     }
 }
 
-//insertamos el resumen en la tabla resultados
-$stmt = $conn->prepare("UPDATE `resultados` SET `resumenPlugins`=? WHERE `ID` =?");
+//insertamos el resumen en la tabla Conexiones
+$stmt = $conn->prepare("UPDATE `Conexiones` SET `resumenPlugins`=? WHERE `ID` =?");
 $stmt->bind_param("si", $resumen, $id);
 $stmt->execute();
 $stmt->close();
 
 //Total de resumenes de plugins distintos
-$query_total = "SELECT count(`resumenPlugins`) FROM `resultados`";
+$query_total = "SELECT count(`resumenPlugins`) FROM `Conexiones`";
 $total_reg = $conn->query($query_total);
 $total_reg = $total_reg->fetch_all();
 
 //Cogemos el resumePlugins de quien ha hecho la petición
-$stmt = $conn->prepare("SELECT `resumenPlugins` FROM `resultados` WHERE id =?");
+$stmt = $conn->prepare("SELECT `resumenPlugins` FROM `Conexiones` WHERE id =?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $stmt -> store_result();
@@ -39,7 +39,7 @@ $stmt->close();
 
 //Contamos cuantas veces está dicho resumenPlugins en la BD
 if (is_null($resumenPlugins)) {
-    $stmt = $conn->prepare("SELECT COUNT(DISTINCT `resumenPlugins`) FROM `resultados` WHERE `resumenPlugins` =? is null");
+    $stmt = $conn->prepare("SELECT COUNT(DISTINCT `resumenPlugins`) FROM `Conexiones` WHERE `resumenPlugins` =? is null");
     $stmt->bind_param("s", $resumenPlugins);
     $stmt->execute();
     $stmt -> store_result();
@@ -48,7 +48,7 @@ if (is_null($resumenPlugins)) {
     $stmt->close();
 }
 else {
-    $stmt = $conn->prepare("SELECT COUNT(DISTINCT `resumenPlugins`) FROM `resultados` WHERE `resumenPlugins` =?");
+    $stmt = $conn->prepare("SELECT COUNT(DISTINCT `resumenPlugins`) FROM `Conexiones` WHERE `resumenPlugins` =?");
     $stmt->bind_param("s", $resumenPlugins);
     $stmt->execute();
     $stmt -> store_result();

@@ -5,16 +5,16 @@ $elemento = $_GET["elemento"];
 $app = Aplicacion::getSingleton();
 $conn = $app->conexionBd();
 
-$query = "SELECT DISTINCT ".$elemento." FROM `resultados` ";
+$query = "SELECT DISTINCT ".$elemento." FROM `Conexiones` ";
 $result = $conn->query($query);
 
 $arrayDatos = array();
 
 while ($fila = $result->fetch_assoc()) {
     if (is_null($elemento))
-        $query = "SELECT COUNT(*) FROM `resultados` WHERE `".$elemento."` is null";
+        $query = "SELECT COUNT(*) FROM `Conexiones` WHERE `".$elemento."` is null";
     else
-        $query = "SELECT COUNT(*) FROM `resultados` WHERE `".$elemento."` = '".$fila[$elemento]."'";
+        $query = "SELECT COUNT(*) FROM `Conexiones` WHERE `".$elemento."` = '".$fila[$elemento]."'";
 	$dato = $conn->query($query);
 	$dato = $dato->fetch_assoc();
 	$arrayDatos += [$fila[$elemento] => $dato['COUNT(*)']];
