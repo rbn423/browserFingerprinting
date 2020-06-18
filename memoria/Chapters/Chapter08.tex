@@ -1,2 +1,19 @@
 \chapter{Conclusiones}
+
+\section{Trabajo futuro}
+Durante el trabajo hemos dejado funcionalidades o mejoras que se podrían realizar en el futuro para mejorar el desempeño de la aplicación.
+\subsubsection{Asincronía}
+En nuestra aplicación hemos utilizado el objeto <<XMLHTTPRequest>> de JavaScript para la conexión asíncrona con el servidor. Se trata de un objeto que empieza a estar obsoleto y que ha sido reemplazado por <<Fetch>>, que permite acceder y manipular partes del canal HTTP de manera mas sencilla y cómoda.\par 
+Además se puede buscar una mejor solución al problema de la asincronía mencionado anteriormente.
+\subsubsection{Gráficas}
+Se puede realizar una modificación de la gráficas, de forma que al dibujarse estas se resalte la porción a la que pertenece el navegador del usuario que la está viendo.\par 
+También se puede añadir una mejora que permita al usuario ver una nueva gráfica al seleccionar un campo de otra, en la que se detalle información de la anterior. Por ejemplo, en la gráfica de sistema operativo, al pulsar sobre uno de los sistemas se mostraría una nueva gráfica en la que se pudiese ver el porcentaje de cada una de las versiones de ese sistema.
+\subsubsection{Analizar otros elementos del navegador}
+Consideramos que nuestra aplicación obtiene información de suficientes elementos mediante JavaScript, pero durante el desarrollo dejamos varios por implementar por falta de tiempo. Entre ellos se podrían añadir los siguientes.
+\begin{itemize}
+    \item \textbf{WebGL}: Se trata de una API para JavaScript que permite renderizar gráficos en 3D. Se puede utilizar de forma similar a nuestra implementación de <<Canvas>>.
+    \item \textbf{Sensores}: Mediante JavaScript se puede obtener información de sensores del dispositivo, como el acelerómetro o el giroscopio.
+\end{itemize}
+\subsubsection{Análisis de resultados en intervalos de tiempo}
+Esta mejora consiste en poder observar distintos ratios de los atributos del navegador para distintos intervalos de tiempo. De esta forma se podrían ver los resultados de las huellas en los últimos 15 días o en el último mes. Es una mejora que teníamos en mente desde el inicio del proyecto, incluso almacenamos la fecha en la tabla \textit{Conexiones} de la base de datos, pero por falta de tiempo no hemos podido llevarla a cabo.
 \noindent
