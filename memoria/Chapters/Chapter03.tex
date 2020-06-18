@@ -100,7 +100,7 @@ Por último, queremos mencionar cuales son los últimos métodos de detección d
 \end{itemize}
 
 \subsection{Técnicas de evasión}
-"Las opciones actuales de los usuarios para mitigar estas amenazas son limitadas, en parte debido a la dificultad de distinguir las rastreando desde el comportamiento benigno" ( \textit{The Web Never Forgets: Persistent Tracking Mechanisms in the Wild}: \cite{never_forget_paper} ). \par 
+"Las opciones actuales de los usuarios para mitigar estas amenazas son limitadas, en parte debido a la dificultad de distinguir las rastreando desde el comportamiento benigno." (\textit{The Web Never Forgets: Persistent Tracking Mechanisms in the Wild}: \cite{never_forget_paper}) \par 
 
 La mitigación más sencilla para aumentar la seguridad y privacidad de nuestro navegador es por supuesto eliminar funcionalidades. No obstante, elevar nuestro nivel de protección sin degradar la experiencia del usuario siempre es un desafío. \par 
 
@@ -163,14 +163,14 @@ HTML significa Lenguaje de Marcado de Hipertextos (\textit{HyperText Markup Lang
 Usamos HTML en nuestro proyecto ya que necesitamos construir una página web y éste es el lenguaje estándar para realizarlo. HTML es el lenguaje más extendido. No es tan estricto como otros lenguajes de marcado similares, como XHTML, que no son retrocompatibles. \par
 
 \subsubsection{CSS}
-CSS significa Hojas de Estilo en Cascada (\textit{Cascading Style Sheets}). Se utiliza para definir el diseño de la presentación de un lenguaje de marcado. Es otro de los lenguajes estandarizados por el \textit{W3C}. Existen varias versiones. Nosotros utilizamos la versión más reciente CSS3. \par 
+CSS significa Hojas de Estilo en Cascada (\textit{Cascading Style Sheets}). Se utiliza para definir el diseño de la presentación de un lenguaje de marcado. Es otro de los lenguajes estandarizados por el \textit{W3C}. Existen varias versiones. Nosotros utilizamos la versión más reciente, que es CSS3. \par 
 
 Utilizamos CSS en nuestro proyecto para colocar los elementos HTML de forma estática y darles el estilo de presentación que deseamos. Usar CSS resulta mucho más flexible que fijar el valor del estilo dentro la etiqueta HTML, haciendo nuestro código más sencillo de mantener. \par
 
 \subsubsection{HTTP}
-HTTP es Protocolo de Transferencia de Hipertexto (\textit{Hypertext Transfer Protocol}). Es el protocolo que se emplea para el envío de documentos HTML. En la pila TCP/IP se encuentra en la capa de aplicación. Recordamos que este HTTP es un protocolo sin estado. HTTP sigue un modelo de cliente-servidor.  \par
+HTTP es Protocolo de Transferencia de Hipertexto (\textit{Hypertext Transfer Protocol}). Es el protocolo que se emplea para el envío de documentos HTML. En la pila TCP/IP se encuentra en la capa de aplicación. HTTP es un protocolo sin estado y sigue un modelo de cliente-servidor.  \par
 
-En nuestro proyecto usamos la versión HTTP/1.1 , que es la que viene predeterminada en nuestro servidor. La ventaja que tenemos con esta versión es que el formato es texto plano, por tanto legible para el ser humano. En cambio, otras versiones como HTTP2 cuentan con formatos binarios.  \par
+En nuestro proyecto usamos la versión HTTP/1.1 , que es la que viene predeterminada en nuestro servidor. La ventaja que tenemos con esta versión es que el formato es texto plano, por tanto legible para el ser humano. \par
 
 \subsection{Lenguajes de escritura}
 
@@ -192,7 +192,7 @@ Utilizamos JSON en nuestro proyecto para intercambiar objetos desde la lógica a
 \subsubsection{Web APIs}
 En web existen multitud de APIs para llevar a cabo distintas funciones. A estas interfaces se accede a través de JavaScript y permiten la configuración de ajustes. En la siguiente figura mostramos la lista de Web APIS: \par 
 
-\begin{figure}[tbp]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\textwidth]{Images/webapis.png}
 	\caption{Lista de Web APIs}
@@ -204,11 +204,7 @@ En nuestro proyecto utilizamos WebAPIs para recolectar los datos de la huella di
 
 \subsection{\textit{Backend}}
 
-En nuestro servidor \textit{backend} hemos optado por instalar XAMPP. Consiste en un paquete de herramientas para combinar las principales tecnologias que se utilizan en un servidor web. \par 
-
-Hemos elegido este paquete de \textit{software} debido a la facilidades que brinda tanto para instalar como para usarse con el sistema operativo Microsoft Windows. \par 
-
-Los componentes que hemos utilizado en XAMPP son los siguientes: \par
+En nuestro servidor \textit{backend} hemos optado por instalar XAMPP. Consiste en un paquete de herramientas para combinar las principales tecnologias que se utilizan en un servidor web. Hemos elegido este paquete de \textit{software} debido a la facilidades que brinda tanto para instalar como para usarse con el sistema operativo Microsoft Windows. Los componentes que hemos utilizado en XAMPP son los siguientes: \par
 
 \subsubsection{Apache}
 
@@ -222,7 +218,7 @@ Se trata de un sencillo sistema gestor de base de datos relacionales. Es una bif
 
 En nuestro proyecto se usa para albergar la huella digital que recopilamos de los navegadores web que conectan con nuestra aplicación. Como en el punto anterior, también consideramos otro tipo de bases de datos que finalmente fueron descartadas. \par 
 
-\subsubsection{Phpmyadmin}
+\subsubsection{PhpMyAdmin}
 
 Es una interfaz web para administrar la base de datos. Está escrita en PHP y soporta bases de datos tanto MariaDB como MySQL. \par 
 
@@ -232,46 +228,46 @@ Está contenida dentro de la instalación de XAMPP. Nos resulta más cómo obser
 
 Además de las tecnologías que hemos usado relacionadas con los navegadores, mencionamos el resto de tecnologías que hemos incorporado a nuestro proyecto: \par 
 
+\subsubsection{Google Charts}
+
+Utilizamos la herramienta Google Charts\cite{GoogleCharts} para representar estadísticas sobre la información que hemos almacenado en nuestra base de datos. A través de gráficas de tartas mostramos porcentajes de los atributos más comunes. Este herramienta la importamos a través de código JavaScript. \par 
+
 \subsubsection{Git}
 
-Control de versiones, trabajo colaborativo en desarrollo de software. \par 
+Es un \texit{software} de control de versiones. Nos permite organizar nuestro flujo de trabajo y guardar un historial de cambios para saber el motivo y la persona que realizó las nuevas mejoras. Además nos hace más sencilla la coordinación entre todo el equipo en el desarrollo de software. \par 
 
-Plataforma Github: Licencia de estudiante ofrece una serie de extras. Usamos los repositorios privados. \par 
+El código lo alojamos en la plataforma Github. Elegimos Github porque la licencia de estudiante ofrece una serie de extras de forma gratuita. Uno de estos extras es la opción de utilizar repositorios privados, en los que estábamos interesados. Igualmente, cuenta con una aplicación de escritorio que nos facilita la revisión de código antes de perpretar cambios definitivos. \par 
 
 \subsubsection{PhpStorm}
 
-IDE de Jetbrains muy práctico para trabajar en PHP y JS. \par 
+Se trata de un entorno de desarrollo integrado (IDE) desarrollado por la compañía Jetbrains. Este IDE nos sorprendió por la cantidad de ayudas que nos ofrece al trabajar con PHP, JavaScript, HTML y CSS. Soporta todos esos lenguajes y formatos, además de contar con opciones de autocompletado de código y detección de errores sintácticos. \par 
 
-Licencia de estudiante permite el uso gratuito. \par 
+Este entorno comercial es de pago. Sin embargo, cuenta con una licencia de estudiante que permite su uso gratuito. \par 
 
 \subsubsection{\LaTeX}
-\LaTeX es un Lenguaje de escritura de marcado. \par 
+\LaTeX es un sistema para componer textos. Se suele utilizar en textos técnicos y de divulgación científica. Su característica principal es que permite escribir documentos centrándose en el contenido del mismo, sin tener que preocuparse por los detalles del formato. Otra ventaja que ofrece es que la salida que ofrece es invariable, por lo que no depende del dispositivo con el que estamos trabajando. \par 
 
-Lo usamos para la memoria. \par 
+Usamos \LaTeX para componer el documento de la memoria del proyecto. \par 
 
-Utilizamos la herramienta Overleaf para trabajar en linea de forma colaborativa. Cuenta con un compilador online, por lo que no tenemos que descargar software en nuestra máquina ni instalar dependencias. \par 
+Trabajamos con esta tecnología desde la Overleaf. Nos decantamos por esta opción porque nos permite prescindir de descargar \textit{software} adicional en nuestra máquina. Asimismo, cuenta con diversos compiladores online, por lo que no tenemos que preocuparnos de los conflictos con las dependencias de los paquetes. \par 
 
 \subsection{Tecnologías consideradas y finalmente descartadas}
-En construccion. \par
 
 Antes de elegir estuvimos probando con diversas tecnologías que finalmente fuimos descartando hasta quedarnos con las que hemos mencionado en el apartado anterior. Realizamos aquí un pequeño resumen. \par 
 
 \subsubsection{Django}
-(explicar unas pocas líneas que es) \par 
-varios integrantes del grupo no habíamos programado en Python, acostumbrarse al lenguaje, al empezar a trabajar encontrábamos un poco engorroso el patrón MVC al que te obliga a trabajar, cuando estamos probando queríamos ver cosas funcionando rápido para elegir cogerlo o no. \par 
+Django es un framework de desarrollo web. Una de las ventajas es que respeta el patrón de diseño Modelo-Vista-Controlador (MVC). Por otra parte, el lenguaje de programación Python es usado en todas las partes del framework y no todos los integrantes del equipo tenemos el dominio suficiente sobre él. Finalmente consideramos que acustumbrarnos al lenguaje iba a resultar un poco engorroso y lo descartamos al estar más familiarizados con PHP. \par 
 
 \subsubsection{Node.js}
-código js, nos parecía sencillo pero apache nos daba todo ya muy hecho. Controlabamos de php y no tanto de js al principio del proyecto. \par 
+Es un entorno en tiempo de ejecución construido sobre JavaScript, normalmente utilizado en el lado del servidor web. La principal ventaja que veíamos era la futura integración que podíamos tener más adelante con el código que recopila la información de la huella digital de los navegadores. Otra virtud a tener en cuenta es que con muy pocas líneas de código podíamos tener un servidor web escuchando y listo para producción. En comparación con Django que te obligaba a crear todos los componentes necesarios para respetar el modelo MVC, esto era mucho más rápido y sencillo. La complicación que le vimos era entender a fondo el lenguaje JavaScript, ya que al comienzo del proyecto nos sentíamos mucho más cómodos trabajando con PHP y Apache en el lado del servidor que con JavaScript y Node. \par 
 
 \subsubsection{Nginx}
-estabamos más familiarizados con apache. \par 
-
-\subsubsection{Frameworks}
-frameworks de desarrollo (Angular, Vuejs y React, Bootstrap, Webpack): no queríamos que nos dieran todo hecho, mejor hacerlo nosotros. \par 
-Incluir más argumentos. \par 
+Es un servidor web. En cuanto a las características pensamos que es muy similar a Apache, por lo que no veíamos en Nginx ventajas considerables. Además, Apache ya viene incluído en el pack de herramientas de XAMPP. \par 
 
 \subsubsection{MongoDB}
-Nos planteamos la posibilidad de utilizar una base de datos NOSQL como MongoDB. Para añadir atributos a medida que nos los íbamos encontrando. Mejor una SQL normal, que nos era suficiente, mejor para hacer los joins?? \par 
+Nos planteamos la posibilidad de utilizar una base de datos NOSQL como MongoDB. La ventaja que le veíamos era el poder añadir atributos a medida que nos los íbamos encontrando, ya que en un primer momento al estudiar la diversidad de navegadores y configuraciones de los mismos, pensamos que podíamos encontrarnos con datos no estructurados. \par 
+
+Sin embargo, vimos que no nos hacía falta ya que podíamos diseñar un esquema fijo relacional con tablas SQL. Además, la cantidad a datos a almacenar no tiene nada que ver con el entorno Big Data y MariaDB se adaptaba mejor a nuestras necesidades. \par 
 
 \section{Herramientas similares}
 
