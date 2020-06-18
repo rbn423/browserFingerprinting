@@ -16,4 +16,7 @@ Consideramos que nuestra aplicación obtiene información de suficientes element
 \end{itemize}
 \subsubsection{Análisis de resultados en intervalos de tiempo}
 Esta mejora consiste en poder observar distintos ratios de los atributos del navegador para distintos intervalos de tiempo. De esta forma se podrían ver los resultados de las huellas en los últimos 15 días o en el último mes. Es una mejora que teníamos en mente desde el inicio del proyecto, incluso almacenamos la fecha en la tabla \textit{Conexiones} de la base de datos, pero por falta de tiempo no hemos podido llevarla a cabo.
+\subsubsection{Soporte para HTTP2}
+Actualmente, nuestro servidor web sólo permite conexiones HTTP1/1. Dar soporte a la versión HTTP/2 implicaría mejoras en el rendimiento, ya que HTTP2 se trata de un formato binario, a diferencia de HTTP1/1 que es texto plano. Otras funcionalidades que incorpora y que creemos que pueden mejorar nuestro proyecto es la multiplexación de conexiones entrantes y la capacidad de enviar datos al cliente antes de que él los pida. \par
+Ha sido una opción que estuvimos investigando y llegamos a la conclusión de que además necesitábamos incluir certificados SSL/TLS. Esto es así ya que, aunque la especificación del protocolo HTTP/2 permite prescindir del cifrado, varias implementaciones declararon que sólo soportarán HTTP/2 cuando se utilice a través de una conexión cifrada, y actualmente ningún navegador soporta HTTP/2 sin cifrar \cite{http2}. \par
 \noindent
