@@ -27,7 +27,7 @@ Cuantas más procedimientos diferentes de \textit{browser fingerprinting} se emp
 
 \subsection{Impacto: peligros y casos de uso}
 
-En este capítulo analizaremos las implicaciones que tiene el uso de la identificación de la huella digital en navegadores. Expondremos los casos de usos más frecuentes y los peligros que puede suponer el uso de este recurso. Asimismo, comentaremos algunas posibles implicaciones legales. \par
+En esta sección analizaremos las implicaciones que tiene el uso de la identificación de la huella digital en navegadores. Expondremos los casos de usos más frecuentes y los peligros que puede suponer el uso de este recurso. Asimismo, comentaremos algunas posibles implicaciones legales. \par
 
 Al tratarse de un sistema tan efectivo, cabe preguntarse si puede ocasionar a su vez algunos peligros. \par
 
@@ -67,9 +67,9 @@ Por supuesto, el agente detrás del empleo este procedimiento va a contar con su
 Podemos clasificar las distintas técnicas de detección de huellas digitales en navegadores web en dos grupos distintos: \par 
 
 \begin{itemize}
-	\item \textit{Fingerprinting} pasivo: Se limita a explorar el contenido de la petición web sin ejecutar código de forma activa en el navegador del cliente. En este grupo incluiremos la recolección de campos de la cabecera HTTP. En el capítulo de fuentes de información explicaremos detalladamente cada uno de los elementos que conforman dicha cabecera. \par 
+	\item \textit{Fingerprinting} pasivo: Se limita a explorar el contenido de la petición web sin ejecutar código de forma activa en el navegador del cliente. En este grupo incluiremos la recolección de campos de la cabecera HTTP. En el capítulo~\ref{ch:fuentes_info} explicaremos detalladamente cada uno de los elementos que conforman dicha cabecera. \par 
 	
-	\item \textit{Fingerprinting} activo:  Se realiza ejecutando código, normalmente JavaScript en el navegador web del cliente que está realizando la petición web. Entre todas las opciones posibles, el sistema operativo, la configuración del idioma, la resolución de pantalla, la detección de \textit{plugins} y el lienzo suelen ser los atributos elegidos para realizar el método activo de identificación de huella digital. En el capítulo de fuentes de información también explicaremos detalladamente cada uno de los elementos JavaScript que hemos obtenido para poder perfilar los navegadores web en nuestro proyecto. \par 
+	\item \textit{Fingerprinting} activo:  Se realiza ejecutando código, normalmente JavaScript en el navegador web del cliente que está realizando la petición web. Entre todas las opciones posibles, el sistema operativo, la configuración del idioma, la resolución de pantalla, la detección de \textit{plugins} y el lienzo suelen ser los atributos elegidos para realizar el método activo de identificación de huella digital. En el capítulo~\ref{ch:fuentes_info} se explicará detalladamente cada uno de los elementos JavaScript que hemos obtenido para poder perfilar los navegadores web en nuestro proyecto. \par 
 	
 \end{itemize}
 
@@ -190,7 +190,7 @@ Las siglas JSON significan Notación de Objeto de JavaScript (\textit{JavaScript
 Utilizamos JSON en nuestro proyecto para intercambiar objetos desde la lógica a las vistas. En ellos inclumos toda la información que queremos mostrar al usuario. \par
 
 \subsubsection{Web APIs}
-En web existen multitud de APIs para llevar a cabo distintas funciones. A estas interfaces se accede a través de JavaScript y permiten la configuración de ajustes. En la siguiente figura mostramos la lista de Web APIS: \par 
+En web existen multitud de APIs para llevar a cabo distintas funciones. A estas interfaces se accede a través de JavaScript y permiten la configuración de ajustes. En la figura~\ref{fig:webAPIs} mostramos la lista de Web APIS: \par 
 
 \begin{figure}[H]
 	\centering
@@ -210,7 +210,7 @@ En nuestro servidor \textit{backend} hemos optado por instalar XAMPP. Consiste e
 
 Es el servidor web más popular. Cuenta con una perfecta integración con los lenguajes que utilizamos, es decir PHP y JavaScript. \par 
 
-Se trata de un servidor con el que ya habíamos trabajado anteriormenete así que tomamos la decisión de utilizarlo para poder comenzar el desarrollo de nuestra aplicación rápidamente. También consideramos otras opciones que finalmente descartamos. Esto lo explicaremos en la sección 3.2.5 Tecnologías consideradas y finalmente descartadas. \par 
+Se trata de un servidor con el que ya habíamos trabajado anteriormenete así que tomamos la decisión de utilizarlo para poder comenzar el desarrollo de nuestra aplicación rápidamente. También consideramos otras opciones que finalmente descartamos. Esto lo explicaremos en la sección~\ref{subsec:rejected}. \par 
 
 \subsubsection{MaríaDB}
 
@@ -252,7 +252,7 @@ Usamos \LaTeX para componer el documento de la memoria del proyecto. \par
 Trabajamos con esta tecnología desde la Overleaf. Nos decantamos por esta opción porque nos permite prescindir de descargar \textit{software} adicional en nuestra máquina. Asimismo, cuenta con diversos compiladores online, por lo que no tenemos que preocuparnos de los conflictos con las dependencias de los paquetes. \par 
 
 \subsection{Tecnologías consideradas y finalmente descartadas}
-
+\label{subsec:rejected}
 Antes de elegir estuvimos probando con diversas tecnologías que finalmente fuimos descartando hasta quedarnos con las que hemos mencionado en el apartado anterior. Realizamos aquí un pequeño resumen. \par 
 
 \subsubsection{Django}
