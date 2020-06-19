@@ -87,9 +87,9 @@ function resultadoPlugins(listaPlugins) {
     for(var i = 0 ; i < listaPlugins[0].length ; i++)
         salida += "<p>" + listaPlugins[0][i] + "</p>";//no se si esta bien una p en una tabla
     salida += "</td></tr>" +
-        "<tr><td>Plugins totales instalados</td><td>¿Queremos sacar esto?</td><td>" + listaPlugins[0].length + "</td></tr>" +
-        "<tr><td>"+listaPlugins[1][0]+"</td><td>No lo guardamos en la DB</td><td>"+valorFlash+"</td></tr>" +
-        "<tr><td>"+listaPlugins[2][0]+"</td><td>Tampoco lo guardamos</td><td>"+listaPlugins[2][2]+"</td></tr>" +
+        "<tr><td colspan='2'>Plugins totales instalados</td><td>" + listaPlugins[0].length + "</td></tr>" +
+        "<tr><td colspan='2'>"+listaPlugins[1][0]+"</td><td>"+valorFlash+"</td></tr>" +
+        "<tr><td colspan='2'>"+listaPlugins[2][0]+"</td><<td>"+listaPlugins[2][2]+"</td></tr>" +
         "</table>";
     return salida;
 }
