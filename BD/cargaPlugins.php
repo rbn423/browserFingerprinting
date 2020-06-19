@@ -9,7 +9,7 @@ $conn = $app->conexionBd();
 
 //insertamos en la base de datos los plugins
 foreach ($_POST as $nombre_plugin => $plugin){
-    if ($nombre_plugin != "ID" ) {
+    if ($nombre_plugin != "ID" && $nombre_plugin != "resumen") {
         $stmt = $conn->prepare("INSERT INTO `plugins`(`id`, `nombrePlugin`) VALUES (?, ?)");
         $stmt->bind_param("is", $id, $plugin);
         $stmt->execute();
