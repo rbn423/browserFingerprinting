@@ -31,7 +31,7 @@ En esta sección analizaremos las implicaciones que tiene el uso de la identific
 
 Al tratarse de un sistema tan efectivo, cabe preguntarse si puede ocasionar a su vez algunos peligros. \par
 
-Sin lugar a duda, el principal inconveniente que nos viene a la cabeza es el riesgo que supone para la privacidad. Este método se puede realizar de forma transparente al usuario sin que ni siquiera se dé cuenta ni haga falta pedirle ningún tipo de permiso\cite{challenges}. \par 
+Sin duda, el principal inconveniente que nos viene a la cabeza es el riesgo que supone para la privacidad. Este método se puede realizar de forma transparente al usuario sin que se dé cuenta ni haga falta pedirle ningún tipo de permiso\cite{challenges}. \par 
 
 La parte legal supone también otro desafío. \par
 
@@ -48,14 +48,14 @@ En Europa, existe el Reglamento General de Protección de Datos (GDPR) que restr
 
 La GDPR evita mencionar tecnologías específicas para poder estar al día del desarrollo tecnológico más allá de las huellas digitales y las \textit{cookies}\cite{gdpr_eff}. \par 
 
-No obstante, en el reglamento de la GDPR aparecen una serie de considerandos no vinculantes que mencionan el hecho de que las \textit{cookies} y otras huellas digitales pueden ser utilizadas para tanto perfilar a personas físicas como para perfilarlas. Esto se menciona concretamente en el considerando número 30\cite{gdpr}. \par 
+No obstante, en el reglamento de la GDPR aparecen una serie de considerandos no vinculantes que mencionan el hecho de que las \textit{cookies} y otras huellas digitales pueden ser utilizadas para tanto para elaborar perfiles de personas físicas como para identificarlas. Esto se menciona concretamente en el considerando número 30\cite{gdpr}. \par 
 
 Por tanto, en la práctica, con informar al usuario del empleo de este método, sería suficiente para cumplir con la GDPR\cite{blokt}. Sin embargo, aquellas corporaciones sin acuerdos con Europa podrán seguir recopilando los datos de huellas digitales sin tener en cuenta esta ley. \par
 
 Por supuesto, el agente detrás del empleo este procedimiento va a contar con sus propias motivaciones. De todas maneras, los casos de uso principales suelen ser los siguientes: \par
 
 \begin{itemize}
-	\item Realizar un perfil específico de clientes para adaptarse a sus necesidades. Una de las formas es rastrear de qué página viene el usuario y establecer si ese usuario ya ha visitado nuestro sitio anteriormente. En este caso no estamos necesariamente interesados en averiguar la identidad del usuario en sí, tal solo en realizar un perfil. Es el sistema más utilizado por los \textit{data brokers}\cite{data_brocker}. Este es el caso de uso fundamental de la mayoría servicios de publicidad de terceros. \par 
+	\item Realizar un perfil específico de clientes para adaptarse a sus necesidades. Una de las formas es rastrear de qué página viene el usuario y establecer si ese usuario ya ha visitado nuestro sitio anteriormente. En este caso no estamos necesariamente interesados en averiguar la identidad del usuario en sí, tan solo en realizar un perfil. Es el sistema más utilizado por los \textit{data brokers}\cite{data_brocker}. Este es el caso de uso fundamental de la mayoría servicios de publicidad de terceros. \par 
 	
 	\item Entender la actividad del usuario a través de patrones de comportamiento. Analizando cómo es el flujo de interacción del usuario con nuestra página, podemos llegar a conclusiones muy valiosas. La tecnología de JavaScript es la más utilizada en este aspecto, ya que nos permite analizar la atención del usuario sobre la página (saber si la pestaña se encuentra activa, cuál es la posición del ratón, comprobar si nuestras sugerencias son de verdad atractivos e interesantes para el usuario). Se utiliza mucho en tiendas online y redes sociales como estrategia de mercadotecnia. \par 
 	
@@ -75,7 +75,7 @@ Podemos clasificar las distintas técnicas de detección de huellas digitales en
 
 También podríamos clasificar los distintos sistemas de \textit{browser fingerprinting} teniendo en cuenta el tipo de información a obtener. \par 
 
-Por una parte, podríamos obtener información del \textit{hardware} de la máquina directamente a través de la API de JavaScript. Algunos de estos atributos son: La memoria RAM, el tipo de procesador de la máquina, el nombre de la tarjeta gráfica, el número de núcleos de la CPU o el estado de la batería. \par
+Por una parte, podríamos obtener información del \textit{hardware} de la máquina directamente a través de la API de JavaScript. Algunos de estos atributos son: la memoria RAM, el tipo de procesador de la máquina, el nombre de la tarjeta gráfica, el número de núcleos de la CPU o el estado de la batería. \par
 
 Por otra parte, podemos obtener información del sistema operativo, configuraciones del navegados o fuentes y \textit{códecs} de audio y vídeo instalados, entre otros. Todos estos elementos se obtienen del \textit{software} del sistema del cliente. \par 
 
@@ -148,7 +148,7 @@ Existe un abanico muy amplio de tecnologías\cite{web_mozilla} relacionadas con 
 				\begin{itemize}
 					\item Apache
 					\item MaríaDB
-					\item Phpmyadmin
+					\item PhpMyAdmin
 				\end{itemize}
 		\end{itemize}
 \end{itemize}
@@ -175,13 +175,14 @@ En nuestro proyecto usamos la versión HTTP/1.1 , que es la que viene predetermi
 \subsection{Lenguajes de escritura}
 
 \subsubsection{JavaScript y AJAX}
-JavaScript es un lenguaje de programación multipropósito que está soportado por todos los navegadores web modernos. Se puede utilizar tanto para ejecutar código en el navegador del cliente como en funcionalidades del servidor. \par
+JavaScript es un lenguaje de programación multipropósito que está soportado por todos los navegadores web modernos. Aparece por primera vez en el navegador Netscape en 1995. Se puede utilizar tanto para ejecutar código en el navegador del cliente como en funcionalidades del servidor. \par
 
-En nuestro proyecto se utiliza para recopilar la información de los distintos atributos del navegador a través de Web APIs. Tambien usamos JavaScript para  colocar elementos HTML de forma dinámica y asíncrona modificando el árbol DOM HTML. Esto nos permite cargar los elementos sin actualizar la página completamente. Por tanto, ejecutamos código JavaScript en las dos partes, cliente y servidor. \par
+En nuestro proyecto se utiliza para recopilar la información de los distintos atributos del navegador a través de Web APIs. Tambien usamos JavaScript para  colocar elementos HTML de forma dinámica y asíncrona modificando el árbol DOM HTML. Esto nos permite cargar los elementos sin actualizar la página completamente ejectuando el código en el navegador web del cliente.\par
 
 \subsubsection{PHP}
 
-PHP es otro lenguaje de programación multipropósito. Es el lenguaje de desarrollo web por excelencia. En nuestro caso lo empleamos en el lado del servidor. Una caraterística muy útil es que podemos combinar código PHP con JSON y HTML. \par 
+PHP (proviene del acrónimo recursivo \textit{PHP: Hypertext Preprocessor}) es otro lenguaje de programación multipropósito. Es el lenguaje de desarrollo web por excelencia. La primera referencia que se tiene de PHP data también de 1995. En nuestro caso lo empleamos en el lado del servidor. Una caraterística muy útil es que podemos combinar código PHP con JSON y HTML. \par 
+
 Elegimos PHP porque se trata de un lenguaje que ya conociamos todos los miembros del equipo. Además nos iba a facilitar el uso del software con el que ya teníamos en mente trabajar. \par 
 
 \subsubsection{JSON}
@@ -190,7 +191,11 @@ Las siglas JSON significan Notación de Objeto de JavaScript (\textit{JavaScript
 Utilizamos JSON en nuestro proyecto para intercambiar objetos desde la lógica a las vistas. En ellos inclumos toda la información que queremos mostrar al usuario. \par
 
 \subsubsection{Web APIs}
-En web existen multitud de APIs para llevar a cabo distintas funciones. A estas interfaces se accede a través de JavaScript y permiten la configuración de ajustes. En la figura~\ref{fig:webAPIs} mostramos la lista de Web APIS: \par 
+En web existen multitud de APIs para llevar a cabo distintas funciones. A estas interfaces se accede a través de JavaScript y permiten la configuración de ajustes. \par
+
+En nuestro proyecto utilizamos WebAPIs para recolectar los datos de la huella digital del navegador del cliente. Algunas de las WebAPIs que más utilizamos son: \textit{Window} y \textit{Document} (pertenecientes a \textit{Document Object Model (DOM)}), \textit{Navigator}, \textit{Screen} y \textit{Canvas}. \par 
+
+En la figura~\ref{fig:webAPIs} mostramos la lista de Web APIS: \par 
 
 \begin{figure}[H]
 	\centering
@@ -198,8 +203,6 @@ En web existen multitud de APIs para llevar a cabo distintas funciones. A estas 
 	\caption{Lista de Web APIs}
 	\label{fig:webAPIs}
 \end{figure}
-
-En nuestro proyecto utilizamos WebAPIs para recolectar los datos de la huella digital del navegador del cliente. Algunas de las WebAPIs que más utilizamos son: \textit{Window} y \textit{Document} (pertenecientes a \textit{Document Object Model (DOM)}), \textit{Navigator}, \textit{Screen} y \textit{Canvas}. \par 
 
 
 \subsection{\textit{Backend}}
@@ -249,7 +252,7 @@ Este entorno comercial es de pago. Sin embargo, cuenta con una licencia de estud
 
 Usamos \LaTeX para componer el documento de la memoria del proyecto. \par 
 
-Trabajamos con esta tecnología desde la Overleaf. Nos decantamos por esta opción porque nos permite prescindir de descargar \textit{software} adicional en nuestra máquina. Asimismo, cuenta con diversos compiladores online, por lo que no tenemos que preocuparnos de los conflictos con las dependencias de los paquetes. \par 
+Trabajamos con esta tecnología desde la página Overleaf. Nos decantamos por esta opción porque nos permite prescindir de descargar \textit{software} adicional en nuestra máquina. Asimismo, cuenta con diversos compiladores online, por lo que no tenemos que preocuparnos de los conflictos con las dependencias de los paquetes. \par 
 
 \subsection{Tecnologías consideradas y finalmente descartadas}
 \label{subsec:rejected}
