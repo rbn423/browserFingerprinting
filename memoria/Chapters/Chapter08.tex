@@ -1,0 +1,23 @@
+\chapter{Conclusiones}
+
+\section{Trabajo futuro}
+Durante el trabajo hemos dejado funcionalidades o mejoras que se podrían realizar en el futuro para mejorar el desempeño de la aplicación.
+\subsubsection{Asincronía}
+En nuestra aplicación hemos utilizado el objeto <<XMLHTTPRequest>> de JavaScript para la conexión asíncrona con el servidor. Se trata de un objeto que empieza a estar obsoleto y que ha sido reemplazado por <<Fetch>>, que permite acceder y manipular partes del canal HTTP de manera mas sencilla y cómoda.\par 
+Además se puede buscar una mejor solución al problema de la asincronía mencionado anteriormente.
+\subsubsection{Interfaz gráfica}
+La interfaz gráfica de nuestro proyecto es una punto en el que se podrían realizar varias mejoras. La página inicial, se puede adornar mediante el uso de Frameworks de JavaScript como React, Vue.js y derivados, dándole así un toque más moderno. \par 
+Respecto a la vista de las estadísticas, se puede realizar una modificación de la gráficas, de forma que al dibujarse estas se resalte la porción a la que pertenece el navegador del usuario que la está viendo.\par 
+También se puede añadir una mejora que permita al usuario ver una nueva gráfica al seleccionar un campo de otra, en la que se detalle información de la anterior. Por ejemplo, en la gráfica de sistema operativo, al pulsar sobre uno de los sistemas se mostraría una nueva gráfica en la que se pudiese ver el porcentaje de cada una de las versiones de ese sistema.
+\subsubsection{Analizar otros elementos del navegador}
+Consideramos que nuestra aplicación obtiene información de suficientes elementos mediante JavaScript, pero durante el desarrollo dejamos varios por implementar por falta de tiempo. Entre ellos se podrían añadir los siguientes.
+\begin{itemize}
+    \item \textbf{WebGL}: Se trata de una API para JavaScript que permite renderizar gráficos en 3D. Se puede utilizar de forma similar a nuestra implementación de <<Canvas>>.
+    \item \textbf{Sensores}: Mediante JavaScript se puede obtener información de sensores del dispositivo, como el acelerómetro o el giroscopio.
+\end{itemize}
+\subsubsection{Análisis de resultados en intervalos de tiempo}
+Esta mejora consiste en poder observar distintos ratios de los atributos del navegador para distintos intervalos de tiempo. De esta forma se podrían ver los resultados de las huellas en los últimos 15 días o en el último mes. Es una mejora que teníamos en mente desde el inicio del proyecto, incluso almacenamos la fecha en la tabla \textit{Conexiones} de la base de datos, pero por falta de tiempo no hemos podido llevarla a cabo.
+\subsubsection{Soporte para HTTP2}
+Actualmente, nuestro servidor web sólo permite conexiones HTTP1/1. Dar soporte a la versión HTTP/2 implicaría mejoras en el rendimiento, ya que HTTP2 se trata de un formato binario, a diferencia de HTTP1/1 que es texto plano. Otras funcionalidades que incorpora y que creemos que pueden mejorar nuestro proyecto es la multiplexación de conexiones entrantes y la capacidad de enviar datos al cliente antes de que él los pida. \par
+Ha sido una opción que estuvimos investigando y llegamos a la conclusión de que además necesitábamos incluir certificados SSL/TLS. Esto es así ya que, aunque la especificación del protocolo HTTP/2 permite prescindir del cifrado, varias implementaciones declararon que sólo soportarán HTTP/2 cuando se utilice a través de una conexión cifrada, y actualmente ningún navegador soporta HTTP/2 sin cifrar \cite{http2}. \par
+\noindent

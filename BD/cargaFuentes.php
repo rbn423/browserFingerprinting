@@ -10,12 +10,59 @@ $conn = $app->conexionBd();
 //insertamos en la base de datos los tipos de fuentes
 foreach ($_POST as $nombre_fuente => $fuente){
     if ($nombre_fuente != "ID" && $nombre_fuente != "resumen") {
-        $query = "INSERT INTO `fuentes`(`id`, `nombreFuente`) VALUES (".$id.",'".$fuente."')";
-        $conn->query($query);
+        $stmt = $conn->prepare("INSERT INTO `fuentes`(`id`, `nombreFuente`) VALUES (?, ?)");
+        $stmt->bind_param("is", $id, $fuente);
+        $stmt->execute();
+        $stmt->close();
     }
 }
 
-//insertamos el resumen en la tabla atributos
-$query = "UPDATE `atributos` SET `resumenFuentes`= '".$resumen."' WHERE `ID` = '".$id."'";
-$conn->query($query);
+//insertamos el resumen en la tabla Conexiones
+$stmt = $conn->prepare("UPDATE `Conexiones` SET `resumenFuentes`=? WHERE `ID` =?");
+$stmt->bind_param("si", $resumen, $id);
+$stmt->execute();
+$stmt->close();
+
+//Total de resumenes de fuentes distintos
+$query_total = "SELECT count(`resumenFuentes`) FROM `Conexiones`";
+$total_reg = $conn->query($query_total);
+$total_reg = $total_reg->fetch_all();
+
+//Cogemos el resumenFuentes de quien ha hecho la petición
+$stmt = $conn->prepare("SELECT `resumenFuentes` FROM `Conexiones` WHERE id =?");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$stmt -> store_result();
+$stmt -> bind_result($resumenFuentes);
+$stmt -> fetch();
+$stmt->close();
+
+//Contamos cuantas veces está dicho resumenFuentes en la BD
+if (is_null($resumenFuentes)) {
+    $stmt = $conn->prepare("SELECT count(`resumenFuentes`) FROM `Conexiones` WHERE `resumenFuentes` =? is null");
+    $stmt->bind_param("s", $resumenFuentes);
+    $stmt->execute();
+    $stmt -> store_result();
+    $stmt -> bind_result($count);
+    $stmt -> fetch();
+    $stmt->close();
+}
+else {
+    $stmt = $conn->prepare("SELECT count(`resumenFuentes`) FROM `Conexiones` WHERE `resumenFuentes` =?");
+    $stmt->bind_param("s", $resumenFuentes);
+    $stmt->execute();
+    $stmt -> store_result();
+    $stmt -> bind_result($count);
+    $stmt -> fetch();
+    $stmt->close();
+}
+
+//Calculamos el ratio
+$ratio =  $count * 100 / $total_reg[0][0];
+$ratio = round($ratio, 2);
+
+//Devolvemos el json
+$arrayRatio = array();
+$arrayRatio += ["resumenFuentes" => $ratio."%"];
+echo json_encode($arrayRatio);
 ?>

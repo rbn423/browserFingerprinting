@@ -8,15 +8,21 @@ function nombreNavegadorYVersion() {
         return 'IE '+(tem[1] || '');
     }
     if(M[1]=== 'Chrome'){
-        tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
+        tem= ua.match(/\b(OPR|Edg|Edge)\/(\d+)/);
         if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
     }
     M= M[2]? [M[1] + " " + M[2]]: [navigator.appName, navigator.appVersion, '-?'];
     if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
     return M;};
-    var navegador = salida().toString();
-    var version = navegador.split(" ").pop();
-    navegador = navegador.split(" ").slice(0,-1).join(" ");
+    if (navigator.brave && navigator.brave.isBrave() || false) //https://www.ctrl.blog/entry/brave-user-agent-detection.html
+        var navegador = "Brave";
+    else {
+        navegador = salida().toString();
+        var version = navegador.split(" ").pop();
+        navegador = navegador.split(" ").slice(0, -1).join(" ");
+        if (navegador == "Edg")
+            navegador = "Edge-Chromium";
+    }
     array.push(new Array("Navegador", "navegador", navegador));
     array.push(new Array("Versión", "version", version));
     return array;
@@ -146,7 +152,7 @@ function arrayNavigator(){
 }
 
 function arrayDispositivos(listaDispositivos) {
-    var salida ="<table border='visible'><th colspan='3'>Lista de dispositivos del equipo</th>"; //css por aqui
+    var salida ="<table><tr><th colspan='2'>Lista de dispositivos del equipo</th></tr><th>Dispositivo</th><th>Valor</th>";
     for (var i in listaDispositivos)
         salida += "<tr><td>"+listaDispositivos[i][0]+"</td><td>"+listaDispositivos[i][1]+"</td></tr>";
     document.getElementById("dispositivos").innerHTML = salida;
