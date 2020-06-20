@@ -1,7 +1,8 @@
 \chapter{Preliminares}
+\todo{Contar qué cuenta este capítulo}
 \section{Estado del Arte}
 \subsection{Introducción}
-Cuando navegamos por internet, es posible identificar características que nos permitan reconocer si un determinado usuario ha visitado nuestro sitio. El método más común para decretarlo es mediante el uso de \textit{cookies}. Este dato nos permite establecer una sesión con el visitante de la página y poder guardar así un estado de la conexión. Además, este identificador de sesión nos permite almacenar las configuraciones personalizadas para esa sesión específica. De esta forma controlamos en todo momento el rastro de nuestros usuarios. Ese trozo de información, llamado \textit{HTTP cookie}\cite{rfc6265}, se genera en el servidor y se intercambia al establecer la conexión. Esto es, la \textit{cookie} se almacena también en el navegador del cliente. \par
+Cuando navegamos por internet, es posible identificar características que nos permitan reconocer si un determinado usuario ha visitado nuestro sitio. El método más común para detectarlo es mediante el uso de \textit{cookies}. Este dato nos permite establecer una sesión con el visitante de la página y poder guardar así un estado de la conexión. Además, este identificador de sesión nos permite almacenar las configuraciones personalizadas para esa sesión específica. De esta forma controlamos en todo momento el rastro de nuestros usuarios. Ese trozo de información, llamado \textit{HTTP cookie}\cite{rfc6265}, se genera en el servidor y se intercambia al establecer la conexión. Esto es, la \textit{cookie} se almacena también en el navegador del cliente. \par
 
 A pesar de ello, esta técnica no es suficiente. El usuario puede borrar las \textit{cookies} de su navegador web. En este caso el servidor no le podrá recordar, puesto que la sesión previamente establecida no se puede recuperar y habría que establecer una nueva. Por consiguiente, necesitamos otro enfoque distinto para poder identificar a nuestro usuario con una característica menos volátil. \par
 
@@ -9,17 +10,17 @@ Otro de los parámetros que históricamente se ha empleado para identificar a lo
 
 Esto tampoco es tan sencillo. Hoy en día la mayoría de las direcciones IP suelen ser dinámicas y son asignadas por nuestro \textit{ISP} o Proveedor de Servicios de Internet. Esto quiere decir que cada cierto intervalo de tiempo, el \textit{ISP} va a ir asignando una dirección IP pública a nuestra interfaz de red. En consecuencia, tampoco nos va a ser posible utilizarlo como atributo identificativo, pues para un mismo usuario este valor va a ir variando a lo largo del tiempo. \par
 
-Además de la asignación dinámica de direcciones IP, otro problema asociado a considerar la dirección IP como atributo identificativo es la utilización de técnicas de CG-NAT por los algunos \textit{ISP}. Como resultado, distintos dispositivos fuera de nuestra red doméstica podrían compartir la misma dirección IP pública, ya que el \textit{ISP} estaría conectando muchos dispositivos de su red como si de una red interna se tratase. De esta forma nosotros no seríamos capaces de identificar nuestro dispositivo objetivo. \par
+Además de la asignación dinámica de direcciones IP, otro problema asociado a considerar la dirección IP como atributo identificativo es la utilización de técnicas de CG-NAT por algunos \textit{ISP}. Como resultado, distintos dispositivos fuera de nuestra red doméstica podrían compartir la misma dirección IP pública, ya que el \textit{ISP} estaría conectando muchos dispositivos de su red como si de una red interna se tratase. De esta forma nosotros no seríamos capaces de identificar nuestro dispositivo objetivo. \par
 
 Por último, también podríamos considerar posibles intrusiones en una red interna. La dirección IP que resolveríamos pertenecería a un tercer usuario víctima que puede no tener nada que ver con el auténtico dispositivo visitante.  \par
 
 Tanto las direcciones IP públicas como el seguimiento a través de \textit{cookies} fueron consideradas las huellas digitales más fiables durante varios años. Sin embargo, existen otros enfoques que nos permiten llegar a mejores conclusiones a partir de otras técnicas. La alternativa más conocida a las expuestas anteriormente es \textit{browser fingerprinting} o huella digital del navegador web. \par
 
-El método de \textit{browser fingerprinting}\cite{fingerprint} consiste en recopilar información del navegador web en función de las características y configuraciones de éste. Esta nueva óptica de identificar al usuario a través de las diversas tecnologías incluidas en los navegadores sin \textit{cookies}, o \textit{cookieless}\cite{cookieless} nos permite afinar más y ser más minuciosos en nuestro objetivo de identificar a los usuarios y monitorizar la actividad que estos realizan en una determinada página web. \par 
+El método de \textit{browser fingerprinting}\cite{fingerprint} consiste en recopilar información del navegador web en función de las características y configuraciones de este. Esta nueva óptica de identificar al usuario a través de las diversas tecnologías incluidas en los navegadores sin \textit{cookies}, o \textit{cookieless}\cite{cookieless} nos permite afinar más y ser más minuciosos en nuestro objetivo de identificar a los usuarios y monitorizar la actividad que estos realizan en una determinada página web. \par 
 
 Para discutir la efectividad del \textit{browser fingerprinting}, recomendamos el estudio de los siguientes \textit{papers}\cite{panop_paper, javascript_paper, effective_paper}. \par 
 
-En las conclusiones encontramos una paradoja: si bien los primeros estudios aseguraban que la efectividad de este método estaba por encima del 80\% de precisión en cuanto a huellas digitales únicas\cite{panop_paper, javascript_paper}, estudios posteriores no han podido reproducir estos mismos resultados, obteniendo sólo un 33.6\%\cite{effective_paper}. \par
+En las conclusiones encontramos una paradoja: si bien los primeros estudios aseguraban que la efectividad de este método estaba por encima del 80\% de precisión en cuanto a huellas digitales únicas\cite{panop_paper, javascript_paper}, estudios posteriores no han podido reproducir estos mismos resultados, obteniendo solo un 33.6\%\cite{effective_paper}. \par
 
 La explicación a este fenómeno proviene de la relación entre el desarrollo de recursos efectivos de recopilación de huella digital en navegadores web con el desarrollo de las técnicas de mitigación de las mismas. \par 
 
@@ -57,7 +58,7 @@ Por supuesto, el agente detrás del empleo este procedimiento va a contar con su
 \begin{itemize}
 	\item Realizar un perfil específico de clientes para adaptarse a sus necesidades. Una de las formas es rastrear de qué página viene el usuario y establecer si ese usuario ya ha visitado nuestro sitio anteriormente. En este caso no estamos necesariamente interesados en averiguar la identidad del usuario en sí, tan solo en realizar un perfil. Es el sistema más utilizado por los \textit{data brokers}\cite{data_brocker}. Este es el caso de uso fundamental de la mayoría servicios de publicidad de terceros. \par 
 	
-	\item Entender la actividad del usuario a través de patrones de comportamiento. Analizando cómo es el flujo de interacción del usuario con nuestra página, podemos llegar a conclusiones muy valiosas. La tecnología de JavaScript es la más utilizada en este aspecto, ya que nos permite analizar la atención del usuario sobre la página (saber si la pestaña se encuentra activa, cuál es la posición del ratón, comprobar si nuestras sugerencias son de verdad atractivos e interesantes para el usuario). Se utiliza mucho en tiendas online y redes sociales como estrategia de mercadotecnia. \par 
+	\item Entender la actividad del usuario a través de patrones de comportamiento. Analizando cómo es el flujo de interacción del usuario con nuestra página, podemos llegar a conclusiones muy valiosas. La tecnología de JavaScript es la más utilizada en este aspecto, ya que nos permite analizar la atención del usuario sobre la página (saber si la pestaña se encuentra activa, cuál es la posición del ratón, comprobar si nuestras sugerencias son de verdad atractivos e interesantes para el usuario). Se utiliza mucho en tiendas en línea y redes sociales como estrategia de mercadotecnia. \par 
 	
 	\item Como consecuencia de los dos casos de uso, la huella digital del navegador puede determinar patrones de comportamiento. De esta forma es posible también precisar si la actividad web está siendo llevada a cabo por un \textit{bot}\cite{bot_paper}. \par 
 \end{itemize}
@@ -100,7 +101,7 @@ Por último, queremos mencionar cuales son los últimos métodos de detección d
 \end{itemize}
 
 \subsection{Técnicas de evasión}
-"Las opciones actuales de los usuarios para mitigar estas amenazas son limitadas, en parte debido a la dificultad de distinguir las rastreando desde el comportamiento benigno." (\textit{The Web Never Forgets: Persistent Tracking Mechanisms in the Wild}: \cite{never_forget_paper}) \par 
+``Las opciones actuales de los usuarios para mitigar estas amenazas son limitadas, en parte debido a la dificultad de distinguir las rastreando desde el comportamiento benigno.'' (\textit{The Web Never Forgets: Persistent Tracking Mechanisms in the Wild}: \cite{never_forget_paper}) \par 
 
 La mitigación más sencilla para aumentar la seguridad y privacidad de nuestro navegador es por supuesto eliminar funcionalidades. No obstante, elevar nuestro nivel de protección sin degradar la experiencia del usuario siempre es un desafío. \par 
 
@@ -114,7 +115,7 @@ Como resultado, no existe una solución simple, sino que tan solo se pueden impl
 	Otra opción es utilizar navegadores que ya vengan con configuraciones por defecto para evadir varias técnicas de detección de huella digital, como Tor Browser. \par 
 	
 	\item Utilizar complementos y extensiones para el navegador que modifiquen el comportamiento del navegador\cite{pixelprivacy}). Existe una gran diversidad de complementos que realizan esta labor. Algunos de los más conocidos son \textit{NoScript} y \textit{uMatrix}.
-	Permiten una configuración flexible por lo que es posible bloquear sólo el código JavaScript y los elementos de Flash que deseemos, sin tener que prescindir de la funcionalidad completa. Es una solución de compromiso que busca el equilibro entre privacidad y funcionalidad. \par
+	Permiten una configuración flexible por lo que es posible bloquear solo el código JavaScript y los elementos de Flash que deseemos, sin tener que prescindir de la funcionalidad completa. Es una solución de compromiso que busca el equilibro entre privacidad y funcionalidad. \par
 	
 	Además del bloqueo de elementos Flash y JavaScript, existen más complementos que modifican las cabeceras HTTP y que alteran algunas APIs de JavaScript para evitar el \textit{fingerprinting}. De esta forma podemos falsear los datos que se van a recopilar sobre nosotros. Como resultado, tanto los métodos activos como pasivos serían mucho menos eficaces. \par 
 	
@@ -131,24 +132,24 @@ Existe un abanico muy amplio de tecnologías\cite{web_mozilla} relacionadas con 
 \begin{itemize}
 	\item Tecnologías básicas:
 		\begin{itemize}
-			\item HTML
-			\item CSS
-			\item HTTP
+			\item HTML.
+			\item CSS.
+			\item HTTP.
 		\end{itemize}
 	\item Lenguajes de escritura:
 		\begin{itemize}
-			\item JavaScript y AJAX
-			\item PHP
-			\item JSON
-			\item Web APIs
+			\item JavaScript y AJAX.
+			\item PHP.
+			\item JSON.
+			\item Web APIs.
 		\end{itemize}
 	\item Backend:
 		\begin{itemize}
-			\item XAMPP
+			\item XAMPP.
 				\begin{itemize}
-					\item Apache
-					\item MaríaDB
-					\item PhpMyAdmin
+					\item Apache.
+					\item MariaDB.
+					\item PhpMyAdmin.
 				\end{itemize}
 		\end{itemize}
 \end{itemize}
@@ -177,18 +178,18 @@ En nuestro proyecto usamos la versión HTTP/1.1 , que es la que viene predetermi
 \subsubsection{JavaScript y AJAX}
 JavaScript es un lenguaje de programación multipropósito que está soportado por todos los navegadores web modernos. Aparece por primera vez en el navegador Netscape en 1995. Se puede utilizar tanto para ejecutar código en el navegador del cliente como en funcionalidades del servidor. \par
 
-En nuestro proyecto se utiliza para recopilar la información de los distintos atributos del navegador a través de Web APIs. Tambien usamos JavaScript para  colocar elementos HTML de forma dinámica y asíncrona modificando el árbol DOM HTML. Esto nos permite cargar los elementos sin actualizar la página completamente ejectuando el código en el navegador web del cliente.\par
+En nuestro proyecto se utiliza para recopilar la información de los distintos atributos del navegador a través de Web APIs. También usamos JavaScript para  colocar elementos HTML de forma dinámica y asíncrona modificando el árbol DOM HTML. Esto nos permite cargar los elementos sin actualizar la página completamente ejecutando el código en el navegador web del cliente.\par
 
 \subsubsection{PHP}
 
-PHP (proviene del acrónimo recursivo \textit{PHP: Hypertext Preprocessor}) es otro lenguaje de programación multipropósito. Es el lenguaje de desarrollo web por excelencia. La primera referencia que se tiene de PHP data también de 1995. En nuestro caso lo empleamos en el lado del servidor. Una caraterística muy útil es que podemos combinar código PHP con JSON y HTML. \par 
+PHP (proviene del acrónimo recursivo \textit{PHP: Hypertext Preprocessor}) es otro lenguaje de programación multipropósito. Es el lenguaje de desarrollo web por excelencia. La primera referencia que se tiene de PHP data también de 1995. En nuestro caso lo empleamos en el lado del servidor. Una característica muy útil es que podemos combinar código PHP con JSON y HTML. \par 
 
-Elegimos PHP porque se trata de un lenguaje que ya conociamos todos los miembros del equipo. Además nos iba a facilitar el uso del software con el que ya teníamos en mente trabajar. \par 
+Elegimos PHP porque se trata de un lenguaje que ya conocíamos todos los miembros del equipo. Además nos iba a facilitar el uso del software con el que ya teníamos en mente trabajar. \par 
 
 \subsubsection{JSON}
 Las siglas JSON significan Notación de Objeto de JavaScript (\textit{JavaScript Object Notation}). Es un formato de representación de texto. Se caracteriza por contener colecciones de datos no ordenadas. Estas colecciones tienen una estructura de pares <clave>:<valor>.\par
 
-Utilizamos JSON en nuestro proyecto para intercambiar objetos desde la lógica a las vistas. En ellos inclumos toda la información que queremos mostrar al usuario. \par
+Utilizamos JSON en nuestro proyecto para intercambiar objetos desde la lógica a las vistas. En ellos incluimos toda la información que queremos mostrar al usuario. \par
 
 \subsubsection{Web APIs}
 En web existen multitud de APIs para llevar a cabo distintas funciones. A estas interfaces se accede a través de JavaScript y permiten la configuración de ajustes. \par
@@ -207,13 +208,13 @@ En la figura~\ref{fig:webAPIs} mostramos la lista de Web APIS: \par
 
 \subsection{\textit{Backend}}
 
-En nuestro servidor \textit{backend} hemos optado por instalar XAMPP. Consiste en un paquete de herramientas para combinar las principales tecnologias que se utilizan en un servidor web. Hemos elegido este paquete de \textit{software} debido a la facilidades que brinda tanto para instalar como para usarse con el sistema operativo Microsoft Windows. Los componentes que hemos utilizado en XAMPP son los siguientes: \par
+En nuestro servidor \textit{backend} hemos optado por instalar XAMPP. Consiste en un paquete de herramientas para combinar las principales tecnologías que se utilizan en un servidor web. Hemos elegido este paquete de \textit{software} debido a la facilidades que brinda tanto para instalar como para usarse con el sistema operativo Microsoft Windows. Los componentes que hemos utilizado en XAMPP son los siguientes: \par
 
 \subsubsection{Apache}
 
 Es el servidor web más popular. Cuenta con una perfecta integración con los lenguajes que utilizamos, es decir PHP y JavaScript. \par 
 
-Se trata de un servidor con el que ya habíamos trabajado anteriormenete así que tomamos la decisión de utilizarlo para poder comenzar el desarrollo de nuestra aplicación rápidamente. También consideramos otras opciones que finalmente descartamos. Esto lo explicaremos en la sección~\ref{subsec:rejected}. \par 
+Se trata de un servidor con el que ya habíamos trabajado anteriormente así que tomamos la decisión de utilizarlo para poder comenzar el desarrollo de nuestra aplicación rápidamente. También consideramos otras opciones que finalmente descartamos. Esto lo explicaremos en la sección~\ref{subsec:rejected}. \par 
 
 \subsubsection{MaríaDB}
 
@@ -259,13 +260,13 @@ Trabajamos con esta tecnología desde la página Overleaf. Nos decantamos por es
 Antes de elegir estuvimos probando con diversas tecnologías que finalmente fuimos descartando hasta quedarnos con las que hemos mencionado en el apartado anterior. Realizamos aquí un pequeño resumen. \par 
 
 \subsubsection{Django}
-Django es un framework de desarrollo web. Una de las ventajas es que respeta el patrón de diseño Modelo-Vista-Controlador (MVC). Por otra parte, el lenguaje de programación Python es usado en todas las partes del framework y no todos los integrantes del equipo tenemos el dominio suficiente sobre él. Finalmente consideramos que acustumbrarnos al lenguaje iba a resultar un poco engorroso y lo descartamos al estar más familiarizados con PHP. \par 
+Django es un framework de desarrollo web. Una de las ventajas es que respeta el patrón de diseño Modelo-Vista-Controlador (MVC). Por otra parte, el lenguaje de programación Python es usado en todas las partes del framework y no todos los integrantes del equipo tenemos el dominio suficiente sobre él. Finalmente consideramos que acostumbrarnos al lenguaje iba a resultar complicado y lo descartamos al estar más familiarizados con PHP. \par 
 
 \subsubsection{Node.js}
 Es un entorno en tiempo de ejecución construido sobre JavaScript, normalmente utilizado en el lado del servidor web. La principal ventaja que veíamos era la futura integración que podíamos tener más adelante con el código que recopila la información de la huella digital de los navegadores. Otra virtud a tener en cuenta es que con muy pocas líneas de código podíamos tener un servidor web escuchando y listo para producción. En comparación con Django que te obligaba a crear todos los componentes necesarios para respetar el modelo MVC, esto era mucho más rápido y sencillo. La complicación que le vimos era entender a fondo el lenguaje JavaScript, ya que al comienzo del proyecto nos sentíamos mucho más cómodos trabajando con PHP y Apache en el lado del servidor que con JavaScript y Node. \par 
 
 \subsubsection{Nginx}
-Es un servidor web. En cuanto a las características pensamos que es muy similar a Apache, por lo que no veíamos en Nginx ventajas considerables. Además, Apache ya viene incluído en el pack de herramientas de XAMPP. \par 
+Es un servidor web. En cuanto a las características pensamos que es muy similar a Apache, por lo que no veíamos en Nginx ventajas considerables. Además, Apache ya viene incluido en el pack de herramientas de XAMPP. \par 
 
 \subsubsection{MongoDB}
 Nos planteamos la posibilidad de utilizar una base de datos NOSQL como MongoDB. La ventaja que le veíamos era el poder añadir atributos a medida que nos los íbamos encontrando, ya que en un primer momento al estudiar la diversidad de navegadores y configuraciones de los mismos, pensamos que podíamos encontrarnos con datos no estructurados. \par 
