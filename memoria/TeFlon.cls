@@ -499,7 +499,7 @@ title={#2},fonttitle=\bfseries,#1}
     \rule[0.5ex]{\linewidth}{2pt}\\
     [2mm]
     {\textbf{\LARGE{\ntrabajo}} }\\[3mm] %Titulo del TFG
-    {\textbf{\large{Huella digital de navegadores}} }\\[3mm] %Titulo del TFG
+    {\textbf{\large{Browser Fingerprint}} }\\[3mm] %Titulo del TFG
     \rule[0.5ex]{\linewidth}{1pt}\vspace*{-\baselineskip}\vspace{3.2pt}
     \rule[0.5ex]{\linewidth}{2pt}\\
     \vspace{6.5mm}
