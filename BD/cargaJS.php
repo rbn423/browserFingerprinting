@@ -157,6 +157,39 @@ $stmt -> bind_result($video_ogg_theora, $video_ogg_vorbis, $video_ogg_opus, $vid
 $stmt -> fetch();
 $stmt->close();
 
+$resultadoConexiones= array("Accept"=>$Accept, "AcceptLanguage"=>$AcceptLanguage, "UpgradeInsecureRequests"=>$uir,
+    "UserAgent"=>$UserAgent, "AcceptEncoding" => $AcceptEncoding, "Connection" => $Connection,
+    "SecFetchMode" => $SecFetchMode, "SecFetchUser" => $SecFetchUser, "SecFetchSite" => $SecFetchSite, "DNT" => $DNT,
+    "plataforma" => $plataforma, "userAgentJS" => $userAgentJS, "navegador" => $navegador, "version" => $version,
+    "cookieEnabled" => $cookieEnabled, "language" => $language, "onLine" => $onLine, "appName" => $appName,
+    "zonaHoraria" => $zonaHoraria, "screenWidth" => $screenWidth, "screenHeight" => $screenHeight,
+    "screenAvailWidth" => $screenAvailWidth, "screenAvailHeight" => $screenAvailHeight,
+    "screenColorDepth" => $screenColorDepth, "screenPixelDepth" => $screenPixelDepth,
+    "locationBar" => $locationBar, "pixelRatio" => $pixelRatio, "menuBar" => $menuBar,
+    "personalBar" => $personalBar, "statusBar" => $statusBar, "toolBar" => $toolBar,
+    "localStorage" => $localStorage, "sessionStorage" => $sessionStorage,  "windowResults" => $windowResults,
+    "indexDB" => $indexDB, "bateria" => $bateria, "DNTJS" => $DNTJS, "touchpoints" => $touchpoints,
+    "product" => $product, "productSub" => $productSub,
+    "os" => $os, "vendor" => $vendor, "hardwareConcurrency" => $hardwareConcurrency, "lenguajes" => $lenguajes,
+    "buildId" => $buildId, "devMemory" => $devMemory, "flash" => $flash, "canvas" => $canvas,
+    "resumenFuentes" => $resumenFuentes, "resumenPlugins" => $resumenPlugins);
+
+$resultadoAudio= array("ogg-vorbis" => $audio_ogg_vorbis, "ogg-opus" => $audio_ogg_opus,
+    "3gpp" => $audio_3gpp, "mp4-mp4a" => $audio_mp4_mp4a,
+    "mp4-mp3" => $audio_mp4_mp3, "mp4-ac3" => $audio_mp4_ac3,
+    "mp4-ec3" => $audio_mp4_ec3, "acc" => $audio_acc,
+    "pcm" => $audio_pcm, "mpeg" => $audio_mpeg,
+    "flac" => $audio_flac ,
+    "wave" => $audio_wave, "webm-vorbis" => $audio_webm_vorbis,
+    "mp3-mp3" => $audio_mp3_mp3);
+
+
+$resultadoVideo = array("ogg-theora" => $video_ogg_theora, "ogg-vorbis" => $video_ogg_vorbis,
+    "ogg-opus" => $video_ogg_opus, "mp4-avc1" => $video_mp4_avc1,
+    "mp4-mp4a" => $video_mp4_mp4a, "mp4-flac" => $video_mp4_flac,
+    "webm-vp8" => $video_webm_vp8, "webm-vp9" => $video_webm_vp9,
+    "webm-vorbis" => $video_webm_vorbis);
+
 //-- A PARTIR DE AQUÍ ESTÁ COMO ANTES--//
 
 //QUERY DE BUSQUE DE TODOS LOS ELEMENTOS QUE COINCIDAN CON LOS DEL NAVEGADOR ACTUAL
@@ -172,25 +205,19 @@ $total_reg = $total_reg->fetch_all();
 //Lo usaremos para devolver el JSON
 $arrayRatio = array();
 
-/*
 //Conexiones
 foreach ($resultadoConexiones as $nombre=>$valor){
 
     $query_ratio = "SELECT count(*) FROM `Conexiones` WHERE ";
 
-    //Linea comentada para hacer el porcentaje en SQL
-    //$query_ratio = "SELECT ROUND ( (SELECT 100 * count(*) FROM `Conexiones` WHERE ";
-
     if (is_null($valor)){
-        $query .= "a.`".$nombre."` is null";
-        $query_ratio .= "`".$nombre."` is null";
+        //$query_ratio = "SELECT count(*) FROM `Conexiones` WHERE $nombre is null";
+        $query .= "a.".$nombre." is null";
+        $query_ratio .= "".$nombre." is null";
     }
     else {
-        $query .= "a.`" . $nombre . "` = '" . $valor . "'";
-        $query_ratio .= "`".$nombre . "` = '" . $valor . "'";
-
-        //La linea comentada es para sacar el ratio desde SQL
-        //$query_ratio .= "`".$nombre . "` = '" . $valor . "'".") / (SELECT count(*) FROM `Conexiones` WHERE `" .$nombre ."` IS NOT NULL), 2)";
+        $query .= "a." . $nombre . " = '" . $valor . "'";
+        $query_ratio .= "".$nombre . " = '" . $valor . "'";
     }
     $query .= " AND ";
 
@@ -202,17 +229,12 @@ foreach ($resultadoConexiones as $nombre=>$valor){
     $ratio =  $single_ratio[0][0] * 100 / $total_reg[0][0];
     $ratio = round($ratio, 2);
     $arrayRatio += [$nombre => $ratio."%"];
-
-    //Para hacer el porcentaje mediante SQL
-    //$arrayRatio += [$nombre => $single_ratio[0][0]];
 }
+
 //AUDIO
 foreach ($resultadoAudio as $nombre=>$valor){
 
     $query_ratio = "SELECT count(*) FROM `formatosaudio` WHERE ";
-
-    //Linea comentada para hacer el porcentaje en SQL
-    //$query_ratio = "SELECT ROUND ( (SELECT 100 * count(*) FROM `Conexiones` WHERE ";
 
     if (is_null($valor)){
         $query .= "b.`".$nombre."` is null";
@@ -221,9 +243,6 @@ foreach ($resultadoAudio as $nombre=>$valor){
     else{
         $query .= "b.`".$nombre."` = '".$valor."'";
         $query_ratio .= "`".$nombre . "` = '" . $valor . "'";
-
-        //La linea comentada es para sacar el ratio desde SQL
-        //$query_ratio .= "`".$nombre . "` = '" . $valor . "'".") / (SELECT count(*) FROM `Conexiones` WHERE `" .$nombre ."` IS NOT NULL), 2)";
     }
     $query .= " AND ";
 
@@ -235,17 +254,12 @@ foreach ($resultadoAudio as $nombre=>$valor){
     $ratio = round($ratio, 2);
     $arrayRatio += ["audio-".$nombre => $ratio."%"];
 
-    //Para hacer el porcentaje mediante SQL
-    //$arrayRatio += ["audio-".$nombre => $single_ratio[0][0]];
 }
 //VIDEO
 $count=0;
 foreach ($resultadoVideo as $nombre=>$valor){
 
     $query_ratio = "SELECT count(*) FROM `formatosvideo` WHERE ";
-
-    //Linea comentada para hacer el porcentaje en SQL
-    //$query_ratio = "SELECT ROUND ( (SELECT 100 * count(*) FROM `Conexiones` WHERE ";
 
     if (is_null($valor)) {
         $query .= "c.`" . $nombre . "` is null";
@@ -254,9 +268,6 @@ foreach ($resultadoVideo as $nombre=>$valor){
     else{
         $query .= "c.`".$nombre."` = '".$valor."'";
         $query_ratio .= "`".$nombre . "` = '" . $valor . "'";
-
-        //La linea comentada es para sacar el ratio desde SQL
-        //$query_ratio .= "`".$nombre . "` = '" . $valor . "'".") / (SELECT count(*) FROM `Conexiones` WHERE `" .$nombre ."` IS NOT NULL), 2)";
     }
     if ($count < count($resultadoVideo) - 1)
         $query .= " AND ";
@@ -269,10 +280,6 @@ foreach ($resultadoVideo as $nombre=>$valor){
     $ratio =  $single_ratio[0][0] * 100 / $total_reg[0][0];
     $ratio = round($ratio, 2);
     $arrayRatio += ["video-".$nombre => $ratio."%"];
-
-    //Para hacer el porcentaje mediante SQL
-    //$arrayRatio += ["video-".$nombre => $single_ratio[0][0]];
-
 }
 
 // Conseguimos la unicidad total
@@ -282,7 +289,7 @@ $resultado = $resultado->fetch_all();
 //Añadimos la unicidad total al JSON
 $porcentajeUnicidad = round((($total_reg[0][0]-$resultado[0][0]+1)/$total_reg[0][0])*100,2);
 $arrayRatio += ["resultadoJS" => "Hay ".($resultado[0][0]-1)." browserFingerPrint como el tuyo de ".$total_reg[0][0]." en nuestra base de datos. (".$porcentajeUnicidad."% único)"];
-*/
+
 //Devolvemos el JSON tanto con el similarity ratio individual como con la unicidad total en la ultima clave del JSON.
 echo json_encode($arrayRatio);
 ?>
