@@ -190,8 +190,6 @@ $resultadoVideo = array("ogg-theora" => $video_ogg_theora, "ogg-vorbis" => $vide
     "webm-vp8" => $video_webm_vp8, "webm-vp9" => $video_webm_vp9,
     "webm-vorbis" => $video_webm_vorbis);
 
-//-- A PARTIR DE AQUÍ ESTÁ COMO ANTES--//
-
 //QUERY DE BUSQUE DE TODOS LOS ELEMENTOS QUE COINCIDAN CON LOS DEL NAVEGADOR ACTUAL
 $query = "SELECT count(*) FROM ((SELECT * FROM Conexiones)a JOIN (SELECT * FROM formatosaudio)b USING (id)) JOIN 
     (SELECT * FROM formatosvideo)c USING (id) WHERE ";
@@ -211,7 +209,6 @@ foreach ($resultadoConexiones as $nombre=>$valor){
     $query_ratio = "SELECT count(*) FROM `Conexiones` WHERE ";
 
     if (is_null($valor)){
-        //$query_ratio = "SELECT count(*) FROM `Conexiones` WHERE $nombre is null";
         $query .= "a.".$nombre." is null";
         $query_ratio .= "".$nombre." is null";
     }
