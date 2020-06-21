@@ -509,7 +509,8 @@ title={#2},fonttitle=\bfseries,#1}
     \vspace{11mm}
     \includegraphics[scale=0.3]{\print}\\ %Logo de la UCM
     \vspace{6mm}
-    {\large \grado\\    %Departamento del profesor que es el tutor
+    {\large Trabajo de fin de grado\\
+    \large \grado\\    %Departamento del profesor que es el tutor
     \textsc{\facultad}}\\ %Facultad para la que se hace
     \vspace{9mm}
     \begin{minipage}{10cm}
@@ -529,18 +530,7 @@ title={#2},fonttitle=\bfseries,#1}
 }
 \newcommand*{\abstractT}[0]{
 \newpage
-\chapter*{Sobre \teflon}
-\noindent
-\textsc{Teflon(cc0 1.0(documentación) MIT(código))%\cite{dPaciosTeflon}% 
-es una plantilla de \LaTeX\phantom{} creada por David Pacios Izquierdo con fecha de Enero de 2018. Con atribuciones de uso CC0.}\\\\
-\noindent
-Esta plantilla fue desarrollada para facilitar la creación de documentación profesional para Trabajos de Fin de Grado o Trabajos de Fin de Máster. La versión usada es la 1.3.\\\\
-\noindent
-V:\textsc{1.3 Overleaf V2 with pdfLaTeX, margin 1in, NO-bib}
-\vfill
-\noindent
-\textsc{\textbf{\underline{Contacto}}\\ \textbf{Autor:} David Pacios Izquiero \\ \textbf{Correo:} \url{dpacios@ucm.es}\\ \textbf{ASCII:} \url{asciifdi@gmail.com}\\ Despacho 110 - Facultad de Informática}
-}
+
 
 \newcommand*{\indiceTFG}[0]{
 \abstractT
