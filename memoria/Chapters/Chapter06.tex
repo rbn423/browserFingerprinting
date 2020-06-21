@@ -1,2 +1,145 @@
 \chapter{Uso del sistema}
-\noindent
+Es este capítulo realizaremos un recorrido guiado sobre el uso de nuestra herramienta. Explicaremos paso a paso cada una de las opciones que hay a nuestra disposición y adjuntaremos capturas de pantalla de cada acción realizada. Por si no fuera suficiente, indicamos aquí la \textit{URL} donde se aloja nuestra página: \url{http://browserfingerprinting.educationhost.cloud/}
+
+\section{Bienvenida}
+
+Lo primero que nos encontramos al acceder a la \textit{URL} es una pantalla de bienvenida. Aquí damos una breve explicación de qué es la huella digital de un navegador web, introduccimos en qué consiste nuestro proyecto e informamos al usuario del tratamiento que vamos a hacer con sus datos. Para continuar, pincharemos en el botón \texttt{Ver huella digital de tu navegador}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Images/wellcome.png}
+	\caption{Pantalla de bienvenida.}
+	\label{fig:wellcome}
+\end{figure}
+
+\section{Índice}
+
+Tras pinchar en el botón de la sección anterior, la página nos carga un índice con distintas secciones. También aparece arriba a la izquierda el botón de \texttt{Gráficos}, que detallaremos en el siguiente apartado.
+
+\subsubsection{Resultado}
+La primera de las secciones es la de Resultado, que nos indica cuántas huellas digitales iguales a la del usuario se han encontrado en nuestra base de datos. Esto es, nos da el porcentaje de unicidad total del usuario. \par
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Images/resultadoSection.png}
+	\caption{Porcentaje de unicidad total.}
+	\label{fig:resultadoSection}
+\end{figure}
+
+A partir de aquí se muestran varias secciones con tablas. En cada tabla aparece:
+\begin{itemize}
+	\item Cada elemento de esa sección.
+	\item El porcentaje de similaridad que existe entre el valor del elemento y los que tenemos guardados en la base de datos.
+	\item El valor que toma el elemento en nuestro dispositivo.
+\end{itemize}
+
+Si situamos el cursor encima del botón \texttt{info} que aparece en cada elemento, podemos leer una pequeña explicación sobre su significado.
+
+\subsubsection{Cabecera HTTP}
+Se nos muestra una tabla con los distintos campos que contiene la cabecera de petición HTTP del cliente. Podemos observar cuales son los
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Images/headersSection.png}
+	\caption{Cabecera HTTP.}
+	\label{fig:headersSection}
+\end{figure}
+
+\subsubsection{JavaScript}
+Aquí mostramos información sobre los elementos a los que accedemos desde WebAPI a través de JavaScript. En el atributo de \texttt{canvas} pintamos sobre el lienzo del navegador y le mostramos el dibujo al usuario.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Images/javaScriptSection.png}
+	\caption{Elementos accedidos desde WebAPI a través de Javascript}
+	\label{fig:javaScriptSection.png}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Images/canvas.png}
+	\caption{Obtención de la huella digital a través del lienzo.}
+	\label{fig:canvas.png}
+\end{figure}
+
+\subsubsection{Formatos de vídeo}
+Cada navegador es capaz de reproducir unos formatos de vídeo específicos. El valor \texttt{probably} indica que es muy probable que dicho formato esté soportado, en cambio el valor \texttt{maybe} nos da una respuesta más incierta. Se realiza esta distinción porque aunque a veces el formato está soportado, algunos códecs en concreto puede que no lo estén. Si el formato no está soportado por el navegador, se muestra el resultado \texttt{No soportado}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Images/videosSection.png}
+	\caption{Formatos de vídeo soportados.}
+	\label{fig:videosSection}
+\end{figure}
+
+\subsubsection{Formatos de audio}
+De forma análoga a los formatos de vídeo, mostramos una tabla con los formatos de audio a los que el navegador es capaz de dar soporte.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Images/audiosSection.png}
+	\caption{Formatos de audio soportados.}
+	\label{fig:audiosSection}
+\end{figure}
+
+\subsubsection{\textit{Plugins}}
+En este apartado se recopilan los nombres de los distintos plugins que hay instalados en el navegador del cliente. También mostramos en la tabla de \textit{Plugins} información acerca de los complementos Flash y AdBlock en caso de que estén instalados.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Images/pluginsSection.jpg}
+	\caption{Información sobre \textit{plugins} del navegador.}
+	\label{fig:pluginsSection}
+\end{figure}
+
+\subsubsection{Fuentes}
+Indica cuáles son las fuentes que están instaladas en el sistema. También nos indica el número total de fuentes que han sido detectadas.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Images/fuentesSection.png}
+	\caption{Fuentes del navegador.}
+	\label{fig:fuentesSection}
+\end{figure}
+
+Ya hemos observado las distintas secciones de nuestra tabla con los valores correspondientes. Haremos \textit{scroll} en la pantalla y selecionaremos el botón \texttt{Gráficos} para cambiar de ventana.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Images/graficosBoton.png}
+	\caption{Ir a la ventana \texttt{Gráficos}.}
+	\label{fig:graficosBoton}
+\end{figure}
+
+
+\section{Gŕaficos}
+
+Una vez hemos seleccionado el botón \texttt{Gráficos}, aparece en pantalla un gráfico que muestra un diagrama de tartas en tres dimensiones. 
+Este diagrama representa estadísticas para algunos de los parámetro que hemos almacenado en nuestra base de datos. Por defecto, se muestran los porcentajes del atributo \texttt{navegador}. Observamos que a la derecha del diagrama aparece una leyenda de colores que indica cual es el valor de cada color en el diagrama. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Images/navegadorChart.png}
+	\caption{Diagrama del atributo \texttt{navegador}.}
+	\label{fig:navegadorChart}
+\end{figure}
+
+Podemos acceder al menú desplegable que se encuentra arriba a la derecha. Pinchando sobre el atributo seleccionado, se deplegan las distintas opciones. Podemos elegir ver el las estadísticas en forma de diagrama de tartas para cada parámetro que se muestra en el menú. En nuestro caso, decidimos ver las estadísticas de \texttt{pixelRatio}, así que seleccionaremos esta opción.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Images/menuChart.png}
+	\caption{Menú desplegable del apartado de \texttt{Gráficos}.}
+	\label{fig:menuChart}
+\end{figure}
+
+De esta forma, el diagrama que se muestra a continuación corresponde al del atributo \texttt{pixelRatio}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{Images/pixelRatioChart.png}
+	\caption{Diagrama del atributo \texttt{pixelRatio}.}
+	\label{fig:pixelRatioChart}
+\end{figure}
+
+Las opciones que nos quedan ahora son escoger otro atributo del menú para seguir viendo más diagramas o volver a la pantalla de bienvenida pinchando en el botón \texttt{BrowserFingerprint}.
