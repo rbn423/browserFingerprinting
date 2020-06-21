@@ -1,4 +1,5 @@
 \chapter{Conclusions}
+\label{ch:conclusions}
 The main objective of this project has been to create a web application that will allows the collection of data from a device and the creation of a profile of its fingerprint. After the implementation of the application, we can say that the objectives and expectations we had originally set have been fulfilled. However, certain secondary tasks have been altered due to different factors such as technology and the time, and are proposed as future tasks. \par
 
 The technique of browser fingerprinting collects information from the user that usually remains unchanged, so we can say that it is a very effective method. It is not necessary to find a unique attribute but it is enough to find a combination of attributes that is unique to identify a user. Cookies are a more effective method but if they are removed, the traceability on the user is lost. \par 
@@ -9,3 +10,35 @@ The collection of data that can identify the user is considered personal data an
 
 On the other hand, on a personal level we have acquired and assimilated knowledge in JavaScript, especially the handling of asynchronous connections with AJAX. In addition, we have learned how to access the different WebAPIs provided by browsers.
 We have also improved our work organization through Git, which has allowed us to have more optimal version control. \par
+
+\section{Future Work}
+
+While we were working we left functionalities or improvements that could be made in the future to improve the performance of the application.
+
+\subsubsection{Asynchrony}
+
+We have used the JavaScript object <<XMLHTTPRequest>> for the asynchronous connection to the server. This is an object that is becoming obsolete and has been replaced by <<Fetch>>, which allows you to access and manipulate parts of the HTTP header more easily and conveniently. \par
+In addition, a better solution can be found to the problem of asynchrony mentioned above.
+
+\subsubsection{Graphical interface}
+
+The graphical interface of our project is a point where several improvements could be made. The home page can be decorated by using JavaScript Frameworks such as React, Vue.js and derivatives, giving it a more modern look. \par
+
+With respect to the view of the statistics, a modification of the graphs can be made, so that when they are drawn, the portion to which the browser of the user who is viewing them belongs is highlighted. \par 
+
+You can also add an enhancement that allows the user to view a new graph by selecting a field from another, which details information from the previous one. For example, in the operating system graph, if you click on one of them, a new graph will be shown where you could see the percentage of each one of the versions of that system.
+\subsubsection{Analyze other browser elements}
+We believe that our application gets enough information from JavaScript, but during development we left several to be implemented due to lack of time. Among them we could add the following.
+\begin{itemize}
+    \item \textbf{WebGL}: This is a JavaScript API that allows you to render 3D graphics. It can be used in a similar way to our implementation of <<Canvas>>.
+    \item \textbf{Sensores}: Using JavaScript, information can be obtained from device sensors, such as the accelerometer or gyroscope.
+\end{itemize}
+\subsubsection{Analysis of results in time intervals}
+This improvement consists in being able to observe different ratios of the browser attributes for different time intervals. In this way you could see the results of the fingerprints in the last 15 days or in the last month. It is an improvement that we had in mind from the beginning of the project, we even stored the date in the table \textit{Conexiones} in the database, but due to lack of time we have not been able to carry it out.
+
+\subsubsection{Support for HTTP2}
+Currently, our web server only allows HTTP1/1 connections. Supporting the HTTP/2 version would mean performance improvements, since HTTP2 is a binary format, unlike HTTP1/1 which is plain text. Other features that we have built in and that we believe can improve our project are the multiplexing of incoming connections and the ability to send data to the client before he requests it. \par
+This was an option that we investigated and concluded that we also needed to include SSL/TLS certificates. This is because, although the HTTP/2 protocol specification allows you to dispense with encryption, several implementations have stated that they will only support HTTP/2 when used over an encrypted connection, and currently no browser supports unencrypted HTTP/2 \cite{http2}. \par
+\subsection{Detect tracking avoidance techniques}
+There are several attributes that we keep duplicates of, as we collect them from different sources. We had thought that checks could be made to detect whether the result from both sources is consistent with each other. If not, we would be looking at evidence of evasion of fingerprint tracking and could identify which fields are being masked.
+\noindent
