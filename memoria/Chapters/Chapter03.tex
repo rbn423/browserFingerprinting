@@ -1,5 +1,5 @@
 \chapter{Preliminares}
-En este capítulo vamos a presentar las diferentes huellas digitales que se pueden extraer de los navegadores web. Discutiremos las implicaciones que esto suscita y explicaremos las distantas técnicas de extracción y evasión que existen. Detallaremos las tecnologías que se han utilizado en nuestro trabajo y, por último, mencionaremos otras herramientas existentes que son similares a nuestro proyecto.
+En este capítulo vamos a presentar las diferentes huellas digitales que se pueden extraer de los navegadores web. Discutiremos las implicaciones que esto suscita y explicaremos las distantas técnicas de extracción y evasión que existen. También detallaremos las tecnologías que se han utilizado en nuestro trabajo y, por último, mencionaremos otras herramientas existentes que son similares a nuestro proyecto.
 
 \section{Huella digital de navegadores}
 Cuando navegamos por internet, es posible identificar características que nos permitan reconocer si un determinado usuario ha visitado nuestro sitio. El método más común para detectarlo es mediante el uso de \textit{cookies}. Este dato nos permite establecer una sesión con el visitante de la página y poder guardar así un estado de la conexión. Además, este identificador de sesión nos permite almacenar las configuraciones personalizadas para esa sesión específica. De esta forma controlamos en todo momento el rastro de nuestros usuarios. Ese trozo de información, llamado \textit{HTTP cookie} \cite{rfc6265}, se genera en el servidor y se intercambia al establecer la conexión. Esto es, la \textit{cookie} se almacena también en el navegador del cliente. \par
@@ -68,9 +68,7 @@ Podemos clasificar las distintas técnicas de detección de huellas digitales en
 	
 \end{itemize}
 
-También podríamos clasificar los distintos sistemas de \textit{browser fingerprinting} teniendo en cuenta el tipo de información a obtener. Por una parte, podríamos obtener información del \textit{hardware} de la máquina directamente a través de la API de JavaScript. Algunos de estos atributos son: la memoria RAM, el tipo de procesador de la máquina, el nombre de la tarjeta gráfica, el número de núcleos de la CPU o el estado de la batería. Por otra parte, podemos obtener información del sistema operativo, configuraciones del navegados o fuentes y \textit{códecs} de audio y vídeo instalados, entre otros. Todos estos elementos se obtienen del \textit{software} del sistema del cliente. \par 
-
-Entre todo este conjunto de técnicas, las más usadas son: \par 
+También podríamos clasificar los distintos sistemas de \textit{browser fingerprinting} teniendo en cuenta el tipo de información a obtener. Por una parte, podríamos obtener información del \textit{hardware} de la máquina directamente a través de la API de JavaScript. Algunos de estos atributos son: la memoria RAM, el tipo de procesador de la máquina, el nombre de la tarjeta gráfica, el número de núcleos de la CPU o el estado de la batería. Por otra parte, podemos obtener información del sistema operativo, configuraciones del navegados o fuentes y \textit{códecs} de audio y vídeo instalados, entre otros. Todos estos elementos se obtienen del \textit{software} del sistema del cliente. Entre todo este conjunto de técnicas, las más usadas son: \par 
 
 \begin{itemize}
 	\item Recopilar el \textit{User-Agent} del dispositivo: Esto se puede realizar tanto de forma activa como de forma pasiva. En general, en este atributo se anuncia el nombre del navegador web que se está utilizando. Una vez lo conozcamos, sabemos las tecnologías soportadas y podemos profundizar más en nuestra detección de la huella digital. \par 
@@ -91,7 +89,7 @@ Por último, queremos mencionar cuales son los últimos métodos de detección d
 \end{itemize}
 
 \subsection{Técnicas de evasión}
-Como indica \todo[el autor] en \cite{never_forget_paper}, ``las opciones actuales de los usuarios para mitigar estas amenazas son limitadas, en parte debido a la dificultad de distinguir el rastreo no deseado del comportamiento benigno.'' \par 
+Como indican [Gunes Acar, Christian Eubank, Steven Englehardt, Marc Juarez, Arvind Narayanan y Claudia Diaz] en \cite{never_forget_paper}, {``las opciones actuales de los usuarios para mitigar estas amenazas son limitadas, en parte debido a la dificultad de distinguir el rastreo no deseado del comportamiento benigno.''} \par 
 
 La mitigación más sencilla para aumentar la seguridad y privacidad de nuestro navegador es por supuesto eliminar funcionalidades. No obstante, elevar nuestro nivel de protección sin degradar la experiencia del usuario siempre es un desafío. \par 
 
@@ -117,7 +115,7 @@ Todas estas medidas de mitigación son tan solo esfuerzos técnicos. Cambios en 
 
 \section{Tecnologías empleadas}
 
-Existe un abanico muy amplio de tecnologías \cite{web_mozilla} relacionadas con la navegación web. Para dar una primera visión general, vamos a realizar una clasificación de las distintas tecnologías web que hemos utilizado en las siguientes categorías: \par
+Existe un abanico muy amplio de tecnologías \cite{web_mozilla} relacionadas con la navegación web. Para dar una primera visión general, vamos a realizar una clasificación de las distintas tecnologías que hemos utilizado en las siguientes categorías: \par
 \begin{itemize}
 	\item Tecnologías básicas:
 		\begin{itemize}
@@ -139,6 +137,13 @@ Existe un abanico muy amplio de tecnologías \cite{web_mozilla} relacionadas con
 					\item MariaDB.
 					\item PhpMyAdmin.
 				\end{itemize}
+		\end{itemize}
+	\item Otras tecnologías:
+		\begin{itemize}
+			\item Google Charts.
+			\item Git.
+			\item PhpStorm.
+			\item \LaTeX.
 		\end{itemize}
 \end{itemize}
 
@@ -164,24 +169,11 @@ En nuestro proyecto usamos la versión HTTP/1.1 , que es la que viene predetermi
 \subsection{Lenguajes de programación y de descripción de datos}
 
 \subsubsection{JavaScript (AJAX y Web API)}
-JavaScript es un lenguaje de programación multipropósito que está soportado por todos los navegadores web modernos. Aparece por primera vez en el navegador Netscape en 1995. Se puede utilizar tanto para ejecutar código en el navegador del cliente como en funcionalidades del servidor. \par
+JavaScript es un lenguaje de programación multipropósito que está soportado por todos los navegadores web modernos. Aparece por primera vez en el navegador Netscape en 1995. Se puede utilizar tanto para ejecutar código en el navegador del cliente como en funcionalidades del servidor. A través de JavaScript también es posible acceder a multitud de APIs que existen en nuestro navegador web. Estas permiten la configuración de ajustes y el acceso a varias funcionalidades.\par
 
-En nuestro proyecto se utiliza para recopilar la información de los distintos atributos del navegador a través de Web APIs. También usamos JavaScript para  colocar elementos HTML de forma dinámica y asíncrona modificando el árbol DOM HTML. Esto nos permite cargar los elementos sin actualizar la página completamente ejecutando el código en el navegador web del cliente.\par
+En nuestro proyecto utilizamos WebAPI para recolectar los datos de la huella digital del navegador del cliente. Algunas de las WebAPIs que más utilizamos son: \texttt{window} y \texttt{document} (pertenecientes a \texttt{Document Object Model (DOM)}), \texttt{navigator}, \texttt{screen} y \texttt{canvas}. \par 
 
-\subsubsection{Web APIs}
-En web existen multitud de APIs para llevar a cabo distintas funciones. A estas interfaces se accede a través de JavaScript y permiten la configuración de ajustes. \par
-
-En nuestro proyecto utilizamos WebAPIs para recolectar los datos de la huella digital del navegador del cliente. Algunas de las WebAPIs que más utilizamos son: \textit{Window} y \textit{Document} (pertenecientes a \textit{Document Object Model (DOM)}), \textit{Navigator}, \textit{Screen} y \textit{Canvas}. \par 
-
-En la figura~\ref{fig:webAPIs} mostramos la lista de Web APIS: \par 
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\textwidth]{Images/webapis.png}
-	\caption{Lista de Web APIs}
-	\label{fig:webAPIs}
-\end{figure}
-
+También usamos JavaScript para  colocar elementos HTML de forma dinámica y asíncrona modificando el árbol DOM HTML. Esto nos permite cargar los elementos sin actualizar la página completamente ejecutando el código en el navegador web del cliente.\par
 
 \subsubsection{PHP}
 
@@ -190,19 +182,17 @@ PHP (proviene del acrónimo recursivo \textit{PHP: Hypertext Preprocessor}) es o
 Elegimos PHP porque se trata de un lenguaje que ya conocíamos todos los miembros del equipo. Además nos iba a facilitar el uso del software con el que ya teníamos en mente trabajar. \par 
 
 \subsubsection{JSON}
-Las siglas JSON significan Notación de Objeto de JavaScript (\textit{JavaScript Object Notation}). Es un formato de representación de texto. Se caracteriza por contener colecciones de datos no ordenadas. Estas colecciones tienen una estructura de pares <clave>:<valor>.\par
+Las siglas JSON significan Notación de Objeto de JavaScript (\textit{JavaScript Object Notation}). Es un formato de representación de texto. Se caracteriza por contener colecciones de datos no ordenadas. Estas colecciones tienen una estructura de pares \texttt{<clave>:<valor>}.\par
 
 Utilizamos JSON en nuestro proyecto para intercambiar objetos desde la lógica a las vistas. En ellos incluimos toda la información que queremos mostrar al usuario. \par
 
 \subsection{\textit{Backend}}
 
-En nuestro servidor \textit{backend} hemos optado por instalar XAMPP. Consiste en un paquete de herramientas para combinar las principales tecnologías que se utilizan en un servidor web. Hemos elegido este paquete de \textit{software} debido a la facilidades que brinda tanto para instalar como para usarse con el sistema operativo Microsoft Windows. Los componentes que hemos utilizado en XAMPP son los siguientes: \par
+En nuestro servidor hemos optado por instalar XAMPP \cite{XAMPP}. Consiste en un paquete de herramientas para combinar las principales tecnologías que se utilizan en un servidor web. Hemos elegido este paquete de \textit{software} debido a la facilidades que brinda tanto para instalar como para usarse con el sistema operativo Microsoft Windows. Los componentes que hemos utilizado en XAMPP son los siguientes: \par
 
 \subsubsection{Apache}
 
-Es el servidor web más popular. Cuenta con una perfecta integración con los lenguajes que utilizamos, es decir PHP y JavaScript. \par 
-
-Se trata de un servidor con el que ya habíamos trabajado anteriormente así que tomamos la decisión de utilizarlo para poder comenzar el desarrollo de nuestra aplicación rápidamente. También consideramos otras opciones que finalmente descartamos. Esto lo explicaremos en la sección~\ref{subsec:rejected}. \par 
+Es el servidor web más popular. Cuenta con una perfecta integración con los el lenguaje PHP. Se trata de un servidor con el que ya habíamos trabajado anteriormente así que tomamos la decisión de utilizarlo para poder comenzar el desarrollo de nuestra aplicación rápidamente. También consideramos otras opciones que finalmente descartamos. Esto lo explicaremos en la sección~\ref{subsec:rejected}. \par 
 
 \subsubsection{MaríaDB}
 
@@ -214,7 +204,7 @@ En nuestro proyecto se usa para albergar la huella digital que recopilamos de lo
 
 Es una interfaz web para administrar la base de datos. Está escrita en PHP y soporta bases de datos tanto MariaDB como MySQL. \par 
 
-Está contenida dentro de la instalación de XAMPP. Nos resulta más cómo observar el contenido de nuestra base de datos de un vistazo a través de una interfaz web y por eso utilizamos esta herramienta y no un cliente CLI. \par 
+Está contenida dentro de la instalación de XAMPP. Nos resulta más cómodo observar el contenido de nuestra base de datos de un vistazo a través de una interfaz web y por eso utilizamos esta herramienta y no un cliente CLI. \par 
 
 \subsection{Otras tecnologías}
 
@@ -228,7 +218,7 @@ Utilizamos la herramienta Google Charts \cite{GoogleCharts} para representar est
 
 Es un \texit{software} de control de versiones. Nos permite organizar nuestro flujo de trabajo y guardar un historial de cambios para saber el motivo y la persona que realizó las nuevas mejoras. Además nos hace más sencilla la coordinación entre todo el equipo en el desarrollo de software. \par 
 
-El código lo alojamos en la plataforma Github. Elegimos Github porque la licencia de estudiante ofrece una serie de extras de forma gratuita. Uno de estos extras es la opción de utilizar repositorios privados, en los que estábamos interesados. Igualmente, cuenta con una aplicación de escritorio que nos facilita la revisión de código antes de perpretar cambios definitivos. \par 
+El código lo alojamos en la plataforma Github. Elegimos Github porque la licencia de estudiante ofrece una serie de extras de forma gratuita. Uno de estos extras es la opción de utilizar repositorios privados, en los que estábamos interesados. Igualmente, cuenta con una aplicación de escritorio que nos facilita la revisión de código antes de adoptar los cambios definitivos. \par 
 
 \subsubsection{PhpStorm}
 
@@ -239,9 +229,7 @@ Este entorno comercial es de pago. Sin embargo, cuenta con una licencia de estud
 \subsubsection{\LaTeX}
 \LaTeX es un sistema para componer textos. Se suele utilizar en textos técnicos y de divulgación científica. Su característica principal es que permite escribir documentos centrándose en el contenido del mismo, sin tener que preocuparse por los detalles del formato. Otra ventaja que ofrece es que la salida que ofrece es invariable, por lo que no depende del dispositivo con el que estamos trabajando. \par 
 
-Usamos \LaTeX para componer el documento de la memoria del proyecto. \par 
-
-Trabajamos con esta tecnología desde la página Overleaf. Nos decantamos por esta opción porque nos permite prescindir de descargar \textit{software} adicional en nuestra máquina. Asimismo, cuenta con diversos compiladores online, por lo que no tenemos que preocuparnos de los conflictos con las dependencias de los paquetes. \par 
+Usamos \LaTeX para componer el documento de la memoria del proyecto desde la página Overleaf. Nos decantamos por esta opción porque nos permite prescindir de descargar \textit{software} adicional en nuestra máquina. Asimismo, cuenta con diversos compiladores online, por lo que no tenemos que preocuparnos de los conflictos con las dependencias de los paquetes. \par 
 
 \subsection{Tecnologías consideradas y finalmente descartadas}
 \label{subsec:rejected}
@@ -251,66 +239,61 @@ Antes de elegir estuvimos probando con diversas tecnologías que finalmente fuim
 Django es un framework de desarrollo web. Una de las ventajas es que respeta el patrón de diseño Modelo-Vista-Controlador (MVC). Por otra parte, el lenguaje de programación Python es usado en todas las partes del framework y no todos los integrantes del equipo tenemos el dominio suficiente sobre él. Finalmente consideramos que acostumbrarnos al lenguaje iba a resultar complicado y lo descartamos al estar más familiarizados con PHP. \par 
 
 \subsubsection{Node.js}
-Es un entorno en tiempo de ejecución construido sobre JavaScript, normalmente utilizado en el lado del servidor web. La principal ventaja que veíamos era la futura integración que podíamos tener más adelante con el código que recopila la información de la huella digital de los navegadores. Otra virtud a tener en cuenta es que con muy pocas líneas de código podíamos tener un servidor web escuchando y listo para producción. En comparación con Django que te obligaba a crear todos los componentes necesarios para respetar el modelo MVC, esto era mucho más rápido y sencillo. La complicación que le vimos era entender a fondo el lenguaje JavaScript, ya que al comienzo del proyecto nos sentíamos mucho más cómodos trabajando con PHP y Apache en el lado del servidor que con JavaScript y Node. \par 
+Es un entorno construido sobre JavaScript, normalmente utilizado en el lado del servidor web. La principal ventaja que veíamos era la futura integración que podíamos tener más adelante con el código que recopila la información de la huella digital de los navegadores. Otra virtud a tener en cuenta es que con muy pocas líneas de código podíamos tener un servidor web escuchando y listo para producción. En comparación con Django que te obligaba a crear todos los componentes necesarios para respetar el modelo MVC, esto era mucho más rápido y sencillo. La complicación que le vimos era entender a fondo el lenguaje JavaScript, ya que al comienzo del proyecto nos sentíamos mucho más cómodos trabajando con PHP y Apache en el lado del servidor que con JavaScript y Node.js. \par 
 
 \subsubsection{Nginx}
 Es un servidor web. En cuanto a las características pensamos que es muy similar a Apache, por lo que no veíamos en Nginx ventajas considerables. Además, Apache ya viene incluido en el pack de herramientas de XAMPP. \par 
 
 \subsubsection{MongoDB}
-Nos planteamos la posibilidad de utilizar una base de datos NOSQL como MongoDB. La ventaja que le veíamos era el poder añadir atributos a medida que nos los íbamos encontrando, ya que en un primer momento al estudiar la diversidad de navegadores y configuraciones de los mismos, pensamos que podíamos encontrarnos con datos no estructurados. \par 
+Nos planteamos la posibilidad de utilizar una base de datos NoSQL como MongoDB. La ventaja que le veíamos era el poder añadir atributos a medida que nos los íbamos encontrando, ya que en un primer momento al estudiar la diversidad de navegadores y configuraciones de los mismos, pensamos que podíamos encontrarnos con datos no estructurados. \par 
 
 Sin embargo, vimos que no nos hacía falta ya que podíamos diseñar un esquema fijo relacional con tablas SQL. Además, la cantidad a datos a almacenar no tiene nada que ver con el entorno Big Data y MariaDB se adaptaba mejor a nuestras necesidades. \par 
 
 \section{Herramientas similares}
 
-Existen diversas herramientas similares a la que hemos desarrollado en nuestro proyecto, ya que todas realizan métodos de \textit{browser fingerprinting}. Sin embargo, las técnicas realizadas y los objetivos de cada plataforma son muy dispares. Hemos reunido en esta lista ejemplos de utilidades web que realizan \textit{browser fingerprinting}. Aclaramos aquí que existen varias herramientas a disposición del público. No obstante, estas son las que consideramos más representativas. \par
+Existen diversas herramientas similares a la que hemos desarrollado en nuestro proyecto, ya que todas realizan métodos de \textit{browser fingerprinting}. Sin embargo, las técnicas realizadas y los objetivos de cada plataforma son muy dispares. Hemos reunido la siguiente lista de utilidades web que realizan \textit{browser fingerprinting}. \par
 
 \subsubsection{AmIUnique}
 
-AmIUnique \cite{amiunique} es una plataforma que recopila información de los diversos navegadores que visitan la web. De esta forma, son capaces de proveer estadísticas de uso. \par 
-Entre sus objetivos encontramos:
+AmIUnique \footnote{\url{https://amiunique.org/}} es una plataforma que recopila información de los diversos navegadores que visitan la web. De esta forma, son capaces de proveer estadísticas de uso. Entre sus objetivos encontramos: \par 
 \begin{itemize}
 	\item Indicar si nuestra huella digital es única y si podemos llegar a ser rastreables.
 	\item Mostrar el contenido de los parámetros más utilizados en \textit{browser fingerprinting}. Para cada parámetro, nos indica el porcentaje de registros similares encontrados en su base de datos.
-	\item Estadísticas de uso globales: La herramienta nos muestra gráficos y porcentajes de los navegadores y sistemas operativos.
+	\item Estadísticas de uso globales: la herramienta nos muestra gráficos y porcentajes de los navegadores y sistemas operativos.
 	\item Estadísticas de uso para ayudar a los desarrolladores para ayudarles ofrecer una experiencia optimizada para cada plataforma.
 \end{itemize}
 
 Los desarrolladores de esta plataforma también han diseñado una extensión de navegador para alertarnos de cuando nuestra huella digital ha cambiado. \par 
 
-\subsubsection{Panopticlick}
-
-Se trata de un proyecto de investigación de la \textit{Electronic Frontier Foundation} (EFF). Está desarrollado a partir la biblioteca \textit{Fingerprint2} \cite{fingerprintjs2} e incorpora partes de \textit{BrowserSpy.dk} \cite{browserSpy} para la detección de fuentes. \par 
-
-El objetivo es concienciar a los usuarios de que son susceptibles a ser perfilados a través de su navegación. Para proteger nuestra privacidad, \textit{Panopticlick} \cite{panopticlick} recomienda la instalación de una extensión para el navegador, llamada \textit{Privacy Badger}, la cual ha sido también desarrollada por la EFF. Está disponible para Google Chrome, Mozilla Firefox y Opera Browser. \par 
-
 \subsubsection{BrowserSpy.dk}
 
 Encontramos aquí otra página diferente que nos permite averiguar la información que el navegador revela sobre nuestro dispositivo. \par 
 
-Cuenta con un panel a la izquierda donde se hallan los distintos elementos que \textit{BrowserSpy} \cite{browserSpy} es capaz de obtener de nosotros. Pinchando sobre cada uno de ellos obtenemos el valor que se utiliza para rastrear nuestra huella digital. \par 
+Cuenta con un panel a la izquierda donde se hallan los distintos elementos que \textit{BrowserSpy} \footnote{\url{http://browserspy.dk/}} es capaz de obtener de nosotros. Pinchando sobre cada uno de ellos obtenemos el valor que se utiliza para rastrear nuestra huella digital. Destaca en especial por recopilar información sobre el soporte de AJAX en nuestro navegador. También tiene un método sofisticado de obtener información de las fuentes, incorporando tecnologías Java y Flash. \par 
 
 \subsubsection{BrowserLeaks}
 
-\textit{BrowserLeaks} \cite{browserLeaks} es un portal web muy similar al anterior. En su página principal nos explica detalladamente cuales son los atributos que utiliza para obtener la huella digital del navegador web. \par 
+\textit{BrowserLeaks} \footnote{\url{https://browserleaks.com/}} es un portal web muy similar al anterior. En su página principal nos explica detalladamente cuales son los atributos que utiliza para obtener la huella digital del navegador web. \par 
 
-Esta herramienta también tiene su menú a la izquierda con las distintas opciones que podemos escoger. Al pinchar sobre cada una de ellas obtenemos el dato usado para perfilarnos. \par 
+Cuenta con una serie de opciones que la diferencian del resto, como el uso de la WebAPI \textit{Geolocation}, las distintas opciones SSL/TLS que soporta el navegador y la obtención de datos sobre plugins Java, Silverlight y Flash. \par 
+
+\subsubsection{Panopticlick}
+
+Se trata de un proyecto de investigación de la \textit{Electronic Frontier Foundation} (EFF). Está desarrollado a partir la biblioteca \textit{Fingerprint2} \cite{fingerprintjs2} e incorpora partes de \textit{BrowserSpy.dk} \cite{browserSpy} para la detección de fuentes. \par 
+
+El objetivo es concienciar a los usuarios de que son susceptibles a ser perfilados a través de su navegación. Para proteger nuestra privacidad, \textit{Panopticlick} \footnote{\url{https://panopticlick.eff.org/}} recomienda la instalación de una extensión para el navegador, llamada \textit{Privacy Badger}, la cual ha sido también desarrollada por la EFF. Está disponible para Google Chrome, Mozilla Firefox y Opera Browser. \par 
 
 \subsubsection{Audio Context Fingerprint TestPage}
 
-Este proyecto forma parte del \textit{Princeton Web Transparency and Accountability Project}, de la Universidad de Princeton \cite{audio_page}. \par 
+Este proyecto forma parte del \textit{Princeton Web Transparency and Accountability Project}, de la Universidad de Princeton \footnote{\url{https://audiofingerprint.openwpm.com/}}. \par 
 
-Al contrario que las plataformas anteriores, las cuales realizaban una comprobación más o menos completa de casi todas las habilidades conocidas de \textit{browser fingerprinting}, esta se focaliza tan solo es dos aspectos concretos. \par 
+Al contrario que las plataformas anteriores, las cuales realizaban una comprobación más o menos completa de casi todas las habilidades conocidas de \textit{browser fingerprinting}, esta se focaliza tan solo es dos aspectos concretos. \par
 
-El objetivo es obtener la huella digital del navegador web analizando los valores de audio y detección de fuentes. \par 
-
-En cuanto al audio, analiza las propiedades \textit{AudioContext}, \textit{DynamicsCompressor} y \textit{OscillatorNode}. \par 
-
-También es posible obtener información de las distintas fuentes instaladas en el cliente, información del lienzo y detección de las fuentes de \textit{Flash}. \par 
+El objetivo es obtener la huella digital del navegador web analizando los valores de audio y detección de fuentes. En cuanto al audio, analiza las propiedades \textit{AudioContext}, \textit{DynamicsCompressor} y \textit{OscillatorNode}. También es posible obtener información de las distintas fuentes instaladas en el cliente, información del lienzo y detección de las fuentes de \textit{Flash}. \par 
 
 \subsubsection{DeviceInfo}
 
-\textit{Device Info} \cite{deviceinfo} es una utilidad que nos permite comprobar la privacidad de nuestros ajustes en el navegador. \par
+\textit{Device Info} \footnote{\url{www.deviceinfo.me}} es una utilidad que nos permite comprobar la privacidad de nuestros ajustes en el navegador. \par
 
 El diseño de la página es muy austero; pero, a pesar de ello, cumple perfectamente con su cometido. Posiblemente sea la página más completa de todas en cuanto a la diversidad de técnicas que realiza para obtener la información del usuario. \par
 
