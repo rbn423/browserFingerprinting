@@ -528,9 +528,6 @@ title={#2},fonttitle=\bfseries,#1}
     \vspace{12mm}
 \end{center}
 }
-\newcommand*{\abstractT}[0]{
-\newpage
-
 
 \newcommand*{\indiceTFG}[0]{
 \abstractT
