@@ -1,5 +1,5 @@
 \chapter{Contribución individual}
-
+A lo largo del desarrollo del trabajo la carga de tareas a sido equitativa, trabajando de forma paralela cada uno de los integrantes en distintas tareas. A continuación se detalla la aportación individual de cada uno de los autores de este trabajo.
 \section{Adrián}
 \subsubsection{Investigación}
 \begin{itemize}
@@ -44,27 +44,27 @@
 	\item 
 \end{itemize}
 
-\section{Rubén}
+\section{Rubén Peña García}
 \subsubsection{Investigación}
-\begin{itemize}
-	\item 
-\end{itemize}
+En esta fase del proyecto comencé informándome acerca de los distintos métodos de \textit{browser fingerprinting} que existen, ya que mi conocimiento de la materia era casi nulo. Principalmente examiné el funcionamiento de otras aplicaciones capaces de obtener la huella digital del navegador, como \textit{AmIUnique}\cite{amiunique} o \textit{Panopticlick}\cite{panop_paper}. También me documenté acerca de los usos del reconocimiento de la huella digital de navegadores y su impacto gracias al estudio publicado por la Agencia Española de Protección de Datos \cite{aepd}.\par
+Después mi investigación consistió en comprobar y listar todos los elementos que íbamos a obtener en nuestra aplicación y su método de obtención, para poder determinar el alcance de nuestro proyecto.\par
+Para los datos que obtenemos de las cabeceras HTTP analicé los elementos que conformaban las cabeceras HTTP en los navegadores más utilizados, como \textit{Google Chrome}, \textit{Microsoft Edge}, \textit{Microsoft Internet Explorer} o \textit{Mozilla Firefox}. De todos los resultados obtenidos listé los más comunes para su almacenamiento en nuestra base de datos.\par
+También investigué elementos que podíamos obtener mediante el uso de JavaScript, comprobando en otras aplicaciones los atributos que obtenían mediante esta tecnología. Algunas, como \textit{AmIUnique}, listan todos los elementos para que el usuario pueda verlos, pero en muchos casos no explican su método de obtención. Mi investigación en este ámbito consistió en examinar los distintos atributos que obtienen estas aplicaciones por un lado y encontrar su forma de obtención por otra parte. Además investigué distintos objetos de JavaScript, examinando los métodos de sus clases por si alguno podía servirnos a la hora de identificar a un usuario añadiendo información a su huella.
 \subsubsection{Análisis de requisitos}
-\begin{itemize}
-	\item 
-\end{itemize}
+Una vez tuvimos claro el funcionamiento que tendría nuestra aplicación y la manera de obtener los datos para generar la huella investigamos que tecnologías utilizaríamos. Repartimos la investigación de tecnologías, sobre todo en lado de servidor, ya que estaba claro que en cliente tendríamos que utilizar HTML y JavaScript.\par
+Mi tarea fue investigar \textit{frameworks} JavaScript para el servidor. El que más estudié fue \textit{Node.JS}\cite{nodejs}, ya que es uno de los \textit{frameworks} más extendidos y famosos. Al concluir todas nuestras investigaciones y poner nuestras conclusiones en común decidimos utilizar \textit{Apache} para nuestro servidor, ya que ofrecía muchas comodidades y todos los integrantes del trabajo habíamos trabajado con el anteriormente, lo que nos permitía trabajar de manera inmediata sin necesidad de aprender a utilizar un \textit{framework} desconocido.
 \subsubsection{Implementación}
-\begin{itemize}
-	\item 
-\end{itemize}
+Esta etapa del proyecto fue la más larga y compleja. Al comienzo de esta me encargué de diseñar la estructura de una aplicación de prueba para obtener datos del navegador. Se trataba de una versión básica de lo que finalmente terminaría siendo nuestra aplicación. En ella programé lo necesario para identificar cada uno de los atributos de las cabeceras HTTP y mostrarlos por pantalla. Todo este código se almacenó en un repositorio de \textit{GitHub} que yo creé.\par
+Posteriormente diseñé e implementé la base de datos con PhpMyAdmin, que en principio solo almacenaba en una única tabla el ID y los elementos de la cabecera HTTP. Esta base de datos iría aumentando su número de tablas y atributos a lo largo del desarrollo, ya que añadíamos las columnas según íbamos implementando los métodos de obtención de atributos de la aplicación.\par
+Tras terminar la versión de prueba comenzamos la programación de los métodos encargados de obtener información mediante JavaScript. Me encargué de seguir desarrollando la estructura del código de la aplicación, de forma que este fuese lo más modular posible para que cada uno de los integrantes pudiésemos trabajar en paralelo de la forma más cómoda posible.\par
+Después de completar la estructura del código comenzamos a programar las funciones para la obtención de elementos con JavaScript. Los integrantes del grupo nos fuimos repartiendo estas tareas, las cuales teníamos listadas desde la etapa de investigación. Cada uno programábamos por separado estas funciones y la íbamos añadiendo al código de la aplicación según las íbamos terminando. Entre otros me encargué de muchos de los elementos obtenidos del objeto \textit{Navigator}, del objeto \textit{Screen}, de \textit{Canvas}, de algunos plugins como \textit{AdBlock} o \textit{Flash}, la batería, el objeto \textit{Window}, los codecs de audio y vídeo o los dispositivos del sistema.\par
+Una vez consideramos que no era necesario la obtención de más atributos para nuestra aplicación pasamos a implementar el resto de funcionalidades de nuestra aplicación. Entre estas funcionalidades yo me dediqué a programar el código necesario para la obtención la unicidad de la huella del usuario. También añadí la herramienta de información que hay en nuestra aplicación, la cual detalla la utilidad de cada uno de los elementos analizados en la página. Además me encargué de que el código en cliente pudiese enviar la información al servidor de manera asíncrona para no tener que recargar la página.\par 
+Aunque el encargado de la apariencia estética de la aplicación fue Samuel, yo también programé parte de esta, cambiando algunos colores y aplicando la misma apariencia al apartado de gráficas de nuestra aplicación. 
 \subsubsection{Pruebas}
-\begin{itemize}
-	\item 
-\end{itemize}
+Aunque durante el desarrollo del código de la aplicación fuimos comprobando que el código funcionase de manera correcta, fue cuando terminamos de programar cuando nos encontramos con varios problemas. Durante estas pruebas encontramos el que posiblemente era el mayor problema, la asincronía. Debido a la forma en la que realizábamos la asincronía, en algunas ocasiones se ejecutaban las llamadas asíncronas fuera del orden deseado, lo cual afectaba al resultado de la unicidad del usuario. Yo me ocupé de solucionar este problema, haciendo que las llamadas asíncronas se ejecutasen en orden.
 \subsubsection{Memoria}
-\begin{itemize}
-	\item 
-\end{itemize}
+Para la realización de la memoria me dediqué a buscar una plantilla de \LaTeX que nos sirviese de base para la escritura de esta memoria. Me encargué modificar algunas cosas y adaptarla a nuestro gusto. Una vez lista nos repartimos la escritura de los capítulos entre los integrantes del grupo. Yo me encargué de la escritura del capítulo 5 y parte del capítulo 8.\par
+Además de la escritura de estos capítulos, todos los integrantes hemos ido revisando los capítulos realizados por el resto de compañeros. De esta forma hemos podido añadir información que se nos hubiese podido olvidar individualmente y corregir errores en común.
 
 \section{Samuel}
 \subsubsection{Investigación}
