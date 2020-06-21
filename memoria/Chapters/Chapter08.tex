@@ -31,6 +31,6 @@ Esta mejora consiste en poder observar distintos ratios de los atributos del nav
 \subsubsection{Soporte para HTTP2}
 Actualmente, nuestro servidor web sólo permite conexiones HTTP1/1. Dar soporte a la versión HTTP/2 implicaría mejoras en el rendimiento, ya que HTTP2 se trata de un formato binario, a diferencia de HTTP1/1 que es texto plano. Otras funcionalidades que incorpora y que creemos que pueden mejorar nuestro proyecto es la multiplexación de conexiones entrantes y la capacidad de enviar datos al cliente antes de que él los pida. \par
 Ha sido una opción que estuvimos investigando y llegamos a la conclusión de que además necesitábamos incluir certificados SSL/TLS. Esto es así ya que, aunque la especificación del protocolo HTTP/2 permite prescindir del cifrado, varias implementaciones declararon que sólo soportarán HTTP/2 cuando se utilice a través de una conexión cifrada, y actualmente ningún navegador soporta HTTP/2 sin cifrar \cite{http2}. \par
-\subsection{Detectar técnicas de evasión de rastreo}
+\subsubsection{Detectar técnicas de evasión de rastreo}
 Existen varios atributos que guardamos duplicados, ya que los recopilamos de fuentes diferentes. Habíamos pensado que se pueden realizar comprobaciones para detectar si el resultado de ambas fuentes es consistente entre sí. En caso contrario, estaríamos ante una evidencia de evasión del rastreo de huella digital y podríamos identificar qué campos se están tratando de enmascarar.
 \noindent

@@ -39,6 +39,6 @@ This improvement consists in being able to observe different ratios of the brows
 \subsubsection{Support for HTTP2}
 Currently, our web server only allows HTTP1/1 connections. Supporting the HTTP/2 version would mean performance improvements, since HTTP2 is a binary format, unlike HTTP1/1 which is plain text. Other features that we have built in and that we believe can improve our project are the multiplexing of incoming connections and the ability to send data to the client before he requests it. \par
 This was an option that we investigated and concluded that we also needed to include SSL/TLS certificates. This is because, although the HTTP/2 protocol specification allows you to dispense with encryption, several implementations have stated that they will only support HTTP/2 when used over an encrypted connection, and currently no browser supports unencrypted HTTP/2 \cite{http2}. \par
-\subsection{Detect tracking avoidance techniques}
+\subsubsection{Detect tracking avoidance techniques}
 There are several attributes that we keep duplicates of, as we collect them from different sources. We had thought that checks could be made to detect whether the result from both sources is consistent with each other. If not, we would be looking at evidence of evasion of fingerprint tracking and could identify which fields are being masked.
 \noindent
