@@ -22,27 +22,33 @@ A lo largo del desarrollo del trabajo la carga de tareas a sido equitativa, trab
 	\item 
 \end{itemize}
 
-\section{Jesús}
+\section{Jesús Martín González}
 \subsubsection{Investigación}
-\begin{itemize}
-	\item 
-\end{itemize}
+En la fase de investigación todos los integrantes del grupo comenzamos a introducirnos en los aspéctos básicos que rodean ya no sólo al \textit{browser fingerpriting} sino en general a las formas de detección de huellas digitales. En mi caso, ya contaba con una serie de nociones básicas sobre estos procedimientos, ya que soy un entusiasta de privacidad en dispositivos digitales. Aun así, mis conocimientos no iban mucho más allá de haber explorado distintas extensiones de navegador que podían evadir ciertas técnicas de detección de huella digital. \par
+
+La fase de investigación fue muy general, ya que iniciamos una búsqueda de todo tipo de material entre todos que nos pudiera ser de utilidad, como herramientas, bibliotecas y demás. En mi caso me centré en recopilar \textit{papers} y documentación de interés, que luego han sido aprovechados para ayudarnos a escribir nuestra memoria. Esto me ayudó a comprender la diferencia entre las técnicas activas y pasivas de rastreo de huella digital y a distinguir las ventajas e inconvenientes que plantea frente al uso de cookies. Por último, también colaboré en la elaboración de una lista de posibles tecnologías a usar en nuestro proyecto. \par
+
 \subsubsection{Análisis de requisitos}
-\begin{itemize}
-	\item 
-\end{itemize}
+
+En la fase de análisis de requisitos nos pusimos a valorar las distintas opciones que barajábamos, y decidir así con cuales nos quedaríamos. Mi tarea consistió en realizar pruebas de concepto con diversas tecnologías de servidores web, concretamente con Django y Node.js. Finalmente descartamos ambas y nos quedamos con Apache, como hemos explicado en la sección~\ref{subsec:rejected}. Además, también planteé la adopción del sistema de base de datos MongoDB. La conclusión fue que una base de datos relacional se adaptaba mejor a nuestras necesidades, por lo que también descartamos esta opción. Elegimos PHP y JavaScript, como los lenguajes de programación que utilizaríamos. Aunque ya había trabajado con ellos anteriormente, hacia bastante tiempo que no los utilizaba así que en mi caso también tuve que ponerme al día y repasar conceptos que tenía olvidados. \par 
+
+También se analizó qué componentes del navegador recolectar con JavaScript a través de WebAPI. Me ocupé de identificar cómo podríamos obtener información relacionada con el protocolo de red, como es la IP origen, los DNS utilizados o información sobre la WebAPI \texttt{WebRTC}. Descartamos recopilar estos atributos al no considerarlos tan relevantes como otras características del propio navegador. Por último, me encargué de analizar cuales son los elementos obtenidos desde distintas fuentes que se repetían. La intención era comprobar si arrojaban valores diferentes para detectar posibles técnicas de evasión. Esta funcionalidad se ha dejado como trabajo futuro. \par 
+
 \subsubsection{Implementación}
-\begin{itemize}
-	\item 
-\end{itemize}
+
+Mi primera labor relacionada con la implementación del proyecto fue entender la estructura de la aplicación, que había sido diseñada por Rubén. Este primer esquema se basaba en la primera prueba de concepto que había sido realizada por Rubén, Adrián y Samuel utilizando Apache y PHP. Como ya he comentado anteriormente, me llevó un tiempo el volver a familiarizarme con el lenguaje PHP. Mi primera contribución de código fue colaborar con Rubén para hacer la extracción de datos de la cabecera HTTP lo más flexible posible. Una vez me iba poniendo más al día con el lenguaje, pude contribuir a más tareas. Tras esto, colaboré en la extración de atributos con JavaScript a través de WebAPIs: primero mejorando la detección de fuentes del navegador, tarea que había sido iniciada por Adrián; y posteriormente mediante la detección de elementos Flash. Esta tarea fue desarrollada junto con Rubén, ya que él mejoró bastante mi primera implementación inicial. \par 
+
+Mi contribución más importante en este apartado es el cálculo del porcentaje de similaridad que hay entre el usuario que accede a la página web y el resto de valores de los usuarios que han accedido anteriormente. Lo interesante de la implementación es que se pueden reutilizar secciones del código y consultas SQL que en un principio estaban destinadas sólo para identificar si un usuario había visitado nuestra plataforma y para pintar los valores de los atributos. Más tarde, mejoré esta funcionalidad protegiendo las consultas ante posibles ataques de \textit{SQLInjection}. También he contribuido a mejorar otras funcionalidades de la aplicación en momentos puntuales. Otras tareas también fueron llevadas a cabo pero finalmente no se adoptaron, como la generación de certificados SSL en local. \par 
+
 \subsubsection{Pruebas}
-\begin{itemize}
-	\item 
-\end{itemize}
+
+Hacer pruebas con sistemas no tan comunes para el público general fue una de mis tareas a realizar. En concreto, se efectuaron pruebas desde los sistemas operativos Ubuntu y Debian, y desde los navegadores Brave, Waterfox, Tor Browser y Lynx, además de pruebas puntuales desde la herramienta cURL. El objetivo era verificar si nuestra aplicación era capaz de funcionar fuera de la plataforma XAMPP en Windows y obtener información de los navegadores menos comunes. También colaboré en alojar nuestra aplicación en una web de hosting, aunque sin éxito. Rubén retomó esta tarea y la llevó a cabo de forma satisfactoria. En la fase de pruebas tan solo encontré pequeños fallos no muy importantes que fueron subsanados.
+
 \subsubsection{Memoria}
-\begin{itemize}
-	\item 
-\end{itemize}
+
+Respecto a la memoria, me he encargado de escribir el capítulo~\ref{ch:preliminares} de Preliminares. A la hora de repartir el trabajo de de la memoria, pensamos que iba a ser más interesante que me encargara yo de este capítulo porque algunos de los documentos académicos que habiamos recopilando anteriormente ya me resultaban familiares y me iba a ser más sencillo redactar los antecedentes del \textit{browser fingerprinting}. También he participado en la elaboración del capítulo~\ref{ch:conclusiones} de Conclusiones junto con Samuel. Tal como nos habíamos asignado los capítulos, tenía sentido que nosotros dos comenzaramos a redactarlo, enunciando los resultados finales y que lo concluyeran Adrián y Rubén con más detalles sobre el trabajo futuro de la implementación y sobre los problemas con los que nos habíamos encontrado. \par 
+
+Por último, además de participar en la revisión del resto de partes redactadas por mis compañeros, destacar también mi colaboración en la traducción al inglés de los capítulos~\ref{ch:introduccion} y ~\ref{ch:conclusiones} de Introducción y Conclusiones, respectivamente. Aunque esta tarea ha sido realizada por Samuel, yo he prestado apoyo introduciendo algunas mejoras en la traducción. \par
 
 \section{Rubén Peña García}
 \subsubsection{Investigación}
