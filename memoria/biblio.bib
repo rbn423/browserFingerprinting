@@ -3,17 +3,20 @@
 %  -INTRODUCCIÓN-
 %%%%%%%%%%%%%%%%%%
 
-@inproceeding{Huella,
-	title = {{F}ingerprinting o {H}uella digital del dispositivo},
-	note={\url{https://www.aepd.es/sites/default/files/2019-09/estudio-fingerprinting-huella-digital.pdf}},
-	year ={Fecha de acceso, octubre de 2019}
+@techreport{aepd,
+	AUTHOR = "Agencia Española de Protección de Datos",
+	TITLE = "{Estudio de fingerprint o huella digital de dispositivo}",
+	YEAR = {2019},
+	PUBLISHER = "{AEPD}",
+	INSTITUTION = "{AEPD}",
+	URL={https://www.aepd.es/sites/default/files/2019-09/estudio-fingerprinting-huella-digital.pdf}
 }
 
 % Se usa también en el capítulo 3, así que cuidado si se modifica
 @inproceeding{amiunique, 
-	title = {{A}m{IU}nique},
-	note ={\url{https://amiunique.org}},
-	year ={Fecha de acceso, octubre de 2019}
+	title = {AmIUnique},
+	note ={https://amiunique.org},
+	year ={Fecha de acceso, Octubre de 2019}
 }
 
 %%%%%%%%%%%%%%%%%%
@@ -21,128 +24,116 @@
 %  -PRELIMINARES-
 %%%%%%%%%%%%%%%%%%
 
-@article{rfc6265,
-	title={{HTTP} {S}tate {M}anagement {M}echanism},
-	author={Adam Barth},
-	journal={RFC},
-	year={2011},
-	volume={6265},
-	pages={1-37},
-	URL={\url{https://tools.ietf.org/html/rfc6265}}
+@techreport{rfc6265,
+	AUTHOR = " A. Barth",
+	TITLE = "{HTTP State Management Mechanism}",
+	HOWPUBLISHED = {Internet Requests for Comments},
+	TYPE="{RFC}",
+	NUMBER=6265,
+	YEAR = {2011},
+	MONTH = {April},
+	ISSN = {2070-1721},
+	PUBLISHER = "{RFC Editor}",
+	INSTITUTION = "{RFC Editor}",
+	URL={https://tools.ietf.org/html/rfc6265}
 }
 
 @article{fingerprint,
-	title={{B}eyond {C}ookie {M}onster {A}mnesia: {R}eal {W}orld {P}ersistent {O}nline {T}racking},
-	author={Nasser Mohammed Al-Fannah and Wanpeng Li and Chris J. Mitchell},
-	journal={arXiv: Cryptography and Security},
-	year={2019},
-	URL={\url{https://arxiv.org/pdf/1905.09581.pdf}}
+	author = {Nasser Mohammed Al-Fannah, Wanpeng Li, Chris J Mitchell},
+	title = {Beyond Cookie Monster Amnesia: Real World Persistent Online Tracking},
+	URL={https://arxiv.org/pdf/1905.09581.pdf}
 }
 
 @article{cookieless,
-	title={{C}ookieless {M}onster: {E}xploring the {E}cosystem of {W}eb-{B}ased {D}evice {F}ingerprinting},
-	author={Nick Nikiforakis and Alexandros Kapravelos and Wouter Joosen and Christopher Kr{\"u}gel and Frank Piessens and Giovanni Vigna},
-	journal={2013 IEEE Symposium on Security and Privacy},
-	year={2013},
-	pages={541-555}
-	URL={\url{https://sites.cs.ucsb.edu/~chris/research/doc/oakland13_cookieless.pdf}}
+	author = {Nick Nikiforakis , Alexandros Kapravelos , Wouter Joosen , Christopher Kruegel , Frank Piessens , Giovanni Vigna},
+	title = {Cookieless Monster: Exploring the Ecosystem of Web-based Device Fingerprinting},
+	URL={https://sites.cs.ucsb.edu/~chris/research/doc/oakland13_cookieless.pdf}
 }
 
-@inproceedings{panop_paper,
-	title={{H}ow {U}nique {I}s {Y}our {W}eb {B}rowser?},
-	author={Peter Eckersley},
-	booktitle={Privacy Enhancing Technologies},
-	year={2010}
-	URL={\url{https://panopticlick.eff.org/static/browser-uniqueness.pdf}}
+@article{panop_paper,
+	title = {How Unique Is Your Web Browser?},
+	author = {Peter Eckersley},
+	PUBLISHER = "{Electronic Frontier Foundation}",
+	URL={https://panopticlick.eff.org/static/browser-uniqueness.pdf}
 }
 
-@inproceedings{javascript_paper,
-	title={{F}ingerprinting {I}nformation in {J}ava{S}cript {I}mplementations},
-	author={Keaton Mowery and Dillon Bogenreif and Scott Yilek and Hovav Shacham},
-	year={2011},
-	URL={\url{https://hovav.net/ucsd/dist/jspriv.pdf}}
+@article{javascript_paper,
+	title = {Fingerprinting Information
+	in JavaScript Implementations},
+	author = {Keaton Mowery , Dillon Bogenreif , Scott Yilek, Hovav Shacham},
+	URL={https://hovav.net/ucsd/dist/jspriv.pdf}
 }
 
 @article{effective_paper,
-	title={{H}iding in the {C}rowd: an {A}nalysis of the {E}ffectiveness of {B}rowser {F}ingerprinting at {L}arge {S}cale},
-	author={Alejandro G{\'o}mez-Boix and Pierre Laperdrix and Benoit Baudry},
-	journal={Proceedings of the 2018 World Wide Web Conference},
-	year={2018},
-	URL={\url{https://hal.inria.fr/hal-01718234v2/document}}
+	title = {Hiding in the Crowd: an Analysis of the Effectiveness of
+	Browser Fingerprinting at Large Scale},
+	author = {Alejandro Gómez-Boix, Pierre Laperdrix, Benoit Baudry},
+	URL={https://hal.inria.fr/hal-01718234v2/document}
 }
 
 @inproceeding{challenges,
-	title = {{B}rowser {F}ingerprinting: {A}n {I}ntroduction and the {C}hallenges {A}head},
-	note={\url{https://blog.torproject.org/browser-fingerprinting-introduction-and-challenges-ahead}},
-	year ={Fecha de acceso, octubre de 2019}
+	title = {Browser Fingerprinting: An Introduction and the Challenges Ahead},
+	note={https://blog.torproject.org/browser-fingerprinting-introduction-and-challenges-ahead},
+	year ={Fecha de acceso, Octubre de 2019}
 }
 
 @inproceeding{gdpr_eff,
-	title = {{T}he {GDPR} and {B}rowser {F}ingerprinting: {H}ow {I}t {C}hanges the {G}ame for the {S}neakiest {W}eb {T}rackers},
-	note={\url{https://www.eff.org/es/deeplinks/2018/06/gdpr-and-browser-fingerprinting-how-it-changes-game-sneakiest-web-trackers}},
-	year ={Fecha de acceso, mayo de 2020}
+	title = {The GDPR and Browser Fingerprinting: How It Changes the Game for the Sneakiest Web Trackers},
+	note={https://www.eff.org/es/deeplinks/2018/06/gdpr-and-browser-fingerprinting-how-it-changes-game-sneakiest-web-trackers},
+	year ={Fecha de acceso, Mayo de 2020}
 }
 
 @article{gdpr,
-	title   = {{REGLAMENTO (UE) 2016/679 DEL PARLAMENTO EUROPEO Y DEL CONSEJO} de 27 de abril de 2016 relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos y por el que se deroga la {D}irectiva 95/46/CE ({R}eglamento {G}eneral de {P}rotección de {D}atos)},
+	title   = {REGLAMENTO (UE) 2016/679 DEL PARLAMENTO EUROPEO Y DEL CONSEJO de 27 de abril de 2016 relativo a la protección de las personas físicas en lo que respecta al tratamiento de datos personales y a la libre circulación de estos datos y por el que se deroga la Directiva 95/46/CE (Reglamento general de protección de datos)},
 	year    = {2016-04-27},
 	volume  = {L 119/1},
-	URL={\url{https://eur-lex.europa.eu/legal-content/ES/TXT/HTML/?uri=CELEX:32016R0679&from=ES}}
+	URL={https://eur-lex.europa.eu/legal-content/ES/TXT/HTML/?uri=CELEX:32016R0679&from=ES}
 }
 
 @inproceeding{blokt,
-	title = {{B}rowser {F}ingerprinting [2020 {U}pdate] – {W}hat {I}s {I}t & {H}ow to avoid {I}t},
-	note={\url{https://blokt.com/guides/browser-fingerprinting}},
-	year ={Fecha de acceso, mayo de 2020}
+	title = {Browser Fingerprinting [2020 Update] – What Is It & How to avoid It},
+	note={https://blokt.com/guides/browser-fingerprinting},
+	year ={Fecha de acceso, Mayo de 2020}
 }
 
 @inproceeding{data_brocker,
-	title = {{T}his is {Y}our {D}igital {F}ingerprint},
-	note ={\url{https://blog.mozilla.org/internetcitizen/2018/07/26/this-is-your-digital-fingerprint/}},
-	year ={Fecha de acceso, mayo de 2020}
+	title = {This is Your Digital Fingerprint},
+	note ={https://blog.mozilla.org/internetcitizen/2018/07/26/this-is-your-digital-fingerprint/},
+	year ={Fecha de acceso, Mayo de 2020}
 }
 
-@inproceedings{bot_paper,
-	title={{FPD}etective: dusting the web for fingerprinters},
-	author={Gunes Acar and Marc Ju{\'a}rez and Nick Nikiforakis and Claudia D{\'i}az and Seda F. G{\"u}rses and Frank Piessens and Bart Preneel},
-	booktitle={CCS '13},
-	year={2013},
-	URL={\url{https://www.esat.kuleuven.be/cosic/publications/article-2334.pdf}}
+@article{bot_paper,
+	title = {FPDetective: Dusting the Web for Fingerprinters},
+	author = {Gunes Acar, Marc Juarez, Nick Nikiforakis, Claudia Diaz, Seda Gürses, Frank Piessens, Bart Preneel},
+	URL={https://www.esat.kuleuven.be/cosic/publications/article-2334.pdf}
 }
 
-@inproceedings{never_forget_paper,
-	title={{T}he {W}eb {N}ever {F}orgets: {P}ersistent {T}racking {M}echanisms in the {W}ild},
-	author={Gunes Acar and Christian Eubank and Steven Englehardt and Marc Ju{\'a}rez and Arvind Narayanan and Claudia D{\'i}az},
-	booktitle={CCS '14},
-	year={2014},
-	URL={\url{https://securehomes.esat.kuleuven.be/~gacar/persistent/the_web_never_forgets.pdf}}
+@article{never_forget_paper,
+	title = {The Web Never Forgets: Persistent Tracking Mechanisms in the Wild},
+	author = {Gunes Acar, Christian Eubank, Steven Englehardt, Marc Juarez, Arvind Narayanan, Claudia Diaz},
+	URL={https://securehomes.esat.kuleuven.be/~gacar/persistent/the_web_never_forgets.pdf}
 }
 
-@inproceedings{canvas_paper,
-	title={{P}ixel {P}erfect : {F}ingerprinting {C}anvas in {HTML} 5},
-	author={Keaton Mowery and Hovav Shacham},
-	year={2012}
-	URL={\url{https://hovav.net/ucsd/dist/canvas.pdf}}
+@article{canvas_paper,
+	title = {Pixel Perfect: Fingerprinting Canvas in HTML5},
+	author = {Keaton Mowery, Hovav Shacham},
+	URL={https://hovav.net/ucsd/dist/canvas.pdf}
 }
 
 @techreport{audio_w3c,
 	AUTHOR = "W3C Audio Working Group",
-	TITLE = "{Web Audio Processing: Use Cases and Requirements}",
+	TITLE = "{HTTP State Management Mechanism}",
 	YEAR = {2013},
 	MONTH = {January},
 	PUBLISHER = "{W3C}",
 	INSTITUTION = "{W3C}",
-	URL={\url{https://www.w3.org/TR/webaudio-usecases/}}
+	URL={https://www.w3.org/TR/webaudio-usecases/}
 }
 
 @article{battery_paper,
-	title={{T}he {L}eaking {B}attery - {A} {P}rivacy {A}nalysis of the {HTML}5 {B}attery {S}tatus {API}},
-	author={Lukasz Olejnik and Gunes Acar and Claude Castelluccia and Claudia D{\'i}az},
-	journal={IACR Cryptol. ePrint Arch.},
-	year={2015},
-	volume={2015},
-	pages={616},
-	URL={\url{https://eprint.iacr.org/2015/616.pdf}}
+	title = {The leaking battery. A privacy analysis of the HTML5 Battery Status API},
+	author = {Lukasz Olejnik, Gunes Acar, Claude Castelluccia, Claudia Diaz},
+	URL={https://eprint.iacr.org/2015/616.pdf}
 }
 
 @techreport{mitigations_w3c,
@@ -152,44 +143,44 @@
 	MONTH = {March},
 	PUBLISHER = "{W3C}",
 	INSTITUTION = "{W3C}",
-	URL={\url{https://www.w3.org/TR/fingerprinting-guidance/}}
+	URL={https://www.w3.org/TR/fingerprinting-guidance/}
 }
 
 @inproceeding{pixelprivacy,
-	title = {{B}rowser {F}ingerprinting: {W}hat {I}s {I}t and {W}hat {S}hould {Y}ou {D}o {A}bout {I}t?},
-	note ={\url{https://pixelprivacy.com/resources/browser-fingerprinting/}},
-	year ={Fecha de acceso, mayo de 2020}
+	title = {Browser Fingerprinting: What Is It and What Should You Do About It?},
+	note ={https://pixelprivacy.com/resources/browser-fingerprinting/},
+	year ={Fecha de acceso, Mayo de 2020}
 }
 
 @inproceeding{restoreprivacy,
-	title = {{B}rowser {F}ingerprinting – {E}xplanation, {T}ests, {S}olutions},
-	note ={\url{https://restoreprivacy.com/browser-fingerprinting/}},
-	year ={Fecha de acceso, mayo de 2020}
+	title = {Browser Fingerprinting – Explanation, Tests, & Solutions},
+	note ={https://restoreprivacy.com/browser-fingerprinting/},
+	year ={Fecha de acceso, Mayo de 2020}
 }
 
 @inproceeding{web_mozilla,
 	title = {Tecnología web para desarrolladores},
-	note ={\url{https://developer.mozilla.org/es/docs/Web}},
-	year ={Fecha de acceso, octubre de 2019}
+	note ={https://developer.mozilla.org/es/docs/Web},
+	year ={Fecha de acceso, Octubre de 2019}
 }
 
 @inproceeding{XAMPP,
-	title = {¿{Q}ué es {XAMPP?}},
-	note ={\url{https://www.apachefriends.org/es/index.html}},
+	title = {¿Qué es XAMPP?},
+	note ={https://www.apachefriends.org/es/index.html},
 	year ={Fecha de acceso, junio de 2020}
 }
 
 @inproceeding{fingerprintjs2,
-	title = {{F}ingerprint{JS}2},
-	note ={\url{https://github.com/Valve/fingerprintjs2}},
-	year ={Fecha de acceso, octubre de 2019}
+	title = {FingerprintJS2},
+	note ={https://github.com/Valve/fingerprintjs2},
+	year ={Fecha de acceso, Octubre de 2019}
 }
 
 % También se usa en el capítulo 5
 @inproceeding{GoogleCharts,
-	title = {{G}uia {G}oogle {C}harts},
-	note ={\url{https://developers.google.com/chart/interactive/docs}},
-	year ={Fecha de acceso, abril de 2020}
+	title = {Guia Google Charts},
+	note ={https://developers.google.com/chart/interactive/docs},
+	year ={Fecha de acceso, Abril de 2020}
 }
 
 %%%%%%%%%%%%%%%%%%
@@ -199,20 +190,17 @@
 
 @inproceeding{navigator,
 	title = {Navigator},
-	note ={\url{https://developer.mozilla.org/es/docs/Web/API/Navigator}},
-	year ={Fecha de acceso, diciembre de 2019}
+	note ={https://developer.mozilla.org/es/docs/Web/API/Navigator}
 }
 
 @inproceeding{screen,
 	title = {Screen},
-	note ={\url{https://developer.mozilla.org/es/docs/Web/API/Screen}},
-	year ={Fecha de acceso, diciembre de 2019}
+	note ={https://developer.mozilla.org/es/docs/Web/API/Screen}
 }
 
 @inproceeding{window,
 	title = {Window},
-	note ={\url{https://developer.mozilla.org/es/docs/Web/API/Window}},
-	year ={Fecha de acceso, diciembre de 2019}
+	note ={https://developer.mozilla.org/es/docs/Web/API/Window}
 }
 
 %%%%%%%%%%%%%%%%%%
@@ -223,8 +211,8 @@
 
 @inproceeding{Formatos,
 	title = {Formatos de audio y video},
-	note ={\url{https://developer.mozilla.org/es/docs/Web/HTML/Formatos\_admitidos\_de\_audio\_y\_video\_en\_html5}},
-	year ={Fecha de acceso, noviembre de 2019}
+	note ={https://developer.mozilla.org/es/docs/Web/HTML/Formatos\_admitidos\_de\_audio\_y\_video\_en\_html5},
+	year ={Fecha de acceso, Noviembre de 2019}
 }
 
 @book{ajax,
@@ -240,15 +228,6 @@
 % 	Capítulo 7
 %  -CONTRIBUCIÓN INDIVIDUAL-
 %%%%%%%%%%%%%%%%%%
-
-@techreport{aepd,
-	AUTHOR = "Agencia Española de Protección de Datos",
-	TITLE = "{Estudio de fingerprint o huella digital de dispositivo}",
-	YEAR = {2019},
-	PUBLISHER = "{AEPD}",
-	INSTITUTION = "{AEPD}",
-	URL={https://www.aepd.es/sites/default/files/2019-09/estudio-fingerprinting-huella-digital.pdf}
-}
 
 @book{nodejs,
 	title = {Node.js},
@@ -266,8 +245,8 @@
 
 
 @inproceeding{http2,
-	title = {{HTTP}/2 {F}requently {A}sked {Q}uestions},
-	note={\url{https://http2.github.io/faq/}},
-	year ={Fecha de acceso, junio de 2020}
+	title = {HTTP/2 Frequently Asked Questions},
+	note={https://http2.github.io/faq/},
+	year ={Fecha de acceso, Junio de 2020}
 }
 
