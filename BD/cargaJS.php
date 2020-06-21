@@ -117,7 +117,7 @@ $stmt->close();
 $stmt = $conn->prepare("SELECT `Accept`, `AcceptLanguage`, `UpgradeInsecureRequests`, `UserAgent`, `AcceptEncoding`, `Connection`, 
     `SecFetchMode`, `SecFetchUser`, `SecFetchSite`, `DNT`, `plataforma`, `userAgentJS`, `navegador`, `version`, 
     `cookieEnabled`, `language`, `onLine`, `appName`, `zonaHoraria`, `screenWidth`, `screenHeight`, `screenAvailWidth`, 
-    `screenAvailHeight`, `screenColorDepth`, `screenPixelDepth`, `locationBar`, `pixelRatio`, `menuBar`, `personalBar`, 
+    `screenAvailHeight`, `screenColorDepth`, `screenPixelDepth`, `locationBar`, `menuBar`, `personalBar`, 
     `statusBar`, `toolBar`, `localStorage`, `sessionStorage`, `windowResults`, `indexDB`, `bateria`, `DNTJS`, 
     `touchpoints`, `product`, `productSub`, `os`, `vendor`, `hardwareConcurrency`, `lenguajes`, `buildId`, `devMemory`, 
     `flash`, `canvas`, `resumenFuentes`, `resumenPlugins` FROM `Conexiones` WHERE id =?");
@@ -127,7 +127,7 @@ $stmt -> store_result();
 $stmt -> bind_result($Accept, $AcceptLanguage, $uir, $UserAgent, $AcceptEncoding, $Connection,
     $SecFetchMode, $SecFetchUser, $SecFetchSite, $DNT, $plataforma, $userAgentJS, $navegador, $version,
     $cookieEnabled, $language, $onLine, $appName, $zonaHoraria, $screenWidth, $screenHeight,
-    $screenAvailWidth, $screenAvailHeight, $screenColorDepth, $screenPixelDepth, $locationBar, $pixelRatio,
+    $screenAvailWidth, $screenAvailHeight, $screenColorDepth, $screenPixelDepth, $locationBar,
     $menuBar, $personalBar, $statusBar, $toolBar, $localStorage, $sessionStorage, $windowResults, $indexDB,
     $bateria, $DNTJS, $touchpoints, $product, $productSub, $os, $vendor, $hardwareConcurrency, $lenguajes,
     $buildId, $devMemory, $flash, $canvas, $resumenFuentes, $resumenPlugins);
@@ -191,8 +191,7 @@ $resultadoVideo = array("ogg-theora" => $video_ogg_theora, "ogg-vorbis" => $vide
     "webm-vorbis" => $video_webm_vorbis);
 
 //QUERY DE BUSQUE DE TODOS LOS ELEMENTOS QUE COINCIDAN CON LOS DEL NAVEGADOR ACTUAL
-$query = "SELECT count(*) FROM ((SELECT * FROM Conexiones)a JOIN (SELECT * FROM formatosaudio)b USING (id)) JOIN 
-    (SELECT * FROM formatosvideo)c USING (id) WHERE ";
+$query = "SELECT count(*) FROM ((SELECT * FROM Conexiones)a JOIN (SELECT * FROM formatosaudio)b USING (id)) JOIN (SELECT * FROM formatosvideo)c USING (id) WHERE ";
 
 
 //Conseguir el número total de registros en la tabla, lo usaremos luego para calcular el porcentaje de similaridad para cada atributo.
@@ -286,7 +285,6 @@ $resultado = $resultado->fetch_all();
 //Añadimos la unicidad total al JSON
 $porcentajeUnicidad = round((($total_reg[0][0]-$resultado[0][0]+1)/$total_reg[0][0])*100,2);
 $arrayRatio += ["resultadoJS" => "Hay ".($resultado[0][0]-1)." browserFingerPrint como el tuyo de ".$total_reg[0][0]." en nuestra base de datos. (".$porcentajeUnicidad."% único)"];
-
 //Devolvemos el JSON tanto con el similarity ratio individual como con la unicidad total en la ultima clave del JSON.
 echo json_encode($arrayRatio);
 ?>
