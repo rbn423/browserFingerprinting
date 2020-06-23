@@ -14,7 +14,7 @@ class DescElementoHTTP
         "SecFetchMode" => "Indica el modo de la petición",
         "SecFetchUser" => "Indica si una solicitud de navegación fue activada o no por el usuario",
         "AcceptEncoding" => "Indica la codificación del contenido que puede entender el cliente",
-        "AcceptLanguage" => "Indica que lenguajes es capaz de entender el cliente"
+        "AcceptLanguage" => "Indica qué lenguajes es capaz de entender el cliente"
     ];
 
     public static function getDescripcionHTTP($clave){
