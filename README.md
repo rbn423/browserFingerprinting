@@ -16,5 +16,5 @@ La aplicación web se puede visitar en el siguiente [enlace](http://browserfinge
 
 ## Directores
 
-- Enrique Martín Martín
-- Adrián Riesco Rodríguez
+- Enrique Martín Martín.
+- Adrián Riesco Rodríguez.
