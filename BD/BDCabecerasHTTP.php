@@ -110,16 +110,26 @@ class BDCabecerasHTTP {
 	public static function insertarCabecera($headers){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
-		$campo = NULL;
-		$i = 0;
-		$query = "INSERT INTO Conexiones (";
-		$query .= self::selector($headers,"insertCabecera");
-		$query .= ") VALUES (";
-		$i = 0;
-		$query .= self::selector($headers,"insertValue");
-		$query .= ")";
-		$conn->query($query);
-		$resultado = $conn->insert_id;
+		$cabeceras = apache_request_headers();
+		$Accept = empty($_SERVER['HTTP_ACCEPT']) ? null : $_SERVER['HTTP_ACCEPT'];
+		$AcceptLanguage = empty($_SERVER['HTTP_ACCEPT_LANGUAGE']) ? null : $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+		$UpgradeInsecureRequests = empty($cabeceras["Upgrade-Insecure-Requests"]) ? null : $cabeceras["Upgrade-Insecure-Requests"];
+		$UserAgent = empty($_SERVER['HTTP_USER_AGENT']) ? null : $_SERVER['HTTP_USER_AGENT'];
+		$AcceptEncoding = empty($_SERVER['HTTP_ACCEPT_ENCODING']) ? null : $_SERVER['HTTP_ACCEPT_ENCODING'];
+		$Connection = empty($_SERVER['HTTP_CONNECTION']) ? null : $_SERVER['HTTP_CONNECTION'];
+		$SecFetchMode = empty($cabeceras["Sec-Fetch-Mode"]) ? null : $cabeceras["Sec-Fetch-Mode"];
+		$SecFetchUser = empty($cabeceras["Sec-Fetch-User"]) ? null : $cabeceras["Sec-Fetch-User"];
+		$SecFetchSite = empty($cabeceras["Sec-Fetch-Site"]) ? null : $cabeceras["Sec-Fetch-Site"];
+		$DNT = empty($cabeceras["DNT"]) ? null : $cabeceras["DNT"];
+
+		$stmt = $conn->prepare("INSERT INTO `conexiones` (`Accept`, `AcceptLanguage`,`UpgradeInsecureRequests`,`UserAgent`,
+		`AcceptEncoding`, `Connection`, `SecFetchMode`, `SecFetchUser`,`SecFetchSite`,`DNT`)
+        VALUES (?,?,?,?,?,?,?,?,?,?)");
+		$stmt->bind_param("ssssssssss", $Accept, $AcceptLanguage, $UpgradeInsecureRequests, $UserAgent, $AcceptEncoding,
+			$Connection, $SecFetchMode, $SecFetchUser, $SecFetchSite, $DNT);
+		$stmt->execute();
+		$resultado = $stmt->insert_id;
+		$stmt->close();
 		return $resultado;
 	}
 
