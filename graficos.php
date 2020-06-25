@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ES">
 <head>
     <title>Gráficos</title>
 
@@ -7,10 +7,10 @@
     require_once("comun/config.php");
     ?>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript" src="javascript/datosGrafico.js"></script>
-    <script type="text/javascript" src="javascript/asincrono.js"></script>
-    <script type="text/javascript">
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="javascript/datosGrafico.js"></script>
+    <script src="javascript/asincrono.js"></script>
+    <script>
         cargaGrafico("navegador");
     </script>
     <link rel="stylesheet" href="css/estilos.css">

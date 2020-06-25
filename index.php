@@ -10,22 +10,9 @@
 	$totales = BDCabecerasHTTP::cabecerasTotales();
 
     require "header.php";
-    if(!isset($_GET["huella"])) {
-        echo '<body style="text-align: center; margin-left: 15%">';
-        echo '<div style="width: 80%">';
-        echo '<h1>BrowserFingerprinting</h1>';
-        echo '<h2>Huella digital de tu navegador</h2>';
-        echo '<p>Esta es una aplicación web capaz de mostrar la huella digital de tu navegador mediante el análisis de algunos de sus elementos.</p>';
-        echo '<p>Se trata de un trabajo de fin de grado realizado por estudiantes de la Universidad Complutense de Madrid.</p>';
-        echo '<p>Todos los datos analizados al pulsar el botón "Ver huella digital de tu navegador" serán almacenados en una base de datos, cuyo tratamiento será exclusivamente con fines académicos.';
-        echo '<form action="index.php?huella" method="get"><button name="huella" id="linkGraficos" type="submit">Ver huella digital de tu navegador</button></form>';
-        echo '<h2>¿Qué es el Browser Fingerprinting?</h2>';
-        echo '<p>La huella digital es la recopilación sistemática sobre un determinado dispositivo con la finalidad de identificarlo, singularizarlo y perfilarlo. Este conjunto de datos permite prácticamente, de forma unívoca, identificar dicho terminal y en cuestión a la persona o grupo de personas que puedan estar usándolo.</p>';
-        echo '</div>';
-        echo '</body>';
-        exit;
-    }
+    require "bienvenida.php";
 ?>
+    <body>
 		<div id="container">
             <div>
             <form action='graficos.php'><button id="linkGraficos">Gráficos</button></form>
@@ -33,7 +20,7 @@
             <div>
                 <table id="tablaResultadoJS">
                     <tr><th>Resultado</th></tr>
-                    <tr><td><p id="resultadoJS"><img src="img/animated.png" class="cargando"></p></td></tr>
+                    <tr><td><p id="resultadoJS"><img src="img/animated.png" class="cargando" alt="cargando resultados"></p></td></tr>
                 </table>
             </div>
 			<h2>Atributos de la cabecera HTTP</h2>
@@ -51,7 +38,7 @@
 							$fila .= "<td><div class='nombreElemento'>".$header."</div>" ;//nombre de la cabecera
 							$fila .= "<div class='tooltip'>info";//icono de info desplegable
 							$fila .= "<span class='tooltiptext'>".DescElementoHTTP::getDescripcionHTTP($clave)."</span></div></td>";//desplegable con la información
-                            $fila .= "<td id='".$clave."'><img class='cargando' src='img/animated.png'></td>";//porcentaje de similaridad de la cabecera y mientras espera el porcentaje un gif de cargando
+                            $fila .= "<td id='".$clave."'><img class='cargando' src='img/animated.png' alt='cargando resultados'></td>";//porcentaje de similaridad de la cabecera y mientras espera el porcentaje un gif de cargando
                             $fila .= "<td>".$value."</td>"; //resultado de la cabecera
 							$fila .= "</tr>";
 							echo $fila;
@@ -83,7 +70,7 @@
                             "<div class='tooltip'>info" + //palabra info que mostrará desplegable con la información al poner el puntero encima
                             "<span class='tooltiptext'>"+getDescripcionJS(elementosJS[i][1])+"</span></div>" + //información del elemento
                             "</td>" +
-                            "<td id='" + elementosJS[i][1] + "'><img class='cargando' src='img/animated.png'></td>" +//ratio del elemento en la base de datos y mientras espera al ratio muestra una imagen de cargando
+                            "<td id='" + elementosJS[i][1] + "'><img class='cargando' src='img/animated.png' alt='cargando resultados'></td>" +//ratio del elemento en la base de datos y mientras espera al ratio muestra una imagen de cargando
                             "<td>" + elementosJS[i][2] + "</td></tr>";//resultado del elemento en el navegador
                     }
 					salida += "<tr>" +
@@ -91,7 +78,7 @@
                         "<div class='tooltip'>info" +
                         "<span class='tooltiptext'>"+getDescripcionJS("canvas")+"</span></div>" +
                         "</td>" +
-                        "<td id=canvas><img class='cargando' src='img/animated.png'></td>" +
+                        "<td id=canvas><img class='cargando' src='img/animated.png' alt='cargando resultados'></td>" +
                         "<td>" +
                         "<canvas id='canvas_result'></canvas>" +
                         "</td>" +
@@ -108,7 +95,7 @@
 						//dispositivos();
 					</script>
 				</div>
-				<video id="movie" hidden="true"></video>
+				<video id="movie" style="display:none"></video>
 				<div id="video">
 					<script>
 						var formatosVideo = formatosSoportadosVideo();
@@ -116,7 +103,7 @@
 						document.getElementById("video").innerHTML = salida;
 					</script>
 				</div>
-					<audio id="sound" hidden="true"></audio>
+					<audio id="sound" style="display:none"></audio>
 				<div id="audio">
 					<script>
 						var formatosAudio = formatosSoportadosAudio();
@@ -125,7 +112,7 @@
 					</script>
 				</div>
 				<script>window.adblockEnabled = true</script><!--ponemos el atributo a true -->
-				<script type="text/javascript" src="javascript/ad_banner.js"></script><!--si se consigue cargar este js entonces no hay adblock y el atributo se pone a false -->
+				<script src="javascript/ad_banner.js"></script><!--si se consigue cargar este js entonces no hay adblock y el atributo se pone a false -->
 				<div id="plugins">
 					<script>
 						var pluginsInstalados = arrayPlugins();
@@ -135,7 +122,7 @@
 					</script>
 				</div>
 				<div id="fuentes">
-					<script type="text/javascript">
+					<script>
 						var font = fingerprint_fonts();
 						var salida = resultadoFuentes(font[0]);
 						document.getElementById("fuentes").innerHTML=salida;
