@@ -98,7 +98,7 @@ $app = Aplicacion::getSingleton();
 $conn = $app->conexionBd();
 
 //Insertamos en la base de datos los elementos JavaScript
-$stmt = $conn->prepare("UPDATE `Conexiones` SET `plataforma`=?, `userAgentJS`=?, `navegador`=?, `version`=?, 
+$stmt = $conn->prepare("UPDATE `conexiones` SET `plataforma`=?, `userAgentJS`=?, `navegador`=?, `version`=?, 
     `cookieEnabled`=?, `language`=?, `onLine`=?, `appName`=?, `zonaHoraria`=?, `screenWidth`=?, `screenHeight`=?,
     `screenAvailWidth`=?, `screenAvailHeight`=?, `screenColorDepth`=?, `screenPixelDepth`=?, `locationBar`=?,
     `pixelRatio`=?, `menuBar`=?, `personalBar`=?, `statusBar`=?, `toolBar`=?, `localStorage`=?, `sessionStorage`=?,
@@ -120,7 +120,7 @@ $stmt = $conn->prepare("SELECT `Accept`, `AcceptLanguage`, `UpgradeInsecureReque
     `screenAvailHeight`, `screenColorDepth`, `screenPixelDepth`, `locationBar`, `menuBar`, `personalBar`, 
     `statusBar`, `toolBar`, `localStorage`, `sessionStorage`, `windowResults`, `indexDB`, `bateria`, `DNTJS`, 
     `touchpoints`, `product`, `productSub`, `os`, `vendor`, `hardwareConcurrency`, `lenguajes`, `buildId`, `devMemory`, 
-    `flash`, `canvas`, `resumenFuentes`, `resumenPlugins` FROM `Conexiones` WHERE id =?");
+    `flash`, `canvas`, `resumenFuentes`, `resumenPlugins` FROM `conexiones` WHERE id =?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 $stmt -> store_result();
@@ -191,11 +191,11 @@ $resultadoVideo = array("ogg-theora" => $video_ogg_theora, "ogg-vorbis" => $vide
     "webm-vorbis" => $video_webm_vorbis);
 
 //QUERY DE BUSQUE DE TODOS LOS ELEMENTOS QUE COINCIDAN CON LOS DEL NAVEGADOR ACTUAL
-$query = "SELECT count(*) FROM ((SELECT * FROM Conexiones)a JOIN (SELECT * FROM formatosaudio)b USING (id)) JOIN (SELECT * FROM formatosvideo)c USING (id) WHERE ";
+$query = "SELECT count(*) FROM ((SELECT * FROM conexiones)a JOIN (SELECT * FROM formatosaudio)b USING (id)) JOIN (SELECT * FROM formatosvideo)c USING (id) WHERE ";
 
 
 //Conseguir el número total de registros en la tabla, lo usaremos luego para calcular el porcentaje de similaridad para cada atributo.
-$query_total = "SELECT count(*) FROM Conexiones";
+$query_total = "SELECT count(*) FROM conexiones";
 $total_reg = $conn->query($query_total);
 $total_reg = $total_reg->fetch_all();
 
@@ -205,7 +205,7 @@ $arrayRatio = array();
 //Conexiones
 foreach ($resultadoConexiones as $nombre=>$valor){
 
-    $query_ratio = "SELECT count(*) FROM `Conexiones` WHERE ";
+    $query_ratio = "SELECT count(*) FROM `conexiones` WHERE ";
 
     if (is_null($valor)){
         $query .= "a.".$nombre." is null";
@@ -285,6 +285,7 @@ $resultado = $resultado->fetch_all();
 //Añadimos la unicidad total al JSON
 $porcentajeUnicidad = round((($total_reg[0][0]-$resultado[0][0]+1)/$total_reg[0][0])*100,2);
 $arrayRatio += ["resultadoJS" => "Hay ".($resultado[0][0]-1)." browserFingerPrint como el tuyo de ".$total_reg[0][0]." en nuestra base de datos. (".$porcentajeUnicidad."% único)"];
+$arrayRatio += ["Query" => $query];
 //Devolvemos el JSON tanto con el similarity ratio individual como con la unicidad total en la ultima clave del JSON.
 echo json_encode($arrayRatio);
 ?>

@@ -136,7 +136,7 @@ class BDCabecerasHTTP {
 	public static function numeroCabecerasIguales($headers){
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
-		$query = "SELECT count(*) FROM `Conexiones` WHERE ";
+		$query = "SELECT count(*) FROM `conexiones` WHERE ";
 		$query .= self::selector($headers,"select");
 		$resultado = $conn->query($query);
 		$resultado = $resultado->fetch_all();
@@ -147,7 +147,7 @@ class BDCabecerasHTTP {
 		$app = Aplicacion::getSingleton();
 		$conn = $app->conexionBd();
 
-		$query = "SELECT count(*) FROM `Conexiones`";
+		$query = "SELECT count(*) FROM `conexiones`";
 		$resultado = $conn->query($query);
 		$resultado = $resultado->fetch_all();
 		return $resultado[0][0];

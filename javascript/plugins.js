@@ -78,11 +78,12 @@ pinta la tabla html que muestra los resultados de los plugins
  */
 function resultadoPlugins(listaPlugins) {
     var valorFlash;
+    var salida = "";
     if (listaPlugins[1][2] != null)
         valorFlash = listaPlugins[1][2];
     else
         valorFlash = "Flash no disponible";
-    var salida = "<table><tr><th colspan='3'>Plugins</th></tr><th>Formatos</th><th>Similaridad</th><th>Valor</th>" + //aqui hay que meter css a la tabla
+    salida += "<table><tr><th colspan='3'>Plugins</th></tr><th>Formatos</th><th>Similaridad</th><th>Valor</th>" + //aqui hay que meter css a la tabla
         "<tr><td>Plugins disponibles</td><td id='resumenPlugins'><img class='cargando' src='img/animated.png'></td><td>"; //id='ratioPlugin'
     for(var i = 0 ; i < listaPlugins[0].length ; i++)
         salida += "<p>" + listaPlugins[0][i] + "</p>";//no se si esta bien una p en una tabla
