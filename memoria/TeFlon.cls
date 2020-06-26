@@ -515,7 +515,7 @@ title={#2},fonttitle=\bfseries,#1}
     \vspace{9mm}
     \begin{minipage}{10cm}
     \begin{center}
-    Tutores\\
+    Directores\\
     \tutor\\
       \vspace{2mm}
     \end{center}
